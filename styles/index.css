@@ -1,137 +1,190 @@
   :root {
-    --bg: #14110d;
-    --bg-2: #1c1812;
-    --surface: #23201a;
-    --surface-2: #2a2620;
-    --border: #3a3530;
-    --text: #f0e6d4;
-    --text-dim: #b8aa92;
-    --text-mute: #7a7060;
-    --ts: #3178c6;
-    --ts-light: #5a9fe6;
-    --amber: #e8a64a;
-    --green: #8bc46a;
-    --red: #e07560;
-    --purple: #c084fc;
-    --pink: #f472b6;
-    --code-bg: #0f0d0a;
+      --bg: #14110d;
+      --bg-2: #1c1812;
+      --surface: #23201a;
+      --surface-2: #2a2620;
+      --border: #3a3530;
+      --text: #f0e6d4;
+      --text-dim: #b8aa92;
+      --text-mute: #7a7060;
+      --ts: #3178c6;
+      --ts-light: #5a9fe6;
+      --amber: #e8a64a;
+      --green: #8bc46a;
+      --red: #e07560;
+      --purple: #c084fc;
+      --pink: #f472b6;
+      --code-bg: #0f0d0a;
   }
 
-* {
-    box-sizing: border-box;
-    
+  * {
+      box-sizing: border-box;
+
+  }
+  .slideshow-container > a[href] {
+  pointer-events: none;
 }
 
-.mySlides1 {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: min(45%, 420px);
-    max-width: 420px;
-    padding: 1.5rem;
-    border-radius: 1.5rem;
-    background: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.25);
-    transition: transform 0.6s ease, opacity 0.6s ease, filter 0.6s ease;
-    text-align: center;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
+.slideshow-container > a[href]:has(.mySlides1.active) {
+  pointer-events: auto;
 }
 
+  .mySlides1 {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
 
-.mySlides1.active {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    height: 50vh;
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    z-index: 2;
-}
+      max-width: 420px;
+      padding: 1.5rem;
+      border-radius: 1.5rem;
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.25);
+      transition: transform 0.6s ease, opacity 0.6s ease, filter 0.6s ease;
+      text-align: center;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+  }
 
-.mySlides1.prev {
-    opacity: 0.08;
-    transform: translate(-125%, -50%) scale(0.82);
-    z-index: 1;
-}
 
-.mySlides1.next {
-    opacity: 0.08;
-    transform: translate(25%, -50%) scale(0.82);
-    z-index: 1;
-}
+  .mySlides1.active {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      align-items: center;
+      height: 50vh;
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      z-index: 2;
+  }
 
-.mySlides1.hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%, -50%) scale(0.7);
-}
+  .mySlides1.prev {
+      opacity: 0.08;
+      transform: translate(-125%, -50%) scale(0.82);
+      z-index: 1;
+  }
 
-.numbertext {
-    margin-top: 1.25rem;
-    font-size: 3rem;
-    color: #fff;
-}
+  .mySlides1.next {
+      opacity: 0.08;
+      transform: translate(25%, -50%) scale(0.82);
+      z-index: 1;
+  }
 
-/* Slideshow container */
-.slideshow-container {
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-    background: var(--bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-}
-.nav-dots {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-}
+  .mySlides1.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(0.7);
+  }
 
-/* Next & previous buttons */
-.prev{
-    cursor: pointer;
-    position: absolute;
-    width: auto;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 110px;
-    transition: 0.6s ease;
-    left: 20px;
+  .numbertext {
+      margin-top: 1.25rem;
+      font-size: 3rem;
+      color: #fff;
+  }
 
-}
-svg {
-    width: 288px;
-    height: 288px;
-}
-.next {
-    cursor: pointer;
-    position: absolute;
-    width: auto;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 110px;
-    right: 20px;
-    transition: 0.6s ease;
-    border-radius: 23px 0 0 23px;
-}
+  /* Slideshow container */
+  .slideshow-container {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+  }
 
-/* Position the "next button" to the right */
-.next {
-    right: 0;
-     border-radius: 0 23px 23px 0;
-}
+  .nav-dots {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+  }
 
-/* On hover, add a grey background color */
-.prev:hover,
-.next:hover {
-    background-color: #f1f1f126;
-    color: rgba(255, 255, 255, 0.528);
-}
+  /* Next & previous buttons */
+  .prev {
+      cursor: pointer;
+      position: absolute;
+      width: auto;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 110px;
+      transition: 0.6s ease;
+      left: 20px;
+
+  }
+
+  svg {
+      width: 288px;
+      height: 288px;
+  }
+
+  .next {
+      cursor: pointer;
+      position: absolute;
+      width: auto;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 110px;
+      right: 20px;
+      transition: 0.6s ease;
+      border-radius: 23px 0 0 23px;
+  }
+
+  /* Position the "next button" to the right */
+  .next {
+      border-radius: 0 23px 23px 0;
+  }
+
+  /* On hover, add a grey background color */
+  .prev:hover,
+  .next:hover {
+      background-color: #f1f1f126;
+      color: rgba(255, 255, 255, 0.528);
+  }
+
+  @media screen and (max-width: 768px) {
+      svg {
+          width: 188px;
+          height: 188px;
+      }
+
+      .prev {
+          font-size: 50px;
+          left: 5px;
+      }
+
+      .next {
+          font-size: 50px;
+          right: 5px;
+      }
+  }
+
+  .numbertext {
+      font-size: 2rem;
+  }
+
+
+
+
+  @media screen and (max-width: 580px) {
+
+      .mySlides1.active {
+          height: 40vh;
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+          z-index: 2;
+      }
+
+      .prev,
+      .next {
+          font-size: 25px;
+      }
+
+      svg {
+          width: 120px;
+          height: 120px;
+      }
+  }
