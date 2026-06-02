@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TypeScript — Vom Anfänger zum Fortgeschrittenen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="./styles/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="page">
+
+<!-- =============== HERO =============== -->
+<header class="hero">
+
+  <a href="../index.html">
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0,0,256,256">
+      <g fill="#e8a64a" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M12,2.09961l-11,9.90039h3v9h6v-7h4v7h6v-9h3z"></path></g></g>
+    </svg>
+  </a>
+  <div class="eyebrow">Dokumentation · Stand 2026</div>
+
+  <h1>TypeScript<br><em>von A bis Z</em></h1>
+  <p class="lede">Eine vollständige Reise durch TypeScript — von den ersten Typen bis zu fortgeschrittenen Mapped Types und Decorators. Jedes Beispiel mit Erklärung links, Code in der Mitte, Output rechts.</p>
+  <div class="meta">
+    <span><strong>Sprache</strong>TypeScript 5.x</span>
+    <span><strong>Niveau</strong>Anfänger → Fortgeschritten</span>
+    <span><strong>Kapitel</strong>25 Themen</span>
+  </div>
+</header>
+
+<!-- =============== TOC =============== -->
+<nav class="toc">
+  <div class="toc-title">Inhalt</div>
+  <div class="toc-grid">
+    <div class="toc-col">
+      <h4>Teil I — Anfänger</h4>
+      <ol>
+        <li><a href="#was-ist-ts">Was ist TypeScript?</a></li>
+        <li><a href="#setup">Installation &amp; Setup</a></li>
+        <li><a href="#primitive">Primitive Typen</a></li>
+        <li><a href="#arrays">Arrays &amp; Tuples</a></li>
+        <li><a href="#objekte">Objekte &amp; Type Aliases</a></li>
+        <li><a href="#union">Union &amp; Literal Types</a></li>
+        <li><a href="#funktionen">Funktionen</a></li>
+        <li><a href="#inference">Type Inference</a></li>
+        <li><a href="#any-unknown">any, unknown, never</a></li>
+      </ol>
+    </div>
+    <div class="toc-col">
+      <h4>Teil II — Mittelstufe</h4>
+      <ol>
+        <li><a href="#interfaces">Interfaces</a></li>
+        <li><a href="#klassen">Klassen</a></li>
+        <li><a href="#enums">Enums</a></li>
+        <li><a href="#generics-basic">Generics — Basics</a></li>
+        <li><a href="#guards">Type Guards</a></li>
+        <li><a href="#optional">Optional Chaining &amp; Nullish</a></li>
+        <li><a href="#assertions">Type Assertions</a></li>
+      </ol>
+    </div>
+    <div class="toc-col">
+      <h4>Teil III — Fortgeschritten</h4>
+      <ol>
+        <li><a href="#generics-adv">Generics fortgeschritten</a></li>
+        <li><a href="#utility">Utility Types</a></li>
+        <li><a href="#mapped">Mapped Types</a></li>
+        <li><a href="#conditional">Conditional Types</a></li>
+        <li><a href="#template">Template Literal Types</a></li>
+        <li><a href="#discriminated">Discriminated Unions</a></li>
+        <li><a href="#keyof">keyof &amp; typeof</a></li>
+        <li><a href="#decorators">Decorators</a></li>
+        <li><a href="#module">Module</a></li>
+      </ol>
+    </div>
+  </div>
+</nav>
+
+<!-- =============== TEIL I =============== -->
+<div class="part">
+  <div class="part-label">Teil I</div>
+  <h2 class="part-title">Die <em>Grundlagen</em></h2>
+  <p class="part-desc">Was TypeScript ist, wie du es installierst und die Bausteine, mit denen alles andere arbeitet — Typen, Variablen, Funktionen.</p>
+</div>
+
+<!-- ============ 01 Was ist TS ============ -->
+<section id="was-ist-ts">
+  <h2><span class="num">01</span>Was ist TypeScript?</h2>
+  <p class="section-intro">TypeScript ist eine von Microsoft entwickelte Sprache, die JavaScript um ein <strong>statisches Typsystem</strong> erweitert. Der TypeScript-Compiler übersetzt deinen Code zurück nach JavaScript — das eigentliche Browser-/Node-Programm bleibt JS.</p>
+
+  <p><strong>Warum überhaupt Typen?</strong> JavaScript ist sehr nachsichtig — Fehler tauchen erst zur Laufzeit auf. TypeScript erkennt sie schon beim Tippen.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Das Problem in JS</h5>
+      <p>In reinem JavaScript kann man <code>"5"</code> (String) und <code>3</code> (Number) einfach mit <code>+</code> verknüpfen — das Ergebnis ist eine Stringverkettung statt einer Addition.</p>
+      <p>Niemand warnt dich. Der Fehler fällt erst auf, wenn die Anwendung läuft — vielleicht erst beim Kunden.</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm">// reines JavaScript</span>
+<span class="kw">function</span> <span class="fn">addiere</span>(<span class="vr">a</span>, <span class="vr">b</span>) {
+  <span class="kw">return</span> <span class="vr">a</span> + <span class="vr">b</span>;
+}
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">addiere</span>(<span class="st">"5"</span>, <span class="nm">3</span>));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">addiere</span>(<span class="nm">5</span>, <span class="nm">3</span>));</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <h5>Tückisch</h5>
+      <p>Solche Bugs treten in echten Projekten ständig auf — meistens, weil Daten aus einer API oder einem Formular als String kommen, obwohl man Zahlen erwartet.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre><span class="st">"53"</span>   <span class="cm">// ← keine Addition, sondern Verkettung!</span>
+<span class="nm">8</span>      <span class="cm">// hier funktioniert es zufällig</span></pre>
+  </div>
+
+  <p>Mit TypeScript schreiben wir dieselbe Funktion mit Typangaben:</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Typen als Verträge</h5>
+      <p><code>a: number</code> ist eine Zusage: „Hier darf nur eine Zahl rein."</p>
+      <p>Der Compiler prüft beim Schreiben, ob alle Aufrufe diese Regel einhalten.</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm">// TypeScript</span>
+<span class="kw">function</span> <span class="fn">addiere</span>(<span class="vr">a</span>: <span class="tp">number</span>, <span class="vr">b</span>: <span class="tp">number</span>): <span class="tp">number</span> {
+  <span class="kw">return</span> <span class="vr">a</span> + <span class="vr">b</span>;
+}
+
+<span class="fn">addiere</span>(<span class="st">"5"</span>, <span class="nm">3</span>); <span class="cm">// ← Fehler!</span>
+<span class="fn">addiere</span>(<span class="nm">5</span>, <span class="nm">3</span>);   <span class="cm">// ✓ ok</span></pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Was passiert</span>
+      <h5>Bug abgefangen</h5>
+      <p>Der erste Aufruf wird vom Compiler abgelehnt — der Code wird gar nicht erst zu JavaScript übersetzt.</p>
+    </div>
+  </div>
+
+  <div class="ts-error">
+    Argument of type 'string' is not assignable to parameter of type 'number'.
+  </div>
+</section>
+
+<!-- ============ 02 Setup ============ -->
+<section id="setup">
+  <h2><span class="num">02</span>Installation &amp; Setup</h2>
+  <p class="section-intro">TypeScript ist ein npm-Paket. Du brauchst Node.js, dann installierst du den Compiler entweder global oder pro Projekt.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Was tun wir?</span>
+      <h5>Schritt für Schritt</h5>
+      <p><strong>1.</strong> Neues Projekt anlegen</p>
+      <p><strong>2.</strong> TypeScript als Dev-Dependency</p>
+      <p><strong>3.</strong> Eine Konfigurationsdatei (<code>tsconfig.json</code>) erzeugen</p>
+      <p><strong>4.</strong> Code schreiben und kompilieren</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm"># Projekt initialisieren</span>
+npm init -y
+
+<span class="cm"># TypeScript installieren</span>
+npm install -D typescript
+
+<span class="cm"># tsconfig.json erzeugen</span>
+npx tsc --init
+
+<span class="cm"># Kompilieren</span>
+npx tsc
+
+<span class="cm"># Direkt ausführen (mit tsx)</span>
+npx tsx index.ts</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Hinweis</span>
+      <h5>tsx vs. tsc</h5>
+      <p><code>tsc</code> ist der offizielle Compiler — er erzeugt <code>.js</code>-Dateien.</p>
+      <p><code>tsx</code> oder <code>ts-node</code> führen TypeScript direkt aus, ohne Build-Schritt — praktisch für Skripte und Entwicklung.</p>
+    </div>
+  </div>
+
+  <h3>Eine sinnvolle tsconfig.json</h3>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <p><code>strict: true</code> ist die wichtigste Option — sie aktiviert alle strengen Prüfungen auf einmal.</p>
+      <p><code>target</code> legt fest, in welche JavaScript-Version kompiliert wird. <br><i>"target": "ESNext" sorgt dafür, dass TypeScript den erzeugten JavaScript-Code auf die neueste verfügbare ECMAScript-Version ausrichtet und moderne Sprachfeatures beibehält.</i></p>
+      <p><code>outDir</code> bestimmt den Zielordner.</p>
+    </div>
+    <div class="ex-code"><pre>{
+  <span class="pn">"compilerOptions"</span>: {
+    <span class="pn">"target"</span>: <span class="st">"ES2022"</span>,
+    <span class="pn">"module"</span>: <span class="st">"NodeNext"</span>,
+    <span class="pn">"moduleResolution"</span>: <span class="st">"NodeNext"</span>,
+    <span class="pn">"strict"</span>: <span class="bn">true</span>,
+    <span class="pn">"esModuleInterop"</span>: <span class="bn">true</span>,
+    <span class="pn">"skipLibCheck"</span>: <span class="bn">true</span>,
+    <span class="pn">"outDir"</span>: <span class="st">"./dist"</span>,
+    <span class="pn">"rootDir"</span>: <span class="st">"./src"</span>
+  },
+  <span class="pn">"include"</span>: [<span class="st">"src/**/*"</span>]
+}</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>Strict immer an</h5>
+      <p>Ohne <code>strict</code> nimmst du dir die Hälfte der Vorteile von TypeScript. Schalte es vom ersten Tag an ein.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 Primitive ============ -->
+<section id="primitive">
+  <h2><span class="num">03</span>Primitive Typen</h2>
+  <p class="section-intro">TypeScript kennt dieselben Primitiv-Typen wie JavaScript — nur dass wir sie jetzt benennen können.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Die Basis-Typen</h5>
+      <p><code>string</code> für Text, <code>number</code> für alle Zahlen (Integer + Float), <code>boolean</code> für wahr/falsch.</p>
+      <p><code>bigint</code> für riesige Ganzzahlen, <code>symbol</code> für eindeutige Identifikatoren — eher selten gebraucht.</p>
+      <p>Die Syntax <code>variable: typ = wert</code> nennt man <strong>Typannotation</strong>.</p>
+    </div>
+    <div class="ex-code"><pre><span class="kw">const</span> <span class="vr">name</span>: <span class="tp">string</span> = <span class="st">"Anna"</span>;
+<span class="kw">const</span> <span class="vr">alter</span>: <span class="tp">number</span> = <span class="nm">29</span>;
+<span class="kw">const</span> <span class="vr">istAdmin</span>: <span class="tp">boolean</span> = <span class="bn">true</span>;
+<span class="kw">const</span> <span class="vr">groß</span>: <span class="tp">bigint</span> = <span class="nm">9007199254740993n</span>;
+<span class="kw">const</span> <span class="vr">id</span>: <span class="tp">symbol</span> = <span class="fn">Symbol</span>(<span class="st">"user"</span>);
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">name</span>, <span class="vr">alter</span>, <span class="vr">istAdmin</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="kw">typeof</span> <span class="vr">alter</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Output erklärt</span>
+      <p>Die erste Zeile gibt die drei Werte aus, getrennt durch Leerzeichen.</p>
+      <p><code>typeof</code> ist ein JS-Operator und gibt den Laufzeit-Typ als String zurück — bei Zahlen also <code>"number"</code>.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>Anna <span class="nm">29</span> <span class="nm">true</span>
+<span class="st">number</span></pre>
+  </div>
+</section>
+
+<!-- ============ 04 Arrays & Tuples ============ -->
+<section id="arrays">
+  <h2><span class="num">04</span>Arrays &amp; Tuples</h2>
+  <p class="section-intro">Listen von Werten — wahlweise mit gleichem Typ (Array) oder einer festen Reihenfolge unterschiedlicher Typen (Tuple).</p>
+
+  <h3>Arrays</h3>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Zwei Schreibweisen</h5>
+      <p><code>number[]</code> und <code>Array&lt;number&gt;</code> sind exakt das Gleiche — meistens wird die kurze Form bevorzugt.</p>
+      <p>Versucht man, ein anderes Element hinzuzufügen (z.B. einen String in ein Number-Array), beschwert sich der Compiler sofort.</p>
+    </div>
+    <div class="ex-code"><pre><span class="kw">const</span> <span class="vr">zahlen</span>: <span class="tp">number</span>[] = [<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>];
+<span class="kw">const</span> <span class="vr">namen</span>: <span class="cl">Array</span>&lt;<span class="tp">string</span>&gt; = [<span class="st">"Anna"</span>, <span class="st">"Ben"</span>];
+
+<span class="vr">zahlen</span>.<span class="fn">push</span>(<span class="nm">4</span>);     <span class="cm">// ✓ ok</span>
+<span class="vr">zahlen</span>.<span class="fn">push</span>(<span class="st">"5"</span>);   <span class="cm">// ✗ Fehler</span>
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">zahlen</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">namen</span>.<span class="vr">length</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Was passiert</span>
+      <p>Nur das gültige <code>push(4)</code> wird ausgeführt — das ungültige wird vom Compiler abgelehnt.</p>
+      <p>Im Output sieht man das Array mit der angehängten 4.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>[ <span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">4</span> ]
+<span class="nm">2</span></pre>
+  </div>
+
+  <h3>Tuples</h3>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Feste Reihenfolge</h5>
+      <p>Ein Tuple ist ein Array mit <strong>fester Länge</strong> und <strong>festen Typen pro Position</strong>.</p>
+      <p>Praktisch für Koordinaten, Schlüssel-Wert-Paare oder Hooks (z.B. React's <code>useState</code> liefert ein Tuple).</p>
+    </div>
+    <div class="ex-code"><pre><span class="kw">type</span> <span class="cl">Punkt</span> = [<span class="tp">number</span>, <span class="tp">number</span>];
+
+<span class="kw">const</span> <span class="vr">p</span>: <span class="cl">Punkt</span> = [<span class="nm">10</span>, <span class="nm">20</span>];
+
+<span class="cm">// Tuple mit Labels (nur Doku, kein Effekt)</span>
+<span class="kw">type</span> <span class="cl">User</span> = [<span class="vr">id</span>: <span class="tp">number</span>, <span class="vr">name</span>: <span class="tp">string</span>];
+<span class="kw">const</span> <span class="vr">u</span>: <span class="cl">User</span> = [<span class="nm">1</span>, <span class="st">"Anna"</span>];
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">p</span>[<span class="nm">0</span>], <span class="vr">p</span>[<span class="nm">1</span>]);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">u</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>Destructuring</h5>
+      <p>Tuples lassen sich super destructuren:</p>
+      <p><code>const [id, name] = u;</code></p>
+      <p>Genau so funktioniert <code>useState</code> in React.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre><span class="nm">10</span> <span class="nm">20</span>
+[ <span class="nm">1</span>, <span class="st">'Anna'</span> ]</pre>
+  </div>
+</section>
+
+<!-- ============ 05 Objekte ============ -->
+<section id="objekte">
+  <h2><span class="num">05</span>Objekte &amp; Type Aliases</h2>
+  <p class="section-intro">Objekt-Typen beschreiben die Form (Shape) eines Objekts — welche Eigenschaften es hat und welchen Typ jede einzelne hat.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Inline vs. benannt</h5>
+      <p>Man kann den Typ direkt anschreiben (inline) — bei wiederholter Nutzung lohnt es sich aber, ihn mit <code>type</code> einen Namen zu geben.</p>
+      <p>Das <code>?</code> hinter einem Property macht es <strong>optional</strong>.</p>
+      <p><code>readonly</code> verhindert spätere Änderungen.</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm">// Inline-Typ</span>
+<span class="kw">const</span> <span class="vr">user1</span>: { <span class="vr">name</span>: <span class="tp">string</span>; <span class="vr">alter</span>: <span class="tp">number</span> } = {
+  <span class="vr">name</span>: <span class="st">"Anna"</span>,
+  <span class="vr">alter</span>: <span class="nm">29</span>
+};
+
+<span class="cm">// Benannter Type Alias</span>
+<span class="kw">type</span> <span class="cl">User</span> = {
+  <span class="kw">readonly</span> <span class="vr">id</span>: <span class="tp">number</span>;
+  <span class="vr">name</span>: <span class="tp">string</span>;
+  <span class="vr">email</span>?: <span class="tp">string</span>;  <span class="cm">// optional</span>
+};
+
+<span class="kw">const</span> <span class="vr">user2</span>: <span class="cl">User</span> = { <span class="vr">id</span>: <span class="nm">1</span>, <span class="vr">name</span>: <span class="st">"Ben"</span> };
+<span class="vr">user2</span>.<span class="vr">email</span> = <span class="st">"ben@example.com"</span>;
+<span class="vr">user2</span>.<span class="vr">id</span> = <span class="nm">2</span>; <span class="cm">// ✗ readonly!</span>
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">user2</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Output erklärt</span>
+      <p>Die letzte Zeile (<code>user2.id = 2</code>) wird vom Compiler abgelehnt — aber alle gültigen Zuweisungen davor laufen durch.</p>
+      <p>Das Objekt hat jetzt <code>id</code>, <code>name</code> und nachträglich gesetzte <code>email</code>.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>{ <span class="vr">id</span>: <span class="nm">1</span>, <span class="vr">name</span>: <span class="st">'Ben'</span>, <span class="vr">email</span>: <span class="st">'ben@example.com'</span> }</pre>
+  </div>
+
+  <div class="ts-error">
+    Cannot assign to 'id' because it is a read-only property.
+  </div>
+</section>
+
+<!-- ============ 06 Union ============ -->
+<section id="union">
+  <h2><span class="num">06</span>Union &amp; Literal Types</h2>
+  <p class="section-intro">Mit <code>|</code> sagst du: „Dieser Wert darf einer von mehreren Typen sein." Literal-Typen schränken auf <strong>konkrete Werte</strong> ein.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Union</h5>
+      <p><code>string | number</code> heisst: entweder ein String oder eine Zahl — nichts anderes.</p>
+      <h5>Literal-Type</h5>
+      <p><code>"klein" | "mittel" | "gross"</code> erlaubt nur exakt diese drei Strings — wie ein einfaches Enum.</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm">// Union</span>
+<span class="kw">let</span> <span class="vr">id</span>: <span class="tp">string</span> | <span class="tp">number</span>;
+<span class="vr">id</span> = <span class="nm">42</span>;
+<span class="vr">id</span> = <span class="st">"abc"</span>;
+
+<span class="cm">// Literal Type</span>
+<span class="kw">type</span> <span class="cl">Grösse</span> = <span class="st">"klein"</span> | <span class="st">"mittel"</span> | <span class="st">"gross"</span>;
+
+<span class="kw">function</span> <span class="fn">pizza</span>(<span class="vr">g</span>: <span class="cl">Grösse</span>): <span class="tp">number</span> {
+  <span class="kw">if</span> (<span class="vr">g</span> === <span class="st">"klein"</span>)  <span class="kw">return</span> <span class="nm">10</span>;
+  <span class="kw">if</span> (<span class="vr">g</span> === <span class="st">"mittel"</span>) <span class="kw">return</span> <span class="nm">14</span>;
+  <span class="kw">return</span> <span class="nm">18</span>;
+}
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">pizza</span>(<span class="st">"mittel"</span>));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">pizza</span>(<span class="st">"XL"</span>));  <span class="cm">// ✗ Fehler</span></pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <h5>Autovervollständigung</h5>
+      <p>Bei Literal-Types schlägt dein Editor automatisch die erlaubten Werte vor — du musst sie dir nicht merken.</p>
+      <p>Ein Tippfehler („mittl") fällt sofort auf.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre><span class="nm">14</span></pre>
+  </div>
+
+  <div class="ts-error">
+    Argument of type '"XL"' is not assignable to parameter of type 'Grösse'.
+  </div>
+</section>
+
+<!-- ============ 07 Funktionen ============ -->
+<section id="funktionen">
+  <h2><span class="num">07</span>Funktionen</h2>
+  <p class="section-intro">Bei Funktionen typisierst du <strong>Parameter</strong> und optional den <strong>Rückgabetyp</strong>. Den Rückgabetyp kann TS oft selbst erkennen — explizit angeben macht den Vertrag aber klarer.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Drei Formen</h5>
+      <p><strong>1.</strong> Klassische Function Declaration</p>
+      <p><strong>2.</strong> Arrow Function in einer Konstante</p>
+      <p><strong>3.</strong> Funktionstyp vorab definieren und dann anwenden</p>
+      <p>Das <code>?</code> macht einen Parameter optional, <code>=</code> setzt einen Default.</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm">// 1) Function Declaration</span>
+<span class="kw">function</span> <span class="fn">begrüße</span>(<span class="vr">name</span>: <span class="tp">string</span>): <span class="tp">string</span> {
+  <span class="kw">return</span> <span class="st">`Hallo, </span>${<span class="vr">name</span>}<span class="st">!`</span>;
+}
+
+<span class="cm">// 2) Arrow Function</span>
+<span class="kw">const</span> <span class="fn">verdoppele</span> = (<span class="vr">x</span>: <span class="tp">number</span>): <span class="tp">number</span> =&gt; <span class="vr">x</span> * <span class="nm">2</span>;
+
+<span class="cm">// 3) Vorab typisierte Funktion</span>
+<span class="kw">type</span> <span class="cl">Rechner</span> = (<span class="vr">a</span>: <span class="tp">number</span>, <span class="vr">b</span>: <span class="tp">number</span>) =&gt; <span class="tp">number</span>;
+<span class="kw">const</span> <span class="fn">multipl</span>: <span class="cl">Rechner</span> = (<span class="vr">a</span>, <span class="vr">b</span>) =&gt; <span class="vr">a</span> * <span class="vr">b</span>;
+
+<span class="cm">// Optional + Default</span>
+<span class="kw">function</span> <span class="fn">log</span>(<span class="vr">msg</span>: <span class="tp">string</span>, <span class="vr">level</span>: <span class="tp">string</span> = <span class="st">"info"</span>) {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="st">`[</span>${<span class="vr">level</span>}<span class="st">] </span>${<span class="vr">msg</span>}<span class="st">`</span>);
+}
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">begrüße</span>(<span class="st">"Anna"</span>));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">verdoppele</span>(<span class="nm">7</span>));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">multipl</span>(<span class="nm">3</span>, <span class="nm">4</span>));
+<span class="fn">log</span>(<span class="st">"Server gestartet"</span>);
+<span class="fn">log</span>(<span class="st">"Datenbank weg"</span>, <span class="st">"error"</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Output erklärt</span>
+      <p><code>begrüße</code> liefert den eingesetzten String.</p>
+      <p><code>verdoppele(7)</code> ergibt 14, <code>multipl(3,4)</code> ergibt 12.</p>
+      <p>Der erste <code>log</code> nutzt den Default <code>"info"</code>, der zweite überschreibt ihn mit <code>"error"</code>.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>Hallo, Anna!
+<span class="nm">14</span>
+<span class="nm">12</span>
+[info] Server gestartet
+[error] Datenbank weg</pre>
+  </div>
+
+  <h3>Rest-Parameter &amp; void</h3>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <p>Mit <code>...</code> nimmst du beliebig viele Argumente entgegen — sie landen als Array im Parameter.</p>
+      <p><code>void</code> als Rückgabetyp heisst: „Die Funktion gibt nichts Sinnvolles zurück."</p>
+    </div>
+    <div class="ex-code"><pre><span class="kw">function</span> <span class="fn">summe</span>(...<span class="vr">zahlen</span>: <span class="tp">number</span>[]): <span class="tp">number</span> {
+  <span class="kw">return</span> <span class="vr">zahlen</span>.<span class="fn">reduce</span>((<span class="vr">a</span>, <span class="vr">b</span>) =&gt; <span class="vr">a</span> + <span class="vr">b</span>, <span class="nm">0</span>);
+}
+
+<span class="kw">function</span> <span class="fn">warne</span>(<span class="vr">msg</span>: <span class="tp">string</span>): <span class="tp">void</span> {
+  <span class="fn">console</span>.<span class="fn">warn</span>(<span class="st">"⚠ "</span> + <span class="vr">msg</span>);
+}
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">summe</span>(<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">4</span>, <span class="nm">5</span>));
+<span class="fn">warne</span>(<span class="st">"Speicher knapp"</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <p><code>reduce</code> faltet das Array zu einem Wert zusammen — hier zur Summe.</p>
+      <p><code>console.warn</code> ist wie <code>log</code>, nur als Warnung markiert.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre><span class="nm">15</span>
+⚠ Speicher knapp</pre>
+  </div>
+</section>
+
+<!-- ============ 08 Inference ============ -->
+<section id="inference">
+  <h2><span class="num">08</span>Type Inference</h2>
+  <p class="section-intro">TypeScript ist clever — du musst nicht überall Typen anschreiben. Aus der Zuweisung wird der Typ automatisch erkannt.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Lass TS arbeiten</h5>
+      <p>Bei <code>const x = 5</code> weiss TS sofort: das ist <code>number</code>. Eine Annotation wäre überflüssig.</p>
+      <p>Auch der Rückgabetyp einer Funktion wird aus dem <code>return</code> abgeleitet.</p>
+      <p><strong>Wann doch Annotation?</strong> An den Schnittstellen — bei Funktions-Parametern und öffentlichen APIs.</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm">// Inferred als number</span>
+<span class="kw">const</span> <span class="vr">x</span> = <span class="nm">5</span>;
+
+<span class="cm">// Inferred als string</span>
+<span class="kw">const</span> <span class="vr">gruß</span> = <span class="st">"Hallo"</span>;
+
+<span class="cm">// Inferred als string[]</span>
+<span class="kw">const</span> <span class="vr">liste</span> = [<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>];
+
+<span class="cm">// Rückgabe inferred als number</span>
+<span class="kw">function</span> <span class="fn">quadrat</span>(<span class="vr">n</span>: <span class="tp">number</span>) {
+  <span class="kw">return</span> <span class="vr">n</span> * <span class="vr">n</span>;
+}
+
+<span class="kw">const</span> <span class="vr">ergebnis</span> = <span class="fn">quadrat</span>(<span class="nm">8</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">ergebnis</span>, <span class="kw">typeof</span> <span class="vr">ergebnis</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>Hover im Editor</h5>
+      <p>Im Editor zeigt dir der Hover über jede Variable den abgeleiteten Typ. Probier's aus — das ist eines der schönsten Features.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre><span class="nm">64</span> <span class="st">number</span></pre>
+  </div>
+</section>
+
+<!-- ============ 09 any / unknown / never ============ -->
+<section id="any-unknown">
+  <h2><span class="num">09</span>any, unknown, never</h2>
+  <p class="section-intro">Drei Spezial-Typen, die du verstehen musst — vor allem den Unterschied zwischen <code>any</code> (Notausgang) und <code>unknown</code> (sicherer Notausgang).</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>any — schaltet alles aus</h5>
+      <p>Mit <code>any</code> sagst du TS: „Hör auf zu prüfen." Du verlierst alle Vorteile. Nur im absoluten Notfall verwenden.</p>
+      <h5>unknown — sicherer any</h5>
+      <p>Bei <code>unknown</code> musst du den Typ erst <strong>prüfen</strong>, bevor du etwas damit machen darfst.</p>
+      <h5>never — kommt nie zurück</h5>
+      <p>Funktionen, die immer einen Fehler werfen oder ewig laufen, haben Rückgabetyp <code>never</code>.</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm">// any: erlaubt alles, prüft nichts</span>
+<span class="kw">let</span> <span class="vr">a</span>: <span class="tp">any</span> = <span class="nm">5</span>;
+<span class="vr">a</span> = <span class="st">"jetzt ein String"</span>;
+<span class="vr">a</span>.<span class="fn">irgendwas</span>();  <span class="cm">// kein Fehler – aber Crash zur Laufzeit!</span>
+
+<span class="cm">// unknown: typsicher</span>
+<span class="kw">let</span> <span class="vr">u</span>: <span class="tp">unknown</span> = <span class="st">"text"</span>;
+<span class="cm">// u.toUpperCase();  ✗ Fehler – Typ erst prüfen!</span>
+<span class="kw">if</span> (<span class="kw">typeof</span> <span class="vr">u</span> === <span class="st">"string"</span>) {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">u</span>.<span class="fn">toUpperCase</span>());
+}
+
+<span class="cm">// never: Funktion kehrt nie zurück</span>
+<span class="kw">function</span> <span class="fn">abbruch</span>(<span class="vr">msg</span>: <span class="tp">string</span>): <span class="tp">never</span> {
+  <span class="kw">throw</span> <span class="kw">new</span> <span class="cl">Error</span>(<span class="vr">msg</span>);
+}
+
+<span class="kw">try</span> { <span class="fn">abbruch</span>(<span class="st">"Fataler Fehler"</span>); }
+<span class="kw">catch</span> (<span class="vr">e</span>) { <span class="fn">console</span>.<span class="fn">log</span>((<span class="vr">e</span> <span class="kw">as</span> <span class="cl">Error</span>).<span class="vr">message</span>); }</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Faustregel</span>
+      <h5>any vermeiden</h5>
+      <p>Wann immer du <code>any</code> tippst, frag dich: <strong>geht auch unknown</strong>?</p>
+      <p>In 95 % der Fälle ist die Antwort ja — und du behältst die Typsicherheit.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>TEXT
+Fataler Fehler</pre>
+  </div>
+</section>
+
+<!-- =============== TEIL II =============== -->
+<div class="part">
+  <div class="part-label">Teil II</div>
+  <h2 class="part-title">Die <em>Mittelstufe</em></h2>
+  <p class="part-desc">Strukturen für grössere Programme — Interfaces, Klassen, Enums und ein erster Blick auf Generics.</p>
+</div>
+
+<!-- ============ 10 Interfaces ============ -->
+<section id="interfaces">
+  <h2><span class="num">10</span>Interfaces</h2>
+  <p class="section-intro">Ein <code>interface</code> beschreibt die Form eines Objekts — sehr ähnlich zu <code>type</code>, mit ein paar eigenen Stärken (z.B. erweiterbar, ideal für Klassen-Verträge).</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>extends</h5>
+      <p>Interfaces können andere Interfaces erweitern und neue Felder hinzufügen.</p>
+      <h5>implements</h5>
+      <p>Eine Klasse mit <code>implements</code> verpflichtet sich, alle Felder/Methoden des Interfaces zu liefern.</p>
+      <h5>type vs. interface</h5>
+      <p>Für Objekt-Shapes nimmt man oft <code>interface</code>, für Unions, Tuples und Mapped Types <code>type</code>.</p>
+    </div>
+    <div class="ex-code"><pre><span class="kw">interface</span> <span class="cl">Person</span> {
+  <span class="vr">name</span>: <span class="tp">string</span>;
+  <span class="vr">alter</span>: <span class="tp">number</span>;
+}
+
+<span class="kw">interface</span> <span class="cl">Mitarbeiter</span> <span class="kw">extends</span> <span class="cl">Person</span> {
+  <span class="vr">firma</span>: <span class="tp">string</span>;
+  <span class="vr">gehalt</span>: <span class="tp">number</span>;
+}
+
+<span class="kw">const</span> <span class="vr">m</span>: <span class="cl">Mitarbeiter</span> = {
+  <span class="vr">name</span>: <span class="st">"Anna"</span>,
+  <span class="vr">alter</span>: <span class="nm">29</span>,
+  <span class="vr">firma</span>: <span class="st">"Acme"</span>,
+  <span class="vr">gehalt</span>: <span class="nm">75000</span>
+};
+
+<span class="cm">// Methoden im Interface</span>
+<span class="kw">interface</span> <span class="cl">Tier</span> {
+  <span class="vr">name</span>: <span class="tp">string</span>;
+  <span class="fn">spricht</span>(): <span class="tp">string</span>;
+}
+
+<span class="kw">class</span> <span class="cl">Hund</span> <span class="kw">implements</span> <span class="cl">Tier</span> {
+  <span class="kw">constructor</span>(<span class="kw">public</span> <span class="vr">name</span>: <span class="tp">string</span>) {}
+  <span class="fn">spricht</span>() { <span class="kw">return</span> <span class="st">"Wuff!"</span>; }
+}
+
+<span class="kw">const</span> <span class="vr">rex</span> = <span class="kw">new</span> <span class="cl">Hund</span>(<span class="st">"Rex"</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">m</span>.<span class="vr">name</span>, <span class="vr">m</span>.<span class="vr">firma</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">rex</span>.<span class="vr">name</span>, <span class="vr">rex</span>.<span class="fn">spricht</span>());</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Output erklärt</span>
+      <p><code>Mitarbeiter</code> bekommt alle Felder von <code>Person</code> dazu — du musst sie nicht doppelt schreiben.</p>
+      <p>Die <code>Hund</code>-Klasse muss <code>name</code> und <code>spricht()</code> liefern, sonst gibt es einen Compilerfehler.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>Anna Acme
+Rex Wuff!</pre>
+  </div>
+</section>
+
+<!-- ============ 11 Klassen ============ -->
+<section id="klassen">
+  <h2><span class="num">11</span>Klassen</h2>
+  <p class="section-intro">Klassen funktionieren wie in modernem JavaScript — TypeScript ergänzt sie um <strong>Sichtbarkeits-Modifier</strong> (<code>public</code>, <code>private</code>, <code>protected</code>) und mehr.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Modifier</h5>
+      <p><code>public</code> — überall zugreifbar (default).<br>
+      <code>private</code> — nur in dieser Klasse.<br>
+      <code>protected</code> — in dieser und abgeleiteten Klassen.<br>
+      <code>readonly</code> — nach Constructor nicht mehr änderbar.</p>
+      <h5>Parameter Properties</h5>
+      <p><code>constructor(public name: string)</code> ist Kurzform für: Parameter <em>plus</em> automatisches Property mit gleichem Namen.</p>
+    </div>
+    <div class="ex-code"><pre><span class="kw">class</span> <span class="cl">Konto</span> {
+  <span class="kw">private</span> <span class="vr">stand</span>: <span class="tp">number</span> = <span class="nm">0</span>;
+
+  <span class="kw">constructor</span>(
+    <span class="kw">public</span> <span class="kw">readonly</span> <span class="vr">inhaber</span>: <span class="tp">string</span>,
+    <span class="vr">start</span>: <span class="tp">number</span> = <span class="nm">0</span>
+  ) {
+    <span class="kw">this</span>.<span class="vr">stand</span> = <span class="vr">start</span>;
+  }
+
+  <span class="fn">einzahlen</span>(<span class="vr">betrag</span>: <span class="tp">number</span>): <span class="tp">void</span> {
+    <span class="kw">if</span> (<span class="vr">betrag</span> &lt;= <span class="nm">0</span>) <span class="kw">throw</span> <span class="kw">new</span> <span class="cl">Error</span>(<span class="st">"&gt; 0!"</span>);
+    <span class="kw">this</span>.<span class="vr">stand</span> += <span class="vr">betrag</span>;
+  }
+
+  <span class="kw">get</span> <span class="fn">saldo</span>(): <span class="tp">number</span> {
+    <span class="kw">return</span> <span class="kw">this</span>.<span class="vr">stand</span>;
+  }
+}
+
+<span class="kw">const</span> <span class="vr">k</span> = <span class="kw">new</span> <span class="cl">Konto</span>(<span class="st">"Anna"</span>, <span class="nm">100</span>);
+<span class="vr">k</span>.<span class="fn">einzahlen</span>(<span class="nm">50</span>);
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">k</span>.<span class="vr">inhaber</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">k</span>.<span class="fn">saldo</span>);
+<span class="cm">// k.stand   ✗ private</span>
+<span class="cm">// k.inhaber = "Ben"  ✗ readonly</span></pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>Getter ohne Klammern</h5>
+      <p><code>get saldo()</code> wird als Property aufgerufen: <code>k.saldo</code> — nicht <code>k.saldo()</code>.</p>
+      <p>Das fühlt sich an wie ein Feld, ist aber gleichzeitig eine Funktion, die berechnen kann.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>Anna
+<span class="nm">150</span></pre>
+  </div>
+
+  <h3>Vererbung mit extends</h3>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <p>Mit <code>extends</code> erbt eine Klasse von einer anderen.</p>
+      <p><code>super(...)</code> ruft den Constructor der Elternklasse auf.</p>
+      <p><code>abstract</code> macht eine Klasse nicht-instanziierbar — sie ist nur als Basis gedacht.</p>
+    </div>
+    <div class="ex-code"><pre><span class="kw">abstract class</span> <span class="cl">Form</span> {
+  <span class="kw">abstract</span> <span class="fn">fläche</span>(): <span class="tp">number</span>;
+  <span class="fn">beschreibe</span>(): <span class="tp">string</span> {
+    <span class="kw">return</span> <span class="st">`Fläche: </span>${<span class="kw">this</span>.<span class="fn">fläche</span>()}<span class="st">`</span>;
+  }
+}
+
+<span class="kw">class</span> <span class="cl">Kreis</span> <span class="kw">extends</span> <span class="cl">Form</span> {
+  <span class="kw">constructor</span>(<span class="kw">private</span> <span class="vr">r</span>: <span class="tp">number</span>) { <span class="fn">super</span>(); }
+  <span class="fn">fläche</span>() { <span class="kw">return</span> <span class="cl">Math</span>.<span class="vr">PI</span> * <span class="kw">this</span>.<span class="vr">r</span> ** <span class="nm">2</span>; }
+}
+
+<span class="kw">class</span> <span class="cl">Quadrat</span> <span class="kw">extends</span> <span class="cl">Form</span> {
+  <span class="kw">constructor</span>(<span class="kw">private</span> <span class="vr">s</span>: <span class="tp">number</span>) { <span class="fn">super</span>(); }
+  <span class="fn">fläche</span>() { <span class="kw">return</span> <span class="kw">this</span>.<span class="vr">s</span> ** <span class="nm">2</span>; }
+}
+
+<span class="kw">const</span> <span class="vr">formen</span>: <span class="cl">Form</span>[] = [<span class="kw">new</span> <span class="cl">Kreis</span>(<span class="nm">5</span>), <span class="kw">new</span> <span class="cl">Quadrat</span>(<span class="nm">4</span>)];
+<span class="kw">for</span> (<span class="kw">const</span> <span class="vr">f</span> <span class="kw">of</span> <span class="vr">formen</span>) <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">f</span>.<span class="fn">beschreibe</span>());</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Output erklärt</span>
+      <p>Beide Subklassen erben <code>beschreibe()</code>, müssen aber <code>fläche()</code> selbst liefern.</p>
+      <p>Die Schleife arbeitet mit <code>Form</code> — egal, was konkret drinsteht.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>Fläche: <span class="nm">78.53981633974483</span>
+Fläche: <span class="nm">16</span></pre>
+  </div>
+</section>
+
+<!-- ============ 12 Enums ============ -->
+<section id="enums">
+  <h2><span class="num">12</span>Enums</h2>
+  <p class="section-intro">Enums (kurz für Enumerations) gruppieren benannte Konstanten. Inzwischen verwenden viele Teams lieber <code>as const</code>-Objekte oder Union-Literals — aber Enums sind weiterhin gültig und gängig.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Numerische Enums</h5>
+      <p>Ohne Wert beginnen sie bei 0 und zählen hoch.</p>
+      <h5>String-Enums</h5>
+      <p>Jedem Mitglied wird ein expliziter String zugewiesen — übersichtlicher in Logs und APIs.</p>
+      <h5>const enum</h5>
+      <p>Wird zur Compile-Zeit inlined — kein zusätzliches JS-Objekt zur Laufzeit, aber mit Einschränkungen.</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm">// Numerisches Enum</span>
+<span class="kw">enum</span> <span class="cl">Richtung</span> {
+  <span class="vr">Oben</span>,    <span class="cm">// 0</span>
+  <span class="vr">Unten</span>,   <span class="cm">// 1</span>
+  <span class="vr">Links</span>,   <span class="cm">// 2</span>
+  <span class="vr">Rechts</span>   <span class="cm">// 3</span>
+}
+
+<span class="cm">// String-Enum</span>
+<span class="kw">enum</span> <span class="cl">Status</span> {
+  <span class="vr">Aktiv</span> = <span class="st">"ACTIVE"</span>,
+  <span class="vr">Pausiert</span> = <span class="st">"PAUSED"</span>,
+  <span class="vr">Gelöscht</span> = <span class="st">"DELETED"</span>
+}
+
+<span class="kw">function</span> <span class="fn">bewege</span>(<span class="vr">r</span>: <span class="cl">Richtung</span>): <span class="tp">string</span> {
+  <span class="kw">return</span> <span class="cl">Richtung</span>[<span class="vr">r</span>];
+}
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="cl">Richtung</span>.<span class="vr">Oben</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">bewege</span>(<span class="cl">Richtung</span>.<span class="vr">Rechts</span>));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="cl">Status</span>.<span class="vr">Aktiv</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>Moderne Alternative</h5>
+      <p>Viele bevorzugen heute:</p>
+      <pre style="font-size:11px;margin-top:6px;color:var(--text)">const Status = {
+  Aktiv: "ACTIVE",
+  Pausiert: "PAUSED"
+} as const;
+
+type Status =
+  typeof Status[keyof typeof Status];</pre>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre><span class="nm">0</span>
+Rechts
+ACTIVE</pre>
+  </div>
+</section>
+
+<!-- ============ 13 Generics Basics ============ -->
+<section id="generics-basic">
+  <h2><span class="num">13</span>Generics — die Grundlagen</h2>
+  <p class="section-intro">Generics sind <strong>Platzhalter für Typen</strong>. Damit schreibst du Funktionen und Klassen, die mit beliebigen Typen funktionieren — und trotzdem typsicher bleiben.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Das Problem</h5>
+      <p>Eine Funktion, die genau zurückgibt, was sie bekommt — egal welcher Typ. Mit <code>any</code> würden wir die Typinfo verlieren.</p>
+      <h5>Die Lösung</h5>
+      <p><code>&lt;T&gt;</code> ist ein Typ-Parameter. Beim Aufruf füllt TS ihn automatisch mit dem konkreten Typ.</p>
+      <p>Die Konvention ist <code>T</code> (Type), <code>K</code> (Key), <code>V</code> (Value), <code>U</code> (zweiter Typ).</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm">// Identität: gibt zurück, was reinkommt</span>
+<span class="kw">function</span> <span class="fn">identität</span>&lt;<span class="cl">T</span>&gt;(<span class="vr">wert</span>: <span class="cl">T</span>): <span class="cl">T</span> {
+  <span class="kw">return</span> <span class="vr">wert</span>;
+}
+
+<span class="kw">const</span> <span class="vr">a</span> = <span class="fn">identität</span>(<span class="nm">42</span>);          <span class="cm">// T = number</span>
+<span class="kw">const</span> <span class="vr">b</span> = <span class="fn">identität</span>(<span class="st">"hallo"</span>);     <span class="cm">// T = string</span>
+<span class="kw">const</span> <span class="vr">c</span> = <span class="fn">identität</span>&lt;<span class="tp">boolean</span>&gt;(<span class="bn">true</span>); <span class="cm">// explizit</span>
+
+<span class="cm">// Generische Funktion: erstes Element holen</span>
+<span class="kw">function</span> <span class="fn">erstes</span>&lt;<span class="cl">T</span>&gt;(<span class="vr">arr</span>: <span class="cl">T</span>[]): <span class="cl">T</span> | <span class="tp">undefined</span> {
+  <span class="kw">return</span> <span class="vr">arr</span>[<span class="nm">0</span>];
+}
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">a</span>, <span class="vr">b</span>, <span class="vr">c</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">erstes</span>([<span class="nm">10</span>, <span class="nm">20</span>, <span class="nm">30</span>]));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">erstes</span>([<span class="st">"a"</span>, <span class="st">"b"</span>]));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">erstes</span>([]));</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Output erklärt</span>
+      <p>Beim Aufruf <code>erstes([10,20,30])</code> wird <code>T</code> automatisch zu <code>number</code> — die Rückgabe ist also typsicher <code>number | undefined</code>.</p>
+      <p>Ein leeres Array liefert <code>undefined</code>.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre><span class="nm">42</span> hallo <span class="nm">true</span>
+<span class="nm">10</span>
+a
+<span class="bn">undefined</span></pre>
+  </div>
+
+  <h3>Generische Klasse</h3>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <p>Auch Klassen können generisch sein — perfekt für Container wie Stacks, Queues oder Caches.</p>
+      <p>Der Typ-Parameter steht <strong>hinter dem Klassennamen</strong>.</p>
+    </div>
+    <div class="ex-code"><pre><span class="kw">class</span> <span class="cl">Stack</span>&lt;<span class="cl">T</span>&gt; {
+  <span class="kw">private</span> <span class="vr">items</span>: <span class="cl">T</span>[] = [];
+  <span class="fn">push</span>(<span class="vr">item</span>: <span class="cl">T</span>) { <span class="kw">this</span>.<span class="vr">items</span>.<span class="fn">push</span>(<span class="vr">item</span>); }
+  <span class="fn">pop</span>(): <span class="cl">T</span> | <span class="tp">undefined</span> { <span class="kw">return</span> <span class="kw">this</span>.<span class="vr">items</span>.<span class="fn">pop</span>(); }
+  <span class="kw">get</span> <span class="fn">size</span>() { <span class="kw">return</span> <span class="kw">this</span>.<span class="vr">items</span>.<span class="vr">length</span>; }
+}
+
+<span class="kw">const</span> <span class="vr">s</span> = <span class="kw">new</span> <span class="cl">Stack</span>&lt;<span class="tp">string</span>&gt;();
+<span class="vr">s</span>.<span class="fn">push</span>(<span class="st">"erste"</span>);
+<span class="vr">s</span>.<span class="fn">push</span>(<span class="st">"zweite"</span>);
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">s</span>.<span class="fn">size</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">s</span>.<span class="fn">pop</span>());
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">s</span>.<span class="fn">size</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <p><code>new Stack&lt;string&gt;()</code> erzeugt einen Stack, der nur Strings akzeptiert.</p>
+      <p>Ein Versuch wie <code>s.push(42)</code> wird sofort abgelehnt.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre><span class="nm">2</span>
+zweite
+<span class="nm">1</span></pre>
+  </div>
+</section>
+
+<!-- ============ 14 Type Guards ============ -->
+<section id="guards">
+  <h2><span class="num">14</span>Type Guards</h2>
+  <p class="section-intro">Type Guards sind Prüfungen, die TypeScript verstehen <em>und</em> innerhalb des <code>if</code>-Blocks zur Verengung des Typs nutzen kann.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Eingebaute Guards</h5>
+      <p><code>typeof</code> — für Primitive (string, number, boolean ...).</p>
+      <p><code>instanceof</code> — für Klassen-Instanzen.</p>
+      <p><code>in</code> — prüft, ob ein Property existiert.</p>
+      <h5>User-defined Guard</h5>
+      <p>Mit <code>x is Type</code> als Rückgabetyp kannst du eigene Guards bauen.</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm">// typeof-Guard</span>
+<span class="kw">function</span> <span class="fn">drucke</span>(<span class="vr">v</span>: <span class="tp">string</span> | <span class="tp">number</span>) {
+  <span class="kw">if</span> (<span class="kw">typeof</span> <span class="vr">v</span> === <span class="st">"string"</span>) {
+    <span class="cm">// hier ist v: string</span>
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">v</span>.<span class="fn">toUpperCase</span>());
+  } <span class="kw">else</span> {
+    <span class="cm">// hier ist v: number</span>
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">v</span>.<span class="fn">toFixed</span>(<span class="nm">2</span>));
+  }
+}
+
+<span class="cm">// instanceof-Guard</span>
+<span class="kw">class</span> <span class="cl">Katze</span> { <span class="fn">miaut</span>() { <span class="kw">return</span> <span class="st">"Miau"</span>; } }
+<span class="kw">class</span> <span class="cl">Hund</span>  { <span class="fn">bellt</span>() { <span class="kw">return</span> <span class="st">"Wuff"</span>; } }
+
+<span class="kw">function</span> <span class="fn">geräusch</span>(<span class="vr">t</span>: <span class="cl">Katze</span> | <span class="cl">Hund</span>) {
+  <span class="kw">if</span> (<span class="vr">t</span> <span class="kw">instanceof</span> <span class="cl">Katze</span>) <span class="kw">return</span> <span class="vr">t</span>.<span class="fn">miaut</span>();
+  <span class="kw">return</span> <span class="vr">t</span>.<span class="fn">bellt</span>();
+}
+
+<span class="cm">// User-defined Guard</span>
+<span class="kw">type</span> <span class="cl">Fisch</span> = { <span class="fn">schwimm</span>: () =&gt; <span class="tp">void</span> };
+<span class="kw">function</span> <span class="fn">istFisch</span>(<span class="vr">x</span>: <span class="tp">any</span>): <span class="vr">x</span> <span class="kw">is</span> <span class="cl">Fisch</span> {
+  <span class="kw">return</span> <span class="vr">x</span> &amp;&amp; <span class="kw">typeof</span> <span class="vr">x</span>.<span class="vr">schwimm</span> === <span class="st">"function"</span>;
+}
+
+<span class="fn">drucke</span>(<span class="st">"hallo"</span>);
+<span class="fn">drucke</span>(<span class="nm">3.14159</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">geräusch</span>(<span class="kw">new</span> <span class="cl">Katze</span>()));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">geräusch</span>(<span class="kw">new</span> <span class="cl">Hund</span>()));</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Output erklärt</span>
+      <p>Im <code>if (typeof v === "string")</code>-Zweig weiss TS: <code>v</code> ist ein String — also darf <code>.toUpperCase()</code> aufgerufen werden.</p>
+      <p>Das nennt sich <strong>Narrowing</strong>.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>HALLO
+<span class="nm">3.14</span>
+Miau
+Wuff</pre>
+  </div>
+</section>
+
+<!-- ============ 15 Optional Chaining ============ -->
+<section id="optional">
+  <h2><span class="num">15</span>Optional Chaining &amp; Nullish Coalescing</h2>
+  <p class="section-intro">Zwei extrem nützliche JS-Features, die im TypeScript-Alltag ständig vorkommen.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>?. — Optional Chaining</h5>
+      <p>Greift nur dann auf das Property zu, wenn das davor weder <code>null</code> noch <code>undefined</code> ist. Sonst liefert es einfach <code>undefined</code>, ohne zu crashen.</p>
+      <h5>?? — Nullish Coalescing</h5>
+      <p>Liefert die rechte Seite nur, wenn die linke <code>null</code> oder <code>undefined</code> ist. Im Gegensatz zu <code>||</code> behält es <code>0</code> und <code>""</code> als gültige Werte.</p>
+    </div>
+    <div class="ex-code"><pre><span class="kw">type</span> <span class="cl">User</span> = {
+  <span class="vr">name</span>: <span class="tp">string</span>;
+  <span class="vr">adresse</span>?: { <span class="vr">stadt</span>?: <span class="tp">string</span> };
+  <span class="vr">posts</span>?: <span class="tp">number</span>;
+};
+
+<span class="kw">const</span> <span class="vr">u1</span>: <span class="cl">User</span> = { <span class="vr">name</span>: <span class="st">"Anna"</span> };
+<span class="kw">const</span> <span class="vr">u2</span>: <span class="cl">User</span> = {
+  <span class="vr">name</span>: <span class="st">"Ben"</span>,
+  <span class="vr">adresse</span>: { <span class="vr">stadt</span>: <span class="st">"Zürich"</span> },
+  <span class="vr">posts</span>: <span class="nm">0</span>
+};
+
+<span class="cm">// Optional Chaining</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">u1</span>.<span class="vr">adresse</span>?.<span class="vr">stadt</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">u2</span>.<span class="vr">adresse</span>?.<span class="vr">stadt</span>);
+
+<span class="cm">// Nullish Coalescing</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">u1</span>.<span class="vr">adresse</span>?.<span class="vr">stadt</span> ?? <span class="st">"unbekannt"</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">u2</span>.<span class="vr">posts</span> ?? <span class="st">"keine"</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">u2</span>.<span class="vr">posts</span> || <span class="st">"keine"</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Wichtig</span>
+      <h5>?? vs. ||</h5>
+      <p>Bei <code>u2.posts = 0</code>:</p>
+      <p><code>?? "keine"</code> → <code>0</code> (0 ist gültig)</p>
+      <p><code>|| "keine"</code> → <code>"keine"</code> (0 ist falsy)</p>
+      <p>Das ist genau der Unterschied — und der Grund, warum man heute meistens <code>??</code> nimmt.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre><span class="bn">undefined</span>
+Zürich
+unbekannt
+<span class="nm">0</span>
+keine</pre>
+  </div>
+</section>
+
+<!-- ============ 16 Assertions ============ -->
+<section id="assertions">
+  <h2><span class="num">16</span>Type Assertions</h2>
+  <p class="section-intro">Manchmal weisst du als Entwickler mehr über einen Wert als TS. Mit einer Type Assertion sagst du dem Compiler: „Vertrau mir, das ist Typ X."</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>as</h5>
+      <p>Die Standard-Syntax. Funktioniert auch in JSX/TSX-Dateien (im Gegensatz zur alten <code>&lt;Type&gt;</code>-Syntax).</p>
+      <h5>! — Non-null Assertion</h5>
+      <p><code>x!</code> sagt: „Ich garantiere, <code>x</code> ist nicht <code>null</code> oder <code>undefined</code>."</p>
+      <h5>satisfies</h5>
+      <p>Prüft, dass ein Wert einem Typ <em>entspricht</em>, ohne den Typ zu verengen.</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm">// "as" verwendet, weil wir wissen, dass JSON ein User ist</span>
+<span class="kw">const</span> <span class="vr">data</span> = <span class="cl">JSON</span>.<span class="fn">parse</span>(<span class="st">'{"name":"Anna","alter":29}'</span>);
+<span class="kw">const</span> <span class="vr">user</span> = <span class="vr">data</span> <span class="kw">as</span> { <span class="vr">name</span>: <span class="tp">string</span>; <span class="vr">alter</span>: <span class="tp">number</span> };
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">user</span>.<span class="vr">name</span>);
+
+<span class="cm">// DOM: Element könnte null sein</span>
+<span class="cm">// const btn = document.getElementById("ok") as HTMLButtonElement;</span>
+
+<span class="cm">// "!" – Non-null Assertion</span>
+<span class="kw">function</span> <span class="fn">erste</span>(<span class="vr">arr</span>: <span class="tp">number</span>[]) {
+  <span class="kw">return</span> <span class="vr">arr</span>[<span class="nm">0</span>]!;  <span class="cm">// ich versichere: nicht undefined</span>
+}
+
+<span class="cm">// "satisfies" – prüfen ohne zu verengen</span>
+<span class="kw">const</span> <span class="vr">config</span> = {
+  <span class="vr">port</span>: <span class="nm">3000</span>,
+  <span class="vr">host</span>: <span class="st">"localhost"</span>
+} <span class="kw">satisfies</span> <span class="cl">Record</span>&lt;<span class="tp">string</span>, <span class="tp">string</span> | <span class="tp">number</span>&gt;;
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">config</span>.<span class="vr">port</span> + <span class="nm">1</span>);  <span class="cm">// Typ bleibt number!</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">erste</span>([<span class="nm">10</span>, <span class="nm">20</span>]));</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Warnung</span>
+      <h5>Sparsam einsetzen</h5>
+      <p>Assertions schalten Prüfungen aus. Wenn du falsch liegst, crasht dein Programm zur Laufzeit.</p>
+      <p>Frag dich: Geht es nicht auch mit einem <strong>Type Guard</strong>?</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>Anna
+<span class="nm">3001</span>
+<span class="nm">10</span></pre>
+  </div>
+</section>
+
+<!-- =============== TEIL III =============== -->
+<div class="part">
+  <div class="part-label">Teil III</div>
+  <h2 class="part-title">Die <em>fortgeschrittenen</em> Konzepte</h2>
+  <p class="part-desc">Jetzt wird es interessant. Hier passiert die Magie von TypeScript — Typen werden zu einer eigenen kleinen Sprache, in der man rechnen, transformieren und schliessen kann.</p>
+</div>
+
+<!-- ============ 17 Generics Advanced ============ -->
+<section id="generics-adv">
+  <h2><span class="num">17</span>Generics — fortgeschritten</h2>
+  <p class="section-intro">Generics werden richtig mächtig mit <strong>Constraints</strong> (Einschränkungen), <strong>Defaults</strong> und mehreren Typ-Parametern.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>extends — Constraint</h5>
+      <p><code>&lt;T extends X&gt;</code> heisst: „<code>T</code> muss mindestens die Form von <code>X</code> haben."</p>
+      <h5>keyof als Constraint</h5>
+      <p><code>K extends keyof T</code> garantiert: <code>K</code> ist ein gültiger Property-Key von <code>T</code>.</p>
+      <h5>Default-Typ</h5>
+      <p>Mit <code>&lt;T = string&gt;</code> bekommt der Parameter einen Default, falls er nicht übergeben wird.</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm">// Constraint: T muss eine Länge haben</span>
+<span class="kw">function</span> <span class="fn">längste</span>&lt;<span class="cl">T</span> <span class="kw">extends</span> { <span class="vr">length</span>: <span class="tp">number</span> }&gt;(
+  <span class="vr">a</span>: <span class="cl">T</span>, <span class="vr">b</span>: <span class="cl">T</span>
+): <span class="cl">T</span> {
+  <span class="kw">return</span> <span class="vr">a</span>.<span class="vr">length</span> &gt;= <span class="vr">b</span>.<span class="vr">length</span> ? <span class="vr">a</span> : <span class="vr">b</span>;
+}
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">längste</span>(<span class="st">"hello"</span>, <span class="st">"hi"</span>));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">längste</span>([<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>], [<span class="nm">9</span>]));
+
+<span class="cm">// keyof + zwei Typ-Parameter: typsicheres get()</span>
+<span class="kw">function</span> <span class="fn">getProp</span>&lt;<span class="cl">T</span>, <span class="cl">K</span> <span class="kw">extends</span> <span class="kw">keyof</span> <span class="cl">T</span>&gt;(
+  <span class="vr">obj</span>: <span class="cl">T</span>, <span class="vr">key</span>: <span class="cl">K</span>
+): <span class="cl">T</span>[<span class="cl">K</span>] {
+  <span class="kw">return</span> <span class="vr">obj</span>[<span class="vr">key</span>];
+}
+
+<span class="kw">const</span> <span class="vr">u</span> = { <span class="vr">name</span>: <span class="st">"Anna"</span>, <span class="vr">alter</span>: <span class="nm">29</span> };
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">getProp</span>(<span class="vr">u</span>, <span class="st">"name"</span>));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">getProp</span>(<span class="vr">u</span>, <span class="st">"alter"</span>));
+<span class="cm">// getProp(u, "xyz");  ✗ Fehler – nicht in keyof</span>
+
+<span class="cm">// Default-Typ</span>
+<span class="kw">interface</span> <span class="cl">Response</span>&lt;<span class="cl">T</span> = <span class="tp">unknown</span>&gt; {
+  <span class="vr">ok</span>: <span class="tp">boolean</span>;
+  <span class="vr">data</span>: <span class="cl">T</span>;
+}
+
+<span class="kw">const</span> <span class="vr">r</span>: <span class="cl">Response</span>&lt;<span class="tp">number</span>[]&gt; = { <span class="vr">ok</span>: <span class="bn">true</span>, <span class="vr">data</span>: [<span class="nm">1</span>, <span class="nm">2</span>] };
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">r</span>.<span class="vr">data</span>.<span class="vr">length</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Output erklärt</span>
+      <p><code>"hello"</code> hat 5 Zeichen, <code>"hi"</code> nur 2 → "hello".</p>
+      <p>Bei den Arrays: 3 &gt; 1 → <code>[1,2,3]</code>.</p>
+      <p>Bei <code>getProp</code>: der Rückgabetyp <code>T[K]</code> ist exakt der Typ des angefragten Felds — bei <code>"name"</code> string, bei <code>"alter"</code> number.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>hello
+[ <span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span> ]
+Anna
+<span class="nm">29</span>
+<span class="nm">2</span></pre>
+  </div>
+</section>
+
+<!-- ============ 18 Utility Types ============ -->
+<section id="utility">
+  <h2><span class="num">18</span>Utility Types</h2>
+  <p class="section-intro">TypeScript bringt eine Bibliothek mit „Werkzeug-Typen" mit — sie transformieren bestehende Typen in neue. Diese sind Brot &amp; Butter im Alltag.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Partial&lt;T&gt;</h5>
+      <p>Macht alle Felder optional.</p>
+      <h5>Required&lt;T&gt;</h5>
+      <p>Macht alle Felder Pflicht.</p>
+      <h5>Readonly&lt;T&gt;</h5>
+      <p>Alle Felder werden unveränderbar.</p>
+      <h5>Pick&lt;T, K&gt;</h5>
+      <p>Wählt nur die angegebenen Felder aus.</p>
+      <h5>Omit&lt;T, K&gt;</h5>
+      <p>Das Gegenteil: lässt die angegebenen Felder weg.</p>
+    </div>
+    <div class="ex-code"><pre><span class="kw">interface</span> <span class="cl">User</span> {
+  <span class="vr">id</span>: <span class="tp">number</span>;
+  <span class="vr">name</span>: <span class="tp">string</span>;
+  <span class="vr">email</span>: <span class="tp">string</span>;
+  <span class="vr">passwort</span>: <span class="tp">string</span>;
+}
+
+<span class="cm">// Update-Payload: alles optional</span>
+<span class="kw">type</span> <span class="cl">UserUpdate</span> = <span class="cl">Partial</span>&lt;<span class="cl">User</span>&gt;;
+<span class="kw">const</span> <span class="vr">update</span>: <span class="cl">UserUpdate</span> = { <span class="vr">name</span>: <span class="st">"Anna Neu"</span> };
+
+<span class="cm">// Öffentlich: ohne Passwort</span>
+<span class="kw">type</span> <span class="cl">PublicUser</span> = <span class="cl">Omit</span>&lt;<span class="cl">User</span>, <span class="st">"passwort"</span>&gt;;
+
+<span class="cm">// Login: nur diese Felder</span>
+<span class="kw">type</span> <span class="cl">Login</span> = <span class="cl">Pick</span>&lt;<span class="cl">User</span>, <span class="st">"email"</span> | <span class="st">"passwort"</span>&gt;;
+
+<span class="cm">// Record: Map mit festen Keys</span>
+<span class="kw">type</span> <span class="cl">Rolle</span> = <span class="st">"admin"</span> | <span class="st">"user"</span> | <span class="st">"gast"</span>;
+<span class="kw">const</span> <span class="vr">rechte</span>: <span class="cl">Record</span>&lt;<span class="cl">Rolle</span>, <span class="tp">number</span>&gt; = {
+  <span class="vr">admin</span>: <span class="nm">100</span>,
+  <span class="vr">user</span>: <span class="nm">50</span>,
+  <span class="vr">gast</span>: <span class="nm">10</span>
+};
+
+<span class="kw">const</span> <span class="vr">pub</span>: <span class="cl">PublicUser</span> = {
+  <span class="vr">id</span>: <span class="nm">1</span>, <span class="vr">name</span>: <span class="st">"Anna"</span>, <span class="vr">email</span>: <span class="st">"a@x.de"</span>
+};
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">update</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">pub</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">rechte</span>.<span class="vr">admin</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Weitere</span>
+      <h5>Mehr Utility Types</h5>
+      <p><code>NonNullable&lt;T&gt;</code> — entfernt null/undefined</p>
+      <p><code>ReturnType&lt;F&gt;</code> — der Rückgabetyp einer Funktion</p>
+      <p><code>Parameters&lt;F&gt;</code> — Tuple der Parameter</p>
+      <p><code>Awaited&lt;P&gt;</code> — der „ausgepackte" Promise-Typ</p>
+      <p><code>Readonly&lt;T&gt;</code> — alle Felder readonly</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>{ <span class="vr">name</span>: <span class="st">'Anna Neu'</span> }
+{ <span class="vr">id</span>: <span class="nm">1</span>, <span class="vr">name</span>: <span class="st">'Anna'</span>, <span class="vr">email</span>: <span class="st">'a@x.de'</span> }
+<span class="nm">100</span></pre>
+  </div>
+
+  <h3>ReturnType &amp; Parameters in Action</h3>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <p><code>typeof funktion</code> gibt den Funktionstyp.</p>
+      <p><code>ReturnType&lt;...&gt;</code> extrahiert daraus den Rückgabetyp.</p>
+      <p>So bleibt der abgeleitete Typ <strong>automatisch synchron</strong> mit der Funktion — keine Doppelpflege.</p>
+    </div>
+    <div class="ex-code"><pre><span class="kw">function</span> <span class="fn">erstelleUser</span>(<span class="vr">name</span>: <span class="tp">string</span>, <span class="vr">alter</span>: <span class="tp">number</span>) {
+  <span class="kw">return</span> { <span class="vr">id</span>: <span class="cl">Math</span>.<span class="fn">random</span>(), <span class="vr">name</span>, <span class="vr">alter</span>, <span class="vr">aktiv</span>: <span class="bn">true</span> };
+}
+
+<span class="kw">type</span> <span class="cl">User</span>   = <span class="cl">ReturnType</span>&lt;<span class="kw">typeof</span> <span class="fn">erstelleUser</span>&gt;;
+<span class="kw">type</span> <span class="cl">Params</span> = <span class="cl">Parameters</span>&lt;<span class="kw">typeof</span> <span class="fn">erstelleUser</span>&gt;;
+
+<span class="kw">const</span> <span class="vr">args</span>: <span class="cl">Params</span> = [<span class="st">"Anna"</span>, <span class="nm">29</span>];
+<span class="kw">const</span> <span class="vr">u</span>: <span class="cl">User</span> = <span class="fn">erstelleUser</span>(...<span class="vr">args</span>);
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">u</span>.<span class="vr">name</span>, <span class="vr">u</span>.<span class="vr">aktiv</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Wow-Effekt</span>
+      <p>Du hast die Typen <code>User</code> und <code>Params</code> nirgends von Hand definiert — sie werden vollständig aus der Funktion abgeleitet.</p>
+      <p>Ändert sich die Funktion, ändern sich die Typen mit.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>Anna <span class="nm">true</span></pre>
+  </div>
+</section>
+
+<!-- ============ 19 Mapped Types ============ -->
+<section id="mapped">
+  <h2><span class="num">19</span>Mapped Types</h2>
+  <p class="section-intro">Mapped Types erzeugen neue Typen, indem sie über die Properties eines bestehenden Typs <strong>iterieren</strong> — wie <code>Array.map</code>, nur auf Typ-Ebene.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Die Syntax</h5>
+      <p><code>{ [K in keyof T]: ... }</code> heisst: „für jeden Key <code>K</code> aus <code>T</code>, erzeuge ein Feld mit dem angegebenen Typ."</p>
+      <h5>Modifier-Tricks</h5>
+      <p><code>+?</code> macht optional, <code>-?</code> macht Pflicht.<br>
+      <code>+readonly</code> macht readonly, <code>-readonly</code> entfernt es.</p>
+    </div>
+    <div class="ex-code"><pre><span class="kw">type</span> <span class="cl">User</span> = {
+  <span class="vr">id</span>: <span class="tp">number</span>;
+  <span class="vr">name</span>: <span class="tp">string</span>;
+  <span class="vr">email</span>: <span class="tp">string</span>;
+};
+
+<span class="cm">// Eigenes Partial</span>
+<span class="kw">type</span> <span class="cl">MeinPartial</span>&lt;<span class="cl">T</span>&gt; = {
+  [<span class="cl">K</span> <span class="kw">in</span> <span class="kw">keyof</span> <span class="cl">T</span>]?: <span class="cl">T</span>[<span class="cl">K</span>];
+};
+
+<span class="cm">// Alles zu string</span>
+<span class="kw">type</span> <span class="cl">Stringify</span>&lt;<span class="cl">T</span>&gt; = {
+  [<span class="cl">K</span> <span class="kw">in</span> <span class="kw">keyof</span> <span class="cl">T</span>]: <span class="tp">string</span>;
+};
+
+<span class="cm">// Readonly + optional</span>
+<span class="kw">type</span> <span class="cl">Draft</span>&lt;<span class="cl">T</span>&gt; = {
+  <span class="kw">readonly</span> [<span class="cl">K</span> <span class="kw">in</span> <span class="kw">keyof</span> <span class="cl">T</span>]?: <span class="cl">T</span>[<span class="cl">K</span>];
+};
+
+<span class="kw">const</span> <span class="vr">p</span>: <span class="cl">MeinPartial</span>&lt;<span class="cl">User</span>&gt; = { <span class="vr">name</span>: <span class="st">"Anna"</span> };
+<span class="kw">const</span> <span class="vr">s</span>: <span class="cl">Stringify</span>&lt;<span class="cl">User</span>&gt; = {
+  <span class="vr">id</span>: <span class="st">"1"</span>, <span class="vr">name</span>: <span class="st">"Anna"</span>, <span class="vr">email</span>: <span class="st">"a@x.de"</span>
+};
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">p</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">s</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Key Remapping</span>
+      <h5>Keys umbenennen</h5>
+      <p>Mit <code>as</code> kannst du im Mapped Type den Key transformieren:</p>
+      <pre style="font-size:11px;margin-top:6px;color:var(--text)">type Getters&lt;T&gt; = {
+  [K in keyof T as
+    `get${Capitalize&lt;string &amp; K&gt;}`
+  ]: () =&gt; T[K];
+};</pre>
+      <p>Aus <code>name</code> wird <code>getName</code>.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>{ <span class="vr">name</span>: <span class="st">'Anna'</span> }
+{ <span class="vr">id</span>: <span class="st">'1'</span>, <span class="vr">name</span>: <span class="st">'Anna'</span>, <span class="vr">email</span>: <span class="st">'a@x.de'</span> }</pre>
+  </div>
+</section>
+
+<!-- ============ 20 Conditional Types ============ -->
+<section id="conditional">
+  <h2><span class="num">20</span>Conditional Types</h2>
+  <p class="section-intro">Bedingungen auf Typ-Ebene: <code>T extends U ? X : Y</code>. Damit kannst du je nach Eingabe-Typ unterschiedliche Ergebnisse zurückgeben — die Basis vieler Utility Types.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>extends als Frage</h5>
+      <p>„Ist <code>T</code> zuweisbar zu <code>U</code>?" — wenn ja, nimm <code>X</code>, sonst <code>Y</code>.</p>
+      <h5>infer</h5>
+      <p>Das absolute Power-Feature: <code>infer X</code> lässt TS einen Typ aus einer Stelle <strong>extrahieren</strong>.</p>
+      <p>So funktionieren <code>ReturnType</code>, <code>Awaited</code>, <code>Parameters</code> &amp; Co. unter der Haube.</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm">// Einfache Bedingung</span>
+<span class="kw">type</span> <span class="cl">IstString</span>&lt;<span class="cl">T</span>&gt; = <span class="cl">T</span> <span class="kw">extends</span> <span class="tp">string</span> ? <span class="bn">true</span> : <span class="bn">false</span>;
+
+<span class="kw">type</span> <span class="cl">A</span> = <span class="cl">IstString</span>&lt;<span class="st">"hallo"</span>&gt;;  <span class="cm">// true</span>
+<span class="kw">type</span> <span class="cl">B</span> = <span class="cl">IstString</span>&lt;<span class="nm">42</span>&gt;;       <span class="cm">// false</span>
+
+<span class="cm">// Mit infer: Element-Typ eines Arrays holen</span>
+<span class="kw">type</span> <span class="cl">ElementOf</span>&lt;<span class="cl">T</span>&gt; = <span class="cl">T</span> <span class="kw">extends</span> (<span class="kw">infer</span> <span class="cl">E</span>)[] ? <span class="cl">E</span> : <span class="kw">never</span>;
+
+<span class="kw">type</span> <span class="cl">C</span> = <span class="cl">ElementOf</span>&lt;<span class="tp">string</span>[]&gt;;       <span class="cm">// string</span>
+<span class="kw">type</span> <span class="cl">D</span> = <span class="cl">ElementOf</span>&lt;<span class="tp">number</span>[]&gt;;       <span class="cm">// number</span>
+
+<span class="cm">// Eigenes ReturnType</span>
+<span class="kw">type</span> <span class="cl">MyReturn</span>&lt;<span class="cl">F</span>&gt; = <span class="cl">F</span> <span class="kw">extends</span> (...<span class="vr">a</span>: <span class="tp">any</span>[]) =&gt; <span class="kw">infer</span> <span class="cl">R</span>
+  ? <span class="cl">R</span>
+  : <span class="kw">never</span>;
+
+<span class="kw">function</span> <span class="fn">hi</span>() { <span class="kw">return</span> <span class="st">"hallo"</span>; }
+<span class="kw">type</span> <span class="cl">HiR</span> = <span class="cl">MyReturn</span>&lt;<span class="kw">typeof</span> <span class="fn">hi</span>&gt;; <span class="cm">// string</span>
+
+<span class="cm">// Demo zur Laufzeit (zeigt die Funktion)</span>
+<span class="kw">const</span> <span class="vr">x</span>: <span class="cl">HiR</span> = <span class="fn">hi</span>();
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">x</span>, <span class="kw">typeof</span> <span class="vr">x</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Distributiv</span>
+      <h5>Union verteilt sich</h5>
+      <p>Bei Conditional Types verteilt sich eine Union automatisch:</p>
+      <p><code>IstString&lt;"a" | 1&gt;</code></p>
+      <p>wird zu</p>
+      <p><code>IstString&lt;"a"&gt; | IstString&lt;1&gt;</code></p>
+      <p>also <code>true | false</code> = <code>boolean</code>.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>hallo string</pre>
+  </div>
+</section>
+
+<!-- ============ 21 Template Literals ============ -->
+<section id="template">
+  <h2><span class="num">21</span>Template Literal Types</h2>
+  <p class="section-intro">Wie Template-Strings in JS — nur dass sie <strong>Typen</strong> zusammenbauen. Erlaubt sehr präzise Restriktionen, z.B. für CSS-Werte, Event-Namen oder API-Routen.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Strings auf Typ-Ebene bauen</h5>
+      <p>Du kombinierst Literal-Types mit Template-Backticks. Das Ergebnis ist eine genaue Vorgabe für erlaubte Strings.</p>
+      <h5>Kombinierbar mit Utilities</h5>
+      <p><code>Uppercase</code>, <code>Lowercase</code>, <code>Capitalize</code> und <code>Uncapitalize</code> sind eingebaute String-Manipulationen auf Typ-Ebene.</p>
+    </div>
+    <div class="ex-code"><pre><span class="kw">type</span> <span class="cl">Farbe</span>    = <span class="st">"rot"</span> | <span class="st">"grün"</span> | <span class="st">"blau"</span>;
+<span class="kw">type</span> <span class="cl">Helligkeit</span> = <span class="st">"hell"</span> | <span class="st">"dunkel"</span>;
+
+<span class="cm">// Kombiniert: "hell-rot" | "hell-grün" ...</span>
+<span class="kw">type</span> <span class="cl">FarbCode</span> = <span class="st">`</span>${<span class="cl">Helligkeit</span>}<span class="st">-</span>${<span class="cl">Farbe</span>}<span class="st">`</span>;
+
+<span class="kw">const</span> <span class="vr">c1</span>: <span class="cl">FarbCode</span> = <span class="st">"hell-rot"</span>;     <span class="cm">// ✓</span>
+<span class="cm">// const c2: FarbCode = "hell-lila";  ✗ Fehler</span>
+
+<span class="cm">// Event-Handler-Namen</span>
+<span class="kw">type</span> <span class="cl">EventName</span> = <span class="st">"click"</span> | <span class="st">"hover"</span> | <span class="st">"submit"</span>;
+<span class="kw">type</span> <span class="cl">Handler</span>&lt;<span class="cl">E</span> <span class="kw">extends</span> <span class="tp">string</span>&gt; = <span class="st">`on</span>${<span class="cl">Capitalize</span>&lt;<span class="cl">E</span>&gt;}<span class="st">`</span>;
+
+<span class="kw">type</span> <span class="cl">H</span> = <span class="cl">Handler</span>&lt;<span class="cl">EventName</span>&gt;;
+<span class="cm">// "onClick" | "onHover" | "onSubmit"</span>
+
+<span class="kw">const</span> <span class="vr">handler</span>: <span class="cl">H</span> = <span class="st">"onClick"</span>;
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">c1</span>, <span class="vr">handler</span>);
+
+<span class="cm">// API-Route</span>
+<span class="kw">type</span> <span class="cl">Route</span> = <span class="st">`/api/</span>${<span class="tp">string</span>}<span class="st">`</span>;
+<span class="kw">const</span> <span class="vr">r</span>: <span class="cl">Route</span> = <span class="st">"/api/users/42"</span>;
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">r</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Anwendung</span>
+      <h5>Praxisbeispiele</h5>
+      <p>CSS-Längen: <code>`${number}px` | `${number}%`</code></p>
+      <p>Redux-Actions: <code>`user/${string}`</code></p>
+      <p>Storage-Keys: <code>`cache:${string}`</code></p>
+      <p>Sehr beliebt in Bibliotheken wie tRPC oder Drizzle.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>hell-rot onClick
+/api/users/42</pre>
+  </div>
+</section>
+
+<!-- ============ 22 Discriminated Unions ============ -->
+<section id="discriminated">
+  <h2><span class="num">22</span>Discriminated Unions</h2>
+  <p class="section-intro">Ein Pattern, das in TS-Code überall auftaucht: mehrere Objekt-Typen mit einem gemeinsamen <strong>Diskriminator-Feld</strong>, das den Typ eindeutig identifiziert.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Das Diskriminator-Feld</h5>
+      <p>Üblicherweise <code>kind</code>, <code>type</code> oder <code>status</code>. Jedes Mitglied der Union setzt es auf einen anderen Literal-String.</p>
+      <h5>Narrowing via switch</h5>
+      <p>Im <code>switch</code> auf den Diskriminator verengt TS automatisch — innerhalb jedes <code>case</code> kennt es die exakte Form.</p>
+      <h5>Exhaustiveness mit never</h5>
+      <p>Der <code>default</code>-Zweig fängt Fälle ab, die du vergessen hast — der Compiler warnt.</p>
+    </div>
+    <div class="ex-code"><pre><span class="kw">type</span> <span class="cl">Form</span> =
+  | { <span class="vr">kind</span>: <span class="st">"kreis"</span>;   <span class="vr">radius</span>: <span class="tp">number</span> }
+  | { <span class="vr">kind</span>: <span class="st">"quadrat"</span>; <span class="vr">seite</span>: <span class="tp">number</span> }
+  | { <span class="vr">kind</span>: <span class="st">"rechteck"</span>; <span class="vr">b</span>: <span class="tp">number</span>; <span class="vr">h</span>: <span class="tp">number</span> };
+
+<span class="kw">function</span> <span class="fn">fläche</span>(<span class="vr">f</span>: <span class="cl">Form</span>): <span class="tp">number</span> {
+  <span class="kw">switch</span> (<span class="vr">f</span>.<span class="vr">kind</span>) {
+    <span class="kw">case</span> <span class="st">"kreis"</span>:
+      <span class="kw">return</span> <span class="cl">Math</span>.<span class="vr">PI</span> * <span class="vr">f</span>.<span class="vr">radius</span> ** <span class="nm">2</span>;
+    <span class="kw">case</span> <span class="st">"quadrat"</span>:
+      <span class="kw">return</span> <span class="vr">f</span>.<span class="vr">seite</span> ** <span class="nm">2</span>;
+    <span class="kw">case</span> <span class="st">"rechteck"</span>:
+      <span class="kw">return</span> <span class="vr">f</span>.<span class="vr">b</span> * <span class="vr">f</span>.<span class="vr">h</span>;
+    <span class="kw">default</span>:
+      <span class="kw">const</span> <span class="vr">_e</span>: <span class="kw">never</span> = <span class="vr">f</span>;  <span class="cm">// Vollständigkeit!</span>
+      <span class="kw">return</span> <span class="vr">_e</span>;
+  }
+}
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">fläche</span>({ <span class="vr">kind</span>: <span class="st">"kreis"</span>,    <span class="vr">radius</span>: <span class="nm">5</span> }));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">fläche</span>({ <span class="vr">kind</span>: <span class="st">"quadrat"</span>,  <span class="vr">seite</span>:  <span class="nm">4</span> }));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">fläche</span>({ <span class="vr">kind</span>: <span class="st">"rechteck"</span>, <span class="vr">b</span>: <span class="nm">3</span>, <span class="vr">h</span>: <span class="nm">7</span> }));</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Beliebtes Muster</span>
+      <h5>API-Responses</h5>
+      <pre style="font-size:11px;margin-top:6px;color:var(--text)">type Result&lt;T&gt; =
+  | { ok: true; data: T }
+  | { ok: false; error: string };</pre>
+      <p>Im Aufrufer prüfst du <code>if (res.ok)</code> — TS weiss dann, dass <code>data</code> existiert.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre><span class="nm">78.53981633974483</span>
+<span class="nm">16</span>
+<span class="nm">21</span></pre>
+  </div>
+</section>
+
+<!-- ============ 23 keyof / typeof ============ -->
+<section id="keyof">
+  <h2><span class="num">23</span>keyof &amp; typeof</h2>
+  <p class="section-intro">Zwei Typ-Operatoren, die du ständig brauchst: <code>keyof</code> liefert die Keys eines Typs als Union, <code>typeof</code> macht aus einem Wert einen Typ.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>keyof T</h5>
+      <p>Ergibt die Union aller Property-Namen von <code>T</code> als String-Literals.</p>
+      <h5>typeof variable</h5>
+      <p>Liest den Typ einer Variablen aus — sehr praktisch, um sich keine Typen doppelt aufschreiben zu müssen.</p>
+      <h5>Kombiniert</h5>
+      <p><code>typeof obj</code> + <code>keyof typeof obj</code> ergibt eine typsichere Liste der Schlüssel.</p>
+    </div>
+    <div class="ex-code"><pre><span class="kw">const</span> <span class="vr">user</span> = {
+  <span class="vr">name</span>: <span class="st">"Anna"</span>,
+  <span class="vr">alter</span>: <span class="nm">29</span>,
+  <span class="vr">email</span>: <span class="st">"a@x.de"</span>
+};
+
+<span class="kw">type</span> <span class="cl">User</span>    = <span class="kw">typeof</span> <span class="vr">user</span>;
+<span class="cm">// { name: string; alter: number; email: string }</span>
+
+<span class="kw">type</span> <span class="cl">UserKey</span> = <span class="kw">keyof</span> <span class="cl">User</span>;
+<span class="cm">// "name" | "alter" | "email"</span>
+
+<span class="kw">function</span> <span class="fn">log</span>&lt;<span class="cl">K</span> <span class="kw">extends</span> <span class="cl">UserKey</span>&gt;(<span class="vr">k</span>: <span class="cl">K</span>): <span class="cl">User</span>[<span class="cl">K</span>] {
+  <span class="kw">return</span> <span class="vr">user</span>[<span class="vr">k</span>];
+}
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">log</span>(<span class="st">"name"</span>));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">log</span>(<span class="st">"alter"</span>));
+<span class="cm">// log("xyz");  ✗ – nicht in keyof</span>
+
+<span class="cm">// "as const" friert Werte ein</span>
+<span class="kw">const</span> <span class="vr">rollen</span> = [<span class="st">"admin"</span>, <span class="st">"user"</span>, <span class="st">"gast"</span>] <span class="kw">as const</span>;
+<span class="kw">type</span> <span class="cl">Rolle</span> = (<span class="kw">typeof</span> <span class="vr">rollen</span>)[<span class="tp">number</span>];
+<span class="cm">// "admin" | "user" | "gast"</span>
+
+<span class="kw">const</span> <span class="vr">r</span>: <span class="cl">Rolle</span> = <span class="st">"admin"</span>;
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">r</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Magie</span>
+      <h5>as const</h5>
+      <p>Ohne <code>as const</code> wäre <code>rollen</code> ein <code>string[]</code> — der Index-Typ wäre nur <code>string</code>.</p>
+      <p>Mit <code>as const</code> werden die Werte <strong>readonly</strong> und behalten ihre exakten Literal-Typen.</p>
+      <p>Dann ergibt <code>(typeof rollen)[number]</code> die präzise Union.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>Anna
+<span class="nm">29</span>
+admin</pre>
+  </div>
+</section>
+
+<!-- ============ 24 Decorators ============ -->
+<section id="decorators">
+  <h2><span class="num">24</span>Decorators</h2>
+  <p class="section-intro">Decorators sind Funktionen, die Klassen, Methoden oder Felder „dekorieren" — also ihr Verhalten erweitern. Bekannt aus Angular, NestJS und MobX.</p>
+
+  <div class="callout">
+    <div class="callout-label">Hinweis</div>
+    <p>Seit TypeScript 5.0 sind <strong>Standard-konforme</strong> Decorators (TC39 Stage 3) verfügbar. Aktiviere sie über <code>"experimentalDecorators"</code> in tsconfig oder nutze die neue Syntax direkt — Frameworks setzen oft noch auf die alte Variante.</p>
+  </div>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Methoden-Decorator</h5>
+      <p>Ein Decorator, der eine Methode <em>wrappt</em>: vorher und nachher loggen, Argumente prüfen, Performance messen — du fügst Logik hinzu, ohne die Methode selbst zu ändern.</p>
+      <h5>Anwendung</h5>
+      <p>Mit <code>@decorator</code> über der Methode angeben.</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm">// Methoden-Decorator (Stage 3 Syntax)</span>
+<span class="kw">function</span> <span class="fn">logged</span>&lt;<span class="cl">This</span>, <span class="cl">Args</span> <span class="kw">extends</span> <span class="tp">any</span>[], <span class="cl">Ret</span>&gt;(
+  <span class="vr">target</span>: (<span class="kw">this</span>: <span class="cl">This</span>, ...<span class="vr">a</span>: <span class="cl">Args</span>) =&gt; <span class="cl">Ret</span>,
+  <span class="vr">ctx</span>: <span class="cl">ClassMethodDecoratorContext</span>
+) {
+  <span class="kw">return</span> <span class="kw">function</span> (<span class="kw">this</span>: <span class="cl">This</span>, ...<span class="vr">args</span>: <span class="cl">Args</span>): <span class="cl">Ret</span> {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="st">`→ </span>${<span class="cl">String</span>(<span class="vr">ctx</span>.<span class="vr">name</span>)}<span class="st">(</span>${<span class="vr">args</span>}<span class="st">)`</span>);
+    <span class="kw">const</span> <span class="vr">r</span> = <span class="vr">target</span>.<span class="fn">call</span>(<span class="kw">this</span>, ...<span class="vr">args</span>);
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="st">`← </span>${<span class="vr">r</span>}<span class="st">`</span>);
+    <span class="kw">return</span> <span class="vr">r</span>;
+  };
+}
+
+<span class="kw">class</span> <span class="cl">Rechner</span> {
+  @<span class="fn">logged</span>
+  <span class="fn">addiere</span>(<span class="vr">a</span>: <span class="tp">number</span>, <span class="vr">b</span>: <span class="tp">number</span>) {
+    <span class="kw">return</span> <span class="vr">a</span> + <span class="vr">b</span>;
+  }
+}
+
+<span class="kw">const</span> <span class="vr">r</span> = <span class="kw">new</span> <span class="cl">Rechner</span>();
+<span class="vr">r</span>.<span class="fn">addiere</span>(<span class="nm">2</span>, <span class="nm">3</span>);
+<span class="vr">r</span>.<span class="fn">addiere</span>(<span class="nm">10</span>, <span class="nm">5</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Was passiert</span>
+      <p>Bei jedem Aufruf von <code>addiere</code> wird die echte Methode automatisch von einem Wrapper umgeben — der vorher die Argumente loggt und nachher das Ergebnis.</p>
+      <p>Dieselbe Idee steckt hinter <code>@Component</code> in Angular oder <code>@Controller</code> in NestJS.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre>→ addiere(2,3)
+← <span class="nm">5</span>
+→ addiere(10,5)
+← <span class="nm">15</span></pre>
+  </div>
+</section>
+
+<!-- ============ 25 Module ============ -->
+<section id="module">
+  <h2><span class="num">25</span>Module</h2>
+  <p class="section-intro">TypeScript nutzt das normale ES-Modul-System: <code>export</code> stellt etwas bereit, <code>import</code> holt es. Pro Datei = pro Modul.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Named Exports</h5>
+      <p>Mehrere Exports pro Datei, beim Import in geschweiften Klammern.</p>
+      <h5>Default Export</h5>
+      <p>Genau ein Standard-Export pro Datei, beim Import frei benennbar.</p>
+      <h5>Type-only Imports</h5>
+      <p><code>import type</code> importiert <strong>nur den Typ</strong> — der Compiler entfernt die Zeile komplett aus dem JS-Output.</p>
+    </div>
+    <div class="ex-code"><pre><span class="cm">// mathe.ts</span>
+<span class="kw">export</span> <span class="kw">function</span> <span class="fn">add</span>(<span class="vr">a</span>: <span class="tp">number</span>, <span class="vr">b</span>: <span class="tp">number</span>) {
+  <span class="kw">return</span> <span class="vr">a</span> + <span class="vr">b</span>;
+}
+
+<span class="kw">export</span> <span class="kw">const</span> <span class="vr">PI</span> = <span class="nm">3.14159</span>;
+
+<span class="kw">export</span> <span class="kw">type</span> <span class="cl">Vektor</span> = { <span class="vr">x</span>: <span class="tp">number</span>; <span class="vr">y</span>: <span class="tp">number</span> };
+
+<span class="kw">export</span> <span class="kw">default</span> <span class="kw">class</span> <span class="cl">Rechner</span> {
+  <span class="fn">summe</span>(<span class="vr">a</span>: <span class="tp">number</span>, <span class="vr">b</span>: <span class="tp">number</span>) { <span class="kw">return</span> <span class="vr">a</span> + <span class="vr">b</span>; }
+}
+
+
+<span class="cm">// app.ts</span>
+<span class="kw">import</span> <span class="cl">Rechner</span>, { <span class="fn">add</span>, <span class="vr">PI</span> } <span class="kw">from</span> <span class="st">"./mathe"</span>;
+<span class="kw">import</span> <span class="kw">type</span> { <span class="cl">Vektor</span> } <span class="kw">from</span> <span class="st">"./mathe"</span>;
+
+<span class="kw">const</span> <span class="vr">v</span>: <span class="cl">Vektor</span> = { <span class="vr">x</span>: <span class="nm">1</span>, <span class="vr">y</span>: <span class="nm">2</span> };
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">add</span>(<span class="nm">2</span>, <span class="nm">3</span>));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">PI</span>);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="kw">new</span> <span class="cl">Rechner</span>().<span class="fn">summe</span>(<span class="nm">10</span>, <span class="nm">20</span>));
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">v</span>);</pre></div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Best Practice</span>
+      <h5>Named &gt; Default</h5>
+      <p>Bevorzuge Named Exports — sie sind durchsuchbar, einheitlich benannt und beim Refactoring sicherer.</p>
+      <h5>Barrel Files</h5>
+      <p>Eine <code>index.ts</code>, die alles aus einem Ordner re-exportiert, vereinfacht Imports:</p>
+      <p><code>import { X, Y } from "./module";</code></p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Konsolen-Output</div>
+    <pre><span class="nm">5</span>
+<span class="nm">3.14159</span>
+<span class="nm">30</span>
+{ <span class="vr">x</span>: <span class="nm">1</span>, <span class="vr">y</span>: <span class="nm">2</span> }</pre>
+  </div>
+</section>
+
+<!-- ============ Abschluss ============ -->
+<section style="border-bottom:none;">
+  <h2 style="margin-bottom:24px;">Geschafft.</h2>
+  <p>Du hast jetzt das komplette Inventar an Werkzeugen, mit denen TypeScript-Profis arbeiten. Die Sprache lernst du am besten, indem du sie <strong>einsetzt</strong> — bau ein kleines Projekt mit strict mode, lass dich vom Compiler treiben, und schau dir hin und wieder den Hover-Tooltip im Editor an. Da steckt mehr Wissen drin, als jede Doku zeigen kann.</p>
+
+  <div class="callout" style="margin-top:32px;">
+    <div class="callout-label">Nächste Schritte</div>
+    <p><strong>1. Spielwiese</strong> — <a href="https://www.typescriptlang.org/play" style="color:var(--ts-light);">typescriptlang.org/play</a>: TS direkt im Browser ausprobieren.</p>
+    <p><strong>2. Type Challenges</strong> — <a href="https://github.com/type-challenges/type-challenges" style="color:var(--ts-light);">github.com/type-challenges</a>: Rätsel, die dein Typsystem-Verständnis hochschrauben.</p>
+    <p><strong>3. Offizielles Handbuch</strong> — <a href="https://www.typescriptlang.org/docs/handbook/intro.html" style="color:var(--ts-light);">typescriptlang.org/docs</a>: kompakt und gut gemacht.</p>
+  </div>
+</section>
+
+<footer>
+  TypeScript-Doku · Anfänger bis Fortgeschritten · 25 Kapitel
+</footer>
+
+</div>
+</body>
+</html>

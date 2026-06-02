@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angular — Vom Anfänger zum Fortgeschrittenen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="./styles/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="page">
+
+<!-- =============== HERO =============== -->
+<header class="hero">
+  <a href="../index.html">
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0,0,256,256">
+      <g fill="#e8a64a" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M12,2.09961l-11,9.90039h3v9h6v-7h4v7h6v-9h3z"></path></g></g>
+    </svg>
+  </a>
+  <div class="eyebrow">Dokumentation · Stand Juni 2026 · Angular 22</div>
+  <h1>Angular<br><em>von A bis Z</em></h1>
+  <p class="lede">Eine vollständige Reise durch Angular — von der ersten Komponente bis zu Signals, Signal Forms und Zoneless Apps. Jedes Beispiel mit Erklärung links, Code in der Mitte, Output rechts. Plus eine vollständige CLI-Referenz.</p>
+  <div class="meta">
+    <span><strong>Framework</strong>Angular 22</span>
+    <span><strong>Niveau</strong>Anfänger → Fortgeschritten</span>
+    <span><strong>Kapitel</strong>25 + CLI-Referenz</span>
+    <span><strong>Sprache</strong>TypeScript 5.9</span>
+  </div>
+</header>
+
+<!-- =============== TOC =============== -->
+<nav class="toc">
+  <div class="toc-title">Inhalt</div>
+  <div class="toc-grid">
+    <div class="toc-col">
+      <h4>Teil I — Anfänger</h4>
+      <ol>
+        <li><a href="#was-ist-angular">Was ist Angular?</a></li>
+        <li><a href="#setup">Installation &amp; Setup</a></li>
+        <li><a href="#projektstruktur">Projektstruktur</a></li>
+        <li><a href="#component">Erste Component</a></li>
+        <li><a href="#templates">Templates &amp; Binding</a></li>
+        <li><a href="#events">Event Binding</a></li>
+        <li><a href="#two-way">Two-way Binding mit Signals</a></li>
+        <li><a href="#control-flow">Control Flow (@if, @for)</a></li>
+        <li><a href="#pipes">Built-in Pipes</a></li>
+      </ol>
+    </div>
+    <div class="toc-col">
+      <h4>Teil II — Mittelstufe</h4>
+      <ol>
+        <li><a href="#signals">Signals</a></li>
+        <li><a href="#computed-effect">computed &amp; effect</a></li>
+        <li><a href="#input-output">input(), output(), model()</a></li>
+        <li><a href="#services">Services &amp; DI</a></li>
+        <li><a href="#http">HttpClient</a></li>
+        <li><a href="#routing">Routing</a></li>
+        <li><a href="#lifecycle">Lifecycle Hooks</a></li>
+      </ol>
+    </div>
+    <div class="toc-col">
+      <h4>Teil III — Fortgeschritten</h4>
+      <ol>
+        <li><a href="#custom-pipes">Custom Pipes</a></li>
+        <li><a href="#directives">Custom Directives</a></li>
+        <li><a href="#reactive-forms">Reactive Forms</a></li>
+        <li><a href="#signal-forms">Signal Forms (v22)</a></li>
+        <li><a href="#guards">Route Guards</a></li>
+        <li><a href="#interceptors">HTTP Interceptors</a></li>
+        <li><a href="#lazy">Lazy Loading</a></li>
+        <li><a href="#zoneless">Zoneless &amp; OnPush</a></li>
+        <li><a href="#advanced">Resource API, SSR &amp; @defer</a></li>
+      </ol>
+      <h4 style="margin-top:24px;">CLI-Referenz</h4>
+      <ol>
+        <li><a href="#cli">Alle wichtigen Terminal-Befehle</a></li>
+      </ol>
+    </div>
+  </div>
+</nav>
+
+<!-- ====================================================== -->
+<!-- =============== TEIL I — ANFÄNGER ==================== -->
+<!-- ====================================================== -->
+<div class="part">
+  <div class="part-label">Teil I</div>
+  <h2 class="part-title">Die <em>Grundlagen</em></h2>
+  <p class="part-desc">Was ist Angular, wie wird ein Projekt aufgesetzt, was ist eine Component, und wie binden wir Daten und Events. Alles, was du brauchst, bevor du ein eigenes Feature baust.</p>
+</div>
+
+<!-- ============ 01 Was ist Angular ============ -->
+<section id="was-ist-angular">
+  <h2><span class="num">01</span> Was ist Angular?</h2>
+  <p class="section-intro">Angular ist ein TypeScript-basiertes Framework von Google zum Bauen von Single-Page-Applications. Es liefert dir Components, Routing, Forms, HTTP, Dependency Injection und Build-Tools — alles in einem Paket. Stand Juni 2026 ist <strong>Angular 22</strong> aktuell mit stabilen Signal Forms, Zoneless-Architektur und OnPush als Default.</p>
+
+  <h3>Warum Angular?</h3>
+  <ul>
+    <li><strong>Batteries included</strong> — Forms, Routing, HTTP, Testing alles dabei</li>
+    <li><strong>TypeScript-first</strong> — saubere Typen für Templates, Inputs, Services</li>
+    <li><strong>Signals</strong> — feingranulare Reaktivität ohne Zone.js</li>
+    <li><strong>Standalone Components</strong> — kein NgModule-Overhead mehr</li>
+    <li><strong>Enterprise-ready</strong> — Long-Term-Support, klare Update-Strategie</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-label">Stand 2026</div>
+    <p>Angular 22 ist die aktuelle Version. <strong>Signal Forms</strong> sind stable, <strong>OnPush</strong> ist Default für neue Components, <strong>Zoneless</strong> wird empfohlen, <strong>Vitest</strong> ist der primäre Test-Runner und <strong>Selectorless Components</strong> sind verfügbar.</p>
+  </div>
+</section>
+
+<!-- ============ 02 Setup ============ -->
+<section id="setup">
+  <h2><span class="num">02</span> Installation &amp; Setup</h2>
+  <p class="section-intro">Du brauchst Node.js (LTS 20+) und npm. Angular wird über das CLI installiert — danach erzeugst du Projekte mit <code>ng new</code>.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Schritte</span>
+      <h5>1. Node prüfen</h5>
+      <p>Mindestens Node 20. <code>node -v</code> zeigt die Version.</p>
+      <h5>2. CLI global installieren</h5>
+      <p><code>npm i -g @angular/cli</code> — danach steht <code>ng</code> überall zur Verfügung.</p>
+      <h5>3. Projekt erstellen</h5>
+      <p><code>ng new mein-app</code> stellt ein paar Fragen (Routing? CSS-Variante? SSR?) und legt los.</p>
+      <h5>4. Dev-Server starten</h5>
+      <p><code>ng serve</code> öffnet <code>localhost:4200</code> mit Hot-Reload.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">terminal · setup</div>
+<pre><span class="cm"># Node prüfen</span>
+<span class="vr">$</span> node -v
+v20.18.0
+
+<span class="cm"># Angular CLI installieren</span>
+<span class="vr">$</span> npm i -g @angular/cli
+
+<span class="cm"># Neues Projekt erstellen</span>
+<span class="vr">$</span> ng new mein-app
+? Which stylesheet format? <span class="st">SCSS</span>
+? Server-Side Rendering (SSR)? <span class="st">No</span>
+? Zoneless application? <span class="st">Yes</span>
+
+<span class="cm"># In den Ordner und starten</span>
+<span class="vr">$</span> cd mein-app
+<span class="vr">$</span> ng serve --open</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipps</span>
+      <h5>Zoneless?</h5>
+      <p>Sag <strong>Yes</strong> bei neuen Apps. Du nutzt dann Signals statt Zone.js — schneller und moderner.</p>
+      <h5>SSR?</h5>
+      <p>Nur aktivieren, wenn du Server-Side-Rendering wirklich brauchst (SEO, Initial-Load).</p>
+      <h5>Port belegt?</h5>
+      <p><code>ng serve --port 4300</code> ändert den Port.</p>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="terminal-bar"><div class="dots"><span></span><span></span><span></span></div> <span>terminal — ng serve</span></div>
+    <div class="terminal-body">
+<span class="prompt">$</span> <span class="cmd">ng serve</span>
+<span class="out">Initial chunk files | Names         | Raw size</span>
+<span class="out">main.js             | main          | 187.42 kB</span>
+<span class="out">polyfills.js        | polyfills     |  34.58 kB</span>
+<span class="out">styles.css          | styles        |   1.21 kB</span>
+<span class="out"></span>
+<span class="out"><span class="ok">✔</span> Application bundle generation complete. [2.341 seconds]</span>
+<span class="out"></span>
+<span class="out">Watch mode enabled. Watching for file changes...</span>
+<span class="out"><span class="ok">➜</span> Local:   http://localhost:4200/</span>
+<span class="out"><span class="dim">➜</span> press h + enter to show help</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 Projektstruktur ============ -->
+<section id="projektstruktur">
+  <h2><span class="num">03</span> Projektstruktur</h2>
+  <p class="section-intro">Was steckt nach <code>ng new</code> drin? Hier die wichtigsten Ordner und Dateien — alles, was du am Anfang anfassen wirst.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>src/</h5>
+      <p>Hier lebt dein Code. <code>main.ts</code> ist der Einstiegspunkt, <code>index.html</code> die Shell, alles andere unter <code>app/</code>.</p>
+      <h5>app/</h5>
+      <p>Components, Services, Routes — dein eigentliches Programm.</p>
+      <h5>angular.json</h5>
+      <p>Build-Konfiguration (Targets, Assets, Styles, Optimierung).</p>
+      <h5>tsconfig.json</h5>
+      <p>TypeScript-Settings, vom CLI sinnvoll voreingestellt.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">struktur · mein-app/</div>
+<pre>mein-app/
+├── <span class="tag">src/</span>
+│   ├── <span class="tag">app/</span>
+│   │   ├── app.<span class="vr">ts</span>           <span class="cm">// Root-Component</span>
+│   │   ├── app.<span class="vr">html</span>         <span class="cm">// Root-Template</span>
+│   │   ├── app.<span class="vr">scss</span>         <span class="cm">// Root-Styles</span>
+│   │   ├── app.<span class="vr">config.ts</span>    <span class="cm">// Provider-Config</span>
+│   │   └── app.<span class="vr">routes.ts</span>    <span class="cm">// Routen</span>
+│   ├── main.<span class="vr">ts</span>              <span class="cm">// bootstrap</span>
+│   ├── index.<span class="vr">html</span>           <span class="cm">// Shell</span>
+│   └── styles.<span class="vr">scss</span>          <span class="cm">// globale Styles</span>
+├── angular.<span class="vr">json</span>             <span class="cm">// Build-Config</span>
+├── tsconfig.<span class="vr">json</span>            <span class="cm">// TS-Config</span>
+└── package.<span class="vr">json</span>             <span class="cm">// Dependencies</span></pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipps</span>
+      <h5>Standalone</h5>
+      <p>Ab v17+ gibt es keine <code>app.module.ts</code> mehr — alles ist standalone.</p>
+      <h5>app.config.ts</h5>
+      <p>Hier registrierst du globale Provider wie <code>provideRouter</code>, <code>provideHttpClient</code>, <code>provideAnimations</code>.</p>
+      <h5>main.ts</h5>
+      <p>Ruft <code>bootstrapApplication(App, appConfig)</code> auf — fertig.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 Erste Component ============ -->
+<section id="component">
+  <h2><span class="num">04</span> Erste Component</h2>
+  <p class="section-intro">Eine Component ist eine Klasse mit dem <code>@Component</code>-Decorator. Sie kombiniert Template (HTML), Style (CSS) und Logik (TypeScript) zu einer wiederverwendbaren Einheit.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Aufbau</span>
+      <h5>@Component()</h5>
+      <p>Der Decorator macht aus einer Klasse eine Angular-Component.</p>
+      <h5>selector</h5>
+      <p>Der Tag-Name, mit dem du sie im HTML verwendest: <code>&lt;app-hello /&gt;</code></p>
+      <h5>template</h5>
+      <p>Inline-HTML. Alternativ <code>templateUrl</code> für eine separate Datei.</p>
+      <h5>standalone</h5>
+      <p>Default in v22, muss meist nicht gesetzt werden.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">hello.ts</div>
+<pre><span class="kw">import</span> { <span class="cl">Component</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+
+<span class="dec">@Component</span>({
+  <span class="vr">selector</span>: <span class="st">'app-hello'</span>,
+  <span class="vr">template</span>: <span class="st">`
+    &lt;h1&gt;Hallo {{ name }}!&lt;/h1&gt;
+    &lt;p&gt;Willkommen bei Angular.&lt;/p&gt;
+  `</span>,
+  <span class="vr">styles</span>: <span class="st">`
+    h1 { color: #dd0031; font-family: sans-serif; }
+  `</span>
+})
+<span class="kw">export class</span> <span class="cl">Hello</span> {
+  <span class="vr">name</span> = <span class="st">'Welt'</span>;
+}</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>Interpolation</h5>
+      <p><code>{{ name }}</code> bindet den Wert aus der Klasse ins Template — pures Lesen, keine Magie.</p>
+      <h5>Backticks</h5>
+      <p>Mehrzeilige Strings für Template/Styles. Mit <code>${}</code> könntest du sogar Werte einbauen.</p>
+      <h5>Naming</h5>
+      <p>Klasse <code>Hello</code>, Datei <code>hello.ts</code> — kein <code>.component</code>-Suffix mehr ab v20.</p>
+    </div>
+  </div>
+
+  <div class="browser">
+    <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><span class="browser-url">localhost:4200</span></div>
+    <div class="browser-body">
+      <h1 style="color:#dd0031;">Hallo Welt!</h1>
+      <p>Willkommen bei Angular.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 Templates ============ -->
+<section id="templates">
+  <h2><span class="num">05</span> Templates &amp; Property Binding</h2>
+  <p class="section-intro">Templates sind HTML mit drei Erweiterungen: <code>{{ }}</code> (Interpolation), <code>[prop]</code> (Property Binding) und später <code>(event)</code> (Event Binding).</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>{{ expr }}</h5>
+      <p>Schreibt den Wert von <code>expr</code> als Text in den DOM.</p>
+      <h5>[attr]="expr"</h5>
+      <p>Setzt eine DOM-<strong>Property</strong> (nicht das HTML-Attribut). Beispiel: <code>[src]</code>, <code>[disabled]</code>, <code>[class.aktiv]</code>.</p>
+      <h5>[class.x] / [style.y]</h5>
+      <p>Bedingt eine Klasse setzen oder einen Style-Wert binden.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">profile.ts &amp; profile.html</div>
+<pre><span class="dec">@Component</span>({
+  <span class="vr">selector</span>: <span class="st">'app-profile'</span>,
+  <span class="vr">template</span>: <span class="st">`
+    &lt;img <span class="attr">[src]</span>=<span class="st">"avatar"</span> <span class="attr">[alt]</span>=<span class="st">"name"</span>&gt;
+    &lt;h2&gt;{{ name }}&lt;/h2&gt;
+    &lt;p <span class="attr">[class.online]</span>=<span class="st">"isOnline"</span>&gt;
+      Status: {{ isOnline ? <span class="st">'online'</span> : <span class="st">'offline'</span> }}
+    &lt;/p&gt;
+    &lt;button <span class="attr">[disabled]</span>=<span class="st">"!isOnline"</span>&gt;
+      Nachricht senden
+    &lt;/button&gt;
+  `</span>
+})
+<span class="kw">export class</span> <span class="cl">Profile</span> {
+  <span class="vr">name</span> = <span class="st">'Mara'</span>;
+  <span class="vr">avatar</span> = <span class="st">'/mara.jpg'</span>;
+  <span class="vr">isOnline</span> = <span class="bn">true</span>;
+}</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Hinweis</span>
+      <h5>Unterschied</h5>
+      <p><code>src="..."</code> = statischer String. <code>[src]="..."</code> = TypeScript-Ausdruck.</p>
+      <h5>Sicherheit</h5>
+      <p>Angular escaped Interpolation automatisch — kein XSS bei <code>{{ user.name }}</code>.</p>
+      <h5>Conditional Style</h5>
+      <p><code>[style.color]="isError ? 'red' : 'green'"</code></p>
+    </div>
+  </div>
+
+  <div class="browser">
+    <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><span class="browser-url">localhost:4200</span></div>
+    <div class="browser-body">
+      <h2>Mara</h2>
+      <p style="color:#22c55e;">Status: online</p>
+      <button>Nachricht senden</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 Events ============ -->
+<section id="events">
+  <h2><span class="num">06</span> Event Binding</h2>
+  <p class="section-intro">Mit <code>(event)="handler($event)"</code> reagierst du auf User-Aktionen. Der Handler ist eine Methode der Component-Klasse.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Schritte</span>
+      <h5>1. Signal anlegen</h5>
+      <p><code>count = signal(0)</code> — ein reaktiver Container.</p>
+      <h5>2. Methode</h5>
+      <p>Eine Funktion, die das Signal updatet.</p>
+      <h5>3. Template</h5>
+      <p><code>(click)="inc()"</code> ruft die Methode beim Klick.</p>
+      <h5>4. Anzeige</h5>
+      <p><code>{{ count() }}</code> — Signal aufrufen, um den Wert zu lesen.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">counter.ts</div>
+<pre><span class="kw">import</span> { <span class="cl">Component</span>, <span class="fn">signal</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+
+<span class="dec">@Component</span>({
+  <span class="vr">selector</span>: <span class="st">'app-counter'</span>,
+  <span class="vr">template</span>: <span class="st">`
+    &lt;p&gt;Zähler: {{ count() }}&lt;/p&gt;
+    &lt;button <span class="attr">(click)</span>=<span class="st">"inc()"</span>&gt;+1&lt;/button&gt;
+    &lt;button <span class="attr">(click)</span>=<span class="st">"reset()"</span>&gt;Reset&lt;/button&gt;
+  `</span>
+})
+<span class="kw">export class</span> <span class="cl">Counter</span> {
+  <span class="vr">count</span> = <span class="fn">signal</span>(<span class="nm">0</span>);
+
+  <span class="fn">inc</span>() {
+    <span class="kw">this</span>.<span class="vr">count</span>.<span class="fn">update</span>(<span class="vr">v</span> =&gt; <span class="vr">v</span> + <span class="nm">1</span>);
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="st">'Neuer Wert:'</span>, <span class="kw">this</span>.<span class="vr">count</span>());
+  }
+  <span class="fn">reset</span>() {
+    <span class="kw">this</span>.<span class="vr">count</span>.<span class="fn">set</span>(<span class="nm">0</span>);
+  }
+}</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <h5>$event</h5>
+      <p>Wenn du das DOM-Event brauchst: <code>(input)="onInput($event)"</code> und dann <code>$event.target.value</code>.</p>
+      <h5>update vs set</h5>
+      <p><code>set(5)</code> = neuer Wert. <code>update(v =&gt; v+1)</code> = abhängig vom alten.</p>
+      <h5>Signal lesen</h5>
+      <p>Immer mit Klammern: <code>count()</code>, nicht <code>count</code>.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Console (nach 3× Klick auf +1)</div>
+<pre>Neuer Wert: <span class="nm">1</span>
+Neuer Wert: <span class="nm">2</span>
+Neuer Wert: <span class="nm">3</span></pre>
+  </div>
+</section>
+
+<!-- ============ 07 Two-way Binding ============ -->
+<section id="two-way">
+  <h2><span class="num">07</span> Two-way Binding mit Signals</h2>
+  <p class="section-intro">Mit <code>model()</code> erstellst du ein Signal, das gleichzeitig Input und Output ist. Im Template nutzt du es mit <code>[(ngModel)]</code> oder <code>[(value)]</code>.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>[(x)]</h5>
+      <p>Die "Banana-in-a-Box" — Property Binding + Event Binding in einem.</p>
+      <h5>ngModel</h5>
+      <p>Die Standard-Two-way-Direktive für <code>&lt;input&gt;</code>. Braucht <code>FormsModule</code>.</p>
+      <h5>Signal-basiert</h5>
+      <p>Mit <code>[(ngModel)]</code> bindest du direkt an ein Signal — beim Tippen wird das Signal aktualisiert.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">name-form.ts</div>
+<pre><span class="kw">import</span> { <span class="cl">Component</span>, <span class="fn">signal</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+<span class="kw">import</span> { <span class="cl">FormsModule</span> } <span class="kw">from</span> <span class="st">'@angular/forms'</span>;
+
+<span class="dec">@Component</span>({
+  <span class="vr">selector</span>: <span class="st">'app-name-form'</span>,
+  <span class="vr">imports</span>: [<span class="cl">FormsModule</span>],
+  <span class="vr">template</span>: <span class="st">`
+    &lt;input <span class="attr">[(ngModel)]</span>=<span class="st">"name"</span> placeholder=<span class="st">"Name"</span>&gt;
+    &lt;p&gt;Hallo, {{ name() || <span class="st">'?'</span> }}&lt;/p&gt;
+  `</span>
+})
+<span class="kw">export class</span> <span class="cl">NameForm</span> {
+  <span class="vr">name</span> = <span class="fn">signal</span>(<span class="st">''</span>);
+}</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>imports</h5>
+      <p>Standalone Components importieren ihre Abhängigkeiten direkt im Decorator.</p>
+      <h5>Live-Updates</h5>
+      <p>Jeder Tastenanschlag = Signal-Update = Template-Rerender.</p>
+      <h5>Alternative</h5>
+      <p>Ohne ngModel: <code>(input)="name.set($event.target.value)"</code></p>
+    </div>
+  </div>
+
+  <div class="browser">
+    <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><span class="browser-url">localhost:4200 — Tippen: M-a-r-a</span></div>
+    <div class="browser-body">
+      <input value="Mara" style="margin-bottom:10px;">
+      <p>Hallo, Mara</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 Control Flow ============ -->
+<section id="control-flow">
+  <h2><span class="num">08</span> Control Flow — @if, @for, @switch</h2>
+  <p class="section-intro">Seit v17 hat Angular eine eigene, schnellere Template-Syntax für Bedingungen und Schleifen. <code>*ngIf</code> und <code>*ngFor</code> sind out, <code>@if</code> und <code>@for</code> sind in.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>@if / @else</h5>
+      <p>Eine Bedingung. Mit <code>@else if</code> verkettbar.</p>
+      <h5>@for</h5>
+      <p>Schleife mit <strong>Pflicht-Parameter</strong> <code>track</code> — sagt Angular, wie es Items identifiziert.</p>
+      <h5>@empty</h5>
+      <p>Wird gerendert, wenn die Liste leer ist.</p>
+      <h5>@switch</h5>
+      <p>Wie <code>switch</code> in JS, mit <code>@case</code> und <code>@default</code>.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">todo-list.ts</div>
+<pre><span class="dec">@Component</span>({
+  <span class="vr">selector</span>: <span class="st">'app-todos'</span>,
+  <span class="vr">template</span>: <span class="st">`
+    <span class="ctrl">@if</span> (todos().length &gt; 0) {
+      &lt;ul&gt;
+        <span class="ctrl">@for</span> (todo <span class="kw">of</span> todos(); track todo.id) {
+          &lt;li&gt;{{ todo.text }}&lt;/li&gt;
+        }
+      &lt;/ul&gt;
+    } <span class="ctrl">@else</span> {
+      &lt;p&gt;Keine Todos.&lt;/p&gt;
+    }
+
+    <span class="ctrl">@switch</span> (status()) {
+      <span class="ctrl">@case</span> (<span class="st">'loading'</span>) { &lt;p&gt;Lade…&lt;/p&gt; }
+      <span class="ctrl">@case</span> (<span class="st">'error'</span>)   { &lt;p&gt;Fehler!&lt;/p&gt; }
+      <span class="ctrl">@default</span>             { &lt;p&gt;Bereit.&lt;/p&gt; }
+    }
+  `</span>
+})
+<span class="kw">export class</span> <span class="cl">TodoList</span> {
+  <span class="vr">todos</span> = <span class="fn">signal</span>([
+    { <span class="vr">id</span>: <span class="nm">1</span>, <span class="vr">text</span>: <span class="st">'Angular lernen'</span> },
+    { <span class="vr">id</span>: <span class="nm">2</span>, <span class="vr">text</span>: <span class="st">'Kaffee trinken'</span> }
+  ]);
+  <span class="vr">status</span> = <span class="fn">signal</span>&lt;<span class="st">'loading'</span>|<span class="st">'error'</span>|<span class="st">'ok'</span>&gt;(<span class="st">'ok'</span>);
+}</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <h5>track</h5>
+      <p>Wichtig für Performance: Angular vergleicht Items über diesen Key.</p>
+      <h5>$index, $first, $last</h5>
+      <p>Innerhalb von <code>@for</code> verfügbar: <code>{{ $index }}</code>.</p>
+      <h5>Migration</h5>
+      <p>Alte <code>*ngIf</code>-Templates? <code>ng generate @angular/core:control-flow</code></p>
+    </div>
+  </div>
+
+  <div class="browser">
+    <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><span class="browser-url">localhost:4200</span></div>
+    <div class="browser-body">
+      <ul style="margin:0 0 12px 20px;">
+        <li>Angular lernen</li>
+        <li>Kaffee trinken</li>
+      </ul>
+      <p>Bereit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 Pipes ============ -->
+<section id="pipes">
+  <h2><span class="num">09</span> Built-in Pipes</h2>
+  <p class="section-intro">Pipes transformieren Werte im Template — z.&nbsp;B. Datum, Zahlen, Strings, JSON. Syntax: <code>{{ wert | pipe:arg }}</code>.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Pipes</span>
+      <h5>date</h5>
+      <p>Formatiert Date-Objekte oder Strings.</p>
+      <h5>currency / number / percent</h5>
+      <p>Zahlen mit Locale-bewusstem Formatieren.</p>
+      <h5>uppercase / lowercase / titlecase</h5>
+      <p>String-Transformationen.</p>
+      <h5>json</h5>
+      <p>Praktisch fürs Debugging im Template.</p>
+      <h5>async</h5>
+      <p>Subscribed automatisch auf Observables/Promises.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">demo.ts</div>
+<pre><span class="kw">import</span> { <span class="cl">DatePipe</span>, <span class="cl">CurrencyPipe</span>, <span class="cl">UpperCasePipe</span>,
+         <span class="cl">JsonPipe</span> } <span class="kw">from</span> <span class="st">'@angular/common'</span>;
+
+<span class="dec">@Component</span>({
+  <span class="vr">selector</span>: <span class="st">'app-demo'</span>,
+  <span class="vr">imports</span>: [<span class="cl">DatePipe</span>, <span class="cl">CurrencyPipe</span>, <span class="cl">UpperCasePipe</span>, <span class="cl">JsonPipe</span>],
+  <span class="vr">template</span>: <span class="st">`
+    &lt;p&gt;{{ heute | date:<span class="st">'dd.MM.yyyy'</span> }}&lt;/p&gt;
+    &lt;p&gt;{{ preis | currency:<span class="st">'CHF'</span>:<span class="st">'symbol'</span> }}&lt;/p&gt;
+    &lt;p&gt;{{ user.name | uppercase }}&lt;/p&gt;
+    &lt;pre&gt;{{ user | json }}&lt;/pre&gt;
+  `</span>
+})
+<span class="kw">export class</span> <span class="cl">Demo</span> {
+  <span class="vr">heute</span> = <span class="kw">new</span> <span class="cl">Date</span>();
+  <span class="vr">preis</span> = <span class="nm">19.9</span>;
+  <span class="vr">user</span> = { <span class="vr">name</span>: <span class="st">'mara'</span>, <span class="vr">age</span>: <span class="nm">28</span> };
+}</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>Verkettung</h5>
+      <p><code>{{ datum | date:'short' | uppercase }}</code> — Pipes kann man hintereinander hängen.</p>
+      <h5>Locale</h5>
+      <p>Für deutsche Formate <code>provideLocale('de-CH')</code> in <code>app.config.ts</code>.</p>
+      <h5>Performance</h5>
+      <p>Pipes sind <strong>pure</strong> — werden nur bei Wertänderung neu berechnet.</p>
+    </div>
+  </div>
+
+  <div class="browser">
+    <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><span class="browser-url">localhost:4200</span></div>
+    <div class="browser-body">
+      <p>02.06.2026</p>
+      <p>CHF 19.90</p>
+      <p>MARA</p>
+      <pre style="background:#f0eee8;padding:8px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">{
+  "name": "mara",
+  "age": 28
+}</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- =============== TEIL II — MITTELSTUFE ================ -->
+<!-- ====================================================== -->
+<div class="part">
+  <div class="part-label">Teil II</div>
+  <h2 class="part-title">Reaktivität &amp; <em>Architektur</em></h2>
+  <p class="part-desc">Signals, Inputs/Outputs, Services, Routing, HTTP — alles, was du brauchst, um eine echte App zu strukturieren statt nur eine einzelne Component zu zeigen.</p>
+</div>
+
+<!-- ============ 10 Signals ============ -->
+<section id="signals">
+  <h2><span class="num">10</span> Signals — Reaktivität moderne Variante</h2>
+  <p class="section-intro">Ein Signal ist ein Container für einen Wert, der weiss, wer ihn liest. Ändert sich der Wert, werden alle Leser informiert. Angular's neue Grundlage für Reaktivität.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · API</span>
+      <h5>signal(init)</h5>
+      <p>Erzeugt ein beschreibbares Signal.</p>
+      <h5>Lesen</h5>
+      <p><code>x()</code> — als Funktion aufrufen.</p>
+      <h5>Schreiben</h5>
+      <p><code>x.set(neu)</code> oder <code>x.update(v =&gt; v+1)</code>.</p>
+      <h5>Wo lesen?</h5>
+      <p>Im Template, in <code>computed</code>, in <code>effect</code>. Überall sonst genauso — nur "merken" geht nur reaktiv.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">cart.ts</div>
+<pre><span class="kw">import</span> { <span class="fn">signal</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+
+<span class="kw">const</span> <span class="vr">items</span> = <span class="fn">signal</span>&lt;<span class="tp">string</span>[]&gt;([]);
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">items</span>());        <span class="cm">// []</span>
+
+<span class="vr">items</span>.<span class="fn">set</span>([<span class="st">'Apfel'</span>, <span class="st">'Brot'</span>]);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">items</span>());        <span class="cm">// ['Apfel', 'Brot']</span>
+
+<span class="vr">items</span>.<span class="fn">update</span>(<span class="vr">list</span> =&gt; [...<span class="vr">list</span>, <span class="st">'Milch'</span>]);
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">items</span>());        <span class="cm">// ['Apfel', 'Brot', 'Milch']</span></pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <h5>Immer immutable</h5>
+      <p>Nie <code>list.push(...)</code> — Signals erkennen Mutation nicht. Stattdessen neues Array bauen.</p>
+      <h5>readonly</h5>
+      <p><code>const view = items.asReadonly()</code> — gibt nur Lese-Zugriff frei.</p>
+      <h5>vs. RxJS</h5>
+      <p>Signals sind sync, RxJS ist async. Beides hat seinen Platz.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Console</div>
+<pre>[]
+[ <span class="st">'Apfel'</span>, <span class="st">'Brot'</span> ]
+[ <span class="st">'Apfel'</span>, <span class="st">'Brot'</span>, <span class="st">'Milch'</span> ]</pre>
+  </div>
+</section>
+
+<!-- ============ 11 computed & effect ============ -->
+<section id="computed-effect">
+  <h2><span class="num">11</span> computed &amp; effect</h2>
+  <p class="section-intro"><code>computed()</code> ist ein abgeleitetes, gecachtes Signal. <code>effect()</code> führt Code aus, wann immer ein gelesenes Signal sich ändert — perfekt für Logs, Persistierung, DOM-Updates ausserhalb des Templates.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>computed</h5>
+      <p>Wird neu berechnet, wenn ein Quell-Signal sich ändert. Cached automatisch.</p>
+      <h5>effect</h5>
+      <p>Wird einmal initial ausgeführt und dann bei jeder Änderung eines darin gelesenen Signals.</p>
+      <h5>Wann was?</h5>
+      <p>computed = abgeleiteter Wert. effect = Seiteneffekt (Log, localStorage, etc.).</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">price.ts</div>
+<pre><span class="kw">import</span> { <span class="fn">signal</span>, <span class="fn">computed</span>, <span class="fn">effect</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+
+<span class="kw">const</span> <span class="vr">menge</span>     = <span class="fn">signal</span>(<span class="nm">2</span>);
+<span class="kw">const</span> <span class="vr">stueck</span>    = <span class="fn">signal</span>(<span class="nm">4.5</span>);
+
+<span class="kw">const</span> <span class="vr">total</span> = <span class="fn">computed</span>(() =&gt; <span class="vr">menge</span>() * <span class="vr">stueck</span>());
+
+<span class="fn">effect</span>(() =&gt; {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="st">`Total: CHF ${<span class="vr">total</span>().<span class="fn">toFixed</span>(<span class="nm">2</span>)}`</span>);
+});
+
+<span class="vr">menge</span>.<span class="fn">set</span>(<span class="nm">5</span>);          <span class="cm">// effect feuert</span>
+<span class="vr">stueck</span>.<span class="fn">set</span>(<span class="nm">3.9</span>);       <span class="cm">// effect feuert wieder</span></pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>Wo effect anlegen?</h5>
+      <p>Im Constructor oder als Field-Initializer — Angular braucht <strong>injection context</strong>.</p>
+      <h5>computed ist pure</h5>
+      <p>Niemals Signals <strong>schreiben</strong> in einem computed — nur lesen.</p>
+      <h5>Cleanup</h5>
+      <p>effect bekommt einen <code>onCleanup</code>-Callback für Aufräumen.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Console</div>
+<pre>Total: CHF <span class="nm">9.00</span>
+Total: CHF <span class="nm">22.50</span>
+Total: CHF <span class="nm">19.50</span></pre>
+  </div>
+</section>
+
+<!-- ============ 12 input output model ============ -->
+<section id="input-output">
+  <h2><span class="num">12</span> input(), output(), model()</h2>
+  <p class="section-intro">Components kommunizieren über Inputs (Daten rein) und Outputs (Events raus). Seit v17 gibt es die Signal-basierten Varianten <code>input()</code>, <code>output()</code> und <code>model()</code> — schöner als die alten <code>@Input</code>/<code>@Output</code>-Decorators.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · API</span>
+      <h5>input()</h5>
+      <p>Daten vom Parent rein. Optional mit Default oder <code>.required()</code>.</p>
+      <h5>output()</h5>
+      <p>Event raus zum Parent. <code>.emit(value)</code> sendet es.</p>
+      <h5>model()</h5>
+      <p>Two-way-Input — Parent kann mit <code>[(value)]</code> binden.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">like-button.ts</div>
+<pre><span class="kw">import</span> { <span class="cl">Component</span>, <span class="fn">input</span>, <span class="fn">output</span>, <span class="fn">model</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+
+<span class="dec">@Component</span>({
+  <span class="vr">selector</span>: <span class="st">'app-like'</span>,
+  <span class="vr">template</span>: <span class="st">`
+    &lt;p&gt;{{ label() }}: {{ count() }}&lt;/p&gt;
+    &lt;button <span class="attr">(click)</span>=<span class="st">"inc()"</span>&gt;👍&lt;/button&gt;
+  `</span>
+})
+<span class="kw">export class</span> <span class="cl">Like</span> {
+  <span class="cm">// Pflicht-Input</span>
+  <span class="vr">label</span> = <span class="fn">input</span>.<span class="fn">required</span>&lt;<span class="tp">string</span>&gt;();
+  <span class="cm">// Two-way</span>
+  <span class="vr">count</span> = <span class="fn">model</span>(<span class="nm">0</span>);
+  <span class="cm">// Event raus</span>
+  <span class="vr">liked</span> = <span class="fn">output</span>&lt;<span class="tp">number</span>&gt;();
+
+  <span class="fn">inc</span>() {
+    <span class="kw">this</span>.<span class="vr">count</span>.<span class="fn">update</span>(<span class="vr">v</span> =&gt; <span class="vr">v</span> + <span class="nm">1</span>);
+    <span class="kw">this</span>.<span class="vr">liked</span>.<span class="fn">emit</span>(<span class="kw">this</span>.<span class="vr">count</span>());
+  }
+}
+
+<span class="cm">// Verwendung im Parent:</span>
+<span class="cm">// &lt;app-like label="Pizza" [(count)]="pizzaLikes" (liked)="onLike($event)"/&gt;</span></pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <h5>required()</h5>
+      <p>Compiler-Fehler, wenn Parent das Input vergisst.</p>
+      <h5>Aliasing</h5>
+      <p><code>input(0, { alias: 'foo' })</code> — anderer Name im Template.</p>
+      <h5>Transform</h5>
+      <p><code>input(0, { transform: numberAttribute })</code> wandelt z.&nbsp;B. String "5" automatisch in Zahl.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Console (Parent: (liked)="onLike($event)")</div>
+<pre>onLike → <span class="nm">1</span>
+onLike → <span class="nm">2</span>
+onLike → <span class="nm">3</span></pre>
+  </div>
+</section>
+
+<!-- ============ 13 Services ============ -->
+<section id="services">
+  <h2><span class="num">13</span> Services &amp; Dependency Injection</h2>
+  <p class="section-intro">Logik, die nicht zu einer Component gehört (HTTP-Calls, State, Helper) landet in einem <strong>Service</strong>. Angulars DI-System gibt dir eine Instanz dort, wo du sie brauchst.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Schritte</span>
+      <h5>1. @Injectable</h5>
+      <p>Markiert die Klasse als injizierbar. <code>providedIn: 'root'</code> = Singleton für die ganze App.</p>
+      <h5>2. inject()</h5>
+      <p>Die moderne Variante. Funktioniert in Constructor, Field-Init, Funktionen mit Injection-Context.</p>
+      <h5>3. Nutzen</h5>
+      <p>Service-Methoden aufrufen — Component bleibt schlank.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">user.service.ts &amp; profile.ts</div>
+<pre><span class="kw">import</span> { <span class="cl">Injectable</span>, <span class="fn">inject</span>, <span class="fn">signal</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+
+<span class="dec">@Injectable</span>({ <span class="vr">providedIn</span>: <span class="st">'root'</span> })
+<span class="kw">export class</span> <span class="cl">UserService</span> {
+  <span class="vr">user</span> = <span class="fn">signal</span>({ <span class="vr">name</span>: <span class="st">'Mara'</span>, <span class="vr">age</span>: <span class="nm">28</span> });
+
+  <span class="fn">rename</span>(<span class="vr">name</span>: <span class="tp">string</span>) {
+    <span class="kw">this</span>.<span class="vr">user</span>.<span class="fn">update</span>(<span class="vr">u</span> =&gt; ({ ...<span class="vr">u</span>, <span class="vr">name</span> }));
+  }
+}
+
+<span class="dec">@Component</span>({
+  <span class="vr">selector</span>: <span class="st">'app-profile'</span>,
+  <span class="vr">template</span>: <span class="st">`&lt;p&gt;{{ users.user().name }}&lt;/p&gt;`</span>
+})
+<span class="kw">export class</span> <span class="cl">Profile</span> {
+  <span class="vr">users</span> = <span class="fn">inject</span>(<span class="cl">UserService</span>);
+}</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>Singleton</h5>
+      <p><code>providedIn: 'root'</code> bedeutet: eine Instanz, geteilt überall.</p>
+      <h5>Scoped Service</h5>
+      <p>Im <code>providers</code>-Array einer Component → eigene Instanz pro Component-Baum.</p>
+      <h5>inject vs. constructor</h5>
+      <p>Beides funktioniert. <code>inject()</code> ist flexibler — auch in Funktionen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 14 HttpClient ============ -->
+<section id="http">
+  <h2><span class="num">14</span> HttpClient</h2>
+  <p class="section-intro">Daten von einer API holen — <code>HttpClient</code> liefert Observables. Mit <code>provideHttpClient()</code> wird's registriert, mit <code>inject()</code> gezogen.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Schritte</span>
+      <h5>1. provideHttpClient()</h5>
+      <p>In <code>app.config.ts</code> registrieren.</p>
+      <h5>2. inject(HttpClient)</h5>
+      <p>Im Service holen.</p>
+      <h5>3. .get/.post/.put/.delete</h5>
+      <p>Liefert ein Observable mit dem typisierten Response-Body.</p>
+      <h5>4. subscribe</h5>
+      <p>Oder besser: <code>toSignal()</code> für reaktive Templates.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">posts.service.ts</div>
+<pre><span class="kw">import</span> { <span class="cl">Injectable</span>, <span class="fn">inject</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+<span class="kw">import</span> { <span class="cl">HttpClient</span> } <span class="kw">from</span> <span class="st">'@angular/common/http'</span>;
+<span class="kw">import</span> { <span class="cl">Observable</span> } <span class="kw">from</span> <span class="st">'rxjs'</span>;
+
+<span class="kw">interface</span> <span class="cl">Post</span> { <span class="vr">id</span>: <span class="tp">number</span>; <span class="vr">title</span>: <span class="tp">string</span>; }
+
+<span class="dec">@Injectable</span>({ <span class="vr">providedIn</span>: <span class="st">'root'</span> })
+<span class="kw">export class</span> <span class="cl">PostsService</span> {
+  <span class="kw">private</span> <span class="vr">http</span> = <span class="fn">inject</span>(<span class="cl">HttpClient</span>);
+
+  <span class="fn">getAll</span>(): <span class="cl">Observable</span>&lt;<span class="cl">Post</span>[]&gt; {
+    <span class="kw">return this</span>.<span class="vr">http</span>.<span class="fn">get</span>&lt;<span class="cl">Post</span>[]&gt;(<span class="st">'/api/posts'</span>);
+  }
+}
+
+<span class="cm">// In Component:</span>
+<span class="kw">const</span> <span class="vr">svc</span> = <span class="fn">inject</span>(<span class="cl">PostsService</span>);
+<span class="vr">svc</span>.<span class="fn">getAll</span>().<span class="fn">subscribe</span>(<span class="vr">posts</span> =&gt; <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">posts</span>));</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <h5>Config</h5>
+      <p><code>provideHttpClient(withFetch())</code> nutzt die native fetch-API.</p>
+      <h5>toSignal()</h5>
+      <p>Wandelt ein Observable in ein Signal — direkt im Template lesbar.</p>
+      <h5>Error-Handling</h5>
+      <p>RxJS <code>catchError</code> oder im Subscribe-Object <code>{ next, error }</code>.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Console (Beispielantwort)</div>
+<pre>[
+  { <span class="st">id</span>: <span class="nm">1</span>, <span class="st">title</span>: <span class="st">'Erster Post'</span> },
+  { <span class="st">id</span>: <span class="nm">2</span>, <span class="st">title</span>: <span class="st">'Zweiter Post'</span> }
+]</pre>
+  </div>
+</section>
+
+<!-- ============ 15 Routing ============ -->
+<section id="routing">
+  <h2><span class="num">15</span> Routing</h2>
+  <p class="section-intro">Mit dem Router wechselst du zwischen Views, ohne die Page neu zu laden. Routes werden als Array definiert und mit <code>provideRouter()</code> registriert.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Aufbau</span>
+      <h5>app.routes.ts</h5>
+      <p>Array von Routes — Pfad + Component (oder loadComponent für Lazy).</p>
+      <h5>RouterOutlet</h5>
+      <p>Platzhalter im Template, wohin die aktive Route gerendert wird.</p>
+      <h5>routerLink</h5>
+      <p>Navigations-Direktive für Links — kein Page-Reload.</p>
+      <h5>Params</h5>
+      <p>Mit <code>:id</code> Pfad-Parameter definieren, mit <code>input()</code> in der Component lesen.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">app.routes.ts &amp; app.html</div>
+<pre><span class="kw">import</span> { <span class="cl">Routes</span> } <span class="kw">from</span> <span class="st">'@angular/router'</span>;
+<span class="kw">import</span> { <span class="cl">Home</span> } <span class="kw">from</span> <span class="st">'./home'</span>;
+<span class="kw">import</span> { <span class="cl">About</span> } <span class="kw">from</span> <span class="st">'./about'</span>;
+
+<span class="kw">export const</span> <span class="vr">routes</span>: <span class="cl">Routes</span> = [
+  { <span class="vr">path</span>: <span class="st">''</span>,        <span class="vr">component</span>: <span class="cl">Home</span> },
+  { <span class="vr">path</span>: <span class="st">'about'</span>,   <span class="vr">component</span>: <span class="cl">About</span> },
+  { <span class="vr">path</span>: <span class="st">'user/:id'</span>,
+    <span class="vr">loadComponent</span>: () =&gt; <span class="kw">import</span>(<span class="st">'./user'</span>)
+                       .<span class="fn">then</span>(<span class="vr">m</span> =&gt; <span class="vr">m</span>.<span class="cl">User</span>) },
+  { <span class="vr">path</span>: <span class="st">'**'</span>,      <span class="vr">redirectTo</span>: <span class="st">''</span> }
+];
+
+<span class="cm">// app.html</span>
+&lt;nav&gt;
+  &lt;a <span class="attr">routerLink</span>=<span class="st">"/"</span>&gt;Home&lt;/a&gt;
+  &lt;a <span class="attr">routerLink</span>=<span class="st">"/about"</span>&gt;Über&lt;/a&gt;
+&lt;/nav&gt;
+&lt;router-outlet /&gt;</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>routerLinkActive</h5>
+      <p><code>routerLinkActive="active"</code> — markiert den aktiven Link.</p>
+      <h5>Route Params</h5>
+      <p>In der Ziel-Component: <code>id = input&lt;string&gt;()</code> + <code>withComponentInputBinding()</code>.</p>
+      <h5>Wildcards</h5>
+      <p><code>**</code> fängt alles ab, was nicht gematched wurde — gut für 404.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 16 Lifecycle ============ -->
+<section id="lifecycle">
+  <h2><span class="num">16</span> Lifecycle Hooks</h2>
+  <p class="section-intro">Components haben ein Leben: erstellt, geupdated, zerstört. Mit Lifecycle-Hooks reagierst du auf diese Punkte. Mit Signals brauchst du sie seltener — <code>effect()</code> ist oft die bessere Wahl.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Hooks</span>
+      <h5>ngOnInit</h5>
+      <p>Nach erster Property-Initialisierung — Daten laden, etc.</p>
+      <h5>ngOnDestroy</h5>
+      <p>Vor der Zerstörung — Subscriptions schliessen.</p>
+      <h5>ngAfterViewInit</h5>
+      <p>Nach erstem View-Render — Zugriff auf <code>@ViewChild</code>.</p>
+      <h5>DestroyRef</h5>
+      <p>Moderne Alternative: <code>inject(DestroyRef).onDestroy(fn)</code>.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">timer.ts</div>
+<pre><span class="kw">import</span> { <span class="cl">Component</span>, <span class="cl">OnInit</span>, <span class="cl">OnDestroy</span>,
+         <span class="fn">signal</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+
+<span class="dec">@Component</span>({
+  <span class="vr">selector</span>: <span class="st">'app-timer'</span>,
+  <span class="vr">template</span>: <span class="st">`&lt;p&gt;Sekunden: {{ sec() }}&lt;/p&gt;`</span>
+})
+<span class="kw">export class</span> <span class="cl">Timer</span> <span class="kw">implements</span> <span class="cl">OnInit</span>, <span class="cl">OnDestroy</span> {
+  <span class="vr">sec</span> = <span class="fn">signal</span>(<span class="nm">0</span>);
+  <span class="kw">private</span> <span class="vr">id</span>?: <span class="tp">number</span>;
+
+  <span class="fn">ngOnInit</span>() {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="st">'Timer init'</span>);
+    <span class="kw">this</span>.<span class="vr">id</span> = <span class="fn">setInterval</span>(
+      () =&gt; <span class="kw">this</span>.<span class="vr">sec</span>.<span class="fn">update</span>(<span class="vr">s</span> =&gt; <span class="vr">s</span>+<span class="nm">1</span>), <span class="nm">1000</span>);
+  }
+
+  <span class="fn">ngOnDestroy</span>() {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="st">'Timer destroy'</span>);
+    <span class="fn">clearInterval</span>(<span class="kw">this</span>.<span class="vr">id</span>);
+  }
+}</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <h5>Cleanup ist Pflicht</h5>
+      <p>Subscriptions, Intervalle, EventListener — alles in <code>ngOnDestroy</code> oder via <code>DestroyRef</code>.</p>
+      <h5>Constructor vs OnInit</h5>
+      <p>Im Constructor: DI ready. In OnInit: Inputs ready.</p>
+      <h5>Modern</h5>
+      <p>Mit Signals/effect brauchst du diese Hooks viel seltener.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Console (beim Öffnen + nach 3s navigieren)</div>
+<pre>Timer init
+<span class="cm">// nach 3 Sekunden:</span>
+Timer destroy</pre>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- =============== TEIL III — FORTGESCHRITTEN =========== -->
+<!-- ====================================================== -->
+<div class="part">
+  <div class="part-label">Teil III</div>
+  <h2 class="part-title">Fortgeschrittene <em>Konzepte</em></h2>
+  <p class="part-desc">Custom Pipes, eigene Directives, Reactive &amp; Signal Forms, Guards, Interceptors, Lazy Loading, Zoneless-Architektur und die neuen v22-Features.</p>
+</div>
+
+<!-- ============ 17 Custom Pipes ============ -->
+<section id="custom-pipes">
+  <h2><span class="num">17</span> Custom Pipes</h2>
+  <p class="section-intro">Eine Pipe ist eine Klasse mit <code>transform()</code>. Eigene Pipes baust du genauso wie die eingebauten — z.&nbsp;B. für domänenspezifische Formatierungen.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Schritte</span>
+      <h5>1. @Pipe</h5>
+      <p>Decorator mit <code>name</code> — der Name, unter dem die Pipe im Template verfügbar ist.</p>
+      <h5>2. PipeTransform</h5>
+      <p>Interface mit <code>transform(value, ...args)</code>.</p>
+      <h5>3. imports</h5>
+      <p>Pipe in die Component-<code>imports</code> aufnehmen.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">truncate.pipe.ts</div>
+<pre><span class="kw">import</span> { <span class="cl">Pipe</span>, <span class="cl">PipeTransform</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+
+<span class="dec">@Pipe</span>({ <span class="vr">name</span>: <span class="st">'truncate'</span> })
+<span class="kw">export class</span> <span class="cl">TruncatePipe</span> <span class="kw">implements</span> <span class="cl">PipeTransform</span> {
+  <span class="fn">transform</span>(<span class="vr">value</span>: <span class="tp">string</span>, <span class="vr">limit</span> = <span class="nm">20</span>): <span class="tp">string</span> {
+    <span class="kw">return</span> <span class="vr">value</span>.<span class="vr">length</span> &gt; <span class="vr">limit</span>
+      ? <span class="vr">value</span>.<span class="fn">slice</span>(<span class="nm">0</span>, <span class="vr">limit</span>) + <span class="st">'…'</span>
+      : <span class="vr">value</span>;
+  }
+}
+
+<span class="cm">// Verwendung:</span>
+<span class="cm">// imports: [TruncatePipe]</span>
+<span class="cm">// {{ text | truncate:30 }}</span>
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="kw">new</span> <span class="cl">TruncatePipe</span>().<span class="fn">transform</span>(
+  <span class="st">'Das hier ist ein sehr langer Text'</span>, <span class="nm">15</span>));</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>Pure vs Impure</h5>
+      <p>Default: pure (neu berechnen nur bei Wertänderung). <code>{ pure: false }</code> für Listen-Mutationen — aber Performance-Falle.</p>
+      <h5>Argumente</h5>
+      <p>Beliebig viele: <code>{{ x | foo:a:b:c }}</code>.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Console</div>
+<pre>Das hier ist ei…</pre>
+  </div>
+</section>
+
+<!-- ============ 18 Directives ============ -->
+<section id="directives">
+  <h2><span class="num">18</span> Custom Directives</h2>
+  <p class="section-intro">Directives sind wie Components ohne Template — sie hängen Verhalten an existierende Elemente. Ideal für Tooltips, Auto-Focus, Highlight-Effekte.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Aufbau</span>
+      <h5>@Directive</h5>
+      <p>Statt <code>@Component</code> — mit <code>selector</code> als CSS-Attribut-Selektor.</p>
+      <h5>HostListener</h5>
+      <p>Reagiert auf DOM-Events am Host-Element.</p>
+      <h5>HostBinding</h5>
+      <p>Setzt Properties/Klassen/Styles am Host.</p>
+      <h5>ElementRef</h5>
+      <p>Zugriff aufs native DOM-Element (sparsam einsetzen).</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">highlight.directive.ts</div>
+<pre><span class="kw">import</span> { <span class="cl">Directive</span>, <span class="fn">input</span>, <span class="cl">HostListener</span>,
+         <span class="cl">HostBinding</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+
+<span class="dec">@Directive</span>({ <span class="vr">selector</span>: <span class="st">'[appHighlight]'</span> })
+<span class="kw">export class</span> <span class="cl">Highlight</span> {
+  <span class="vr">color</span> = <span class="fn">input</span>(<span class="st">'yellow'</span>, { <span class="vr">alias</span>: <span class="st">'appHighlight'</span> });
+
+  <span class="dec">@HostBinding</span>(<span class="st">'style.background'</span>)
+  <span class="vr">bg</span>: <span class="tp">string</span> = <span class="st">''</span>;
+
+  <span class="dec">@HostListener</span>(<span class="st">'mouseenter'</span>) <span class="fn">onIn</span>() {
+    <span class="kw">this</span>.<span class="vr">bg</span> = <span class="kw">this</span>.<span class="vr">color</span>();
+  }
+  <span class="dec">@HostListener</span>(<span class="st">'mouseleave'</span>) <span class="fn">onOut</span>() {
+    <span class="kw">this</span>.<span class="vr">bg</span> = <span class="st">''</span>;
+  }
+}
+
+<span class="cm">// &lt;p [appHighlight]="'lightcoral'"&gt;Hover mich!&lt;/p&gt;</span></pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <h5>Selector-Konvention</h5>
+      <p>Eckige Klammern <code>[xy]</code> = Attribut-Selektor. Mit Prefix (z.&nbsp;B. <code>app</code>) für eigene Directives.</p>
+      <h5>Structural Directives</h5>
+      <p>Wie <code>*ngIf</code> — heute nimmst du lieber <code>@if</code>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 19 Reactive Forms ============ -->
+<section id="reactive-forms">
+  <h2><span class="num">19</span> Reactive Forms</h2>
+  <p class="section-intro">Für komplexere Formulare mit Validierung baust du das Form-Modell programmatisch: <code>FormGroup</code>, <code>FormControl</code>, <code>FormArray</code>. Reaktiv über Observables.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Schritte</span>
+      <h5>1. ReactiveFormsModule</h5>
+      <p>In <code>imports</code> der Component.</p>
+      <h5>2. FormBuilder</h5>
+      <p>Mit <code>inject(FormBuilder)</code> bauen.</p>
+      <h5>3. Template-Bindings</h5>
+      <p><code>[formGroup]</code>, <code>formControlName</code> verbinden HTML und Modell.</p>
+      <h5>4. Validators</h5>
+      <p>Eingebaut: <code>required</code>, <code>email</code>, <code>minLength</code>, ... oder eigene.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">login.ts</div>
+<pre><span class="kw">import</span> { <span class="cl">Component</span>, <span class="fn">inject</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+<span class="kw">import</span> { <span class="cl">FormBuilder</span>, <span class="cl">Validators</span>,
+         <span class="cl">ReactiveFormsModule</span> } <span class="kw">from</span> <span class="st">'@angular/forms'</span>;
+
+<span class="dec">@Component</span>({
+  <span class="vr">selector</span>: <span class="st">'app-login'</span>,
+  <span class="vr">imports</span>: [<span class="cl">ReactiveFormsModule</span>],
+  <span class="vr">template</span>: <span class="st">`
+    &lt;form <span class="attr">[formGroup]</span>=<span class="st">"form"</span> <span class="attr">(ngSubmit)</span>=<span class="st">"submit()"</span>&gt;
+      &lt;input <span class="attr">formControlName</span>=<span class="st">"email"</span>&gt;
+      &lt;input <span class="attr">formControlName</span>=<span class="st">"pass"</span> type=<span class="st">"password"</span>&gt;
+      &lt;button <span class="attr">[disabled]</span>=<span class="st">"form.invalid"</span>&gt;Login&lt;/button&gt;
+    &lt;/form&gt;
+  `</span>
+})
+<span class="kw">export class</span> <span class="cl">Login</span> {
+  <span class="kw">private</span> <span class="vr">fb</span> = <span class="fn">inject</span>(<span class="cl">FormBuilder</span>);
+
+  <span class="vr">form</span> = <span class="kw">this</span>.<span class="vr">fb</span>.<span class="fn">group</span>({
+    <span class="vr">email</span>: [<span class="st">''</span>, [<span class="cl">Validators</span>.<span class="vr">required</span>, <span class="cl">Validators</span>.<span class="vr">email</span>]],
+    <span class="vr">pass</span>:  [<span class="st">''</span>, [<span class="cl">Validators</span>.<span class="fn">minLength</span>(<span class="nm">8</span>)]]
+  });
+
+  <span class="fn">submit</span>() {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="kw">this</span>.<span class="vr">form</span>.<span class="vr">value</span>);
+  }
+}</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>valueChanges</h5>
+      <p>Observable für Live-Werte. Mit <code>toSignal()</code> auch als Signal nutzbar.</p>
+      <h5>Custom Validator</h5>
+      <p>Funktion <code>(c: AbstractControl) =&gt; ValidationErrors|null</code>.</p>
+      <h5>Nested Forms</h5>
+      <p>FormGroups können verschachtelt sein.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Console (nach Submit)</div>
+<pre>{ <span class="st">email</span>: <span class="st">'mara@example.ch'</span>, <span class="st">pass</span>: <span class="st">'geheim123'</span> }</pre>
+  </div>
+</section>
+
+<!-- ============ 20 Signal Forms ============ -->
+<section id="signal-forms">
+  <h2><span class="num">20</span> Signal Forms <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ng-light);">v22</span></h2>
+  <p class="section-intro">Die neue Form-API ist seit v22 stable. Statt FormGroup/FormControl bindest du direkt Signals — weniger Boilerplate, volle Typsicherheit, Validierung als Predicate.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>form()</h5>
+      <p>Erzeugt ein Form aus einem Signal-State.</p>
+      <h5>Schema</h5>
+      <p>Validierung als Funktionen — komplett typsicher.</p>
+      <h5>Im Template</h5>
+      <p><code>[control]</code> bindet Input ans Form-Field, <code>.valid()</code>, <code>.touched()</code>, <code>.errors()</code> als Signals.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">signup.ts</div>
+<pre><span class="kw">import</span> { <span class="cl">Component</span>, <span class="fn">signal</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+<span class="kw">import</span> { <span class="fn">form</span>, <span class="fn">required</span>, <span class="fn">minLength</span>,
+         <span class="cl">Control</span> } <span class="kw">from</span> <span class="st">'@angular/forms/signals'</span>;
+
+<span class="dec">@Component</span>({
+  <span class="vr">selector</span>: <span class="st">'app-signup'</span>,
+  <span class="vr">imports</span>: [<span class="cl">Control</span>],
+  <span class="vr">template</span>: <span class="st">`
+    &lt;input <span class="attr">[control]</span>=<span class="st">"f.name"</span> placeholder=<span class="st">"Name"</span>&gt;
+    &lt;input <span class="attr">[control]</span>=<span class="st">"f.email"</span> placeholder=<span class="st">"E-Mail"</span>&gt;
+    <span class="ctrl">@if</span> (!f.valid()) { &lt;p&gt;Bitte ausfüllen.&lt;/p&gt; }
+    &lt;button <span class="attr">[disabled]</span>=<span class="st">"!f.valid()"</span> <span class="attr">(click)</span>=<span class="st">"save()"</span>&gt;
+      Speichern
+    &lt;/button&gt;
+  `</span>
+})
+<span class="kw">export class</span> <span class="cl">Signup</span> {
+  <span class="vr">state</span> = <span class="fn">signal</span>({ <span class="vr">name</span>: <span class="st">''</span>, <span class="vr">email</span>: <span class="st">''</span> });
+
+  <span class="vr">f</span> = <span class="fn">form</span>(<span class="kw">this</span>.<span class="vr">state</span>, (<span class="vr">s</span>) =&gt; {
+    <span class="fn">required</span>(<span class="vr">s</span>.<span class="vr">name</span>);
+    <span class="fn">required</span>(<span class="vr">s</span>.<span class="vr">email</span>);
+    <span class="fn">minLength</span>(<span class="vr">s</span>.<span class="vr">name</span>, <span class="nm">2</span>);
+  });
+
+  <span class="fn">save</span>() {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="kw">this</span>.<span class="vr">f</span>.<span class="fn">value</span>());
+  }
+}</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <h5>Vorteil</h5>
+      <p>Form-State <strong>ist</strong> ein Signal — <code>computed</code>/<code>effect</code> direkt nutzbar.</p>
+      <h5>Validierung</h5>
+      <p>Pure Funktionen, alles inferred. Eigene Validatoren = einfach eigene Funktionen.</p>
+      <h5>Migration</h5>
+      <p>Reactive Forms funktionieren weiter — nicht Pflicht zu migrieren.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Console (nach Save)</div>
+<pre>{ <span class="st">name</span>: <span class="st">'Mara'</span>, <span class="st">email</span>: <span class="st">'mara@example.ch'</span> }</pre>
+  </div>
+</section>
+
+<!-- ============ 21 Guards ============ -->
+<section id="guards">
+  <h2><span class="num">21</span> Route Guards</h2>
+  <p class="section-intro">Guards entscheiden, ob ein Route-Wechsel passieren darf. Z.&nbsp;B. <code>canActivate</code> für Auth, <code>canDeactivate</code> für ungespeicherte Änderungen. Seit v15+ als Funktionen statt Klassen.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Functional Guard</h5>
+      <p>Einfache Funktion, die <code>boolean</code> oder <code>UrlTree</code> zurückgibt (sync oder async).</p>
+      <h5>inject()</h5>
+      <p>Da Guards Funktionen sind, brauchst du <code>inject()</code> für Services.</p>
+      <h5>Route-Config</h5>
+      <p>Im Route-Objekt: <code>canActivate: [authGuard]</code>.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">auth.guard.ts</div>
+<pre><span class="kw">import</span> { <span class="fn">inject</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+<span class="kw">import</span> { <span class="cl">Router</span>, <span class="cl">CanActivateFn</span> } <span class="kw">from</span> <span class="st">'@angular/router'</span>;
+<span class="kw">import</span> { <span class="cl">AuthService</span> } <span class="kw">from</span> <span class="st">'./auth.service'</span>;
+
+<span class="kw">export const</span> <span class="vr">authGuard</span>: <span class="cl">CanActivateFn</span> = () =&gt; {
+  <span class="kw">const</span> <span class="vr">auth</span>   = <span class="fn">inject</span>(<span class="cl">AuthService</span>);
+  <span class="kw">const</span> <span class="vr">router</span> = <span class="fn">inject</span>(<span class="cl">Router</span>);
+
+  <span class="kw">if</span> (<span class="vr">auth</span>.<span class="fn">isLoggedIn</span>()) <span class="kw">return</span> <span class="bn">true</span>;
+  <span class="kw">return</span> <span class="vr">router</span>.<span class="fn">createUrlTree</span>([<span class="st">'/login'</span>]);
+};
+
+<span class="cm">// In den Routes:</span>
+{ <span class="vr">path</span>: <span class="st">'admin'</span>, <span class="vr">component</span>: <span class="cl">Admin</span>,
+  <span class="vr">canActivate</span>: [<span class="vr">authGuard</span>] }</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <h5>Async Guards</h5>
+      <p>Geben Promise oder Observable zurück — der Router wartet.</p>
+      <h5>Andere Guards</h5>
+      <p><code>canDeactivate</code>, <code>canMatch</code>, <code>resolve</code> (Daten vorladen).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 22 Interceptors ============ -->
+<section id="interceptors">
+  <h2><span class="num">22</span> HTTP Interceptors</h2>
+  <p class="section-intro">Interceptors hängen sich zwischen <code>HttpClient</code> und Server — perfekt für Auth-Header, Logging, Error-Handling. Auch hier als Funktion.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Schritte</span>
+      <h5>HttpInterceptorFn</h5>
+      <p>Funktion mit Signatur <code>(req, next) =&gt; next(req)</code>.</p>
+      <h5>Request klonen</h5>
+      <p>Requests sind immutable — <code>req.clone({ setHeaders: ... })</code>.</p>
+      <h5>Registrieren</h5>
+      <p>In <code>provideHttpClient(withInterceptors([fn]))</code>.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">auth.interceptor.ts</div>
+<pre><span class="kw">import</span> { <span class="cl">HttpInterceptorFn</span> } <span class="kw">from</span> <span class="st">'@angular/common/http'</span>;
+<span class="kw">import</span> { <span class="fn">inject</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+<span class="kw">import</span> { <span class="cl">AuthService</span> } <span class="kw">from</span> <span class="st">'./auth.service'</span>;
+
+<span class="kw">export const</span> <span class="vr">authInterceptor</span>: <span class="cl">HttpInterceptorFn</span> =
+  (<span class="vr">req</span>, <span class="vr">next</span>) =&gt; {
+    <span class="kw">const</span> <span class="vr">token</span> = <span class="fn">inject</span>(<span class="cl">AuthService</span>).<span class="fn">getToken</span>();
+    <span class="kw">const</span> <span class="vr">authReq</span> = <span class="vr">token</span>
+      ? <span class="vr">req</span>.<span class="fn">clone</span>({
+          <span class="vr">setHeaders</span>: { <span class="vr">Authorization</span>: <span class="st">`Bearer ${<span class="vr">token</span>}`</span> }
+        })
+      : <span class="vr">req</span>;
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="st">'→'</span>, <span class="vr">authReq</span>.<span class="vr">method</span>, <span class="vr">authReq</span>.<span class="vr">url</span>);
+    <span class="kw">return</span> <span class="fn">next</span>(<span class="vr">authReq</span>);
+  };
+
+<span class="cm">// app.config.ts</span>
+<span class="fn">provideHttpClient</span>(<span class="fn">withInterceptors</span>([<span class="vr">authInterceptor</span>]))</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>Kette</h5>
+      <p>Mehrere Interceptors: laufen in der Reihenfolge der Array-Einträge.</p>
+      <h5>Response abfangen</h5>
+      <p><code>return next(req).pipe(tap(...))</code> für Logging der Response.</p>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="output-label">Console</div>
+<pre>→ GET /api/posts
+→ POST /api/login</pre>
+  </div>
+</section>
+
+<!-- ============ 23 Lazy Loading ============ -->
+<section id="lazy">
+  <h2><span class="num">23</span> Lazy Loading</h2>
+  <p class="section-intro">Statt alle Components ins Initial-Bundle zu packen, lädst du sie erst, wenn sie gebraucht werden. Massiver Performance-Boost für grosse Apps.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Optionen</span>
+      <h5>loadComponent</h5>
+      <p>Lädt eine einzelne Component nach.</p>
+      <h5>loadChildren</h5>
+      <p>Lädt einen ganzen Sub-Route-Tree.</p>
+      <h5>defer (Template)</h5>
+      <p>Lazy-Loading auf Template-Ebene — siehe Kapitel 25.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">app.routes.ts</div>
+<pre><span class="kw">export const</span> <span class="vr">routes</span>: <span class="cl">Routes</span> = [
+  { <span class="vr">path</span>: <span class="st">''</span>, <span class="vr">component</span>: <span class="cl">Home</span> },
+
+  <span class="cm">// Einzelne Component lazy</span>
+  { <span class="vr">path</span>: <span class="st">'profil'</span>,
+    <span class="vr">loadComponent</span>: () =&gt;
+      <span class="kw">import</span>(<span class="st">'./profil/profil'</span>).<span class="fn">then</span>(<span class="vr">m</span> =&gt; <span class="vr">m</span>.<span class="cl">Profil</span>) },
+
+  <span class="cm">// Ganze Feature lazy</span>
+  { <span class="vr">path</span>: <span class="st">'admin'</span>,
+    <span class="vr">loadChildren</span>: () =&gt;
+      <span class="kw">import</span>(<span class="st">'./admin/admin.routes'</span>)
+        .<span class="fn">then</span>(<span class="vr">m</span> =&gt; <span class="vr">m</span>.<span class="vr">ADMIN_ROUTES</span>) }
+];</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <h5>Build-Output</h5>
+      <p>Lazy-Routes landen in eigenen Chunk-Files.</p>
+      <h5>Preloading</h5>
+      <p><code>withPreloading(PreloadAllModules)</code> lädt im Hintergrund nach Initial-Render.</p>
+      <h5>Trade-off</h5>
+      <p>Initial-Load schneller, aber kurzer Spinner beim ersten Aufruf der lazy-Route.</p>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="terminal-bar"><div class="dots"><span></span><span></span><span></span></div><span>terminal — ng build</span></div>
+    <div class="terminal-body">
+<span class="prompt">$</span> <span class="cmd">ng build</span>
+<span class="out">Initial chunk files | Names         | Raw size</span>
+<span class="out">main.js             | main          | 187.42 kB</span>
+<span class="out">polyfills.js        | polyfills     |  34.58 kB</span>
+<span class="out"></span>
+<span class="out">Lazy chunk files    | Names         | Raw size</span>
+<span class="out">chunk-A1B2.js       | profil        |  12.18 kB</span>
+<span class="out">chunk-C3D4.js       | admin         |  41.92 kB</span>
+<span class="out"></span>
+<span class="out"><span class="ok">✔</span> Application bundle generation complete.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 24 Zoneless ============ -->
+<section id="zoneless">
+  <h2><span class="num">24</span> Zoneless &amp; OnPush</h2>
+  <p class="section-intro">Zone.js patched async APIs, damit Angular weiss, wann es prüfen muss. Mit Signals brauchst du das nicht mehr. <strong>Zoneless</strong> = ohne Zone.js, ChangeDetection läuft signalgetrieben. Ab v22 der empfohlene Default.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · Erklärung</span>
+      <h5>Zoneless aktivieren</h5>
+      <p><code>provideZonelessChangeDetection()</code> in <code>app.config.ts</code>.</p>
+      <h5>OnPush</h5>
+      <p>Component prüft Template nur bei Input-Change oder Signal-Update. v22 setzt es als Default.</p>
+      <h5>Was geht nicht?</h5>
+      <p>Globale Mutation ohne Signal triggert kein Update. Sauberes Signal-Modell ist Pflicht.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">app.config.ts &amp; component</div>
+<pre><span class="kw">import</span> { <span class="fn">provideZonelessChangeDetection</span>,
+         <span class="cl">ChangeDetectionStrategy</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+
+<span class="kw">export const</span> <span class="vr">appConfig</span>: <span class="cl">ApplicationConfig</span> = {
+  <span class="vr">providers</span>: [
+    <span class="fn">provideZonelessChangeDetection</span>(),
+    <span class="fn">provideRouter</span>(<span class="vr">routes</span>),
+    <span class="fn">provideHttpClient</span>()
+  ]
+};
+
+<span class="dec">@Component</span>({
+  <span class="vr">selector</span>: <span class="st">'app-fast'</span>,
+  <span class="vr">changeDetection</span>: <span class="cl">ChangeDetectionStrategy</span>.<span class="vr">OnPush</span>,
+  <span class="vr">template</span>: <span class="st">`&lt;p&gt;{{ wert() }}&lt;/p&gt;`</span>
+})
+<span class="kw">export class</span> <span class="cl">Fast</span> {
+  <span class="vr">wert</span> = <span class="fn">signal</span>(<span class="nm">0</span>);
+}</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>Performance</h5>
+      <p>Zoneless-Apps haben deutlich kleinere Bundles (kein zone.js) und schnellere CD.</p>
+      <h5>Migration</h5>
+      <p>Erst alles auf Signals umstellen, dann Zone weglassen.</p>
+      <h5>Debugging</h5>
+      <p>"Warum updated sich's nicht?" → meistens: kein Signal, sondern Plain-Property.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 25 Advanced: Resource, SSR, defer ============ -->
+<section id="advanced">
+  <h2><span class="num">25</span> Resource API, SSR &amp; @defer</h2>
+  <p class="section-intro">Drei moderne Features, die du in echten Apps brauchst: <code>resource()</code> für asynchrones Laden, SSR/Hydration für SEO und schnellen Initial-Load, <code>@defer</code> für lazy Template-Blöcke.</p>
+
+  <h3>Resource API</h3>
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · resource()</span>
+      <h5>Reaktiv laden</h5>
+      <p>Loader-Funktion + Param-Signal = Auto-Refetch beim Param-Change.</p>
+      <h5>States</h5>
+      <p><code>.value()</code>, <code>.isLoading()</code>, <code>.error()</code> — alles Signals.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">user-detail.ts</div>
+<pre><span class="kw">import</span> { <span class="cl">Component</span>, <span class="fn">input</span>, <span class="fn">resource</span> } <span class="kw">from</span> <span class="st">'@angular/core'</span>;
+
+<span class="dec">@Component</span>({
+  <span class="vr">selector</span>: <span class="st">'app-user'</span>,
+  <span class="vr">template</span>: <span class="st">`
+    <span class="ctrl">@if</span> (user.isLoading()) { &lt;p&gt;Lade…&lt;/p&gt; }
+    <span class="ctrl">@else if</span> (user.error()) { &lt;p&gt;Fehler!&lt;/p&gt; }
+    <span class="ctrl">@else</span> { &lt;h2&gt;{{ user.value()?.name }}&lt;/h2&gt; }
+  `</span>
+})
+<span class="kw">export class</span> <span class="cl">UserDetail</span> {
+  <span class="vr">id</span> = <span class="fn">input</span>.<span class="fn">required</span>&lt;<span class="tp">string</span>&gt;();
+
+  <span class="vr">user</span> = <span class="fn">resource</span>({
+    <span class="vr">params</span>: () =&gt; ({ <span class="vr">id</span>: <span class="kw">this</span>.<span class="vr">id</span>() }),
+    <span class="vr">loader</span>: <span class="kw">async</span> ({ <span class="vr">params</span> }) =&gt; {
+      <span class="kw">const</span> <span class="vr">res</span> = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="st">`/api/users/${<span class="vr">params</span>.<span class="vr">id</span>}`</span>);
+      <span class="kw">return</span> <span class="vr">res</span>.<span class="fn">json</span>();
+    }
+  });
+}</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <h5>Auto-Refetch</h5>
+      <p>Ändert sich <code>id</code>, lädt resource() neu.</p>
+      <h5>Reload</h5>
+      <p><code>user.reload()</code> erzwingt einen neuen Fetch.</p>
+      <h5>v22</h5>
+      <p>Stable und der empfohlene Weg für lokales Async-State.</p>
+    </div>
+  </div>
+
+  <h3>SSR &amp; Hydration</h3>
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · SSR</span>
+      <h5>Aktivieren</h5>
+      <p><code>ng add @angular/ssr</code> — fügt Server-Setup hinzu.</p>
+      <h5>Hydration</h5>
+      <p>Client übernimmt das vom Server gerenderte HTML, ohne neu zu zeichnen.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">app.config.ts (Server)</div>
+<pre><span class="kw">import</span> { <span class="fn">provideClientHydration</span>,
+         <span class="fn">withIncrementalHydration</span> }
+  <span class="kw">from</span> <span class="st">'@angular/platform-browser'</span>;
+
+<span class="kw">export const</span> <span class="vr">appConfig</span>: <span class="cl">ApplicationConfig</span> = {
+  <span class="vr">providers</span>: [
+    <span class="fn">provideClientHydration</span>(
+      <span class="fn">withIncrementalHydration</span>()
+    ),
+    <span class="fn">provideRouter</span>(<span class="vr">routes</span>)
+  ]
+};</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Tipp</span>
+      <h5>Vorteile</h5>
+      <p>Bessere SEO, schnelleres First Paint, smoother UX.</p>
+      <h5>Incremental Hydration</h5>
+      <p>Bestimmte Bereiche erst hydraten, wenn sichtbar/interagiert.</p>
+    </div>
+  </div>
+
+  <h3>@defer — Lazy Template Blocks</h3>
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Links · @defer</span>
+      <h5>Was?</h5>
+      <p>Lädt einen Template-Block (inkl. Components) erst, wenn ein Trigger feuert.</p>
+      <h5>Trigger</h5>
+      <p><code>on idle</code>, <code>on viewport</code>, <code>on interaction</code>, <code>on timer(2s)</code>, <code>when expr</code>.</p>
+      <h5>Slots</h5>
+      <p><code>@placeholder</code>, <code>@loading</code>, <code>@error</code> für die UX.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">page.html</div>
+<pre>&lt;h1&gt;Welcome&lt;/h1&gt;
+
+<span class="ctrl">@defer</span> (on viewport) {
+  &lt;app-comments /&gt;
+} <span class="ctrl">@placeholder</span> {
+  &lt;p&gt;Kommentare folgen…&lt;/p&gt;
+} <span class="ctrl">@loading</span> (minimum 200ms) {
+  &lt;p&gt;Lade Kommentare…&lt;/p&gt;
+} <span class="ctrl">@error</span> {
+  &lt;p&gt;Konnte nicht laden.&lt;/p&gt;
+}
+
+<span class="ctrl">@defer</span> (on interaction) {
+  &lt;app-heavy-widget /&gt;
+} <span class="ctrl">@placeholder</span> {
+  &lt;button&gt;Klick mich zum Laden&lt;/button&gt;
+}</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Rechts · Notiz</span>
+      <h5>Bundle-Splitting</h5>
+      <p>Angular splittet deferred Components automatisch in eigene Chunks.</p>
+      <h5>Kombinieren</h5>
+      <p>Mehrere Trigger: <code>on idle; on viewport</code>.</p>
+      <h5>prefetch</h5>
+      <p><code>prefetch on idle</code> lädt im Hintergrund, ohne zu rendern.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Geschafft</div>
+    <p>Du kennst jetzt Angular von Component bis Zoneless. Im nächsten Block folgt die <strong>CLI-Referenz</strong> mit allen wichtigen Terminal-Befehlen — perfekt zum Nachschlagen während du baust.</p>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- =============== CLI REFERENZ ========================= -->
+<!-- ====================================================== -->
+<div class="part">
+  <div class="part-label">Referenz</div>
+  <h2 class="part-title">Die <em>CLI</em> im Überblick</h2>
+  <p class="part-desc">Alle wichtigen Terminal-Befehle für den Alltag — von Projekt-Setup über Generate bis Build &amp; Deployment.</p>
+</div>
+
+<section id="cli">
+  <h2><span class="num">26</span> Terminal-Befehle</h2>
+  <p class="section-intro">Die Angular CLI (<code>ng</code>) deckt fast alles ab, was du im Alltag brauchst. Unten gruppiert nach Aufgabe — die meistgenutzten Befehle ganz oben.</p>
+
+  <div class="terminal">
+    <div class="terminal-bar"><div class="dots"><span></span><span></span><span></span></div><span>terminal — täglicher Workflow</span></div>
+    <div class="terminal-body">
+<span class="prompt">$</span> <span class="cmd">ng serve --open</span>          <span class="dim"># Dev-Server starten + Browser öffnen</span>
+<span class="prompt">$</span> <span class="cmd">ng generate component user</span>  <span class="dim"># neue Component anlegen</span>
+<span class="prompt">$</span> <span class="cmd">ng test</span>                   <span class="dim"># Tests laufen lassen</span>
+<span class="prompt">$</span> <span class="cmd">ng build --configuration=production</span> <span class="dim"># Build für Prod</span>
+    </div>
+  </div>
+
+  <h3 class="cli-group">Projekt &amp; Setup</h3>
+  <table class="cli-table">
+    <thead><tr><th>Befehl</th><th>Was er macht</th></tr></thead>
+    <tbody>
+      <tr><td>npm i -g @angular/cli</td><td>Angular CLI global installieren — danach steht <code>ng</code> überall zur Verfügung.</td></tr>
+      <tr><td>ng new &lt;name&gt;</td><td>Neues Projekt erstellen. Fragt nach Routing, Styles, SSR, Zoneless.</td></tr>
+      <tr><td>ng new my-app --routing --style=scss</td><td>Direkt mit Optionen — keine interaktiven Fragen.</td></tr>
+      <tr><td>ng new my-app --standalone --zoneless</td><td>Standalone + zoneless als Default.</td></tr>
+      <tr><td>ng version</td><td>Zeigt CLI- und Framework-Version (sehr nützlich beim Debugging).</td></tr>
+      <tr><td>ng config</td><td>Liest/setzt Konfig-Werte in <code>angular.json</code>.</td></tr>
+      <tr><td>ng analytics off</td><td>Telemetrie deaktivieren.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="cli-group">Entwicklung</h3>
+  <table class="cli-table">
+    <thead><tr><th>Befehl</th><th>Was er macht</th></tr></thead>
+    <tbody>
+      <tr><td>ng serve</td><td>Startet den Dev-Server auf <code>localhost:4200</code> mit Hot-Reload.</td></tr>
+      <tr><td>ng serve --open</td><td>Wie oben, öffnet zusätzlich den Browser.</td></tr>
+      <tr><td>ng serve --port 4300</td><td>Anderer Port (z.&nbsp;B. wenn 4200 belegt).</td></tr>
+      <tr><td>ng serve --host 0.0.0.0</td><td>Im LAN erreichbar machen — Test auf dem Handy z.&nbsp;B.</td></tr>
+      <tr><td>ng serve --ssl</td><td>Dev-Server mit HTTPS (selbst-signiert).</td></tr>
+      <tr><td>ng serve --configuration=staging</td><td>Mit einer spezifischen Build-Configuration starten.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="cli-group">Generate (ng g)</h3>
+  <table class="cli-table">
+    <thead><tr><th>Befehl</th><th>Was er macht</th></tr></thead>
+    <tbody>
+      <tr><td>ng g component &lt;name&gt;</td><td>Neue Component (TS + HTML + SCSS + Spec). Kurzform: <code>ng g c</code>.</td></tr>
+      <tr><td>ng g c user --inline-template --inline-style</td><td>Component mit Inline-Template/Styles (kompakter).</td></tr>
+      <tr><td>ng g c user --skip-tests</td><td>Ohne <code>.spec.ts</code>-Datei.</td></tr>
+      <tr><td>ng g service &lt;name&gt;</td><td>Neuer Service. Kurzform: <code>ng g s</code>.</td></tr>
+      <tr><td>ng g directive &lt;name&gt;</td><td>Neue Directive. Kurzform: <code>ng g d</code>.</td></tr>
+      <tr><td>ng g pipe &lt;name&gt;</td><td>Neue Pipe.</td></tr>
+      <tr><td>ng g guard &lt;name&gt;</td><td>Neuen Guard — fragt nach <code>canActivate</code>, <code>canDeactivate</code>, etc.</td></tr>
+      <tr><td>ng g interceptor &lt;name&gt;</td><td>Neuer HTTP-Interceptor.</td></tr>
+      <tr><td>ng g resolver &lt;name&gt;</td><td>Neuer Route-Resolver für Pre-Loading von Daten.</td></tr>
+      <tr><td>ng g interface &lt;name&gt;</td><td>Neues TypeScript-Interface.</td></tr>
+      <tr><td>ng g class &lt;name&gt;</td><td>Eine simple Klasse.</td></tr>
+      <tr><td>ng g enum &lt;name&gt;</td><td>Neues Enum.</td></tr>
+      <tr><td>ng g environments</td><td>Erstellt <code>environment.ts</code> &amp; <code>environment.prod.ts</code>.</td></tr>
+      <tr><td>ng g library &lt;name&gt;</td><td>Eine wiederverwendbare Library im Workspace.</td></tr>
+      <tr><td>ng g application &lt;name&gt;</td><td>Zweite App im selben Workspace.</td></tr>
+      <tr><td>ng g --help</td><td>Alle verfügbaren Schematics anzeigen.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="cli-group">Build &amp; Deployment</h3>
+  <table class="cli-table">
+    <thead><tr><th>Befehl</th><th>Was er macht</th></tr></thead>
+    <tbody>
+      <tr><td>ng build</td><td>Production-Build standardmässig. Output in <code>dist/</code>.</td></tr>
+      <tr><td>ng build --configuration=development</td><td>Dev-Build (unminified, mit Sourcemaps).</td></tr>
+      <tr><td>ng build --watch</td><td>Wie build, aber rebuilt bei jeder Änderung.</td></tr>
+      <tr><td>ng build --stats-json</td><td>Erzeugt <code>stats.json</code> für Bundle-Analyse.</td></tr>
+      <tr><td>ng build --output-path dist/v2</td><td>Output-Pfad ändern.</td></tr>
+      <tr><td>ng build --base-href /app/</td><td>Base-URL setzen — wichtig bei Sub-Path-Deploys.</td></tr>
+      <tr><td>ng build --source-map</td><td>Sourcemaps generieren (auch im Prod-Build).</td></tr>
+      <tr><td>ng deploy</td><td>Deploy via installierten Builder (z.&nbsp;B. Firebase, GitHub Pages).</td></tr>
+      <tr><td>ng add @angular/ssr</td><td>SSR/Hydration hinzufügen.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="cli-group">Testing &amp; Qualität</h3>
+  <table class="cli-table">
+    <thead><tr><th>Befehl</th><th>Was er macht</th></tr></thead>
+    <tbody>
+      <tr><td>ng test</td><td>Unit-Tests im Watch-Mode (seit v22 mit Vitest als Default).</td></tr>
+      <tr><td>ng test --watch=false</td><td>Tests einmal laufen (CI).</td></tr>
+      <tr><td>ng test --code-coverage</td><td>Erzeugt Coverage-Report unter <code>coverage/</code>.</td></tr>
+      <tr><td>ng e2e</td><td>End-to-End-Tests (Playwright/Cypress je nach Setup).</td></tr>
+      <tr><td>ng lint</td><td>Linting (nach <code>ng add @angular-eslint/schematics</code>).</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="cli-group">Update &amp; Erweitern</h3>
+  <table class="cli-table">
+    <thead><tr><th>Befehl</th><th>Was er macht</th></tr></thead>
+    <tbody>
+      <tr><td>ng update</td><td>Zeigt verfügbare Updates für Angular &amp; Dependencies.</td></tr>
+      <tr><td>ng update @angular/core @angular/cli</td><td>Aktualisiert Angular auf die neue Version (inkl. Code-Migrations).</td></tr>
+      <tr><td>ng update --all</td><td>Updates auf alles, was sich aktualisieren lässt.</td></tr>
+      <tr><td>ng update --next</td><td>Auch RC-/Next-Versionen einbeziehen.</td></tr>
+      <tr><td>ng add &lt;package&gt;</td><td>Package installieren + automatisch konfigurieren (z.&nbsp;B. <code>@angular/material</code>).</td></tr>
+      <tr><td>ng add @angular/material</td><td>Material UI hinzufügen — fragt nach Theme &amp; Animations.</td></tr>
+      <tr><td>ng add @angular/pwa</td><td>Progressive Web App: Manifest, Service Worker, Icons.</td></tr>
+      <tr><td>ng add @angular-eslint/schematics</td><td>ESLint-Setup.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="cli-group">npm-Helpers</h3>
+  <table class="cli-table">
+    <thead><tr><th>Befehl</th><th>Was er macht</th></tr></thead>
+    <tbody>
+      <tr><td>npm install</td><td>Alle Dependencies aus <code>package.json</code> installieren.</td></tr>
+      <tr><td>npm run start</td><td>Startet das Script <code>start</code> — meist <code>ng serve</code>.</td></tr>
+      <tr><td>npm run build</td><td>Startet das Script <code>build</code>.</td></tr>
+      <tr><td>npm i &lt;pkg&gt;</td><td>Package als Dependency hinzufügen.</td></tr>
+      <tr><td>npm i -D &lt;pkg&gt;</td><td>Package als Dev-Dependency.</td></tr>
+      <tr><td>npm outdated</td><td>Welche Pakete haben Updates?</td></tr>
+      <tr><td>npx ng &lt;cmd&gt;</td><td>CLI ausführen, ohne global installiert zu sein.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="cli-group">Flags &amp; Tricks</h3>
+  <table class="cli-table">
+    <thead><tr><th>Flag / Trick</th><th>Wirkung</th></tr></thead>
+    <tbody>
+      <tr><td>--dry-run / -d</td><td>Zeigt, was passieren würde — ohne Dateien zu schreiben.</td></tr>
+      <tr><td>--skip-tests</td><td>Generiert keine <code>.spec.ts</code>-Files.</td></tr>
+      <tr><td>--flat</td><td>Erzeugt keinen eigenen Ordner für die Component.</td></tr>
+      <tr><td>--export</td><td>Bei Library-Components: in der Public-API exportieren.</td></tr>
+      <tr><td>--path src/app/features/&lt;x&gt;</td><td>Zielordner explizit setzen.</td></tr>
+      <tr><td>--project &lt;name&gt;</td><td>In Multi-Project-Workspaces: welches Projekt.</td></tr>
+      <tr><td>ng &lt;cmd&gt; --help</td><td>Hilfe zu jedem Befehl ausgeben — viel besser als googeln.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-label">Tipp</div>
+    <p>Lege dir Aliase an: <code>alias ngs="ng serve --open"</code>, <code>alias ngb="ng build"</code>, <code>alias ngg="ng generate"</code> — spart pro Tag mehrere Minuten Tippen.</p>
+  </div>
+</section>
+
+<footer>
+  Angular · Dokumentation · Juni 2026 · v22
+</footer>
+
+</div>
+</body>
+</html>
