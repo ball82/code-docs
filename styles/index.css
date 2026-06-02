@@ -1,65 +1,137 @@
-nav{
-    margin-top: 40px;;
+  :root {
+    --bg: #14110d;
+    --bg-2: #1c1812;
+    --surface: #23201a;
+    --surface-2: #2a2620;
+    --border: #3a3530;
+    --text: #f0e6d4;
+    --text-dim: #b8aa92;
+    --text-mute: #7a7060;
+    --ts: #3178c6;
+    --ts-light: #5a9fe6;
+    --amber: #e8a64a;
+    --green: #8bc46a;
+    --red: #e07560;
+    --purple: #c084fc;
+    --pink: #f472b6;
+    --code-bg: #0f0d0a;
+  }
+
+* {
+    box-sizing: border-box;
+    
+}
+
+.mySlides1 {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(45%, 420px);
+    max-width: 420px;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.25);
+    transition: transform 0.6s ease, opacity 0.6s ease, filter 0.6s ease;
+    text-align: center;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+}
+
+
+.mySlides1.active {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-}
-
-.nav-item {
-    display: flex;
+    align-content: center;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 1.25rem;
-    color: #333;
-    text-decoration: none;
-    flex-direction: column-reverse;
+    height: 50vh;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 2;
 }
 
-
-
-
-* {box-sizing: border-box}
-
-
-.mySlides1{
-    display: none
+.mySlides1.prev {
+    opacity: 0.08;
+    transform: translate(-125%, -50%) scale(0.82);
+    z-index: 1;
 }
-img {
-    vertical-align: middle;
+
+.mySlides1.next {
+    opacity: 0.08;
+    transform: translate(25%, -50%) scale(0.82);
+    z-index: 1;
+}
+
+.mySlides1.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.7);
+}
+
+.numbertext {
+    margin-top: 1.25rem;
+    font-size: 3rem;
+    color: #fff;
 }
 
 /* Slideshow container */
 .slideshow-container {
-    max-width: 1000px;
+    height: 100vh;
     position: relative;
-    margin: auto;
+    overflow: hidden;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+}
+.nav-dots {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
 }
 
 /* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+.prev{
+    cursor: pointer;
+    position: absolute;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 110px;
+    transition: 0.6s ease;
+    left: 20px;
+
+}
+svg {
+    width: 288px;
+    height: 288px;
+}
+.next {
+    cursor: pointer;
+    position: absolute;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 110px;
+    right: 20px;
+    transition: 0.6s ease;
+    border-radius: 23px 0 0 23px;
 }
 
 /* Position the "next button" to the right */
 .next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
+    right: 0;
+     border-radius: 0 23px 23px 0;
 }
 
 /* On hover, add a grey background color */
-.prev:hover, .next:hover {
-  background-color: #f1f1f1;
-  color: rgb(255, 255, 255);
+.prev:hover,
+.next:hover {
+    background-color: #f1f1f126;
+    color: rgba(255, 255, 255, 0.528);
 }
