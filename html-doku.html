@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML — Vom Anfänger zum Fortgeschrittenen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+  <div class="page">
+
+    <a class="back-to-top" href="#top" aria-label="Nach oben">
+      <svg xmlns="http://www.w3.org/2000/svg" height="58px" viewBox="0 0 640 640">
+        <path fill="rgb(232, 166, 73)"
+          d="M320 112C434.9 112 528 205.1 528 320C528 434.9 434.9 528 320 528C205.1 528 112 434.9 112 320C112 205.1 205.1 112 320 112zM320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM331.3 188.7C325.1 182.5 314.9 182.5 308.7 188.7L204.7 292.7C200.1 297.3 198.8 304.2 201.2 310.1C203.6 316 209.5 320 216 320L288 320L288 424C288 437.3 298.7 448 312 448L328 448C341.3 448 352 437.3 352 424L352 320L424 320C430.5 320 436.3 316.1 438.8 310.1C441.3 304.1 439.9 297.2 435.3 292.7L331.3 188.7z" />
+      </svg>
+    </a>
+
+
+    <header class="hero">
+      <a href="../index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0,0,256,256">
+          <g fill="#e8a64a" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none"
+            font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+            <g transform="scale(10.66667,10.66667)">
+              <path d="M12,2.09961l-11,9.90039h3v9h6v-7h4v7h6v-9h3z"></path>
+            </g>
+          </g>
+        </svg>
+      </a>
+
+      <div class="eyebrow">Dokumentation · Stand 2026 · HTML Living Standard</div>
+      <h1>HTML<br><em>von A bis Z</em></h1>
+      <p class="lede">Eine vollständige Reise durch HTML — von deinem ersten Tag bis zu Web Components, Accessibility
+        und Performance. Jedes Beispiel mit Erklärung links, Code in der Mitte, Notizen rechts.</p>
+      <div class="meta">
+        <span><strong>Standard</strong>HTML Living Standard</span>
+        <span><strong>Niveau</strong>Anfänger → Fortgeschritten</span>
+        <span><strong>Kapitel</strong>25 + Referenz</span>
+        <span><strong>Voraussetzung</strong>Keine</span>
+      </div>
+    </header>
+
+    <nav class="toc">
+      <div class="toc-title">Inhalt</div>
+      <div class="toc-grid">
+        <div class="toc-col">
+          <h4>Teil I — Anfänger</h4>
+          <ol>
+            <li><a href="#was-ist-html">Was ist HTML?</a></li>
+            <li><a href="#grundgeruest">Das Grundgerüst</a></li>
+            <li><a href="#text">Text-Elemente</a></li>
+            <li><a href="#links">Links &amp; Navigation</a></li>
+            <li><a href="#bilder">Bilder &amp; Medien</a></li>
+            <li><a href="#listen">Listen</a></li>
+            <li><a href="#tabellen">Tabellen</a></li>
+            <li><a href="#formulare">Formulare — Grundlagen</a></li>
+            <li><a href="#semantik">Semantische Elemente</a></li>
+          </ol>
+        </div>
+        <div class="toc-col">
+          <h4>Teil II — Mittelstufe</h4>
+          <ol>
+            <li><a href="#forms-adv">Formulare — Fortgeschritten</a></li>
+            <li><a href="#meta">Meta-Tags &amp; SEO</a></li>
+            <li><a href="#inline-block">Inline vs. Block</a></li>
+            <li><a href="#attribute">Globale Attribute</a></li>
+            <li><a href="#einbetten">Einbetten (iframe, video)</a></li>
+            <li><a href="#responsive-img">Responsive Bilder</a></li>
+            <li><a href="#details-dialog">Details &amp; Dialog</a></li>
+            <li><a href="#template-slot">Template &amp; Slot</a></li>
+          </ol>
+        </div>
+        <div class="toc-col">
+          <h4>Teil III — Fortgeschritten</h4>
+          <ol>
+            <li><a href="#a11y">Accessibility (ARIA)</a></li>
+            <li><a href="#web-components">Web Components</a></li>
+            <li><a href="#canvas">Canvas</a></li>
+            <li><a href="#svg">SVG</a></li>
+            <li><a href="#microdata">Microdata &amp; Structured Data</a></li>
+            <li><a href="#security">Content Security</a></li>
+            <li><a href="#performance">Performance &amp; Loading</a></li>
+            <li><a href="#best-practices">Best Practices &amp; Validierung</a></li>
+          </ol>
+          <h4 style="margin-top:24px;">Referenz</h4>
+          <ol>
+            <li><a href="#ref">Emmet-Shortcuts &amp; Tag-Übersicht</a></li>
+          </ol>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ==================== TEIL I ==================== -->
+    <div class="part">
+      <div class="part-label">Teil I</div>
+      <h2 class="part-title">Die <em>Grundlagen</em></h2>
+      <p class="part-desc">Was ist HTML, wie sieht ein Dokument aus, und welche Tags brauchst du für Text, Links,
+        Bilder, Listen, Tabellen und Formulare?</p>
+    </div>
+
+    <!-- 01 -->
+    <section id="was-ist-html">
+      <h2><span class="num">01</span> Was ist HTML?</h2>
+      <p class="section-intro"><strong>HTML</strong> (HyperText Markup Language) ist die Struktur-Sprache des Webs.
+        Jeder Inhalt, den du im Browser siehst — Text, Bilder, Buttons, Videos — steckt in HTML-Tags. HTML beschreibt
+        <em>was</em> auf der Seite ist (Überschrift, Absatz, Link), nicht <em>wie</em> es aussieht (das macht CSS).
+      </p>
+      <ul>
+        <li><strong>Tags</strong> — Anweisungen in spitzen Klammern: <code>&lt;p&gt;Text&lt;/p&gt;</code></li>
+        <li><strong>Attribute</strong> — Zusatzinfos im öffnenden Tag: <code>&lt;a href="..."&gt;</code></li>
+        <li><strong>Verschachtelt</strong> — Tags enthalten andere Tags = DOM-Baum</li>
+        <li><strong>Living Standard</strong> — HTML wird laufend aktualisiert (kein "HTML6")</li>
+      </ul>
+    </section>
+
+    <!-- 02 -->
+    <section id="grundgeruest">
+      <h2><span class="num">02</span> Das Grundgerüst</h2>
+      <p class="section-intro">Jede HTML-Datei folgt dem gleichen Aufbau: DOCTYPE, <code>&lt;html&gt;</code>,
+        <code>&lt;head&gt;</code> (Metadaten) und <code>&lt;body&gt;</code> (sichtbarer Inhalt).
+      </p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Aufbau</span>
+          <h5>&lt;!DOCTYPE html&gt;</h5>
+          <p>Sagt dem Browser: "Dies ist modernes HTML." Immer erste Zeile.</p>
+          <h5>&lt;html lang="de"&gt;</h5>
+          <p>Wurzelelement. <code>lang</code> hilft Screenreadern und Google.</p>
+          <h5>&lt;head&gt;</h5>
+          <p>Unsichtbar: Titel, Zeichensatz, Viewport, CSS-Links, Favicons.</p>
+          <h5>&lt;body&gt;</h5>
+          <p>Alles, was der User sieht und mit dem er interagiert.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">index.html</div>
+          <pre><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="atv">"de"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="atv">"UTF-8"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="atv">"viewport"</span>
+        <span class="attr">content</span>=<span class="atv">"width=device-width,
+                 initial-scale=1.0"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;title&gt;</span>Meine Seite<span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+  <span class="tag">&lt;h1&gt;</span>Hallo Welt!<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;p&gt;</span>Mein erstes HTML-Dokument.<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipps</span>
+          <h5>charset UTF-8</h5>
+          <p>Immer setzen — sonst Zeichensalat bei ä, ö, ü, é, etc.</p>
+          <h5>viewport</h5>
+          <p>Ohne das ist deine Seite auf dem Handy winzig.</p>
+          <h5>title</h5>
+          <p>Erscheint im Browser-Tab und in Google-Ergebnissen.</p>
+        </div>
+      </div>
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><span></span><span></span><span></span></div> index.html
+        </div>
+        <div class="browser-body">
+          <h1>Hallo Welt!</h1>
+          <p>Mein erstes HTML-Dokument.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section id="text">
+      <h2><span class="num">03</span> Text-Elemente</h2>
+      <p class="section-intro">Überschriften (<code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code>), Absätze
+        (<code>&lt;p&gt;</code>), Hervorhebungen (<code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>), Zeilenumbrüche
+        (<code>&lt;br&gt;</code>) und thematische Trennlinien (<code>&lt;hr&gt;</code>).</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Tags</span>
+          <h5>h1–h6</h5>
+          <p>Hierarchische Überschriften. <code>h1</code> = wichtigste, nur einmal pro Seite.</p>
+          <h5>p</h5>
+          <p>Absatz — das Standard-Element für Fliesstext.</p>
+          <h5>strong / em</h5>
+          <p><code>strong</code> = wichtig (fett). <code>em</code> = betont (kursiv). Nicht für Styling — dafür CSS.</p>
+          <h5>br / hr</h5>
+          <p>Zeilenumbruch / horizontale Linie. Selbstschliessend.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">text.html</div>
+          <pre><span class="tag">&lt;h1&gt;</span>Hauptüberschrift<span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;h2&gt;</span>Unterkapitel<span class="tag">&lt;/h2&gt;</span>
+<span class="tag">&lt;h3&gt;</span>Abschnitt<span class="tag">&lt;/h3&gt;</span>
+
+<span class="tag">&lt;p&gt;</span>Das ist ein <span class="tag">&lt;strong&gt;</span>wichtiger<span class="tag">&lt;/strong&gt;</span>
+   Absatz mit <span class="tag">&lt;em&gt;</span>Betonung<span class="tag">&lt;/em&gt;</span>.<span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;p&gt;</span>Zeile eins<span class="tag">&lt;br&gt;</span>
+   Zeile zwei<span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;hr&gt;</span>
+
+<span class="tag">&lt;p&gt;</span>Weitere Tags:
+  <span class="tag">&lt;small&gt;</span>klein<span class="tag">&lt;/small&gt;</span>,
+  <span class="tag">&lt;mark&gt;</span>markiert<span class="tag">&lt;/mark&gt;</span>,
+  <span class="tag">&lt;del&gt;</span>gelöscht<span class="tag">&lt;/del&gt;</span>,
+  <span class="tag">&lt;ins&gt;</span>eingefügt<span class="tag">&lt;/ins&gt;</span>,
+  <span class="tag">&lt;code&gt;</span>Code<span class="tag">&lt;/code&gt;</span>
+<span class="tag">&lt;/p&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Hinweis</span>
+          <h5>Semantik zählt</h5>
+          <p><code>&lt;strong&gt;</code> heisst "wichtig" für Screenreader. <code>&lt;b&gt;</code> ist nur visuell fett
+            — ohne Bedeutung.</p>
+          <h5>Nur ein h1</h5>
+          <p>Google und Screenreader erwarten genau eine <code>h1</code> pro Seite.</p>
+          <h5>mark</h5>
+          <p>Highlight — ideal für Suchergebnisse.</p>
+        </div>
+      </div>
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><span></span><span></span><span></span></div> text.html
+        </div>
+        <div class="browser-body">
+          <h1>Hauptüberschrift</h1>
+          <h2>Unterkapitel</h2>
+          <h3 style="font-size:16px;">Abschnitt</h3>
+          <p>Das ist ein <strong>wichtiger</strong> Absatz mit <em>Betonung</em>.</p>
+          <p>Zeile eins<br>Zeile zwei</p>
+          <hr style="border:none;border-top:1px solid #ccc;margin:10px 0;">
+          <p>Weitere Tags: <small>klein</small>, <mark>markiert</mark>, <del>gelöscht</del>, <ins>eingefügt</ins>, <code
+              style="background:#eee;padding:2px 4px;border-radius:3px;font-size:12px;">Code</code></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section id="links">
+      <h2><span class="num">04</span> Links &amp; Navigation</h2>
+      <p class="section-intro">Der <code>&lt;a&gt;</code>-Tag macht das Web zum Web — er verbindet Seiten miteinander.
+        Das <code>href</code>-Attribut sagt, wohin es geht.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Arten</span>
+          <h5>Extern</h5>
+          <p>Volle URL: <code>https://...</code></p>
+          <h5>Intern</h5>
+          <p>Relativer Pfad: <code>about.html</code>, <code>./kontakt</code></p>
+          <h5>Anker</h5>
+          <p><code>#id</code> — springt zu einem Element auf der gleichen Seite.</p>
+          <h5>E-Mail / Telefon</h5>
+          <p><code>mailto:</code> und <code>tel:</code>-Protokolle.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">links.html</div>
+          <pre><span class="cm">&lt;!-- Externe Links --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="atv">"https://example.com"</span><span class="tag">&gt;</span>
+  Externe Seite
+<span class="tag">&lt;/a&gt;</span>
+
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="atv">"https://example.com"</span>
+   <span class="attr">target</span>=<span class="atv">"_blank"</span>
+   <span class="attr">rel</span>=<span class="atv">"noopener noreferrer"</span><span class="tag">&gt;</span>
+  In neuem Tab
+<span class="tag">&lt;/a&gt;</span>
+
+<span class="cm">&lt;!-- Interne Links --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="atv">"about.html"</span><span class="tag">&gt;</span>Über uns<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="atv">"#kontakt"</span><span class="tag">&gt;</span>Zum Kontakt<span class="tag">&lt;/a&gt;</span>
+
+<span class="cm">&lt;!-- Spezial-Protokolle --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="atv">"mailto:hi@example.com"</span><span class="tag">&gt;</span>Mail<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="atv">"tel:+41791234567"</span><span class="tag">&gt;</span>Anrufen<span class="tag">&lt;/a&gt;</span>
+
+<span class="cm">&lt;!-- Download --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="atv">"report.pdf"</span> <span class="attr">download</span><span class="tag">&gt;</span>PDF laden<span class="tag">&lt;/a&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Sicherheit</span>
+          <h5>target="_blank"</h5>
+          <p>Öffnet neuen Tab. Immer mit <code>rel="noopener noreferrer"</code> — verhindert Sicherheitslücken.</p>
+          <h5>download</h5>
+          <p>Erzwingt Download statt Navigation.</p>
+          <h5>Keine leeren href</h5>
+          <p><code>href="#"</code> oder <code>href=""</code> vermeiden — erzeugt unnötige Navigations-Events.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section id="bilder">
+      <h2><span class="num">05</span> Bilder &amp; Medien</h2>
+      <p class="section-intro"><code>&lt;img&gt;</code> für Bilder, <code>&lt;video&gt;</code> und
+        <code>&lt;audio&gt;</code> für Medien. Alle drei sind selbstschliessend oder Container-Elemente mit
+        Fallback-Inhalt.
+      </p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Elemente</span>
+          <h5>img</h5>
+          <p>Selbstschliessend. <code>src</code> = Quelle, <code>alt</code> = Beschreibung (Pflicht!).</p>
+          <h5>figure + figcaption</h5>
+          <p>Bild mit Beschriftung — semantisch sauber.</p>
+          <h5>video / audio</h5>
+          <p>Native Player. <code>controls</code> zeigt Play/Pause-Leiste.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">medien.html</div>
+          <pre><span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="atv">"katze.jpg"</span>
+     <span class="attr">alt</span>=<span class="atv">"Eine orange Katze auf dem Sofa"</span>
+     <span class="attr">width</span>=<span class="atv">"600"</span>
+     <span class="attr">height</span>=<span class="atv">"400"</span>
+     <span class="attr">loading</span>=<span class="atv">"lazy"</span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;figure&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="atv">"chart.png"</span> <span class="attr">alt</span>=<span class="atv">"Q3 Umsatz"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;figcaption&gt;</span>Umsatzentwicklung Q3<span class="tag">&lt;/figcaption&gt;</span>
+<span class="tag">&lt;/figure&gt;</span>
+
+<span class="tag">&lt;video</span> <span class="attr">controls</span> <span class="attr">width</span>=<span class="atv">"640"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attr">src</span>=<span class="atv">"clip.mp4"</span> <span class="attr">type</span>=<span class="atv">"video/mp4"</span><span class="tag">&gt;</span>
+  Dein Browser unterstützt kein Video.
+<span class="tag">&lt;/video&gt;</span>
+
+<span class="tag">&lt;audio</span> <span class="attr">controls</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attr">src</span>=<span class="atv">"song.mp3"</span> <span class="attr">type</span>=<span class="atv">"audio/mpeg"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/audio&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipps</span>
+          <h5>alt-Text</h5>
+          <p>Beschreibt, was auf dem Bild zu sehen ist. Leer lassen (<code>alt=""</code>) nur bei dekorativen Bildern.
+          </p>
+          <h5>width + height</h5>
+          <p>Verhindert Layout-Shifts beim Laden — Browser reserviert den Platz.</p>
+          <h5>loading="lazy"</h5>
+          <p>Bild wird erst geladen, wenn es in den Viewport scrollt.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 -->
+    <section id="listen">
+      <h2><span class="num">06</span> Listen</h2>
+      <p class="section-intro">Ungeordnet (<code>&lt;ul&gt;</code>), geordnet (<code>&lt;ol&gt;</code>) und
+        Definitionslisten (<code>&lt;dl&gt;</code>). Listen sind auch die Basis für Navigation-Menüs.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Typen</span>
+          <h5>ul</h5>
+          <p>Aufzählung ohne Reihenfolge — Punkte.</p>
+          <h5>ol</h5>
+          <p>Nummerierte Liste — Reihenfolge zählt.</p>
+          <h5>dl / dt / dd</h5>
+          <p>Begriffe (<code>dt</code>) mit Definitionen (<code>dd</code>). Ideal für FAQs, Glossare.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">listen.html</div>
+          <pre><span class="tag">&lt;ul&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Äpfel<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Bananen<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Kirschen<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+
+<span class="tag">&lt;ol</span> <span class="attr">start</span>=<span class="atv">"3"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Dritter Schritt<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Vierter Schritt<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span>
+
+<span class="tag">&lt;dl&gt;</span>
+  <span class="tag">&lt;dt&gt;</span>HTML<span class="tag">&lt;/dt&gt;</span>
+  <span class="tag">&lt;dd&gt;</span>HyperText Markup Language<span class="tag">&lt;/dd&gt;</span>
+  <span class="tag">&lt;dt&gt;</span>CSS<span class="tag">&lt;/dt&gt;</span>
+  <span class="tag">&lt;dd&gt;</span>Cascading Style Sheets<span class="tag">&lt;/dd&gt;</span>
+<span class="tag">&lt;/dl&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Notiz</span>
+          <h5>Verschachtelung</h5>
+          <p>Listen in Listen = Untermenüs. <code>&lt;li&gt;</code> kann eine eigene <code>&lt;ul&gt;</code> enthalten.
+          </p>
+          <h5>start / reversed</h5>
+          <p><code>&lt;ol start="5"&gt;</code> zählt ab 5. <code>&lt;ol reversed&gt;</code> zählt rückwärts.</p>
+          <h5>Navigation</h5>
+          <p><code>&lt;nav&gt;&lt;ul&gt;...&lt;/ul&gt;&lt;/nav&gt;</code> = semantisch korrekte Navigation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 -->
+    <section id="tabellen">
+      <h2><span class="num">07</span> Tabellen</h2>
+      <p class="section-intro">Tabellen sind für tabellarische Daten — nicht für Layout! Mit <code>&lt;thead&gt;</code>,
+        <code>&lt;tbody&gt;</code> und <code>&lt;th&gt;</code> wird die Struktur klar.
+      </p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Aufbau</span>
+          <h5>table</h5>
+          <p>Container für die gesamte Tabelle.</p>
+          <h5>thead / tbody / tfoot</h5>
+          <p>Logische Gruppen: Kopf, Körper, Fuss.</p>
+          <h5>th vs td</h5>
+          <p><code>th</code> = Header-Zelle (fett, zentriert). <code>td</code> = Daten-Zelle.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">tabelle.html</div>
+          <pre><span class="tag">&lt;table&gt;</span>
+  <span class="tag">&lt;thead&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;th&gt;</span>Name<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th&gt;</span>Alter<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th&gt;</span>Stadt<span class="tag">&lt;/th&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;/thead&gt;</span>
+  <span class="tag">&lt;tbody&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;td&gt;</span>Mara<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>28<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>Zürich<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;td&gt;</span>Lukas<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>34<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>Bern<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;/tbody&gt;</span>
+<span class="tag">&lt;/table&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>colspan / rowspan</h5>
+          <p><code>&lt;td colspan="2"&gt;</code> — Zelle erstreckt sich über 2 Spalten.</p>
+          <h5>caption</h5>
+          <p><code>&lt;caption&gt;Mitarbeiterliste&lt;/caption&gt;</code> als erstes Kind — beschreibt die Tabelle.</p>
+          <h5>scope</h5>
+          <p><code>&lt;th scope="col"&gt;</code> verbessert Accessibility für Screenreader.</p>
+        </div>
+      </div>
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><span></span><span></span><span></span></div> tabelle.html
+        </div>
+        <div class="browser-body">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Alter</th>
+                <th>Stadt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mara</td>
+                <td>28</td>
+                <td>Zürich</td>
+              </tr>
+              <tr>
+                <td>Lukas</td>
+                <td>34</td>
+                <td>Bern</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 -->
+    <section id="formulare">
+      <h2><span class="num">08</span> Formulare — Grundlagen</h2>
+      <p class="section-intro"><code>&lt;form&gt;</code> sammelt User-Eingaben. Jedes Eingabefeld braucht ein
+        <code>&lt;label&gt;</code> — verbunden über <code>for</code>/<code>id</code>.
+      </p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Elemente</span>
+          <h5>form</h5>
+          <p>Container. <code>action</code> = Ziel-URL, <code>method</code> = GET oder POST.</p>
+          <h5>input</h5>
+          <p>Das Schweizer Taschenmesser: <code>type="text"</code>, <code>email</code>, <code>password</code>,
+            <code>number</code>, <code>date</code>, <code>checkbox</code>, <code>radio</code>, ...
+          </p>
+          <h5>label</h5>
+          <p>Klick auf Label = Fokus aufs Feld. Pflicht für Accessibility.</p>
+          <h5>button</h5>
+          <p><code>type="submit"</code> (Standard) sendet das Formular.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">form.html</div>
+          <pre><span class="tag">&lt;form</span> <span class="attr">action</span>=<span class="atv">"/api/register"</span> <span class="attr">method</span>=<span class="atv">"POST"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="atv">"name"</span><span class="tag">&gt;</span>Name<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="atv">"name"</span> <span class="attr">type</span>=<span class="atv">"text"</span>
+         <span class="attr">placeholder</span>=<span class="atv">"Max Muster"</span>
+         <span class="attr">required</span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="atv">"email"</span><span class="tag">&gt;</span>E-Mail<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="atv">"email"</span> <span class="attr">type</span>=<span class="atv">"email"</span> <span class="attr">required</span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="atv">"pw"</span><span class="tag">&gt;</span>Passwort<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="atv">"pw"</span> <span class="attr">type</span>=<span class="atv">"password"</span>
+         <span class="attr">minlength</span>=<span class="atv">"8"</span> <span class="attr">required</span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;label&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="atv">"checkbox"</span> <span class="attr">required</span><span class="tag">&gt;</span>
+    AGB akzeptieren
+  <span class="tag">&lt;/label&gt;</span>
+
+  <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="atv">"submit"</span><span class="tag">&gt;</span>Registrieren<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/form&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Validierung</span>
+          <h5>required</h5>
+          <p>Feld muss ausgefüllt sein — Browser zeigt Fehlermeldung.</p>
+          <h5>type="email"</h5>
+          <p>Browser prüft automatisch auf gültige E-Mail.</p>
+          <h5>minlength / maxlength</h5>
+          <p>Längen-Beschränkung direkt im HTML.</p>
+          <h5>pattern</h5>
+          <p>Eigene Regex: <code>pattern="[0-9]{5}"</code> = 5 Ziffern.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 -->
+    <section id="semantik">
+      <h2><span class="num">09</span> Semantische Elemente</h2>
+      <p class="section-intro">Semantische Tags geben dem Inhalt <strong>Bedeutung</strong> — nicht nur Aussehen.
+        <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>,
+        <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>.
+      </p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Tags</span>
+          <h5>header</h5>
+          <p>Kopfbereich — Logo, Navigation, Titel.</p>
+          <h5>nav</h5>
+          <p>Navigations-Block — Hauptmenü, Breadcrumbs.</p>
+          <h5>main</h5>
+          <p>Der einzigartige Hauptinhalt. Nur einmal pro Seite.</p>
+          <h5>article / section</h5>
+          <p><code>article</code> = eigenständiger Inhalt (Blogpost). <code>section</code> = thematischer Abschnitt.</p>
+          <h5>aside</h5>
+          <p>Sidebar, verwandter Content, Werbung.</p>
+          <h5>footer</h5>
+          <p>Fussbereich — Copyright, Links, Kontakt.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">layout.html</div>
+          <pre><span class="tag">&lt;body&gt;</span>
+  <span class="tag">&lt;header&gt;</span>
+    <span class="tag">&lt;h1&gt;</span>Mein Blog<span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;nav&gt;</span>
+      <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="atv">"/"</span><span class="tag">&gt;</span>Home<span class="tag">&lt;/a&gt;</span>
+      <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="atv">"/about"</span><span class="tag">&gt;</span>Über<span class="tag">&lt;/a&gt;</span>
+    <span class="tag">&lt;/nav&gt;</span>
+  <span class="tag">&lt;/header&gt;</span>
+
+  <span class="tag">&lt;main&gt;</span>
+    <span class="tag">&lt;article&gt;</span>
+      <span class="tag">&lt;h2&gt;</span>Erster Post<span class="tag">&lt;/h2&gt;</span>
+      <span class="tag">&lt;p&gt;</span>Inhalt...<span class="tag">&lt;/p&gt;</span>
+      <span class="tag">&lt;time</span> <span class="attr">datetime</span>=<span class="atv">"2026-06-02"</span><span class="tag">&gt;</span>
+        2. Juni 2026
+      <span class="tag">&lt;/time&gt;</span>
+    <span class="tag">&lt;/article&gt;</span>
+    <span class="tag">&lt;aside&gt;</span>
+      <span class="tag">&lt;h3&gt;</span>Kategorien<span class="tag">&lt;/h3&gt;</span>
+      <span class="tag">&lt;ul&gt;</span>...<span class="tag">&lt;/ul&gt;</span>
+    <span class="tag">&lt;/aside&gt;</span>
+  <span class="tag">&lt;/main&gt;</span>
+
+  <span class="tag">&lt;footer&gt;</span>
+    <span class="tag">&lt;p&gt;</span>&amp;copy; 2026<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/footer&gt;</span>
+<span class="tag">&lt;/body&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Warum?</span>
+          <h5>SEO</h5>
+          <p>Google versteht die Seitenstruktur besser.</p>
+          <h5>Accessibility</h5>
+          <p>Screenreader können direkt zum <code>main</code> oder <code>nav</code> springen.</p>
+          <h5>time</h5>
+          <p><code>datetime</code>-Attribut = maschinenlesbares Datum.</p>
+          <h5>div = letzter Ausweg</h5>
+          <p>Nur <code>&lt;div&gt;</code> nutzen, wenn kein semantisches Element passt.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TEIL II ==================== -->
+    <div class="part">
+      <div class="part-label">Teil II</div>
+      <h2 class="part-title">Mehr <em>Kontrolle</em></h2>
+      <p class="part-desc">Formulare mit Validierung, Meta-Tags für SEO, responsive Bilder, interaktive Elemente wie
+        Dialog, und das Template-Element für Web Components.</p>
+    </div>
+
+    <!-- 10 -->
+    <section id="forms-adv">
+      <h2><span class="num">10</span> Formulare — Fortgeschritten</h2>
+      <p class="section-intro"><code>&lt;select&gt;</code>, <code>&lt;textarea&gt;</code>,
+        <code>&lt;fieldset&gt;</code>, <code>&lt;datalist&gt;</code> und die ganzen Input-Typen, die dir Validierung
+        gratis geben.
+      </p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Elemente</span>
+          <h5>select + option</h5>
+          <p>Dropdown-Auswahl. <code>multiple</code> = Mehrfachauswahl.</p>
+          <h5>textarea</h5>
+          <p>Mehrzeiliges Textfeld. <code>rows</code>/<code>cols</code> für Grösse.</p>
+          <h5>fieldset + legend</h5>
+          <p>Gruppiert Felder visuell und semantisch.</p>
+          <h5>datalist</h5>
+          <p>Autocomplete-Vorschläge für ein Input-Feld.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">form-adv.html</div>
+          <pre><span class="tag">&lt;fieldset&gt;</span>
+  <span class="tag">&lt;legend&gt;</span>Persönliche Daten<span class="tag">&lt;/legend&gt;</span>
+
+  <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="atv">"land"</span><span class="tag">&gt;</span>Land<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;select</span> <span class="attr">id</span>=<span class="atv">"land"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="atv">""</span><span class="tag">&gt;</span>Bitte wählen<span class="tag">&lt;/option&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="atv">"ch"</span><span class="tag">&gt;</span>Schweiz<span class="tag">&lt;/option&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="atv">"de"</span><span class="tag">&gt;</span>Deutschland<span class="tag">&lt;/option&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="atv">"at"</span><span class="tag">&gt;</span>Österreich<span class="tag">&lt;/option&gt;</span>
+  <span class="tag">&lt;/select&gt;</span>
+
+  <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="atv">"bio"</span><span class="tag">&gt;</span>Bio<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;textarea</span> <span class="attr">id</span>=<span class="atv">"bio"</span> <span class="attr">rows</span>=<span class="atv">"4"</span>
+    <span class="attr">maxlength</span>=<span class="atv">"500"</span>
+    <span class="attr">placeholder</span>=<span class="atv">"Erzähl von dir..."</span><span class="tag">&gt;&lt;/textarea&gt;</span>
+
+  <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="atv">"city"</span><span class="tag">&gt;</span>Stadt<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="atv">"city"</span> <span class="attr">list</span>=<span class="atv">"staedte"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;datalist</span> <span class="attr">id</span>=<span class="atv">"staedte"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="atv">"Zürich"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="atv">"Bern"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="atv">"Basel"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;/datalist&gt;</span>
+
+  <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="atv">"dob"</span><span class="tag">&gt;</span>Geburtsdatum<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="atv">"dob"</span> <span class="attr">type</span>=<span class="atv">"date"</span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="atv">"range"</span> <span class="attr">min</span>=<span class="atv">"0"</span> <span class="attr">max</span>=<span class="atv">"100"</span> <span class="attr">value</span>=<span class="atv">"50"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="atv">"color"</span> <span class="attr">value</span>=<span class="atv">"#e44d26"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/fieldset&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipps</span>
+          <h5>Input-Typen</h5>
+          <p><code>date</code>, <code>time</code>, <code>color</code>, <code>range</code>, <code>search</code>,
+            <code>url</code>, <code>tel</code>, <code>file</code> — Browser liefert native UI.
+          </p>
+          <h5>autocomplete</h5>
+          <p><code>autocomplete="email"</code> füllt gespeicherte Daten automatisch ein.</p>
+          <h5>optgroup</h5>
+          <p>Gruppiert Optionen in einem Select: <code>&lt;optgroup label="Europa"&gt;</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 -->
+    <section id="meta">
+      <h2><span class="num">11</span> Meta-Tags &amp; SEO</h2>
+      <p class="section-intro">Was im <code>&lt;head&gt;</code> steht, sehen User nicht direkt — aber Google, Social
+        Media und Browser brauchen es dringend.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Tags</span>
+          <h5>title</h5>
+          <p>Browser-Tab + Google-Snippet. 50–60 Zeichen optimal.</p>
+          <h5>meta description</h5>
+          <p>Google-Snippet. 150–160 Zeichen.</p>
+          <h5>Open Graph</h5>
+          <p><code>og:title</code>, <code>og:image</code>, <code>og:description</code> — für Social-Media-Previews.</p>
+          <h5>favicon</h5>
+          <p>Das kleine Icon im Tab.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">head.html</div>
+          <pre><span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="atv">"UTF-8"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="atv">"viewport"</span>
+        <span class="attr">content</span>=<span class="atv">"width=device-width, initial-scale=1"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;title&gt;</span>Mara's Portfolio — UX Design<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="atv">"description"</span>
+        <span class="attr">content</span>=<span class="atv">"UX-Designerin aus Zürich.
+                 Projekte, Case Studies, Kontakt."</span><span class="tag">&gt;</span>
+
+  <span class="cm">&lt;!-- Open Graph (Social Media) --&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="atv">"og:title"</span> <span class="attr">content</span>=<span class="atv">"Mara's Portfolio"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="atv">"og:image"</span> <span class="attr">content</span>=<span class="atv">"https://..."</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="atv">"og:type"</span> <span class="attr">content</span>=<span class="atv">"website"</span><span class="tag">&gt;</span>
+
+  <span class="cm">&lt;!-- Favicon --&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="atv">"icon"</span> <span class="attr">href</span>=<span class="atv">"/favicon.svg"</span> <span class="attr">type</span>=<span class="atv">"image/svg+xml"</span><span class="tag">&gt;</span>
+
+  <span class="cm">&lt;!-- CSS --&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="atv">"stylesheet"</span> <span class="attr">href</span>=<span class="atv">"style.css"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Notiz</span>
+          <h5>robots</h5>
+          <p><code>&lt;meta name="robots" content="noindex"&gt;</code> — Seite nicht indexieren.</p>
+          <h5>canonical</h5>
+          <p><code>&lt;link rel="canonical" href="..."&gt;</code> — vermeidet Duplicate Content.</p>
+          <h5>theme-color</h5>
+          <p><code>&lt;meta name="theme-color" content="#e44d26"&gt;</code> — färbt Browser-UI auf Mobile.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section id="inline-block">
+      <h2><span class="num">12</span> Inline vs. Block</h2>
+      <p class="section-intro">Jedes HTML-Element ist entweder <strong>Block</strong> (nimmt volle Breite, neue Zeile)
+        oder <strong>Inline</strong> (fliesst im Text mit). Dieses Konzept bestimmt, wie Elemente sich verhalten.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Unterschied</span>
+          <h5>Block</h5>
+          <p><code>div</code>, <code>p</code>, <code>h1</code>–<code>h6</code>, <code>section</code>, <code>ul</code>,
+            <code>form</code>, <code>header</code>, <code>footer</code>. Nehmen die ganze Breite, erzeugen neue Zeile.
+          </p>
+          <h5>Inline</h5>
+          <p><code>span</code>, <code>a</code>, <code>strong</code>, <code>em</code>, <code>img</code>,
+            <code>code</code>, <code>br</code>. Fliessen neben anderen Elementen.
+          </p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">inline-block.html</div>
+          <pre><span class="cm">&lt;!-- Block: eigene Zeile --&gt;</span>
+<span class="tag">&lt;div&gt;</span>Ich bin ein Block.<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div&gt;</span>Ich auch — neue Zeile.<span class="tag">&lt;/div&gt;</span>
+
+<span class="cm">&lt;!-- Inline: im Text --&gt;</span>
+<span class="tag">&lt;p&gt;</span>
+  Das ist <span class="tag">&lt;strong&gt;</span>fett<span class="tag">&lt;/strong&gt;</span> und
+  <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="atv">"#"</span><span class="tag">&gt;</span>ein Link<span class="tag">&lt;/a&gt;</span>
+  — alles in einer Zeile.
+<span class="tag">&lt;/p&gt;</span>
+
+<span class="cm">&lt;!-- div = generischer Block-Container --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="atv">"card"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;h3&gt;</span>Titel<span class="tag">&lt;/h3&gt;</span>
+  <span class="tag">&lt;p&gt;</span>Inhalt<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="cm">&lt;!-- span = generischer Inline-Container --&gt;</span>
+<span class="tag">&lt;p&gt;</span>Preis: <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="atv">"price"</span><span class="tag">&gt;</span>CHF 29.90<span class="tag">&lt;/span&gt;&lt;/p&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Regel</span>
+          <h5>Goldene Regel</h5>
+          <p>Block-Elemente dürfen Inline-Elemente enthalten. Inline-Elemente sollten <strong>keine</strong>
+            Block-Elemente enthalten.</p>
+          <h5>Ausnahme</h5>
+          <p><code>&lt;a&gt;</code> darf Blocks umschliessen (z.&nbsp;B. eine ganze Card klickbar machen).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 -->
+    <section id="attribute">
+      <h2><span class="num">13</span> Globale Attribute</h2>
+      <p class="section-intro">Bestimmte Attribute funktionieren auf <em>jedem</em> HTML-Element — <code>id</code>,
+        <code>class</code>, <code>style</code>, <code>data-*</code>, <code>hidden</code>, <code>title</code> und die
+        <code>aria-*</code>-Attribute.
+      </p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Attribute</span>
+          <h5>id</h5>
+          <p>Einzigartig pro Seite. Für Anker-Links, Labels, JS.</p>
+          <h5>class</h5>
+          <p>Mehrere möglich, getrennt durch Leerzeichen. Für CSS-Styling.</p>
+          <h5>data-*</h5>
+          <p>Eigene Daten am Element speichern — in JS via <code>dataset</code> auslesen.</p>
+          <h5>hidden</h5>
+          <p>Element ausblenden, ohne es zu löschen.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">attribute.html</div>
+          <pre><span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="atv">"hero"</span>
+     <span class="attr">class</span>=<span class="atv">"section full-width dark"</span>
+     <span class="attr">data-page</span>=<span class="atv">"home"</span>
+     <span class="attr">data-version</span>=<span class="atv">"2"</span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;p</span> <span class="attr">title</span>=<span class="atv">"Tooltip beim Hover"</span><span class="tag">&gt;</span>
+  Fahr über mich.
+<span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;p</span> <span class="attr">hidden</span><span class="tag">&gt;</span>Ich bin unsichtbar.<span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;p</span> <span class="attr">contenteditable</span>=<span class="atv">"true"</span><span class="tag">&gt;</span>
+  Klick und bearbeite mich!
+<span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attr">tabindex</span>=<span class="atv">"0"</span><span class="tag">&gt;</span>
+  Ich bin per Tab erreichbar.
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;script&gt;</span>
+  <span class="kw">const</span> <span class="vr">el</span> = document.<span class="fn">getElementById</span>(<span class="st">'hero'</span>);
+  console.<span class="fn">log</span>(<span class="vr">el</span>.dataset.page);    <span class="cm">// "home"</span>
+  console.<span class="fn">log</span>(<span class="vr">el</span>.dataset.version); <span class="cm">// "2"</span>
+<span class="tag">&lt;/script&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Notiz</span>
+          <h5>data-* → dataset</h5>
+          <p><code>data-user-id="42"</code> wird zu <code>el.dataset.userId</code> (camelCase).</p>
+          <h5>contenteditable</h5>
+          <p>Macht jedes Element editierbar — Basis für Rich-Text-Editoren.</p>
+          <h5>tabindex</h5>
+          <p><code>0</code> = in Tab-Reihenfolge. <code>-1</code> = nur per JS fokussierbar.</p>
+        </div>
+      </div>
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre>home
+2</pre>
+      </div>
+    </section>
+
+    <!-- 14 -->
+    <section id="einbetten">
+      <h2><span class="num">14</span> Einbetten — iframe &amp; mehr</h2>
+      <p class="section-intro"><code>&lt;iframe&gt;</code> bettet eine fremde Seite ein — YouTube-Videos, Google Maps,
+        etc. Mit <code>sandbox</code> und <code>allow</code> steuerst du die Berechtigungen.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Elemente</span>
+          <h5>iframe</h5>
+          <p>Bettet eine externe Seite ein. <code>src</code> = URL, <code>width</code>/<code>height</code> für Grösse.
+          </p>
+          <h5>sandbox</h5>
+          <p>Schränkt ein, was der iframe darf — Scripts, Forms, Navigation.</p>
+          <h5>loading="lazy"</h5>
+          <p>Wie bei Bildern: erst laden, wenn sichtbar.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">embed.html</div>
+          <pre><span class="cm">&lt;!-- YouTube-Video --&gt;</span>
+<span class="tag">&lt;iframe</span>
+  <span class="attr">src</span>=<span class="atv">"https://www.youtube.com/embed/dQw4w9"</span>
+  <span class="attr">width</span>=<span class="atv">"560"</span> <span class="attr">height</span>=<span class="atv">"315"</span>
+  <span class="attr">loading</span>=<span class="atv">"lazy"</span>
+  <span class="attr">allow</span>=<span class="atv">"accelerometer; autoplay;
+         encrypted-media; picture-in-picture"</span>
+  <span class="attr">allowfullscreen</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/iframe&gt;</span>
+
+<span class="cm">&lt;!-- Google Maps --&gt;</span>
+<span class="tag">&lt;iframe</span>
+  <span class="attr">src</span>=<span class="atv">"https://maps.google.com/maps?q=Zürich&output=embed"</span>
+  <span class="attr">width</span>=<span class="atv">"600"</span> <span class="attr">height</span>=<span class="atv">"400"</span>
+  <span class="attr">loading</span>=<span class="atv">"lazy"</span>
+  <span class="attr">sandbox</span>=<span class="atv">"allow-scripts"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/iframe&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Sicherheit</span>
+          <h5>sandbox</h5>
+          <p>Ohne Wert = alles blockiert. Mit <code>allow-scripts</code> erlaubst du JS.</p>
+          <h5>Performance</h5>
+          <p>Jeder iframe = eigener Browser-Context. Viele iframes = langsam.</p>
+          <h5>Responsive</h5>
+          <p>CSS <code>aspect-ratio: 16/9</code> + <code>width: 100%</code> macht iframes responsive.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15 -->
+    <section id="responsive-img">
+      <h2><span class="num">15</span> Responsive Bilder</h2>
+      <p class="section-intro">Mit <code>&lt;picture&gt;</code>, <code>srcset</code> und <code>sizes</code> lieferst du
+        das richtige Bild für jede Bildschirmgrösse — weniger Daten auf dem Handy, scharfe Bilder auf Retina.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Techniken</span>
+          <h5>srcset</h5>
+          <p>Mehrere Bild-Versionen mit Breiten-Deskriptor (<code>400w</code>, <code>800w</code>).</p>
+          <h5>sizes</h5>
+          <p>Sagt dem Browser, wie breit das Bild im Layout sein wird.</p>
+          <h5>picture + source</h5>
+          <p>Verschiedene Bilder je nach Media-Query oder Format (WebP, AVIF).</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">responsive-img.html</div>
+          <pre><span class="cm">&lt;!-- srcset + sizes --&gt;</span>
+<span class="tag">&lt;img</span>
+  <span class="attr">srcset</span>=<span class="atv">"foto-400.jpg 400w,
+          foto-800.jpg 800w,
+          foto-1200.jpg 1200w"</span>
+  <span class="attr">sizes</span>=<span class="atv">"(max-width: 600px) 100vw,
+         (max-width: 1200px) 50vw,
+         600px"</span>
+  <span class="attr">src</span>=<span class="atv">"foto-800.jpg"</span>
+  <span class="attr">alt</span>=<span class="atv">"Landschaft"</span><span class="tag">&gt;</span>
+
+<span class="cm">&lt;!-- picture: Format-Fallback --&gt;</span>
+<span class="tag">&lt;picture&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attr">srcset</span>=<span class="atv">"foto.avif"</span> <span class="attr">type</span>=<span class="atv">"image/avif"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attr">srcset</span>=<span class="atv">"foto.webp"</span> <span class="attr">type</span>=<span class="atv">"image/webp"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="atv">"foto.jpg"</span> <span class="attr">alt</span>=<span class="atv">"Landschaft"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/picture&gt;</span>
+
+<span class="cm">&lt;!-- picture: Art Direction --&gt;</span>
+<span class="tag">&lt;picture&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attr">media</span>=<span class="atv">"(max-width: 640px)"</span>
+          <span class="attr">srcset</span>=<span class="atv">"hero-mobile.jpg"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="atv">"hero-desktop.jpg"</span> <span class="attr">alt</span>=<span class="atv">"Hero"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/picture&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>AVIF > WebP > JPEG</h5>
+          <p>AVIF ist am kleinsten, WebP gut unterstützt, JPEG als Fallback.</p>
+          <h5>Art Direction</h5>
+          <p>Anderer Bildausschnitt auf dem Handy — nicht nur kleiner, sondern anders zugeschnitten.</p>
+          <h5>Immer alt!</h5>
+          <p><code>alt</code> bleibt Pflicht — auch bei responsive Bildern.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16 -->
+    <section id="details-dialog">
+      <h2><span class="num">16</span> Details &amp; Dialog</h2>
+      <p class="section-intro">Interaktive Elemente ohne JavaScript: <code>&lt;details&gt;</code> für Aufklapp-Bereiche
+        (Accordions, FAQs), <code>&lt;dialog&gt;</code> für modale Popups.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Elemente</span>
+          <h5>details + summary</h5>
+          <p>Klick auf <code>summary</code> klappt den Rest auf/zu. Kein JS nötig.</p>
+          <h5>open</h5>
+          <p>Attribut <code>open</code> = initial aufgeklappt.</p>
+          <h5>dialog</h5>
+          <p>Modaler oder nicht-modaler Dialog. <code>showModal()</code> per JS öffnen.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">details-dialog.html</div>
+          <pre><span class="cm">&lt;!-- Accordion / FAQ --&gt;</span>
+<span class="tag">&lt;details&gt;</span>
+  <span class="tag">&lt;summary&gt;</span>Was kostet der Versand?<span class="tag">&lt;/summary&gt;</span>
+  <span class="tag">&lt;p&gt;</span>Kostenlos ab CHF 50, sonst CHF 5.90.<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/details&gt;</span>
+
+<span class="tag">&lt;details</span> <span class="attr">open</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;summary&gt;</span>Rückgabe?<span class="tag">&lt;/summary&gt;</span>
+  <span class="tag">&lt;p&gt;</span>30 Tage kostenlose Rückgabe.<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/details&gt;</span>
+
+<span class="cm">&lt;!-- Dialog (modal) --&gt;</span>
+<span class="tag">&lt;dialog</span> <span class="attr">id</span>=<span class="atv">"confirm"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;h2&gt;</span>Bist du sicher?<span class="tag">&lt;/h2&gt;</span>
+  <span class="tag">&lt;p&gt;</span>Diese Aktion kann nicht rückgängig
+     gemacht werden.<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attr">onclick</span>=<span class="atv">"confirm.close()"</span><span class="tag">&gt;</span>OK<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/dialog&gt;</span>
+
+<span class="tag">&lt;button</span> <span class="attr">onclick</span>=<span class="atv">"confirm.showModal()"</span><span class="tag">&gt;</span>
+  Löschen
+<span class="tag">&lt;/button&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Notiz</span>
+          <h5>Accessibility</h5>
+          <p>Beide Elemente sind von Haus aus accessible — Fokus, Keyboard, Screenreader.</p>
+          <h5>::backdrop</h5>
+          <p>CSS-Pseudo-Element für den dunklen Hintergrund hinter einem Modal.</p>
+          <h5>name-Attribut</h5>
+          <p><code>&lt;details name="faq"&gt;</code> — nur eines der Gruppe ist gleichzeitig offen
+            (Accordion-Verhalten).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17 -->
+    <section id="template-slot">
+      <h2><span class="num">17</span> Template &amp; Slot</h2>
+      <p class="section-intro"><code>&lt;template&gt;</code> enthält HTML, das nicht gerendert wird — du klonst es per
+        JavaScript. <code>&lt;slot&gt;</code> ist der Platzhalter in Web Components für Kind-Inhalte.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Konzept</span>
+          <h5>template</h5>
+          <p>Inert — Browser parst es, rendert es aber nicht. Perfekt für wiederholte Strukturen.</p>
+          <h5>Klonen</h5>
+          <p><code>template.content.cloneNode(true)</code> erzeugt eine Kopie.</p>
+          <h5>slot</h5>
+          <p>Wird in Web Components genutzt — siehe Kapitel 20.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">template.html</div>
+          <pre><span class="tag">&lt;template</span> <span class="attr">id</span>=<span class="atv">"card-tpl"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="atv">"card"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;h3</span> <span class="attr">class</span>=<span class="atv">"title"</span><span class="tag">&gt;&lt;/h3&gt;</span>
+    <span class="tag">&lt;p</span> <span class="attr">class</span>=<span class="atv">"body"</span><span class="tag">&gt;&lt;/p&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/template&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="atv">"container"</span><span class="tag">&gt;&lt;/div&gt;</span>
+
+<span class="tag">&lt;script&gt;</span>
+  <span class="kw">const</span> <span class="vr">tpl</span> = document.<span class="fn">getElementById</span>(<span class="st">'card-tpl'</span>);
+  <span class="kw">const</span> <span class="vr">data</span> = [
+    { <span class="vr">title</span>: <span class="st">'Karte 1'</span>, <span class="vr">body</span>: <span class="st">'Inhalt A'</span> },
+    { <span class="vr">title</span>: <span class="st">'Karte 2'</span>, <span class="vr">body</span>: <span class="st">'Inhalt B'</span> }
+  ];
+
+  <span class="kw">for</span> (<span class="kw">const</span> <span class="vr">item</span> <span class="kw">of</span> <span class="vr">data</span>) {
+    <span class="kw">const</span> <span class="vr">clone</span> = <span class="vr">tpl</span>.content.<span class="fn">cloneNode</span>(<span class="bn">true</span>);
+    <span class="vr">clone</span>.<span class="fn">querySelector</span>(<span class="st">'.title'</span>).textContent = <span class="vr">item</span>.title;
+    <span class="vr">clone</span>.<span class="fn">querySelector</span>(<span class="st">'.body'</span>).textContent = <span class="vr">item</span>.body;
+    document.<span class="fn">getElementById</span>(<span class="st">'container'</span>).<span class="fn">append</span>(<span class="vr">clone</span>);
+  }
+<span class="tag">&lt;/script&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>Warum template?</h5>
+          <p>Kein Styling-Flash, keine unnötigen HTTP-Requests — alles inert bis zum Klonen.</p>
+          <h5>Performance</h5>
+          <p>Schneller als <code>innerHTML</code> für wiederholte Strukturen.</p>
+          <h5>slot (Vorschau)</h5>
+          <p><code>&lt;slot name="header"&gt;</code> in einem Shadow-DOM = Platzhalter für Content.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TEIL III ==================== -->
+    <div class="part">
+      <div class="part-label">Teil III</div>
+      <h2 class="part-title">Fortgeschrittene <em>Konzepte</em></h2>
+      <p class="part-desc">Accessibility, Web Components, Canvas, SVG, Structured Data, Security und Performance —
+        alles, was eine professionelle Website ausmacht.</p>
+    </div>
+
+    <!-- 18 -->
+    <section id="a11y">
+      <h2><span class="num">18</span> Accessibility (ARIA)</h2>
+      <p class="section-intro">Accessibility heisst: deine Seite funktioniert für alle — Screenreader,
+        Tastatur-Navigation, Farbfehlsichtige. ARIA-Attribute ergänzen, was semantisches HTML nicht abdeckt.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · ARIA</span>
+          <h5>role</h5>
+          <p>Überschreibt die Rolle eines Elements: <code>role="button"</code>, <code>role="alert"</code>.</p>
+          <h5>aria-label</h5>
+          <p>Unsichtbare Beschriftung für Screenreader.</p>
+          <h5>aria-hidden</h5>
+          <p>Versteckt dekorative Elemente vor Screenreadern.</p>
+          <h5>aria-live</h5>
+          <p>Dynamische Updates vorlesen: <code>"polite"</code> oder <code>"assertive"</code>.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">a11y.html</div>
+          <pre><span class="cm">&lt;!-- Gutes Label --&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">aria-label</span>=<span class="atv">"Menü schliessen"</span><span class="tag">&gt;</span>
+  ✕
+<span class="tag">&lt;/button&gt;</span>
+
+<span class="cm">&lt;!-- Skip-Link --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="atv">"#main"</span> <span class="attr">class</span>=<span class="atv">"skip-link"</span><span class="tag">&gt;</span>
+  Zum Inhalt springen
+<span class="tag">&lt;/a&gt;</span>
+
+<span class="cm">&lt;!-- Live-Region für Updates --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">aria-live</span>=<span class="atv">"polite"</span> <span class="attr">id</span>=<span class="atv">"status"</span><span class="tag">&gt;</span>
+  3 Ergebnisse gefunden
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="cm">&lt;!-- Dekoratives Icon --&gt;</span>
+<span class="tag">&lt;span</span> <span class="attr">aria-hidden</span>=<span class="atv">"true"</span><span class="tag">&gt;</span>🎨<span class="tag">&lt;/span&gt;</span>
+<span class="tag">&lt;span&gt;</span>Design<span class="tag">&lt;/span&gt;</span>
+
+<span class="cm">&lt;!-- Formulare: aria-describedby --&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="atv">"password"</span>
+       <span class="attr">aria-describedby</span>=<span class="atv">"pw-hint"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;p</span> <span class="attr">id</span>=<span class="atv">"pw-hint"</span><span class="tag">&gt;</span>Mind. 8 Zeichen<span class="tag">&lt;/p&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Regeln</span>
+          <h5>Erst semantisch</h5>
+          <p>Nutze <code>&lt;button&gt;</code> statt <code>&lt;div role="button"&gt;</code>. ARIA ist der Fallback,
+            nicht der Standard.</p>
+          <h5>Kontrast</h5>
+          <p>Mindestens 4.5:1 für normalen Text (WCAG AA).</p>
+          <h5>Keyboard</h5>
+          <p>Alle interaktiven Elemente per Tab und Enter erreichbar?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 19 -->
+    <section id="web-components">
+      <h2><span class="num">19</span> Web Components</h2>
+      <p class="section-intro">Eigene HTML-Tags bauen — mit Custom Elements, Shadow DOM und Templates.
+        Framework-unabhängig, wiederverwendbar.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Bausteine</span>
+          <h5>Custom Element</h5>
+          <p>Klasse von <code>HTMLElement</code> ableiten, mit <code>customElements.define()</code> registrieren.</p>
+          <h5>Shadow DOM</h5>
+          <p>Isolierter DOM-Baum — CSS und IDs "lecken" nicht nach aussen.</p>
+          <h5>Lifecycle</h5>
+          <p><code>connectedCallback</code>, <code>disconnectedCallback</code>, <code>attributeChangedCallback</code>.
+          </p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">greeting-card.js</div>
+          <pre><span class="kw">class</span> <span class="cl">GreetingCard</span> <span class="kw">extends</span> <span class="cl">HTMLElement</span> {
+  <span class="fn">constructor</span>() {
+    <span class="kw">super</span>();
+    <span class="kw">this</span>.<span class="fn">attachShadow</span>({ <span class="vr">mode</span>: <span class="st">'open'</span> });
+  }
+
+  <span class="fn">connectedCallback</span>() {
+    <span class="kw">const</span> <span class="vr">name</span> = <span class="kw">this</span>.<span class="fn">getAttribute</span>(<span class="st">'name'</span>) ?? <span class="st">'Welt'</span>;
+    <span class="kw">this</span>.shadowRoot.innerHTML = <span class="st">`
+      &lt;style&gt;
+        :host { display: block; padding: 16px;
+                border: 2px solid #e44d26;
+                border-radius: 8px; }
+        h2 { color: #e44d26; margin: 0; }
+      &lt;/style&gt;
+      &lt;h2&gt;Hallo ${name}!&lt;/h2&gt;
+      &lt;slot&gt;&lt;/slot&gt;
+    `</span>;
+  }
+}
+
+customElements.<span class="fn">define</span>(<span class="st">'greeting-card'</span>, <span class="cl">GreetingCard</span>);
+
+<span class="cm">// Verwendung:</span>
+<span class="cm">// &lt;greeting-card name="Mara"&gt;</span>
+<span class="cm">//   &lt;p&gt;Willkommen!&lt;/p&gt;</span>
+<span class="cm">// &lt;/greeting-card&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>Naming</h5>
+          <p>Custom Elements brauchen einen Bindestrich im Namen: <code>my-card</code>, nicht <code>mycard</code>.</p>
+          <h5>:host</h5>
+          <p>CSS-Selektor für das Custom Element selbst.</p>
+          <h5>slot</h5>
+          <p>Der <code>&lt;slot&gt;</code> rendert die Kind-Elemente des Custom Elements.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 20 -->
+    <section id="canvas">
+      <h2><span class="num">20</span> Canvas</h2>
+      <p class="section-intro"><code>&lt;canvas&gt;</code> ist eine Pixel-Zeichenfläche. Du steuerst alles per
+        JavaScript — Linien, Formen, Text, Bilder, Animationen.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · API</span>
+          <h5>getContext('2d')</h5>
+          <p>Holt den 2D-Zeichenkontext.</p>
+          <h5>fillRect / strokeRect</h5>
+          <p>Rechtecke füllen oder umranden.</p>
+          <h5>arc / beginPath</h5>
+          <p>Kreise und Pfade zeichnen.</p>
+          <h5>fillText</h5>
+          <p>Text aufs Canvas schreiben.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">canvas.html</div>
+          <pre><span class="tag">&lt;canvas</span> <span class="attr">id</span>=<span class="atv">"c"</span> <span class="attr">width</span>=<span class="atv">"300"</span> <span class="attr">height</span>=<span class="atv">"200"</span><span class="tag">&gt;</span>
+  Fallback für alte Browser
+<span class="tag">&lt;/canvas&gt;</span>
+
+<span class="tag">&lt;script&gt;</span>
+  <span class="kw">const</span> <span class="vr">ctx</span> = document.<span class="fn">getElementById</span>(<span class="st">'c'</span>)
+    .<span class="fn">getContext</span>(<span class="st">'2d'</span>);
+
+  <span class="cm">// Rechteck</span>
+  <span class="vr">ctx</span>.fillStyle = <span class="st">'#e44d26'</span>;
+  <span class="vr">ctx</span>.<span class="fn">fillRect</span>(<span class="nm">10</span>, <span class="nm">10</span>, <span class="nm">120</span>, <span class="nm">80</span>);
+
+  <span class="cm">// Kreis</span>
+  <span class="vr">ctx</span>.<span class="fn">beginPath</span>();
+  <span class="vr">ctx</span>.<span class="fn">arc</span>(<span class="nm">220</span>, <span class="nm">100</span>, <span class="nm">50</span>, <span class="nm">0</span>, Math.PI * <span class="nm">2</span>);
+  <span class="vr">ctx</span>.fillStyle = <span class="st">'#e8a64a'</span>;
+  <span class="vr">ctx</span>.<span class="fn">fill</span>();
+
+  <span class="cm">// Text</span>
+  <span class="vr">ctx</span>.fillStyle = <span class="st">'white'</span>;
+  <span class="vr">ctx</span>.font = <span class="st">'20px sans-serif'</span>;
+  <span class="vr">ctx</span>.<span class="fn">fillText</span>(<span class="st">'Canvas!'</span>, <span class="nm">30</span>, <span class="nm">55</span>);
+<span class="tag">&lt;/script&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Notiz</span>
+          <h5>Canvas vs SVG</h5>
+          <p>Canvas = Pixel (schnell für viele Objekte). SVG = Vektor (skaliert, einzeln anklickbar).</p>
+          <h5>WebGL</h5>
+          <p><code>getContext('webgl2')</code> für 3D-Grafik.</p>
+          <h5>Accessibility</h5>
+          <p>Canvas ist für Screenreader unsichtbar — Fallback-Text im Tag oder ARIA nutzen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 21 -->
+    <section id="svg">
+      <h2><span class="num">21</span> SVG</h2>
+      <p class="section-intro"><strong>Scalable Vector Graphics</strong> — XML-basierte Vektorgrafiken direkt im HTML.
+        Perfekt für Icons, Logos, Charts — unendlich skalierbar, per CSS stylebar.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Elemente</span>
+          <h5>svg</h5>
+          <p>Container. <code>viewBox</code> definiert das Koordinatensystem.</p>
+          <h5>Formen</h5>
+          <p><code>circle</code>, <code>rect</code>, <code>line</code>, <code>polygon</code>, <code>path</code>.</p>
+          <h5>CSS-styling</h5>
+          <p><code>fill</code>, <code>stroke</code>, <code>stroke-width</code> — alles per CSS steuerbar.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">icon.html</div>
+          <pre><span class="tag">&lt;svg</span> <span class="attr">viewBox</span>=<span class="atv">"0 0 100 100"</span>
+     <span class="attr">width</span>=<span class="atv">"80"</span> <span class="attr">height</span>=<span class="atv">"80"</span>
+     <span class="attr">xmlns</span>=<span class="atv">"http://www.w3.org/2000/svg"</span><span class="tag">&gt;</span>
+
+  <span class="cm">&lt;!-- Kreis --&gt;</span>
+  <span class="tag">&lt;circle</span> <span class="attr">cx</span>=<span class="atv">"50"</span> <span class="attr">cy</span>=<span class="atv">"50"</span> <span class="attr">r</span>=<span class="atv">"45"</span>
+    <span class="attr">fill</span>=<span class="atv">"#e44d26"</span> <span class="attr">stroke</span>=<span class="atv">"#fff"</span>
+    <span class="attr">stroke-width</span>=<span class="atv">"3"</span> <span class="tag">/&gt;</span>
+
+  <span class="cm">&lt;!-- Text im SVG --&gt;</span>
+  <span class="tag">&lt;text</span> <span class="attr">x</span>=<span class="atv">"50"</span> <span class="attr">y</span>=<span class="atv">"55"</span>
+    <span class="attr">text-anchor</span>=<span class="atv">"middle"</span>
+    <span class="attr">fill</span>=<span class="atv">"white"</span>
+    <span class="attr">font-size</span>=<span class="atv">"24"</span>
+    <span class="attr">font-weight</span>=<span class="atv">"bold"</span><span class="tag">&gt;</span>
+    HTML
+  <span class="tag">&lt;/text&gt;</span>
+
+<span class="tag">&lt;/svg&gt;</span>
+
+<span class="cm">&lt;!-- Oder als Bild --&gt;</span>
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="atv">"logo.svg"</span> <span class="attr">alt</span>=<span class="atv">"Logo"</span> <span class="attr">width</span>=<span class="atv">"64"</span><span class="tag">&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>Inline vs img</h5>
+          <p>Inline SVG = CSS/JS-Zugriff. <code>&lt;img src="x.svg"&gt;</code> = einfacher, aber kein Styling.</p>
+          <h5>currentColor</h5>
+          <p><code>fill="currentColor"</code> — übernimmt die Text-Farbe des Elternelements.</p>
+          <h5>Path</h5>
+          <p><code>&lt;path d="M10 10 L90 90"&gt;</code> — mächtigster SVG-Befehl.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 22 -->
+    <section id="microdata">
+      <h2><span class="num">22</span> Microdata &amp; Structured Data</h2>
+      <p class="section-intro">Maschinen (Google, Siri, Alexa) lesen strukturierte Daten. Mit <code>JSON-LD</code> oder
+        <code>Microdata</code>-Attributen markierst du Inhalte als Rezept, Produkt, Event, etc.
+      </p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Methoden</span>
+          <h5>JSON-LD</h5>
+          <p>Empfohlene Methode von Google — ein <code>&lt;script&gt;</code>-Block im Head.</p>
+          <h5>Schema.org</h5>
+          <p>Das Vokabular: Product, Article, Event, Person, Recipe, ...</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">structured-data.html</div>
+          <pre><span class="tag">&lt;script</span> <span class="attr">type</span>=<span class="atv">"application/ld+json"</span><span class="tag">&gt;</span>
+{
+  <span class="st">"@context"</span>: <span class="st">"https://schema.org"</span>,
+  <span class="st">"@type"</span>: <span class="st">"Article"</span>,
+  <span class="st">"headline"</span>: <span class="st">"HTML lernen in 2026"</span>,
+  <span class="st">"author"</span>: {
+    <span class="st">"@type"</span>: <span class="st">"Person"</span>,
+    <span class="st">"name"</span>: <span class="st">"Mara Beispiel"</span>
+  },
+  <span class="st">"datePublished"</span>: <span class="st">"2026-06-02"</span>,
+  <span class="st">"image"</span>: <span class="st">"https://example.com/hero.jpg"</span>
+}
+<span class="tag">&lt;/script&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Nutzen</span>
+          <h5>Rich Snippets</h5>
+          <p>Google zeigt Sternebewertungen, Preise, FAQ-Akkordeons direkt in Suchergebnissen.</p>
+          <h5>Testing</h5>
+          <p>Google Rich Results Test prüft dein Markup.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 23 -->
+    <section id="security">
+      <h2><span class="num">23</span> Content Security</h2>
+      <p class="section-intro">HTML-Attribute, die deine Seite und deine User schützen: <code>sandbox</code>,
+        <code>referrerpolicy</code>, <code>integrity</code>, <code>crossorigin</code>.
+      </p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Attribute</span>
+          <h5>rel="noopener"</h5>
+          <p>Bei <code>target="_blank"</code> — verhindert Zugriff auf <code>window.opener</code>.</p>
+          <h5>integrity</h5>
+          <p>SRI-Hash für externe Scripts/Styles — Schutz vor CDN-Kompromittierung.</p>
+          <h5>referrerpolicy</h5>
+          <p>Steuert, welcher Referrer-Header gesendet wird.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">security.html</div>
+          <pre><span class="cm">&lt;!-- SRI: Subresource Integrity --&gt;</span>
+<span class="tag">&lt;script</span>
+  <span class="attr">src</span>=<span class="atv">"https://cdn.example.com/lib.js"</span>
+  <span class="attr">integrity</span>=<span class="atv">"sha384-abc123..."</span>
+  <span class="attr">crossorigin</span>=<span class="atv">"anonymous"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/script&gt;</span>
+
+<span class="cm">&lt;!-- Sicherer Link --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="atv">"https://extern.com"</span>
+   <span class="attr">target</span>=<span class="atv">"_blank"</span>
+   <span class="attr">rel</span>=<span class="atv">"noopener noreferrer"</span><span class="tag">&gt;</span>
+  Externe Seite
+<span class="tag">&lt;/a&gt;</span>
+
+<span class="cm">&lt;!-- CSP via Meta-Tag --&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">http-equiv</span>=<span class="atv">"Content-Security-Policy"</span>
+      <span class="attr">content</span>=<span class="atv">"default-src 'self';
+               img-src 'self' https:;
+               script-src 'self'"</span><span class="tag">&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Wichtig</span>
+          <h5>CSP</h5>
+          <p>Content Security Policy — definiert, was geladen werden darf. Am besten als HTTP-Header.</p>
+          <h5>XSS-Prävention</h5>
+          <p>Nie User-Input in <code>innerHTML</code> setzen. <code>textContent</code> ist safe.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 24 -->
+    <section id="performance">
+      <h2><span class="num">24</span> Performance &amp; Loading</h2>
+      <p class="section-intro">HTML-Attribute, die deine Seite schneller laden lassen: <code>loading</code>,
+        <code>fetchpriority</code>, <code>preload</code>, <code>prefetch</code>, <code>dns-prefetch</code>,
+        <code>defer</code>, <code>async</code>.
+      </p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Strategien</span>
+          <h5>loading="lazy"</h5>
+          <p>Bilder und iframes erst laden, wenn sie sichtbar werden.</p>
+          <h5>fetchpriority</h5>
+          <p><code>"high"</code> für LCP-Bild, <code>"low"</code> für unwichtiges.</p>
+          <h5>preload / prefetch</h5>
+          <p>Ressourcen vorladen (jetzt nötig vs. bald nötig).</p>
+          <h5>defer / async</h5>
+          <p>Scripts nicht-blockierend laden.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">performance.html</div>
+          <pre><span class="tag">&lt;head&gt;</span>
+  <span class="cm">&lt;!-- Fonts vorladen --&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="atv">"preload"</span> <span class="attr">href</span>=<span class="atv">"font.woff2"</span>
+        <span class="attr">as</span>=<span class="atv">"font"</span> <span class="attr">type</span>=<span class="atv">"font/woff2"</span> <span class="attr">crossorigin</span><span class="tag">&gt;</span>
+
+  <span class="cm">&lt;!-- DNS vorab auflösen --&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="atv">"dns-prefetch"</span> <span class="attr">href</span>=<span class="atv">"https://api.example.com"</span><span class="tag">&gt;</span>
+
+  <span class="cm">&lt;!-- Nächste Seite vorladen --&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="atv">"prefetch"</span> <span class="attr">href</span>=<span class="atv">"/about.html"</span><span class="tag">&gt;</span>
+
+  <span class="cm">&lt;!-- Script: defer = nach HTML-Parse --&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="atv">"app.js"</span> <span class="attr">defer</span><span class="tag">&gt;&lt;/script&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="tag">&lt;body&gt;</span>
+  <span class="cm">&lt;!-- LCP-Bild mit hoher Priorität --&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="atv">"hero.jpg"</span> <span class="attr">alt</span>=<span class="atv">"Hero"</span>
+       <span class="attr">fetchpriority</span>=<span class="atv">"high"</span><span class="tag">&gt;</span>
+
+  <span class="cm">&lt;!-- Lazy-geladenes Bild --&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="atv">"foto.jpg"</span> <span class="attr">alt</span>=<span class="atv">"Foto"</span>
+       <span class="attr">loading</span>=<span class="atv">"lazy"</span>
+       <span class="attr">decoding</span>=<span class="atv">"async"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/body&gt;</span></pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Merken</span>
+          <h5>defer vs async</h5>
+          <p><code>defer</code> = nach HTML-Parse, in Reihenfolge. <code>async</code> = sofort wenn geladen, keine
+            Reihenfolge.</p>
+          <h5>LCP</h5>
+          <p>Das grösste sichtbare Element (Largest Contentful Paint). <code>fetchpriority="high"</code> beschleunigt
+            es.</p>
+          <h5>decoding="async"</h5>
+          <p>Browser darf Bild-Dekodierung im Hintergrund machen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 25 -->
+    <section id="best-practices">
+      <h2><span class="num">25</span> Best Practices &amp; Validierung</h2>
+      <p class="section-intro">Regeln und Gewohnheiten, die gutes HTML ausmachen — und Tools, um es zu prüfen.</p>
+      <ul>
+        <li><strong>Semantik vor Styling</strong> — erst das richtige Tag, dann CSS</li>
+        <li><strong>Immer alt-Attribute</strong> — auf jedem <code>&lt;img&gt;</code></li>
+        <li><strong>Labels für Inputs</strong> — jedes Formularfeld braucht ein Label</li>
+        <li><strong>lang-Attribut</strong> — auf <code>&lt;html&gt;</code> setzen</li>
+        <li><strong>Keine deprecated Tags</strong> — kein <code>&lt;font&gt;</code>, <code>&lt;center&gt;</code>,
+          <code>&lt;marquee&gt;</code>
+        </li>
+        <li><strong>Heading-Hierarchie</strong> — h1 → h2 → h3, keine Sprünge</li>
+        <li><strong>Validieren</strong> — <code>validator.w3.org</code> findet Fehler</li>
+        <li><strong>Lighthouse</strong> — Chrome DevTools → Audit für Performance, A11y, SEO</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-label">Geschafft</div>
+        <p>Du kennst jetzt HTML von <code>&lt;!DOCTYPE&gt;</code> bis Web Components. Im nächsten Abschnitt folgt die
+          <strong>Emmet-Shortcut-Referenz</strong> und eine Tag-Übersicht.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== REFERENZ ==================== -->
+    <div class="part">
+      <div class="part-label">Referenz</div>
+      <h2 class="part-title">Emmet &amp; <em>Tag-Übersicht</em></h2>
+      <p class="part-desc">Die wichtigsten Emmet-Shortcuts (für VS Code und andere Editoren) und eine Übersicht der
+        häufigsten HTML-Tags nach Kategorie.</p>
+    </div>
+
+    <section id="ref">
+      <h2><span class="num">26</span> Emmet-Shortcuts &amp; Tags</h2>
+      <p class="section-intro">Emmet expandiert Kurzformen zu vollem HTML — tippe die Abkürzung und drücke Tab. Massiver
+        Produktivitäts-Boost.</p>
+
+      <h3 class="cli-group">Emmet-Shortcuts</h3>
+      <table class="cli-table">
+        <thead>
+          <tr>
+            <th>Kürzel</th>
+            <th>Wird zu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>!</td>
+            <td>Komplettes HTML5-Grundgerüst (DOCTYPE, html, head, body).</td>
+          </tr>
+          <tr>
+            <td>div.card</td>
+            <td><code>&lt;div class="card"&gt;&lt;/div&gt;</code></td>
+          </tr>
+          <tr>
+            <td>div#hero</td>
+            <td><code>&lt;div id="hero"&gt;&lt;/div&gt;</code></td>
+          </tr>
+          <tr>
+            <td>ul>li*5</td>
+            <td><code>&lt;ul&gt;</code> mit 5 <code>&lt;li&gt;</code>-Kindern.</td>
+          </tr>
+          <tr>
+            <td>ul>li{Item $}*3</td>
+            <td>3 <code>&lt;li&gt;</code> mit Text "Item 1", "Item 2", "Item 3".</td>
+          </tr>
+          <tr>
+            <td>div>p+p</td>
+            <td>Ein div mit zwei p-Geschwistern darin.</td>
+          </tr>
+          <tr>
+            <td>header+main+footer</td>
+            <td>Drei Geschwister-Elemente nebeneinander.</td>
+          </tr>
+          <tr>
+            <td>a[href="#"]</td>
+            <td><code>&lt;a href="#"&gt;&lt;/a&gt;</code></td>
+          </tr>
+          <tr>
+            <td>input:email</td>
+            <td><code>&lt;input type="email"&gt;</code></td>
+          </tr>
+          <tr>
+            <td>img</td>
+            <td><code>&lt;img src="" alt=""&gt;</code></td>
+          </tr>
+          <tr>
+            <td>link:css</td>
+            <td><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></td>
+          </tr>
+          <tr>
+            <td>script:src</td>
+            <td><code>&lt;script src=""&gt;&lt;/script&gt;</code></td>
+          </tr>
+          <tr>
+            <td>table>thead>tr>th*3^^tbody>tr*3>td*3</td>
+            <td>Komplette Tabelle mit 3 Spalten und 3 Zeilen.</td>
+          </tr>
+          <tr>
+            <td>.wrapper>.row>.col*3</td>
+            <td>Verschachtelte div-Struktur mit Klassen.</td>
+          </tr>
+          <tr>
+            <td>nav>ul>li*4>a{Link $}</td>
+            <td>Navigation mit 4 Links: "Link 1" bis "Link 4".</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="cli-group">Tags nach Kategorie</h3>
+      <table class="cli-table">
+        <thead>
+          <tr>
+            <th>Kategorie</th>
+            <th>Tags</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dokument</td>
+            <td><code>html</code>, <code>head</code>, <code>body</code>, <code>title</code>, <code>meta</code>,
+              <code>link</code>, <code>script</code>, <code>style</code>, <code>base</code>
+            </td>
+          </tr>
+          <tr>
+            <td>Struktur</td>
+            <td><code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>,
+              <code>aside</code>, <code>footer</code>, <code>div</code>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td><code>h1</code>–<code>h6</code>, <code>p</code>, <code>span</code>, <code>strong</code>,
+              <code>em</code>, <code>mark</code>, <code>small</code>, <code>sub</code>, <code>sup</code>,
+              <code>abbr</code>, <code>cite</code>, <code>q</code>, <code>blockquote</code>, <code>pre</code>,
+              <code>code</code>
+            </td>
+          </tr>
+          <tr>
+            <td>Listen</td>
+            <td><code>ul</code>, <code>ol</code>, <code>li</code>, <code>dl</code>, <code>dt</code>, <code>dd</code>,
+              <code>menu</code>
+            </td>
+          </tr>
+          <tr>
+            <td>Links &amp; Medien</td>
+            <td><code>a</code>, <code>img</code>, <code>picture</code>, <code>source</code>, <code>video</code>,
+              <code>audio</code>, <code>track</code>, <code>figure</code>, <code>figcaption</code>
+            </td>
+          </tr>
+          <tr>
+            <td>Tabellen</td>
+            <td><code>table</code>, <code>thead</code>, <code>tbody</code>, <code>tfoot</code>, <code>tr</code>,
+              <code>th</code>, <code>td</code>, <code>caption</code>, <code>colgroup</code>, <code>col</code>
+            </td>
+          </tr>
+          <tr>
+            <td>Formulare</td>
+            <td><code>form</code>, <code>input</code>, <code>textarea</code>, <code>select</code>, <code>option</code>,
+              <code>optgroup</code>, <code>button</code>, <code>label</code>, <code>fieldset</code>,
+              <code>legend</code>, <code>datalist</code>, <code>output</code>, <code>progress</code>, <code>meter</code>
+            </td>
+          </tr>
+          <tr>
+            <td>Interaktiv</td>
+            <td><code>details</code>, <code>summary</code>, <code>dialog</code></td>
+          </tr>
+          <tr>
+            <td>Einbetten</td>
+            <td><code>iframe</code>, <code>embed</code>, <code>object</code>, <code>portal</code>, <code>canvas</code>,
+              <code>svg</code>, <code>math</code>
+            </td>
+          </tr>
+          <tr>
+            <td>Semantik</td>
+            <td><code>time</code>, <code>address</code>, <code>data</code>, <code>wbr</code>, <code>br</code>,
+              <code>hr</code>
+            </td>
+          </tr>
+          <tr>
+            <td>Web Components</td>
+            <td><code>template</code>, <code>slot</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <div class="callout-label">Tipp</div>
+        <p>In VS Code: Emmet ist vorinstalliert. Einfach Kürzel tippen und <strong>Tab</strong> drücken. In den
+          Einstellungen unter "Emmet: Include Languages" kannst du es auch für React/JSX aktivieren.</p>
+      </div>
+    </section>
+
+    <footer>
+      HTML · Dokumentation · Juni 2026 · Living Standard
+    </footer>
+
+  </div>
+</body>
+
+</html>

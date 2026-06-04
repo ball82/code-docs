@@ -98,11 +98,11 @@
 
   /* TOC */
   .toc {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 32px;
-    margin-bottom: 80px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 32px;
+      margin-bottom: 80px;
   }
   .toc-title {
     font-family: 'JetBrains Mono', monospace;
@@ -222,6 +222,33 @@
   }
   ul { margin: 16px 0 16px 24px; color: var(--text-dim); }
   ul li { margin-bottom: 6px; }
+
+  .back-to-top {
+    position: fixed;
+    right: 28px;
+    bottom: 28px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: rgba(35, 32, 26, 0.85);
+    border: 1px solid var(--border);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .back-to-top:hover {
+    background: var(--surface-2);
+    transform: translateY(-3px);
+  }
+
+  .back-to-top svg {
+    width: 44px;
+    height: 44px;
+  }
 
   /* Example block: 3-column layout */
   .example {
@@ -538,5 +565,16 @@
   @media (max-width: 640px) {
     .page { padding: 40px 20px 80px; }
     .hero { padding-top: 0px; }
+    .back-to-top {
+      right: 16px;
+      bottom: 16px;
+      width: 48px;
+      height: 48px;
+    }
+
+    .back-to-top svg {
+      width: 36px;
+      height: 36px;
+    }
 
   }

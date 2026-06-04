@@ -1,136 +1,168 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JavaScript — Vom Anfänger zum Fortgeschrittenen</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript — Vom Anfänger zum Fortgeschrittenen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./styles/style.css">
 </head>
+
 <body>
-<div class="page">
+  <div class="page">
 
-<!-- =============== HERO =============== -->
-<header class="hero">
-    <a href="../index.html">
-    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0,0,256,256">
-      <g fill="#e8a64a" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M12,2.09961l-11,9.90039h3v9h6v-7h4v7h6v-9h3z"></path></g></g>
-    </svg>
-  </a>
+    <a class="back-to-top" href="#top" aria-label="Nach oben">
+      <svg xmlns="http://www.w3.org/2000/svg" height="58px" viewBox="0 0 640 640">
+        <path fill="rgb(232, 166, 73)"
+          d="M320 112C434.9 112 528 205.1 528 320C528 434.9 434.9 528 320 528C205.1 528 112 434.9 112 320C112 205.1 205.1 112 320 112zM320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM331.3 188.7C325.1 182.5 314.9 182.5 308.7 188.7L204.7 292.7C200.1 297.3 198.8 304.2 201.2 310.1C203.6 316 209.5 320 216 320L288 320L288 424C288 437.3 298.7 448 312 448L328 448C341.3 448 352 437.3 352 424L352 320L424 320C430.5 320 436.3 316.1 438.8 310.1C441.3 304.1 439.9 297.2 435.3 292.7L331.3 188.7z" />
+      </svg>
+    </a>
 
-  <div class="eyebrow">Dokumentation · Stand Juni 2026 · ES2026</div>
-  <h1>JavaScript<br><em>von A bis Z</em></h1>
-  <p class="lede">Eine vollständige Reise durch JavaScript — von Variablen über Closures bis zur Temporal API und Explicit Resource Management aus ES2026. Jedes Beispiel mit Erklärung links, Code in der Mitte, Output rechts.</p>
-  <div class="meta">
-    <span><strong>Sprache</strong>ECMAScript 2026</span>
-    <span><strong>Niveau</strong>Anfänger → Fortgeschritten</span>
-    <span><strong>Kapitel</strong>25 Themen</span>
-    <span><strong>Runtime</strong>Node 22+ / Browser modern</span>
-  </div>
-</header>
+    <!-- =============== HERO =============== -->
+    <header class="hero">
+      <a href="../index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0,0,256,256">
+          <g fill="#e8a64a" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none"
+            font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+            <g transform="scale(10.66667,10.66667)">
+              <path d="M12,2.09961l-11,9.90039h3v9h6v-7h4v7h6v-9h3z"></path>
+            </g>
+          </g>
+        </svg>
+      </a>
 
-<!-- =============== TOC =============== -->
-<nav class="toc">
-  <div class="toc-title">Inhalt</div>
-  <div class="toc-grid">
-    <div class="toc-col">
-      <h4>Teil I — Anfänger</h4>
-      <ol>
-        <li><a href="#was-ist-js">Was ist JavaScript?</a></li>
-        <li><a href="#setup">Setup &amp; Tools</a></li>
-        <li><a href="#variablen">Variablen &amp; Datentypen</a></li>
-        <li><a href="#operatoren">Operatoren</a></li>
-        <li><a href="#strings">Strings &amp; Template Literals</a></li>
-        <li><a href="#arrays-objekte">Arrays &amp; Objekte</a></li>
-        <li><a href="#funktionen">Funktionen &amp; Arrow Functions</a></li>
-        <li><a href="#kontrollfluss">Bedingungen &amp; Schleifen</a></li>
-        <li><a href="#console">console &amp; Debugging</a></li>
-      </ol>
+      <div class="eyebrow">Dokumentation · Stand Juni 2026 · ES2026</div>
+      <h1>JavaScript<br><em>von A bis Z</em></h1>
+      <p class="lede">Eine vollständige Reise durch JavaScript — von Variablen über Closures bis zur Temporal API und
+        Explicit Resource Management aus ES2026. Jedes Beispiel mit Erklärung links, Code in der Mitte, Output rechts.
+      </p>
+      <div class="meta">
+        <span><strong>Sprache</strong>ECMAScript 2026</span>
+        <span><strong>Niveau</strong>Anfänger → Fortgeschritten</span>
+        <span><strong>Kapitel</strong>25 Themen</span>
+        <span><strong>Runtime</strong>Node 22+ / Browser modern</span>
+      </div>
+    </header>
+
+    <!-- =============== TOC =============== -->
+    <nav class="toc">
+      <div class="toc-title">Inhalt</div>
+      <div class="toc-grid">
+        <div class="toc-col">
+          <h4>Teil I — Anfänger</h4>
+          <ol>
+            <li><a href="#was-ist-js">Was ist JavaScript?</a></li>
+            <li><a href="#setup">Setup &amp; Tools</a></li>
+            <li><a href="#variablen">Variablen &amp; Datentypen</a></li>
+            <li><a href="#operatoren">Operatoren</a></li>
+            <li><a href="#strings">Strings &amp; Template Literals</a></li>
+            <li><a href="#arrays-objekte">Arrays &amp; Objekte</a></li>
+            <li><a href="#funktionen">Funktionen &amp; Arrow Functions</a></li>
+            <li><a href="#kontrollfluss">Bedingungen &amp; Schleifen</a></li>
+            <li><a href="#console">console &amp; Debugging</a></li>
+          </ol>
+        </div>
+        <div class="toc-col">
+          <h4>Teil II — Mittelstufe</h4>
+          <ol>
+            <li><a href="#destructuring">Destructuring &amp; Spread/Rest</a></li>
+            <li><a href="#array-methoden">Array-Methoden</a></li>
+            <li><a href="#set-methoden">Set-Methoden (ES2025)</a></li>
+            <li><a href="#optional-chaining">Optional Chaining &amp; Nullish</a></li>
+            <li><a href="#closures">Closures &amp; Scope</a></li>
+            <li><a href="#this">this, bind, call, apply</a></li>
+            <li><a href="#klassen">Klassen</a></li>
+          </ol>
+        </div>
+        <div class="toc-col">
+          <h4>Teil III — Fortgeschritten</h4>
+          <ol>
+            <li><a href="#promises">Promises &amp; Fetch</a></li>
+            <li><a href="#async-await">async / await</a></li>
+            <li><a href="#iteratoren">Iteratoren &amp; Generatoren</a></li>
+            <li><a href="#module">Module (ES Modules)</a></li>
+            <li><a href="#map-symbol">Map, WeakMap &amp; Symbol</a></li>
+            <li><a href="#errors">Error Handling (ES2026)</a></li>
+            <li><a href="#temporal">Temporal API (ES2026)</a></li>
+            <li><a href="#using">using — Resource Management (ES2026)</a></li>
+            <li><a href="#regex-proxy">Regex, Proxy &amp; Reflect</a></li>
+          </ol>
+          <h4 style="margin-top:24px;">CLI-Referenz</h4>
+          <ol>
+            <li><a href="#cli">Node, npm &amp; npx Befehle</a></li>
+          </ol>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ====================================================== -->
+    <!-- =============== TEIL I — ANFÄNGER ==================== -->
+    <!-- ====================================================== -->
+    <div class="part">
+      <div class="part-label">Teil I</div>
+      <h2 class="part-title">Die <em>Grundlagen</em></h2>
+      <p class="part-desc">Was ist JavaScript, wo läuft es, und wie funktionieren Variablen, Typen, Operatoren, Strings,
+        Arrays, Objekte, Funktionen und Schleifen. Alles, was du brauchst, bevor du dich an die "cleveren" Sachen wagst.
+      </p>
     </div>
-    <div class="toc-col">
-      <h4>Teil II — Mittelstufe</h4>
-      <ol>
-        <li><a href="#destructuring">Destructuring &amp; Spread/Rest</a></li>
-        <li><a href="#array-methoden">Array-Methoden</a></li>
-        <li><a href="#set-methoden">Set-Methoden (ES2025)</a></li>
-        <li><a href="#optional-chaining">Optional Chaining &amp; Nullish</a></li>
-        <li><a href="#closures">Closures &amp; Scope</a></li>
-        <li><a href="#this">this, bind, call, apply</a></li>
-        <li><a href="#klassen">Klassen</a></li>
-      </ol>
-    </div>
-    <div class="toc-col">
-      <h4>Teil III — Fortgeschritten</h4>
-      <ol>
-        <li><a href="#promises">Promises &amp; Fetch</a></li>
-        <li><a href="#async-await">async / await</a></li>
-        <li><a href="#iteratoren">Iteratoren &amp; Generatoren</a></li>
-        <li><a href="#module">Module (ES Modules)</a></li>
-        <li><a href="#map-symbol">Map, WeakMap &amp; Symbol</a></li>
-        <li><a href="#errors">Error Handling (ES2026)</a></li>
-        <li><a href="#temporal">Temporal API (ES2026)</a></li>
-        <li><a href="#using">using — Resource Management (ES2026)</a></li>
-        <li><a href="#regex-proxy">Regex, Proxy &amp; Reflect</a></li>
-      </ol>
-      <h4 style="margin-top:24px;">CLI-Referenz</h4>
-      <ol>
-        <li><a href="#cli">Node, npm &amp; npx Befehle</a></li>
-      </ol>
-    </div>
-  </div>
-</nav>
 
-<!-- ====================================================== -->
-<!-- =============== TEIL I — ANFÄNGER ==================== -->
-<!-- ====================================================== -->
-<div class="part">
-  <div class="part-label">Teil I</div>
-  <h2 class="part-title">Die <em>Grundlagen</em></h2>
-  <p class="part-desc">Was ist JavaScript, wo läuft es, und wie funktionieren Variablen, Typen, Operatoren, Strings, Arrays, Objekte, Funktionen und Schleifen. Alles, was du brauchst, bevor du dich an die "cleveren" Sachen wagst.</p>
-</div>
+    <!-- ============ 01 Was ist JS ============ -->
+    <section id="was-ist-js">
+      <h2><span class="num">01</span> Was ist JavaScript?</h2>
+      <p class="section-intro">JavaScript ist eine dynamisch typisierte, interpretierte Sprache, die ursprünglich für
+        Browser gebaut wurde. Heute läuft sie überall: im Browser, auf Servern (Node, Deno, Bun), in mobilen Apps, in
+        Embedded-Systemen. Die Sprach-Spezifikation heisst <strong>ECMAScript</strong> — Stand Juni 2026 ist
+        <strong>ES2026</strong> die aktuelle Ausgabe.
+      </p>
 
-<!-- ============ 01 Was ist JS ============ -->
-<section id="was-ist-js">
-  <h2><span class="num">01</span> Was ist JavaScript?</h2>
-  <p class="section-intro">JavaScript ist eine dynamisch typisierte, interpretierte Sprache, die ursprünglich für Browser gebaut wurde. Heute läuft sie überall: im Browser, auf Servern (Node, Deno, Bun), in mobilen Apps, in Embedded-Systemen. Die Sprach-Spezifikation heisst <strong>ECMAScript</strong> — Stand Juni 2026 ist <strong>ES2026</strong> die aktuelle Ausgabe.</p>
+      <h3>Warum JavaScript lernen?</h3>
+      <ul>
+        <li><strong>Universal</strong> — die einzige Sprache, die direkt im Browser läuft</li>
+        <li><strong>Riesiges Ökosystem</strong> — npm hat über 3 Millionen Pakete</li>
+        <li><strong>Lebendig</strong> — jedes Jahr eine neue ECMAScript-Edition mit neuen Features</li>
+        <li><strong>Vielseitig</strong> — Frontend, Backend, Mobile, Desktop, CLI, IoT</li>
+        <li><strong>Niedrige Einstiegshürde</strong> — Browser auf, F12, los geht's</li>
+      </ul>
 
-  <h3>Warum JavaScript lernen?</h3>
-  <ul>
-    <li><strong>Universal</strong> — die einzige Sprache, die direkt im Browser läuft</li>
-    <li><strong>Riesiges Ökosystem</strong> — npm hat über 3 Millionen Pakete</li>
-    <li><strong>Lebendig</strong> — jedes Jahr eine neue ECMAScript-Edition mit neuen Features</li>
-    <li><strong>Vielseitig</strong> — Frontend, Backend, Mobile, Desktop, CLI, IoT</li>
-    <li><strong>Niedrige Einstiegshürde</strong> — Browser auf, F12, los geht's</li>
-  </ul>
+      <div class="callout">
+        <div class="callout-label">Stand 2026</div>
+        <p><strong>ES2026</strong> ist im Dezember 2025 finalisiert worden. Highlights: die <strong>Temporal
+            API</strong> (endlich ein vernünftiger Ersatz für <code>Date</code>), <strong>Explicit Resource
+            Management</strong> mit dem <code>using</code>-Keyword, <code>Math.sumPrecise</code>,
+          <code>RegExp.escape</code>, <code>Error.isError</code> und mehr.
+        </p>
+      </div>
+    </section>
 
-  <div class="callout">
-    <div class="callout-label">Stand 2026</div>
-    <p><strong>ES2026</strong> ist im Dezember 2025 finalisiert worden. Highlights: die <strong>Temporal API</strong> (endlich ein vernünftiger Ersatz für <code>Date</code>), <strong>Explicit Resource Management</strong> mit dem <code>using</code>-Keyword, <code>Math.sumPrecise</code>, <code>RegExp.escape</code>, <code>Error.isError</code> und mehr.</p>
-  </div>
-</section>
+    <!-- ============ 02 Setup ============ -->
+    <section id="setup">
+      <h2><span class="num">02</span> Setup &amp; Tools</h2>
+      <p class="section-intro">Du brauchst nicht viel, um loszulegen: einen Browser (mit Console) oder Node.js. Für
+        ernstere Projekte: VS Code + ein paar Extensions.</p>
 
-<!-- ============ 02 Setup ============ -->
-<section id="setup">
-  <h2><span class="num">02</span> Setup &amp; Tools</h2>
-  <p class="section-intro">Du brauchst nicht viel, um loszulegen: einen Browser (mit Console) oder Node.js. Für ernstere Projekte: VS Code + ein paar Extensions.</p>
-
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Möglichkeiten</span>
-      <h5>Browser-Console</h5>
-      <p>F12 öffnen, "Console" — Code direkt eintippen. Perfekt zum Üben.</p>
-      <h5>Node.js</h5>
-      <p>Server-seitiges JS. Installier Node 22 LTS. Mit <code>node datei.js</code> ausführen, oder <code>node</code> für REPL.</p>
-      <h5>Editor</h5>
-      <p>VS Code mit ESLint + Prettier. Auch toll: WebStorm, Zed.</p>
-      <h5>Online</h5>
-      <p>CodePen, StackBlitz, JSFiddle — keine Installation nötig.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">hallo.js</div>
-<pre><span class="cm">// Datei: hallo.js</span>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Möglichkeiten</span>
+          <h5>Browser-Console</h5>
+          <p>F12 öffnen, "Console" — Code direkt eintippen. Perfekt zum Üben.</p>
+          <h5>Node.js</h5>
+          <p>Server-seitiges JS. Installier Node 22 LTS. Mit <code>node datei.js</code> ausführen, oder
+            <code>node</code> für REPL.
+          </p>
+          <h5>Editor</h5>
+          <p>VS Code mit ESLint + Prettier. Auch toll: WebStorm, Zed.</p>
+          <h5>Online</h5>
+          <p>CodePen, StackBlitz, JSFiddle — keine Installation nötig.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">hallo.js</div>
+          <pre><span class="cm">// Datei: hallo.js</span>
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="st">'Hallo Welt!'</span>);
 
 <span class="kw">const</span> <span class="vr">name</span> = <span class="st">'Mara'</span>;
@@ -138,45 +170,51 @@
 
 <span class="cm">// Im Terminal:</span>
 <span class="cm">// $ node hallo.js</span></pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Tipps</span>
-      <h5>Strict Mode</h5>
-      <p>Module sind automatisch strict. Sonst: <code>'use strict';</code> oben hinschreiben.</p>
-      <h5>Datei-Endung</h5>
-      <p><code>.js</code> (CommonJS in Node) oder <code>.mjs</code> (ES Module). Mit <code>"type": "module"</code> in <code>package.json</code> sind auch <code>.js</code> Module.</p>
-      <h5>Linter</h5>
-      <p>ESLint fängt Fehler ab, bevor du sie ausführst.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipps</span>
+          <h5>Strict Mode</h5>
+          <p>Module sind automatisch strict. Sonst: <code>'use strict';</code> oben hinschreiben.</p>
+          <h5>Datei-Endung</h5>
+          <p><code>.js</code> (CommonJS in Node) oder <code>.mjs</code> (ES Module). Mit <code>"type": "module"</code>
+            in <code>package.json</code> sind auch <code>.js</code> Module.</p>
+          <h5>Linter</h5>
+          <p>ESLint fängt Fehler ab, bevor du sie ausführst.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console (node hallo.js)</div>
-<pre>Hallo Welt!
+      <div class="output">
+        <div class="output-label">Console (node hallo.js)</div>
+        <pre>Hallo Welt!
 Hallo Mara!</pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 03 Variablen & Datentypen ============ -->
-<section id="variablen">
-  <h2><span class="num">03</span> Variablen &amp; Datentypen</h2>
-  <p class="section-intro">JavaScript kennt drei Variablen-Keywords: <code>const</code>, <code>let</code>, <code>var</code>. Faustregel: <strong>fast immer <code>const</code></strong>, nur <code>let</code> wenn du den Wert wirklich änderst, <code>var</code> praktisch nie mehr.</p>
+    <!-- ============ 03 Variablen & Datentypen ============ -->
+    <section id="variablen">
+      <h2><span class="num">03</span> Variablen &amp; Datentypen</h2>
+      <p class="section-intro">JavaScript kennt drei Variablen-Keywords: <code>const</code>, <code>let</code>,
+        <code>var</code>. Faustregel: <strong>fast immer <code>const</code></strong>, nur <code>let</code> wenn du den
+        Wert wirklich änderst, <code>var</code> praktisch nie mehr.
+      </p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Erklärung</span>
-      <h5>const</h5>
-      <p>Wert nicht neu zuweisbar. Block-scoped.</p>
-      <h5>let</h5>
-      <p>Wert änderbar, block-scoped.</p>
-      <h5>var</h5>
-      <p>Function-scoped, gehört der Vergangenheit. Nicht mehr verwenden.</p>
-      <h5>Typen</h5>
-      <p>7 Primitive: <code>string</code>, <code>number</code>, <code>bigint</code>, <code>boolean</code>, <code>undefined</code>, <code>null</code>, <code>symbol</code>. Plus Objects (inkl. Arrays, Funktionen).</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">typen.js</div>
-<pre><span class="kw">const</span> <span class="vr">name</span>   = <span class="st">'Mara'</span>;        <span class="cm">// string</span>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Erklärung</span>
+          <h5>const</h5>
+          <p>Wert nicht neu zuweisbar. Block-scoped.</p>
+          <h5>let</h5>
+          <p>Wert änderbar, block-scoped.</p>
+          <h5>var</h5>
+          <p>Function-scoped, gehört der Vergangenheit. Nicht mehr verwenden.</p>
+          <h5>Typen</h5>
+          <p>7 Primitive: <code>string</code>, <code>number</code>, <code>bigint</code>, <code>boolean</code>,
+            <code>undefined</code>, <code>null</code>, <code>symbol</code>. Plus Objects (inkl. Arrays, Funktionen).
+          </p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">typen.js</div>
+          <pre><span class="kw">const</span> <span class="vr">name</span>   = <span class="st">'Mara'</span>;        <span class="cm">// string</span>
 <span class="kw">const</span> <span class="vr">alter</span>  = <span class="nm">28</span>;             <span class="cm">// number</span>
 <span class="kw">const</span> <span class="vr">aktiv</span>  = <span class="bn">true</span>;           <span class="cm">// boolean</span>
 <span class="kw">const</span> <span class="vr">nichts</span> = <span class="bn">null</span>;           <span class="cm">// null</span>
@@ -192,49 +230,54 @@ Hallo Mara!</pre>
 <span class="kw">let</span> <span class="vr">zaehler</span> = <span class="nm">0</span>;
 <span class="vr">zaehler</span>++;
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">zaehler</span>);          <span class="cm">// 1</span></pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Hinweise</span>
-      <h5>typeof null</h5>
-      <p>Liefert <code>'object'</code> — historischer Bug, wird nie gefixt. Eigene Checks: <code>x === null</code>.</p>
-      <h5>const &amp; Objekte</h5>
-      <p>Die <strong>Referenz</strong> ist konstant — der Inhalt darf sich ändern: <code>const arr = []; arr.push(1)</code> ist erlaubt.</p>
-      <h5>BigInt</h5>
-      <p>Für ganze Zahlen jenseits <code>2^53</code> — Suffix <code>n</code>.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Hinweise</span>
+          <h5>typeof null</h5>
+          <p>Liefert <code>'object'</code> — historischer Bug, wird nie gefixt. Eigene Checks: <code>x === null</code>.
+          </p>
+          <h5>const &amp; Objekte</h5>
+          <p>Die <strong>Referenz</strong> ist konstant — der Inhalt darf sich ändern:
+            <code>const arr = []; arr.push(1)</code> ist erlaubt.
+          </p>
+          <h5>BigInt</h5>
+          <p>Für ganze Zahlen jenseits <code>2^53</code> — Suffix <code>n</code>.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre><span class="st">'string'</span>
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre><span class="st">'string'</span>
 <span class="st">'number'</span>
 <span class="st">'boolean'</span>
 <span class="st">'undefined'</span>
 <span class="st">'object'</span>
 <span class="nm">1</span></pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 04 Operatoren ============ -->
-<section id="operatoren">
-  <h2><span class="num">04</span> Operatoren</h2>
-  <p class="section-intro">Mathematik, Vergleiche, Logik — und JavaScript hat einige Eigenheiten, die man kennen sollte (vor allem <code>==</code> vs. <code>===</code>).</p>
+    <!-- ============ 04 Operatoren ============ -->
+    <section id="operatoren">
+      <h2><span class="num">04</span> Operatoren</h2>
+      <p class="section-intro">Mathematik, Vergleiche, Logik — und JavaScript hat einige Eigenheiten, die man kennen
+        sollte (vor allem <code>==</code> vs. <code>===</code>).</p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Übersicht</span>
-      <h5>Arithmetik</h5>
-      <p><code>+ - * / % **</code></p>
-      <h5>Vergleich</h5>
-      <p><code>===</code> strikt (kein Type-Coercion). <code>==</code> mit Coercion — vermeiden!</p>
-      <h5>Logisch</h5>
-      <p><code>&amp;&amp;</code> und, <code>||</code> oder, <code>!</code> nicht, <code>??</code> nullish coalescing.</p>
-      <h5>Zuweisung</h5>
-      <p><code>+=</code>, <code>-=</code>, <code>??=</code>, <code>||=</code>, <code>&amp;&amp;=</code>.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">operatoren.js</div>
-<pre><span class="fn">console</span>.<span class="fn">log</span>(<span class="nm">10</span> / <span class="nm">3</span>);            <span class="cm">// 3.333…</span>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Übersicht</span>
+          <h5>Arithmetik</h5>
+          <p><code>+ - * / % **</code></p>
+          <h5>Vergleich</h5>
+          <p><code>===</code> strikt (kein Type-Coercion). <code>==</code> mit Coercion — vermeiden!</p>
+          <h5>Logisch</h5>
+          <p><code>&amp;&amp;</code> und, <code>||</code> oder, <code>!</code> nicht, <code>??</code> nullish
+            coalescing.</p>
+          <h5>Zuweisung</h5>
+          <p><code>+=</code>, <code>-=</code>, <code>??=</code>, <code>||=</code>, <code>&amp;&amp;=</code>.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">operatoren.js</div>
+          <pre><span class="fn">console</span>.<span class="fn">log</span>(<span class="nm">10</span> / <span class="nm">3</span>);            <span class="cm">// 3.333…</span>
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="nm">10</span> % <span class="nm">3</span>);            <span class="cm">// 1 (Rest)</span>
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="nm">2</span> ** <span class="nm">10</span>);           <span class="cm">// 1024</span>
 
@@ -250,21 +293,23 @@ Hallo Mara!</pre>
 <span class="cm">// Ternär</span>
 <span class="kw">const</span> <span class="vr">x</span> = <span class="nm">5</span>;
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">x</span> &gt; <span class="nm">0</span> ? <span class="st">'positiv'</span> : <span class="st">'negativ'</span>);</pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Tipp</span>
-      <h5>Faustregel</h5>
-      <p>Immer <code>===</code> und <code>!==</code>. Niemals <code>==</code>.</p>
-      <h5>?? vs ||</h5>
-      <p><code>??</code> springt nur bei <code>null</code>/<code>undefined</code> ein. <code>||</code> auch bei <code>0</code>, <code>''</code>, <code>false</code>.</p>
-      <h5>NaN</h5>
-      <p><code>NaN === NaN</code> ist <strong>false</strong>! Check mit <code>Number.isNaN(x)</code>.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>Faustregel</h5>
+          <p>Immer <code>===</code> und <code>!==</code>. Niemals <code>==</code>.</p>
+          <h5>?? vs ||</h5>
+          <p><code>??</code> springt nur bei <code>null</code>/<code>undefined</code> ein. <code>||</code> auch bei
+            <code>0</code>, <code>''</code>, <code>false</code>.
+          </p>
+          <h5>NaN</h5>
+          <p><code>NaN === NaN</code> ist <strong>false</strong>! Check mit <code>Number.isNaN(x)</code>.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre><span class="nm">3.3333333333333335</span>
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre><span class="nm">3.3333333333333335</span>
 <span class="nm">1</span>
 <span class="nm">1024</span>
 <span class="bn">true</span>
@@ -273,27 +318,30 @@ Hallo Mara!</pre>
 <span class="st">'default'</span>
 <span class="nm">0</span>
 <span class="st">'positiv'</span></pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 05 Strings ============ -->
-<section id="strings">
-  <h2><span class="num">05</span> Strings &amp; Template Literals</h2>
-  <p class="section-intro">Strings sind in JavaScript immutable. Mit <strong>Template Literals</strong> (Backticks) baust du mehrzeilige Strings und interpolierst Variablen direkt.</p>
+    <!-- ============ 05 Strings ============ -->
+    <section id="strings">
+      <h2><span class="num">05</span> Strings &amp; Template Literals</h2>
+      <p class="section-intro">Strings sind in JavaScript immutable. Mit <strong>Template Literals</strong> (Backticks)
+        baust du mehrzeilige Strings und interpolierst Variablen direkt.</p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Erklärung</span>
-      <h5>Quotes</h5>
-      <p><code>'…'</code>, <code>"…"</code>, <code>`…`</code> — die Backticks sind die mächtigste Variante.</p>
-      <h5>Interpolation</h5>
-      <p><code>${ausdruck}</code> innerhalb von Backticks.</p>
-      <h5>Wichtige Methoden</h5>
-      <p><code>.length</code>, <code>.slice</code>, <code>.split</code>, <code>.replace</code>, <code>.includes</code>, <code>.startsWith</code>, <code>.trim</code>, <code>.toUpperCase</code>.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">strings.js</div>
-<pre><span class="kw">const</span> <span class="vr">name</span> = <span class="st">'Mara'</span>;
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Erklärung</span>
+          <h5>Quotes</h5>
+          <p><code>'…'</code>, <code>"…"</code>, <code>`…`</code> — die Backticks sind die mächtigste Variante.</p>
+          <h5>Interpolation</h5>
+          <p><code>${ausdruck}</code> innerhalb von Backticks.</p>
+          <h5>Wichtige Methoden</h5>
+          <p><code>.length</code>, <code>.slice</code>, <code>.split</code>, <code>.replace</code>,
+            <code>.includes</code>, <code>.startsWith</code>, <code>.trim</code>, <code>.toUpperCase</code>.
+          </p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">strings.js</div>
+          <pre><span class="kw">const</span> <span class="vr">name</span> = <span class="st">'Mara'</span>;
 <span class="kw">const</span> <span class="vr">alter</span> = <span class="nm">28</span>;
 
 <span class="cm">// Template Literal</span>
@@ -314,21 +362,21 @@ Bis bald!`</span>;
 
 <span class="cm">// .replaceAll() seit ES2021</span>
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="st">'a-b-c'</span>.<span class="fn">replaceAll</span>(<span class="st">'-'</span>, <span class="st">'/'</span>));</pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Tipp</span>
-      <h5>Immutable</h5>
-      <p><code>name[0] = 'X'</code> tut <strong>nichts</strong>. Strings sind nicht änderbar.</p>
-      <h5>String → Zahl</h5>
-      <p><code>Number('42')</code>, <code>parseInt('42px')</code>, oder <code>+'42'</code>.</p>
-      <h5>Zahl → String</h5>
-      <p><code>String(42)</code> oder <code>(42).toString()</code> oder <code>`${42}`</code>.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>Immutable</h5>
+          <p><code>name[0] = 'X'</code> tut <strong>nichts</strong>. Strings sind nicht änderbar.</p>
+          <h5>String → Zahl</h5>
+          <p><code>Number('42')</code>, <code>parseInt('42px')</code>, oder <code>+'42'</code>.</p>
+          <h5>Zahl → String</h5>
+          <p><code>String(42)</code> oder <code>(42).toString()</code> oder <code>`${42}`</code>.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre>Hallo Mara, du bist <span class="nm">28</span>.
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre>Hallo Mara, du bist <span class="nm">28</span>.
 Liebe Mara,
 schön von dir zu hören.
 Bis bald!
@@ -336,27 +384,28 @@ HALLO WELT
 <span class="bn">true</span>
 [ <span class="st">''</span>, <span class="st">''</span>, <span class="st">'Hallo'</span>, <span class="st">'Welt'</span>, <span class="st">''</span>, <span class="st">''</span> ]
 a/b/c</pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 06 Arrays & Objekte ============ -->
-<section id="arrays-objekte">
-  <h2><span class="num">06</span> Arrays &amp; Objekte</h2>
-  <p class="section-intro">Die zwei wichtigsten zusammengesetzten Datenstrukturen: Arrays für geordnete Listen, Objekte für Key-Value-Paare. Beides ist mutable, beides wird per Referenz übergeben.</p>
+    <!-- ============ 06 Arrays & Objekte ============ -->
+    <section id="arrays-objekte">
+      <h2><span class="num">06</span> Arrays &amp; Objekte</h2>
+      <p class="section-intro">Die zwei wichtigsten zusammengesetzten Datenstrukturen: Arrays für geordnete Listen,
+        Objekte für Key-Value-Paare. Beides ist mutable, beides wird per Referenz übergeben.</p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Erklärung</span>
-      <h5>Array</h5>
-      <p>Geordnete Liste. Index ab 0. Dynamische Länge.</p>
-      <h5>Objekt</h5>
-      <p>Bag of Properties. Zugriff via <code>.key</code> oder <code>['key']</code>.</p>
-      <h5>Shorthand</h5>
-      <p>Wenn Variablen-Name = Property-Name: <code>{ name }</code> statt <code>{ name: name }</code>.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">collections.js</div>
-<pre><span class="cm">// Array</span>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Erklärung</span>
+          <h5>Array</h5>
+          <p>Geordnete Liste. Index ab 0. Dynamische Länge.</p>
+          <h5>Objekt</h5>
+          <p>Bag of Properties. Zugriff via <code>.key</code> oder <code>['key']</code>.</p>
+          <h5>Shorthand</h5>
+          <p>Wenn Variablen-Name = Property-Name: <code>{ name }</code> statt <code>{ name: name }</code>.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">collections.js</div>
+          <pre><span class="cm">// Array</span>
 <span class="kw">const</span> <span class="vr">fruits</span> = [<span class="st">'Apfel'</span>, <span class="st">'Banane'</span>, <span class="st">'Kirsche'</span>];
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">fruits</span>[<span class="nm">0</span>]);      <span class="cm">// 'Apfel'</span>
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">fruits</span>.<span class="vr">length</span>);  <span class="cm">// 3</span>
@@ -376,49 +425,50 @@ a/b/c</pre>
 
 <span class="vr">user</span>.<span class="vr">stadt</span> = <span class="st">'Bern'</span>;        <span class="cm">// neue Property</span>
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="cl">Object</span>.<span class="fn">keys</span>(<span class="vr">user</span>));</pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Notiz</span>
-      <h5>Referenz</h5>
-      <p><code>const a = [1]; const b = a; b.push(2);</code> — <code>a</code> ist jetzt auch <code>[1,2]</code>.</p>
-      <h5>Kopieren</h5>
-      <p>Shallow: <code>[...arr]</code>, <code>{...obj}</code>. Deep: <code>structuredClone(obj)</code>.</p>
-      <h5>Vergleich</h5>
-      <p><code>[1] === [1]</code> ist <strong>false</strong> — verschiedene Referenzen.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Notiz</span>
+          <h5>Referenz</h5>
+          <p><code>const a = [1]; const b = a; b.push(2);</code> — <code>a</code> ist jetzt auch <code>[1,2]</code>.</p>
+          <h5>Kopieren</h5>
+          <p>Shallow: <code>[...arr]</code>, <code>{...obj}</code>. Deep: <code>structuredClone(obj)</code>.</p>
+          <h5>Vergleich</h5>
+          <p><code>[1] === [1]</code> ist <strong>false</strong> — verschiedene Referenzen.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre>Apfel
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre>Apfel
 <span class="nm">3</span>
 [ <span class="st">'Beere'</span>, <span class="st">'Apfel'</span>, <span class="st">'Banane'</span>, <span class="st">'Kirsche'</span>, <span class="st">'Mango'</span> ]
 Mara
 <span class="nm">28</span>
 [ <span class="st">'name'</span>, <span class="st">'alter'</span>, <span class="st">'aktiv'</span>, <span class="st">'stadt'</span> ]</pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 07 Funktionen ============ -->
-<section id="funktionen">
-  <h2><span class="num">07</span> Funktionen &amp; Arrow Functions</h2>
-  <p class="section-intro">Drei Schreibweisen für Funktionen: <code>function</code>-Declaration, Function-Expression und Arrow Function. Sie unterscheiden sich in Hoisting und <code>this</code>-Verhalten.</p>
+    <!-- ============ 07 Funktionen ============ -->
+    <section id="funktionen">
+      <h2><span class="num">07</span> Funktionen &amp; Arrow Functions</h2>
+      <p class="section-intro">Drei Schreibweisen für Funktionen: <code>function</code>-Declaration, Function-Expression
+        und Arrow Function. Sie unterscheiden sich in Hoisting und <code>this</code>-Verhalten.</p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Varianten</span>
-      <h5>Declaration</h5>
-      <p><code>function name() {}</code> — gehoistet, vor Definition aufrufbar.</p>
-      <h5>Expression</h5>
-      <p><code>const x = function() {}</code> — nicht gehoistet.</p>
-      <h5>Arrow</h5>
-      <p><code>() =&gt; {}</code> — kürzer, kein eigenes <code>this</code>, kein <code>arguments</code>.</p>
-      <h5>Default Args</h5>
-      <p><code>function f(x = 10) {}</code></p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">funktionen.js</div>
-<pre><span class="cm">// 1. Function Declaration</span>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Varianten</span>
+          <h5>Declaration</h5>
+          <p><code>function name() {}</code> — gehoistet, vor Definition aufrufbar.</p>
+          <h5>Expression</h5>
+          <p><code>const x = function() {}</code> — nicht gehoistet.</p>
+          <h5>Arrow</h5>
+          <p><code>() =&gt; {}</code> — kürzer, kein eigenes <code>this</code>, kein <code>arguments</code>.</p>
+          <h5>Default Args</h5>
+          <p><code>function f(x = 10) {}</code></p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">funktionen.js</div>
+          <pre><span class="cm">// 1. Function Declaration</span>
 <span class="kw">function</span> <span class="fn">add</span>(<span class="vr">a</span>, <span class="vr">b</span>) {
   <span class="kw">return</span> <span class="vr">a</span> + <span class="vr">b</span>;
 }
@@ -440,47 +490,50 @@ Mara
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">sub</span>(<span class="nm">10</span>, <span class="nm">4</span>));              <span class="cm">// 6</span>
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">mul</span>(<span class="nm">3</span>, <span class="nm">7</span>));               <span class="cm">// 21</span>
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">gruss</span>(<span class="st">'Mara'</span>, <span class="st">'Lia'</span>, <span class="st">'Tim'</span>));</pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Tipp</span>
-      <h5>Wann Arrow?</h5>
-      <p>Für kurze Callbacks (map, filter), Methoden mit Closure-<code>this</code>.</p>
-      <h5>Wann nicht Arrow?</h5>
-      <p>Für Object-Methoden mit eigenem <code>this</code> und Konstruktoren.</p>
-      <h5>Implicit Return</h5>
-      <p>Arrow ohne <code>{}</code> gibt den Ausdruck zurück: <code>x =&gt; x*2</code>.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>Wann Arrow?</h5>
+          <p>Für kurze Callbacks (map, filter), Methoden mit Closure-<code>this</code>.</p>
+          <h5>Wann nicht Arrow?</h5>
+          <p>Für Object-Methoden mit eigenem <code>this</code> und Konstruktoren.</p>
+          <h5>Implicit Return</h5>
+          <p>Arrow ohne <code>{}</code> gibt den Ausdruck zurück: <code>x =&gt; x*2</code>.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre><span class="nm">5</span>
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre><span class="nm">5</span>
 <span class="nm">6</span>
 <span class="nm">21</span>
 Hallo Mara, plus <span class="nm">2</span> weitere</pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 08 Kontrollfluss ============ -->
-<section id="kontrollfluss">
-  <h2><span class="num">08</span> Bedingungen &amp; Schleifen</h2>
-  <p class="section-intro">Die Klassiker: <code>if/else</code>, <code>switch</code>, <code>for</code>, <code>while</code>. Plus <code>for…of</code> für Iterables und <code>for…in</code> für Objekt-Keys (mit Vorsicht).</p>
+    <!-- ============ 08 Kontrollfluss ============ -->
+    <section id="kontrollfluss">
+      <h2><span class="num">08</span> Bedingungen &amp; Schleifen</h2>
+      <p class="section-intro">Die Klassiker: <code>if/else</code>, <code>switch</code>, <code>for</code>,
+        <code>while</code>. Plus <code>for…of</code> für Iterables und <code>for…in</code> für Objekt-Keys (mit
+        Vorsicht).
+      </p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Übersicht</span>
-      <h5>if / else if / else</h5>
-      <p>Klassische Bedingung.</p>
-      <h5>switch</h5>
-      <p>Vergleicht mit <code>===</code>. <code>break</code> nicht vergessen!</p>
-      <h5>for…of</h5>
-      <p>Für Arrays, Sets, Maps, Strings — alles Iterables.</p>
-      <h5>for…in</h5>
-      <p>Für Objekt-Keys. Vorsicht: inkl. ererbter Properties.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">flow.js</div>
-<pre><span class="kw">const</span> <span class="vr">temp</span> = <span class="nm">17</span>;
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Übersicht</span>
+          <h5>if / else if / else</h5>
+          <p>Klassische Bedingung.</p>
+          <h5>switch</h5>
+          <p>Vergleicht mit <code>===</code>. <code>break</code> nicht vergessen!</p>
+          <h5>for…of</h5>
+          <p>Für Arrays, Sets, Maps, Strings — alles Iterables.</p>
+          <h5>for…in</h5>
+          <p>Für Objekt-Keys. Vorsicht: inkl. ererbter Properties.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">flow.js</div>
+          <pre><span class="kw">const</span> <span class="vr">temp</span> = <span class="nm">17</span>;
 
 <span class="kw">if</span> (<span class="vr">temp</span> &gt; <span class="nm">25</span>) {
   <span class="fn">console</span>.<span class="fn">log</span>(<span class="st">'heiss'</span>);
@@ -505,21 +558,23 @@ Hallo Mara, plus <span class="nm">2</span> weitere</pre>
 <span class="kw">for</span> (<span class="kw">const</span> <span class="vr">f</span> <span class="kw">of</span> [<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>]) {
   <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">f</span>);
 }</pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Tipp</span>
-      <h5>switch-Fallthrough</h5>
-      <p>Ohne <code>break</code> läuft's in den nächsten Case rein. Manchmal gewünscht, oft nicht.</p>
-      <h5>for…in Falle</h5>
-      <p>Auf Arrays NIE <code>for…in</code> — du bekommst die Indizes als Strings. Nimm <code>for…of</code> oder <code>forEach</code>.</p>
-      <h5>break / continue</h5>
-      <p>Funktionieren in allen Schleifen.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>switch-Fallthrough</h5>
+          <p>Ohne <code>break</code> läuft's in den nächsten Case rein. Manchmal gewünscht, oft nicht.</p>
+          <h5>for…in Falle</h5>
+          <p>Auf Arrays NIE <code>for…in</code> — du bekommst die Indizes als Strings. Nimm <code>for…of</code> oder
+            <code>forEach</code>.
+          </p>
+          <h5>break / continue</h5>
+          <p>Funktionieren in allen Schleifen.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre>angenehm
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre>angenehm
 <span class="nm">17</span> Grad
 i=<span class="nm">0</span>
 i=<span class="nm">1</span>
@@ -527,31 +582,32 @@ i=<span class="nm">2</span>
 A
 B
 C</pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 09 Console & Debugging ============ -->
-<section id="console">
-  <h2><span class="num">09</span> console &amp; Debugging</h2>
-  <p class="section-intro"><code>console.log</code> ist der häufigste Debugger der Welt — aber das Console-Object kann viel mehr: Tabellen, Gruppen, Timer, Warnungen.</p>
+    <!-- ============ 09 Console & Debugging ============ -->
+    <section id="console">
+      <h2><span class="num">09</span> console &amp; Debugging</h2>
+      <p class="section-intro"><code>console.log</code> ist der häufigste Debugger der Welt — aber das Console-Object
+        kann viel mehr: Tabellen, Gruppen, Timer, Warnungen.</p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Methoden</span>
-      <h5>.log / .info / .warn / .error</h5>
-      <p>Verschiedene Level mit farbiger Markierung.</p>
-      <h5>.table</h5>
-      <p>Objekt- und Array-Daten als Tabelle.</p>
-      <h5>.group / .groupEnd</h5>
-      <p>Verschachtelte Ausgaben.</p>
-      <h5>.time / .timeEnd</h5>
-      <p>Misst die Dauer zwischen zwei Aufrufen.</p>
-      <h5>.dir</h5>
-      <p>Zeigt ein Objekt als interaktiven Tree (im Browser).</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">debug.js</div>
-<pre><span class="fn">console</span>.<span class="fn">log</span>(<span class="st">'normales Log'</span>);
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Methoden</span>
+          <h5>.log / .info / .warn / .error</h5>
+          <p>Verschiedene Level mit farbiger Markierung.</p>
+          <h5>.table</h5>
+          <p>Objekt- und Array-Daten als Tabelle.</p>
+          <h5>.group / .groupEnd</h5>
+          <p>Verschachtelte Ausgaben.</p>
+          <h5>.time / .timeEnd</h5>
+          <p>Misst die Dauer zwischen zwei Aufrufen.</p>
+          <h5>.dir</h5>
+          <p>Zeigt ein Objekt als interaktiven Tree (im Browser).</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">debug.js</div>
+          <pre><span class="fn">console</span>.<span class="fn">log</span>(<span class="st">'normales Log'</span>);
 <span class="fn">console</span>.<span class="fn">info</span>(<span class="st">'info-level'</span>);
 <span class="fn">console</span>.<span class="fn">warn</span>(<span class="st">'Achtung!'</span>);
 <span class="fn">console</span>.<span class="fn">error</span>(<span class="st">'Fehler!'</span>);
@@ -572,21 +628,21 @@ C</pre>
 <span class="fn">console</span>.<span class="fn">time</span>(<span class="st">'op'</span>);
 <span class="kw">for</span> (<span class="kw">let</span> <span class="vr">i</span> = <span class="nm">0</span>; <span class="vr">i</span> &lt; <span class="nm">1e6</span>; <span class="vr">i</span>++) {}
 <span class="fn">console</span>.<span class="fn">timeEnd</span>(<span class="st">'op'</span>);</pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Tipp</span>
-      <h5>console.log mit Komma</h5>
-      <p><code>console.log('user', user)</code> ist oft lesbarer als Template Literal.</p>
-      <h5>debugger</h5>
-      <p>Das Keyword <code>debugger;</code> setzt einen Breakpoint im Code.</p>
-      <h5>console.assert</h5>
-      <p>Loggt nur, wenn die Assertion fehlschlägt — nützlich.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>console.log mit Komma</h5>
+          <p><code>console.log('user', user)</code> ist oft lesbarer als Template Literal.</p>
+          <h5>debugger</h5>
+          <p>Das Keyword <code>debugger;</code> setzt einen Breakpoint im Code.</p>
+          <h5>console.assert</h5>
+          <p>Loggt nur, wenn die Assertion fehlschlägt — nützlich.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre>normales Log
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre>normales Log
 info-level
 <span class="err">Achtung!</span>
 <span class="err">Fehler!</span>
@@ -600,38 +656,40 @@ info-level
   name: Mara
   alter: <span class="nm">28</span>
 op: <span class="nm">2.143</span>ms</pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ====================================================== -->
-<!-- =============== TEIL II — MITTELSTUFE ================ -->
-<!-- ====================================================== -->
-<div class="part">
-  <div class="part-label">Teil II</div>
-  <h2 class="part-title">Idiome &amp; <em>Mechanik</em></h2>
-  <p class="part-desc">Destructuring, Array-Methoden, neue Set-Operationen aus ES2025, Closures, <code>this</code> und Klassen. Die Konzepte, die echten JS-Code von Anfänger-Code unterscheiden.</p>
-</div>
-
-<!-- ============ 10 Destructuring ============ -->
-<section id="destructuring">
-  <h2><span class="num">10</span> Destructuring &amp; Spread/Rest</h2>
-  <p class="section-intro">Destructuring zerlegt Arrays und Objekte direkt in Variablen. Spread (<code>...</code>) verteilt sie wieder, Rest sammelt mehrere Werte ein. Drei Pünktchen, drei Bedeutungen — je nach Kontext.</p>
-
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Konzepte</span>
-      <h5>Array-Destructuring</h5>
-      <p>Per Position zuweisen.</p>
-      <h5>Objekt-Destructuring</h5>
-      <p>Per Name zuweisen, mit Rename und Default.</p>
-      <h5>Spread</h5>
-      <p>Kopieren oder kombinieren: <code>[...a, ...b]</code>, <code>{...obj, neu: 1}</code>.</p>
-      <h5>Rest</h5>
-      <p>Sammelt übrige Werte: <code>const [a, ...rest] = arr</code>.</p>
+    <!-- ====================================================== -->
+    <!-- =============== TEIL II — MITTELSTUFE ================ -->
+    <!-- ====================================================== -->
+    <div class="part">
+      <div class="part-label">Teil II</div>
+      <h2 class="part-title">Idiome &amp; <em>Mechanik</em></h2>
+      <p class="part-desc">Destructuring, Array-Methoden, neue Set-Operationen aus ES2025, Closures, <code>this</code>
+        und Klassen. Die Konzepte, die echten JS-Code von Anfänger-Code unterscheiden.</p>
     </div>
-    <div class="ex-code">
-      <div class="filename">destructuring.js</div>
-<pre><span class="cm">// Array</span>
+
+    <!-- ============ 10 Destructuring ============ -->
+    <section id="destructuring">
+      <h2><span class="num">10</span> Destructuring &amp; Spread/Rest</h2>
+      <p class="section-intro">Destructuring zerlegt Arrays und Objekte direkt in Variablen. Spread (<code>...</code>)
+        verteilt sie wieder, Rest sammelt mehrere Werte ein. Drei Pünktchen, drei Bedeutungen — je nach Kontext.</p>
+
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Konzepte</span>
+          <h5>Array-Destructuring</h5>
+          <p>Per Position zuweisen.</p>
+          <h5>Objekt-Destructuring</h5>
+          <p>Per Name zuweisen, mit Rename und Default.</p>
+          <h5>Spread</h5>
+          <p>Kopieren oder kombinieren: <code>[...a, ...b]</code>, <code>{...obj, neu: 1}</code>.</p>
+          <h5>Rest</h5>
+          <p>Sammelt übrige Werte: <code>const [a, ...rest] = arr</code>.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">destructuring.js</div>
+          <pre><span class="cm">// Array</span>
 <span class="kw">const</span> [<span class="vr">a</span>, <span class="vr">b</span>, ...<span class="vr">rest</span>] = [<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">4</span>, <span class="nm">5</span>];
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">a</span>, <span class="vr">b</span>, <span class="vr">rest</span>);   <span class="cm">// 1 2 [3,4,5]</span>
 
@@ -654,52 +712,56 @@ op: <span class="nm">2.143</span>ms</pre>
   <span class="kw">return</span> <span class="vr">zahlen</span>.<span class="fn">reduce</span>((<span class="vr">a</span>, <span class="vr">b</span>) =&gt; <span class="vr">a</span> + <span class="vr">b</span>, <span class="nm">0</span>);
 }
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">summe</span>(<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">4</span>));     <span class="cm">// 10</span></pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Tipp</span>
-      <h5>Reihenfolge bei Spread</h5>
-      <p>Spätere Keys überschreiben: <code>{...obj, alter: 29}</code>.</p>
-      <h5>Function-Args</h5>
-      <p><code>function f({name, alter}) {…}</code> destructured direkt am Parameter.</p>
-      <h5>Swap</h5>
-      <p><code>[a, b] = [b, a]</code> — Variablen tauschen, ohne Hilfsvariable.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>Reihenfolge bei Spread</h5>
+          <p>Spätere Keys überschreiben: <code>{...obj, alter: 29}</code>.</p>
+          <h5>Function-Args</h5>
+          <p><code>function f({name, alter}) {…}</code> destructured direkt am Parameter.</p>
+          <h5>Swap</h5>
+          <p><code>[a, b] = [b, a]</code> — Variablen tauschen, ohne Hilfsvariable.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre><span class="nm">1</span> <span class="nm">2</span> [ <span class="nm">3</span>, <span class="nm">4</span>, <span class="nm">5</span> ]
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre><span class="nm">1</span> <span class="nm">2</span> [ <span class="nm">3</span>, <span class="nm">4</span>, <span class="nm">5</span> ]
 Mara <span class="nm">28</span> ?
 [ <span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">4</span>, <span class="nm">5</span> ]
 { <span class="st">name</span>: <span class="st">'Mara'</span>, <span class="st">alter</span>: <span class="nm">29</span>, <span class="st">stadt</span>: <span class="st">'Bern'</span> }
 <span class="nm">10</span></pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 11 Array-Methoden ============ -->
-<section id="array-methoden">
-  <h2><span class="num">11</span> Array-Methoden</h2>
-  <p class="section-intro">Schluss mit <code>for</code>-Schleifen für alles. <code>map</code>, <code>filter</code>, <code>reduce</code>, <code>find</code>, <code>some</code>, <code>every</code> machen den Code lesbarer und expressiver. Plus die "by copy"-Varianten aus ES2023 (<code>toSorted</code>, <code>toReversed</code>, <code>toSpliced</code>).</p>
+    <!-- ============ 11 Array-Methoden ============ -->
+    <section id="array-methoden">
+      <h2><span class="num">11</span> Array-Methoden</h2>
+      <p class="section-intro">Schluss mit <code>for</code>-Schleifen für alles. <code>map</code>, <code>filter</code>,
+        <code>reduce</code>, <code>find</code>, <code>some</code>, <code>every</code> machen den Code lesbarer und
+        expressiver. Plus die "by copy"-Varianten aus ES2023 (<code>toSorted</code>, <code>toReversed</code>,
+        <code>toSpliced</code>).
+      </p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Methoden</span>
-      <h5>map</h5>
-      <p>Transformiert jedes Element. Gibt neues Array zurück.</p>
-      <h5>filter</h5>
-      <p>Behält Elemente, für die der Test true ist.</p>
-      <h5>reduce</h5>
-      <p>Reduziert auf einen Wert (Summe, Objekt, …).</p>
-      <h5>find / findIndex</h5>
-      <p>Erstes passendes Element (oder Index).</p>
-      <h5>some / every</h5>
-      <p>Boolean: gilt für mindestens eins / für alle?</p>
-      <h5>toSorted, toReversed</h5>
-      <p>Non-mutating Varianten (ES2023).</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">array-methoden.js</div>
-<pre><span class="kw">const</span> <span class="vr">zahlen</span> = [<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">4</span>, <span class="nm">5</span>];
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Methoden</span>
+          <h5>map</h5>
+          <p>Transformiert jedes Element. Gibt neues Array zurück.</p>
+          <h5>filter</h5>
+          <p>Behält Elemente, für die der Test true ist.</p>
+          <h5>reduce</h5>
+          <p>Reduziert auf einen Wert (Summe, Objekt, …).</p>
+          <h5>find / findIndex</h5>
+          <p>Erstes passendes Element (oder Index).</p>
+          <h5>some / every</h5>
+          <p>Boolean: gilt für mindestens eins / für alle?</p>
+          <h5>toSorted, toReversed</h5>
+          <p>Non-mutating Varianten (ES2023).</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">array-methoden.js</div>
+          <pre><span class="kw">const</span> <span class="vr">zahlen</span> = [<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">4</span>, <span class="nm">5</span>];
 
 <span class="cm">// map: neues Array mit Transformation</span>
 <span class="kw">const</span> <span class="vr">doppelt</span> = <span class="vr">zahlen</span>.<span class="fn">map</span>(<span class="vr">n</span> =&gt; <span class="vr">n</span> * <span class="nm">2</span>);
@@ -724,54 +786,55 @@ Mara <span class="nm">28</span> ?
 <span class="kw">const</span> <span class="vr">orig</span> = [<span class="nm">3</span>, <span class="nm">1</span>, <span class="nm">2</span>];
 <span class="kw">const</span> <span class="vr">sortiert</span> = <span class="vr">orig</span>.<span class="fn">toSorted</span>();
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">orig</span>, <span class="vr">sortiert</span>);    <span class="cm">// orig bleibt unverändert!</span></pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Tipp</span>
-      <h5>Chainable</h5>
-      <p><code>arr.filter(...).map(...).reduce(...)</code> — typische Fluent-Pipeline.</p>
-      <h5>map vs forEach</h5>
-      <p>map gibt was zurück, forEach nicht. Wenn du das Ergebnis nicht brauchst → forEach.</p>
-      <h5>flatMap</h5>
-      <p>Map + flatten in einem Aufruf — bei verschachtelten Resultaten.</p>
-      <h5>Array.from</h5>
-      <p>Aus iterierbaren Werten ein Array bauen: <code>Array.from('abc')</code>.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>Chainable</h5>
+          <p><code>arr.filter(...).map(...).reduce(...)</code> — typische Fluent-Pipeline.</p>
+          <h5>map vs forEach</h5>
+          <p>map gibt was zurück, forEach nicht. Wenn du das Ergebnis nicht brauchst → forEach.</p>
+          <h5>flatMap</h5>
+          <p>Map + flatten in einem Aufruf — bei verschachtelten Resultaten.</p>
+          <h5>Array.from</h5>
+          <p>Aus iterierbaren Werten ein Array bauen: <code>Array.from('abc')</code>.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre>[ <span class="nm">2</span>, <span class="nm">4</span>, <span class="nm">6</span>, <span class="nm">8</span>, <span class="nm">10</span> ]
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre>[ <span class="nm">2</span>, <span class="nm">4</span>, <span class="nm">6</span>, <span class="nm">8</span>, <span class="nm">10</span> ]
 [ <span class="nm">2</span>, <span class="nm">4</span> ]
 <span class="nm">15</span>
 <span class="nm">4</span>
 <span class="bn">true</span>
 <span class="bn">true</span>
 [ <span class="nm">3</span>, <span class="nm">1</span>, <span class="nm">2</span> ] [ <span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span> ]</pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 12 Set-Methoden ============ -->
-<section id="set-methoden">
-  <h2><span class="num">12</span> Set-Methoden <span class="es">ES2025</span></h2>
-  <p class="section-intro">Endlich offiziell: Sets können seit ES2025 Mengenoperationen wie Union, Intersection und Difference. Vorher musste man das mit Array-Tricks bauen — jetzt nur noch ein Methoden-Aufruf.</p>
+    <!-- ============ 12 Set-Methoden ============ -->
+    <section id="set-methoden">
+      <h2><span class="num">12</span> Set-Methoden <span class="es">ES2025</span></h2>
+      <p class="section-intro">Endlich offiziell: Sets können seit ES2025 Mengenoperationen wie Union, Intersection und
+        Difference. Vorher musste man das mit Array-Tricks bauen — jetzt nur noch ein Methoden-Aufruf.</p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · neue Methoden</span>
-      <h5>.union(other)</h5>
-      <p>Alle Elemente aus beiden Sets.</p>
-      <h5>.intersection(other)</h5>
-      <p>Nur, was in beiden ist.</p>
-      <h5>.difference(other)</h5>
-      <p>In this, aber nicht in other.</p>
-      <h5>.symmetricDifference(other)</h5>
-      <p>In genau einem, nicht in beiden.</p>
-      <h5>.isSubsetOf / .isSupersetOf / .isDisjointFrom</h5>
-      <p>Predicate-Checks.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">set-methoden.js</div>
-<pre><span class="kw">const</span> <span class="vr">a</span> = <span class="kw">new</span> <span class="cl">Set</span>([<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">4</span>]);
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · neue Methoden</span>
+          <h5>.union(other)</h5>
+          <p>Alle Elemente aus beiden Sets.</p>
+          <h5>.intersection(other)</h5>
+          <p>Nur, was in beiden ist.</p>
+          <h5>.difference(other)</h5>
+          <p>In this, aber nicht in other.</p>
+          <h5>.symmetricDifference(other)</h5>
+          <p>In genau einem, nicht in beiden.</p>
+          <h5>.isSubsetOf / .isSupersetOf / .isDisjointFrom</h5>
+          <p>Predicate-Checks.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">set-methoden.js</div>
+          <pre><span class="kw">const</span> <span class="vr">a</span> = <span class="kw">new</span> <span class="cl">Set</span>([<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">4</span>]);
 <span class="kw">const</span> <span class="vr">b</span> = <span class="kw">new</span> <span class="cl">Set</span>([<span class="nm">3</span>, <span class="nm">4</span>, <span class="nm">5</span>, <span class="nm">6</span>]);
 
 <span class="cm">// Union</span>
@@ -794,51 +857,54 @@ Mara <span class="nm">28</span> ?
 <span class="kw">const</span> <span class="vr">c</span> = <span class="kw">new</span> <span class="cl">Set</span>([<span class="nm">3</span>, <span class="nm">4</span>]);
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">c</span>.<span class="fn">isSubsetOf</span>(<span class="vr">a</span>));      <span class="cm">// true</span>
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">a</span>.<span class="fn">isDisjointFrom</span>(<span class="vr">c</span>));  <span class="cm">// false</span></pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Notiz</span>
-      <h5>Return-Wert</h5>
-      <p>Die Methoden geben ein <strong>neues Set</strong> zurück, ändern die Originale nicht.</p>
-      <h5>Was zählt als gleich?</h5>
-      <p>Strikte Gleichheit (<code>===</code>), mit Ausnahme von <code>NaN</code> — gilt als gleich.</p>
-      <h5>Performance</h5>
-      <p>Native Implementierung — viel schneller als selbstgebaute Lösungen mit Arrays.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Notiz</span>
+          <h5>Return-Wert</h5>
+          <p>Die Methoden geben ein <strong>neues Set</strong> zurück, ändern die Originale nicht.</p>
+          <h5>Was zählt als gleich?</h5>
+          <p>Strikte Gleichheit (<code>===</code>), mit Ausnahme von <code>NaN</code> — gilt als gleich.</p>
+          <h5>Performance</h5>
+          <p>Native Implementierung — viel schneller als selbstgebaute Lösungen mit Arrays.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre>[ <span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">4</span>, <span class="nm">5</span>, <span class="nm">6</span> ]
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre>[ <span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">4</span>, <span class="nm">5</span>, <span class="nm">6</span> ]
 [ <span class="nm">3</span>, <span class="nm">4</span> ]
 [ <span class="nm">1</span>, <span class="nm">2</span> ]
 [ <span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">5</span>, <span class="nm">6</span> ]
 <span class="bn">true</span>
 <span class="bn">false</span></pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 13 Optional Chaining ============ -->
-<section id="optional-chaining">
-  <h2><span class="num">13</span> Optional Chaining &amp; Nullish Coalescing</h2>
-  <p class="section-intro"><code>?.</code> stoppt eine Property-Chain, sobald sie auf <code>null</code> oder <code>undefined</code> trifft. <code>??</code> liefert den rechten Wert nur dann, wenn der linke nullish ist. Zwei winzige Operatoren, die unzählige <code>if (x &amp;&amp; x.y &amp;&amp; x.y.z)</code> ersetzen.</p>
+    <!-- ============ 13 Optional Chaining ============ -->
+    <section id="optional-chaining">
+      <h2><span class="num">13</span> Optional Chaining &amp; Nullish Coalescing</h2>
+      <p class="section-intro"><code>?.</code> stoppt eine Property-Chain, sobald sie auf <code>null</code> oder
+        <code>undefined</code> trifft. <code>??</code> liefert den rechten Wert nur dann, wenn der linke nullish ist.
+        Zwei winzige Operatoren, die unzählige <code>if (x &amp;&amp; x.y &amp;&amp; x.y.z)</code> ersetzen.
+      </p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Syntax</span>
-      <h5>obj?.prop</h5>
-      <p>Liefert <code>undefined</code>, wenn <code>obj</code> nullish ist.</p>
-      <h5>arr?.[i]</h5>
-      <p>Optional auf Index zugreifen.</p>
-      <h5>fn?.()</h5>
-      <p>Funktion nur aufrufen, wenn sie existiert.</p>
-      <h5>x ?? y</h5>
-      <p>y, falls x nullish (null/undefined) ist.</p>
-      <h5>x ??= y</h5>
-      <p>Zuweisung nur, falls x nullish.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">optional.js</div>
-<pre><span class="kw">const</span> <span class="vr">user</span> = {
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Syntax</span>
+          <h5>obj?.prop</h5>
+          <p>Liefert <code>undefined</code>, wenn <code>obj</code> nullish ist.</p>
+          <h5>arr?.[i]</h5>
+          <p>Optional auf Index zugreifen.</p>
+          <h5>fn?.()</h5>
+          <p>Funktion nur aufrufen, wenn sie existiert.</p>
+          <h5>x ?? y</h5>
+          <p>y, falls x nullish (null/undefined) ist.</p>
+          <h5>x ??= y</h5>
+          <p>Zuweisung nur, falls x nullish.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">optional.js</div>
+          <pre><span class="kw">const</span> <span class="vr">user</span> = {
   <span class="vr">name</span>: <span class="st">'Mara'</span>,
   <span class="vr">addresse</span>: { <span class="vr">stadt</span>: <span class="st">'Bern'</span> },
 };
@@ -863,45 +929,47 @@ Mara <span class="nm">28</span> ?
 <span class="vr">cfg</span>.<span class="vr">timeout</span> ??= <span class="nm">5000</span>;        <span class="cm">// bleibt 0!</span>
 <span class="vr">cfg</span>.<span class="vr">retries</span> ??= <span class="nm">3</span>;          <span class="cm">// wird 3</span>
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">cfg</span>);</pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Tipp</span>
-      <h5>?? vs ||</h5>
-      <p><code>0 ?? 'x'</code> → 0. <code>0 || 'x'</code> → 'x'. Für Defaults: <code>??</code>.</p>
-      <h5>Short-circuit</h5>
-      <p>Nach erstem <code>null</code>/<code>undefined</code> wird der Rest der Chain übersprungen.</p>
-      <h5>Nicht überall</h5>
-      <p><code>?.</code> auf der linken Seite einer Zuweisung geht nicht: <code>obj?.x = 1</code> ist invalid.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>?? vs ||</h5>
+          <p><code>0 ?? 'x'</code> → 0. <code>0 || 'x'</code> → 'x'. Für Defaults: <code>??</code>.</p>
+          <h5>Short-circuit</h5>
+          <p>Nach erstem <code>null</code>/<code>undefined</code> wird der Rest der Chain übersprungen.</p>
+          <h5>Nicht überall</h5>
+          <p><code>?.</code> auf der linken Seite einer Zuweisung geht nicht: <code>obj?.x = 1</code> ist invalid.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre><span class="bn">undefined</span> <span class="bn">undefined</span>
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre><span class="bn">undefined</span> <span class="bn">undefined</span>
 CH
 hi
 { <span class="st">timeout</span>: <span class="nm">0</span>, <span class="st">retries</span>: <span class="nm">3</span> }</pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 14 Closures ============ -->
-<section id="closures">
-  <h2><span class="num">14</span> Closures &amp; Scope</h2>
-  <p class="section-intro">Eine Closure ist eine Funktion, die Variablen aus ihrem Erstellungs-Kontext "festhält" — auch nachdem dieser Kontext verlassen wurde. Klingt abstrakt, ist aber überall: jeder Event-Handler, jede zurückgegebene Funktion, jede private Variable nutzt das.</p>
+    <!-- ============ 14 Closures ============ -->
+    <section id="closures">
+      <h2><span class="num">14</span> Closures &amp; Scope</h2>
+      <p class="section-intro">Eine Closure ist eine Funktion, die Variablen aus ihrem Erstellungs-Kontext "festhält" —
+        auch nachdem dieser Kontext verlassen wurde. Klingt abstrakt, ist aber überall: jeder Event-Handler, jede
+        zurückgegebene Funktion, jede private Variable nutzt das.</p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Konzept</span>
-      <h5>Scope</h5>
-      <p>Wo eine Variable sichtbar ist. <code>let</code>/<code>const</code> sind block-scoped.</p>
-      <h5>Closure</h5>
-      <p>Inner Function merkt sich die Variablen der Outer Function.</p>
-      <h5>Typischer Use-Case</h5>
-      <p>Private State, Factory Functions, Memoization, Currying.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">closures.js</div>
-<pre><span class="cm">// Factory mit privater State</span>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Konzept</span>
+          <h5>Scope</h5>
+          <p>Wo eine Variable sichtbar ist. <code>let</code>/<code>const</code> sind block-scoped.</p>
+          <h5>Closure</h5>
+          <p>Inner Function merkt sich die Variablen der Outer Function.</p>
+          <h5>Typischer Use-Case</h5>
+          <p>Private State, Factory Functions, Memoization, Currying.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">closures.js</div>
+          <pre><span class="cm">// Factory mit privater State</span>
 <span class="kw">function</span> <span class="fn">zaehlerFactory</span>() {
   <span class="kw">let</span> <span class="vr">count</span> = <span class="nm">0</span>;          <span class="cm">// "privat"</span>
   <span class="kw">return</span> {
@@ -928,48 +996,53 @@ hi
 <span class="kw">const</span> <span class="vr">multiplyBy</span> = (<span class="vr">x</span>) =&gt; (<span class="vr">y</span>) =&gt; <span class="vr">x</span> * <span class="vr">y</span>;
 <span class="kw">const</span> <span class="vr">verdoppeln</span> = <span class="vr">multiplyBy</span>(<span class="nm">2</span>);
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">verdoppeln</span>(<span class="nm">7</span>));   <span class="cm">// 14</span></pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Notiz</span>
-      <h5>Speicher</h5>
-      <p>Closure hält ihre Variablen im Speicher — solange die Funktion existiert. Bei langen Listen oder Listener: vorsichtig.</p>
-      <h5>let vs var im Loop</h5>
-      <p>Mit <code>let</code> hat jede Iteration ihre eigene Binding. Mit <code>var</code> teilen sich alle dasselbe.</p>
-      <h5>Module = Closure</h5>
-      <p>Jedes Modul ist im Grunde eine grosse Closure.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Notiz</span>
+          <h5>Speicher</h5>
+          <p>Closure hält ihre Variablen im Speicher — solange die Funktion existiert. Bei langen Listen oder Listener:
+            vorsichtig.</p>
+          <h5>let vs var im Loop</h5>
+          <p>Mit <code>let</code> hat jede Iteration ihre eigene Binding. Mit <code>var</code> teilen sich alle
+            dasselbe.</p>
+          <h5>Module = Closure</h5>
+          <p>Jedes Modul ist im Grunde eine grosse Closure.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre><span class="nm">3</span>
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre><span class="nm">3</span>
 <span class="nm">0</span>
 <span class="nm">1</span>
 <span class="nm">2</span>
 <span class="nm">14</span></pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 15 this ============ -->
-<section id="this">
-  <h2><span class="num">15</span> this, bind, call, apply</h2>
-  <p class="section-intro"><code>this</code> ist in JavaScript der häufigste Stolperstein. Die Regel: <strong>was steht links vom Punkt beim Aufruf?</strong>. Arrow Functions ändern das — sie haben kein eigenes <code>this</code>, sondern erben es vom umgebenden Scope.</p>
+    <!-- ============ 15 this ============ -->
+    <section id="this">
+      <h2><span class="num">15</span> this, bind, call, apply</h2>
+      <p class="section-intro"><code>this</code> ist in JavaScript der häufigste Stolperstein. Die Regel: <strong>was
+          steht links vom Punkt beim Aufruf?</strong>. Arrow Functions ändern das — sie haben kein eigenes
+        <code>this</code>, sondern erben es vom umgebenden Scope.
+      </p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Regeln</span>
-      <h5>Methode</h5>
-      <p><code>obj.fn()</code> → <code>this === obj</code></p>
-      <h5>Funktion direkt</h5>
-      <p><code>fn()</code> → <code>undefined</code> (strict) oder global (sloppy).</p>
-      <h5>Arrow</h5>
-      <p>Erbt <code>this</code> vom Erstellungs-Scope.</p>
-      <h5>bind / call / apply</h5>
-      <p>Explizit <code>this</code> setzen.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">this.js</div>
-<pre><span class="kw">const</span> <span class="vr">user</span> = {
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Regeln</span>
+          <h5>Methode</h5>
+          <p><code>obj.fn()</code> → <code>this === obj</code></p>
+          <h5>Funktion direkt</h5>
+          <p><code>fn()</code> → <code>undefined</code> (strict) oder global (sloppy).</p>
+          <h5>Arrow</h5>
+          <p>Erbt <code>this</code> vom Erstellungs-Scope.</p>
+          <h5>bind / call / apply</h5>
+          <p>Explizit <code>this</code> setzen.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">this.js</div>
+          <pre><span class="kw">const</span> <span class="vr">user</span> = {
   <span class="vr">name</span>: <span class="st">'Mara'</span>,
   <span class="fn">gruss</span>() {
     <span class="kw">return</span> <span class="st">`Hi, ich bin ${<span class="kw">this</span>.<span class="vr">name</span>}`</span>;
@@ -991,50 +1064,52 @@ hi
 <span class="cm">// Lösung 2: call / apply</span>
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">user</span>.<span class="vr">gruss</span>.<span class="fn">call</span>({ <span class="vr">name</span>: <span class="st">'Tim'</span> }));
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">user</span>.<span class="vr">gruss</span>.<span class="fn">apply</span>({ <span class="vr">name</span>: <span class="st">'Lia'</span> }));</pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Tipp</span>
-      <h5>call vs apply</h5>
-      <p>Selbe Funktion: <code>fn.call(this, a, b)</code> einzeln, <code>fn.apply(this, [a, b])</code> als Array.</p>
-      <h5>Arrow für Callbacks</h5>
-      <p>Damit <code>this</code> nicht verloren geht in <code>setTimeout</code>, <code>map</code>, etc.</p>
-      <h5>Klassen-Methoden</h5>
-      <p>Sind nicht auto-bound — beim Übergeben an Callbacks oft bind nötig.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>call vs apply</h5>
+          <p>Selbe Funktion: <code>fn.call(this, a, b)</code> einzeln, <code>fn.apply(this, [a, b])</code> als Array.
+          </p>
+          <h5>Arrow für Callbacks</h5>
+          <p>Damit <code>this</code> nicht verloren geht in <code>setTimeout</code>, <code>map</code>, etc.</p>
+          <h5>Klassen-Methoden</h5>
+          <p>Sind nicht auto-bound — beim Übergeben an Callbacks oft bind nötig.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre>Hi, ich bin Mara
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre>Hi, ich bin Mara
 Hi, ich bin <span class="bn">undefined</span>
 Hi, ich bin Mara
 Hi, ich bin Tim
 Hi, ich bin Lia</pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 16 Klassen ============ -->
-<section id="klassen">
-  <h2><span class="num">16</span> Klassen</h2>
-  <p class="section-intro">Seit ES2015 hat JavaScript echte Klassen-Syntax — darunter Prototypen, aber das musst du nicht sehen. Plus moderne Features: private Fields (<code>#name</code>), static Methods, Getter/Setter.</p>
+    <!-- ============ 16 Klassen ============ -->
+    <section id="klassen">
+      <h2><span class="num">16</span> Klassen</h2>
+      <p class="section-intro">Seit ES2015 hat JavaScript echte Klassen-Syntax — darunter Prototypen, aber das musst du
+        nicht sehen. Plus moderne Features: private Fields (<code>#name</code>), static Methods, Getter/Setter.</p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Bausteine</span>
-      <h5>constructor</h5>
-      <p>Wird bei <code>new</code> aufgerufen.</p>
-      <h5>Methoden</h5>
-      <p>Stehen am Prototyp — sind geteilt.</p>
-      <h5>#field</h5>
-      <p>Privates Feld — von aussen kein Zugriff (Syntax-Level).</p>
-      <h5>static</h5>
-      <p>Klassen-Methode, nicht Instanz-Methode.</p>
-      <h5>extends</h5>
-      <p>Vererbung. <code>super()</code> ruft die Parent-Constructor.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">klassen.js</div>
-<pre><span class="kw">class</span> <span class="cl">Konto</span> {
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Bausteine</span>
+          <h5>constructor</h5>
+          <p>Wird bei <code>new</code> aufgerufen.</p>
+          <h5>Methoden</h5>
+          <p>Stehen am Prototyp — sind geteilt.</p>
+          <h5>#field</h5>
+          <p>Privates Feld — von aussen kein Zugriff (Syntax-Level).</p>
+          <h5>static</h5>
+          <p>Klassen-Methode, nicht Instanz-Methode.</p>
+          <h5>extends</h5>
+          <p>Vererbung. <code>super()</code> ruft die Parent-Constructor.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">klassen.js</div>
+          <pre><span class="kw">class</span> <span class="cl">Konto</span> {
   <span class="vr">#saldo</span> = <span class="nm">0</span>;             <span class="cm">// private</span>
 
   <span class="kw">constructor</span>(<span class="vr">inhaber</span>) {
@@ -1063,55 +1138,62 @@ Hi, ich bin Lia</pre>
 <span class="kw">const</span> <span class="vr">k</span> = <span class="kw">new</span> <span class="cl">Sparkonto</span>(<span class="st">'Mara'</span>, <span class="nm">0.02</span>);
 <span class="vr">k</span>.<span class="fn">einzahlen</span>(<span class="nm">500</span>).<span class="fn">einzahlen</span>(<span class="nm">100</span>);
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">k</span>.<span class="vr">inhaber</span>, <span class="vr">k</span>.<span class="vr">saldo</span>, <span class="vr">k</span>.<span class="vr">zins</span>);</pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Notiz</span>
+          <h5>#fields wirklich privat</h5>
+          <p>Reflection o.&nbsp;ä. kommt nicht ran — anders als Konventionen mit <code>_name</code>.</p>
+          <h5>Class Fields</h5>
+          <p>Du kannst Felder direkt im Klassen-Body initialisieren: <code>count = 0;</code></p>
+          <h5>instanceof</h5>
+          <p><code>k instanceof Konto</code> → <code>true</code>.</p>
+        </div>
+      </div>
+
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre>Mara <span class="nm">600</span> <span class="nm">0.02</span></pre>
+      </div>
+    </section>
+
+    <!-- ====================================================== -->
+    <!-- =============== TEIL III — FORTGESCHRITTEN =========== -->
+    <!-- ====================================================== -->
+    <div class="part">
+      <div class="part-label">Teil III</div>
+      <h2 class="part-title">Fortgeschrittene <em>Konzepte</em></h2>
+      <p class="part-desc">Asynchrone Welt, Iteratoren, Module, Errors, und die grossen Neuheiten aus ES2026:
+        <strong>Temporal</strong>, <strong>using</strong>, präzise Mathematik. Plus Proxy &amp; Reflect für
+        Metaprogrammierung.
+      </p>
     </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Notiz</span>
-      <h5>#fields wirklich privat</h5>
-      <p>Reflection o.&nbsp;ä. kommt nicht ran — anders als Konventionen mit <code>_name</code>.</p>
-      <h5>Class Fields</h5>
-      <p>Du kannst Felder direkt im Klassen-Body initialisieren: <code>count = 0;</code></p>
-      <h5>instanceof</h5>
-      <p><code>k instanceof Konto</code> → <code>true</code>.</p>
-    </div>
-  </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre>Mara <span class="nm">600</span> <span class="nm">0.02</span></pre>
-  </div>
-</section>
+    <!-- ============ 17 Promises ============ -->
+    <section id="promises">
+      <h2><span class="num">17</span> Promises &amp; Fetch</h2>
+      <p class="section-intro">Ein Promise ist ein Wert, der "irgendwann" da sein wird. Drei States:
+        <strong>pending</strong>, <strong>fulfilled</strong>, <strong>rejected</strong>. Du verkettest mit
+        <code>.then</code> / <code>.catch</code> / <code>.finally</code> — oder nutzt <code>async/await</code> (nächstes
+        Kapitel).
+      </p>
 
-<!-- ====================================================== -->
-<!-- =============== TEIL III — FORTGESCHRITTEN =========== -->
-<!-- ====================================================== -->
-<div class="part">
-  <div class="part-label">Teil III</div>
-  <h2 class="part-title">Fortgeschrittene <em>Konzepte</em></h2>
-  <p class="part-desc">Asynchrone Welt, Iteratoren, Module, Errors, und die grossen Neuheiten aus ES2026: <strong>Temporal</strong>, <strong>using</strong>, präzise Mathematik. Plus Proxy &amp; Reflect für Metaprogrammierung.</p>
-</div>
-
-<!-- ============ 17 Promises ============ -->
-<section id="promises">
-  <h2><span class="num">17</span> Promises &amp; Fetch</h2>
-  <p class="section-intro">Ein Promise ist ein Wert, der "irgendwann" da sein wird. Drei States: <strong>pending</strong>, <strong>fulfilled</strong>, <strong>rejected</strong>. Du verkettest mit <code>.then</code> / <code>.catch</code> / <code>.finally</code> — oder nutzt <code>async/await</code> (nächstes Kapitel).</p>
-
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · API</span>
-      <h5>new Promise</h5>
-      <p>Mit <code>resolve</code>/<code>reject</code>. Selten manuell — meistens kommt's aus einer API.</p>
-      <h5>.then / .catch / .finally</h5>
-      <p>Chain für Success, Error, Cleanup.</p>
-      <h5>fetch()</h5>
-      <p>Native HTTP-API. Gibt ein <code>Promise&lt;Response&gt;</code>.</p>
-      <h5>Promise.all / race / allSettled / any</h5>
-      <p>Mehrere Promises kombinieren.</p>
-      <h5>Promise.try (ES2025)</h5>
-      <p>Wrappt jeden Aufruf — auch synchrone Errors — in ein Promise.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">promises.js</div>
-<pre><span class="cm">// Einfaches Promise</span>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · API</span>
+          <h5>new Promise</h5>
+          <p>Mit <code>resolve</code>/<code>reject</code>. Selten manuell — meistens kommt's aus einer API.</p>
+          <h5>.then / .catch / .finally</h5>
+          <p>Chain für Success, Error, Cleanup.</p>
+          <h5>fetch()</h5>
+          <p>Native HTTP-API. Gibt ein <code>Promise&lt;Response&gt;</code>.</p>
+          <h5>Promise.all / race / allSettled / any</h5>
+          <p>Mehrere Promises kombinieren.</p>
+          <h5>Promise.try (ES2025)</h5>
+          <p>Wrappt jeden Aufruf — auch synchrone Errors — in ein Promise.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">promises.js</div>
+          <pre><span class="cm">// Einfaches Promise</span>
 <span class="kw">const</span> <span class="vr">p</span> = <span class="kw">new</span> <span class="cl">Promise</span>((<span class="vr">resolve</span>, <span class="vr">reject</span>) =&gt; {
   <span class="fn">setTimeout</span>(() =&gt; <span class="vr">resolve</span>(<span class="st">'fertig'</span>), <span class="nm">100</span>);
 });
@@ -1133,47 +1215,51 @@ Hi, ich bin Lia</pre>
   <span class="cm">// kann sync oder async sein, wirft auch sync</span>
   <span class="kw">return</span> <span class="cl">JSON</span>.<span class="fn">parse</span>(<span class="st">'{ ungültig }'</span>);
 }).<span class="fn">catch</span>(<span class="vr">e</span> =&gt; <span class="fn">console</span>.<span class="fn">log</span>(<span class="st">'sicher gefangen:'</span>, <span class="vr">e</span>.<span class="vr">name</span>));</pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Tipp</span>
-      <h5>Kette nie brechen</h5>
-      <p>In <code>.then</code>-Callbacks immer den Wert zurückgeben, sonst geht die Kette ins Leere.</p>
-      <h5>fetch + Errors</h5>
-      <p>fetch rejected nur bei Netzwerk-Fehlern! HTTP 404/500 kommen als normale Response — selbst <code>response.ok</code> checken.</p>
-      <h5>allSettled vs all</h5>
-      <p><code>all</code> bricht beim ersten Reject ab. <code>allSettled</code> wartet auf alle.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>Kette nie brechen</h5>
+          <p>In <code>.then</code>-Callbacks immer den Wert zurückgeben, sonst geht die Kette ins Leere.</p>
+          <h5>fetch + Errors</h5>
+          <p>fetch rejected nur bei Netzwerk-Fehlern! HTTP 404/500 kommen als normale Response — selbst
+            <code>response.ok</code> checken.
+          </p>
+          <h5>allSettled vs all</h5>
+          <p><code>all</code> bricht beim ersten Reject ab. <code>allSettled</code> wartet auf alle.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre><span class="nm">1</span>: fertig
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre><span class="nm">1</span>: fertig
 <span class="nm">2</span>: Mara
 beide da
 sicher gefangen: SyntaxError</pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 18 async/await ============ -->
-<section id="async-await">
-  <h2><span class="num">18</span> async / await</h2>
-  <p class="section-intro">Promises mit synchron aussehender Syntax. <code>async</code>-Funktionen geben automatisch ein Promise zurück, <code>await</code> wartet auf die Auflösung. Liest sich wie normaler Code, ist aber non-blocking.</p>
+    <!-- ============ 18 async/await ============ -->
+    <section id="async-await">
+      <h2><span class="num">18</span> async / await</h2>
+      <p class="section-intro">Promises mit synchron aussehender Syntax. <code>async</code>-Funktionen geben automatisch
+        ein Promise zurück, <code>await</code> wartet auf die Auflösung. Liest sich wie normaler Code, ist aber
+        non-blocking.</p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Regeln</span>
-      <h5>async function</h5>
-      <p>Gibt immer ein Promise zurück, auch wenn du nur einen Wert returnen lässt.</p>
-      <h5>await</h5>
-      <p>Pausiert die async-Funktion, bis das Promise resolved/rejected.</p>
-      <h5>try/catch</h5>
-      <p>Fängt awaitete Rejections wie normale Errors.</p>
-      <h5>Parallel mit Promise.all</h5>
-      <p>Mehrere <code>await</code> nacheinander = seriell. <code>Promise.all</code> = parallel.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">async-await.js</div>
-<pre><span class="kw">async function</span> <span class="fn">ladeUser</span>(<span class="vr">id</span>) {
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Regeln</span>
+          <h5>async function</h5>
+          <p>Gibt immer ein Promise zurück, auch wenn du nur einen Wert returnen lässt.</p>
+          <h5>await</h5>
+          <p>Pausiert die async-Funktion, bis das Promise resolved/rejected.</p>
+          <h5>try/catch</h5>
+          <p>Fängt awaitete Rejections wie normale Errors.</p>
+          <h5>Parallel mit Promise.all</h5>
+          <p>Mehrere <code>await</code> nacheinander = seriell. <code>Promise.all</code> = parallel.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">async-await.js</div>
+          <pre><span class="kw">async function</span> <span class="fn">ladeUser</span>(<span class="vr">id</span>) {
   <span class="kw">try</span> {
     <span class="kw">const</span> <span class="vr">res</span> = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="st">`/api/users/${<span class="vr">id</span>}`</span>);
     <span class="kw">if</span> (!<span class="vr">res</span>.<span class="vr">ok</span>) <span class="kw">throw new</span> <span class="cl">Error</span>(<span class="st">`HTTP ${<span class="vr">res</span>.<span class="vr">status</span>}`</span>);
@@ -1199,44 +1285,52 @@ sicher gefangen: SyntaxError</pre>
 
 <span class="cm">// Top-level await funktioniert in ES Modules!</span>
 <span class="kw">const</span> <span class="vr">config</span> = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="st">'/config.json'</span>).<span class="fn">then</span>(<span class="vr">r</span> =&gt; <span class="vr">r</span>.<span class="fn">json</span>());</pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Tipp</span>
-      <h5>Häufiger Fehler</h5>
-      <p><code>arr.map(await fn)</code> ist NICHT parallel und syntaktisch fehl. Nimm <code>Promise.all(arr.map(fn))</code>.</p>
-      <h5>Errors immer fangen</h5>
-      <p>Unhandled Promise-Rejections crashen Node — try/catch oder <code>.catch</code>.</p>
-      <h5>Top-level await</h5>
-      <p>Nur in ES Modules, nicht in CommonJS.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>Häufiger Fehler</h5>
+          <p><code>arr.map(await fn)</code> ist NICHT parallel und syntaktisch fehl. Nimm
+            <code>Promise.all(arr.map(fn))</code>.
+          </p>
+          <h5>Errors immer fangen</h5>
+          <p>Unhandled Promise-Rejections crashen Node — try/catch oder <code>.catch</code>.</p>
+          <h5>Top-level await</h5>
+          <p>Nur in ES Modules, nicht in CommonJS.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre>Mara Tim</pre>
-  </div>
-</section>
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre>Mara Tim</pre>
+      </div>
+    </section>
 
-<!-- ============ 19 Iteratoren ============ -->
-<section id="iteratoren">
-  <h2><span class="num">19</span> Iteratoren &amp; Generatoren <span class="es">+ ES2025 Helpers</span></h2>
-  <p class="section-intro">Ein Iterator ist alles mit <code>.next()</code>, das <code>{value, done}</code> liefert. Generators (<code>function*</code>) sind die einfachste Art, Iteratoren zu schreiben. Mit den <strong>Iterator Helpers</strong> aus ES2025 hast du jetzt <code>.map/.filter/.take/.drop</code> direkt am Iterator — <strong>lazy</strong> ausgewertet.</p>
+    <!-- ============ 19 Iteratoren ============ -->
+    <section id="iteratoren">
+      <h2><span class="num">19</span> Iteratoren &amp; Generatoren <span class="es">+ ES2025 Helpers</span></h2>
+      <p class="section-intro">Ein Iterator ist alles mit <code>.next()</code>, das <code>{value, done}</code> liefert.
+        Generators (<code>function*</code>) sind die einfachste Art, Iteratoren zu schreiben. Mit den <strong>Iterator
+          Helpers</strong> aus ES2025 hast du jetzt <code>.map/.filter/.take/.drop</code> direkt am Iterator —
+        <strong>lazy</strong> ausgewertet.
+      </p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Konzepte</span>
-      <h5>Iterable</h5>
-      <p>Hat <code>[Symbol.iterator]()</code>. Funktioniert in <code>for…of</code> und Spread.</p>
-      <h5>Generator</h5>
-      <p>Funktion mit <code>function*</code> und <code>yield</code>. Liefert ein Iterable.</p>
-      <h5>Lazy</h5>
-      <p>Werte werden erst beim Bedarf berechnet — perfekt für unendliche Sequenzen.</p>
-      <h5>Iterator Helpers</h5>
-      <p>Methoden direkt am Iterator-Objekt: <code>.map</code>, <code>.filter</code>, <code>.take</code>, <code>.drop</code>, <code>.toArray</code>.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">iteratoren.js</div>
-<pre><span class="cm">// Generator</span>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Konzepte</span>
+          <h5>Iterable</h5>
+          <p>Hat <code>[Symbol.iterator]()</code>. Funktioniert in <code>for…of</code> und Spread.</p>
+          <h5>Generator</h5>
+          <p>Funktion mit <code>function*</code> und <code>yield</code>. Liefert ein Iterable.</p>
+          <h5>Lazy</h5>
+          <p>Werte werden erst beim Bedarf berechnet — perfekt für unendliche Sequenzen.</p>
+          <h5>Iterator Helpers</h5>
+          <p>Methoden direkt am Iterator-Objekt: <code>.map</code>, <code>.filter</code>, <code>.take</code>,
+            <code>.drop</code>, <code>.toArray</code>.
+          </p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">iteratoren.js</div>
+          <pre><span class="cm">// Generator</span>
 <span class="kw">function</span>* <span class="fn">fibonacci</span>() {
   <span class="kw">let</span> [<span class="vr">a</span>, <span class="vr">b</span>] = [<span class="nm">0</span>, <span class="nm">1</span>];
   <span class="kw">while</span> (<span class="bn">true</span>) {
@@ -1276,50 +1370,54 @@ sicher gefangen: SyntaxError</pre>
   }
 };
 <span class="kw">for</span> (<span class="kw">const</span> <span class="vr">x</span> <span class="kw">of</span> <span class="vr">range</span>) <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">x</span>);</pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Tipp</span>
-      <h5>Lazy = Stark</h5>
-      <p>Iterator-Helpers werten erst aus, was du wirklich brauchst. <code>fibonacci().take(5)</code> stoppt nach 5 Werten, läuft nicht endlos.</p>
-      <h5>vs. Array-Methoden</h5>
-      <p>Array.map/filter erzeugen jeweils ein neues Array. Iterator-Helpers nicht — sparen Speicher.</p>
-      <h5>Async Iterators</h5>
-      <p><code>for await…of</code> und <code>async function*</code> für Streams.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>Lazy = Stark</h5>
+          <p>Iterator-Helpers werten erst aus, was du wirklich brauchst. <code>fibonacci().take(5)</code> stoppt nach 5
+            Werten, läuft nicht endlos.</p>
+          <h5>vs. Array-Methoden</h5>
+          <p>Array.map/filter erzeugen jeweils ein neues Array. Iterator-Helpers nicht — sparen Speicher.</p>
+          <h5>Async Iterators</h5>
+          <p><code>for await…of</code> und <code>async function*</code> für Streams.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre>[ <span class="nm">0</span>, <span class="nm">1</span>, <span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">5</span>, <span class="nm">8</span>, <span class="nm">13</span>, <span class="nm">21</span>, <span class="nm">34</span> ]
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre>[ <span class="nm">0</span>, <span class="nm">1</span>, <span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">5</span>, <span class="nm">8</span>, <span class="nm">13</span>, <span class="nm">21</span>, <span class="nm">34</span> ]
 [ <span class="nm">0</span>, <span class="nm">2</span>, <span class="nm">8</span>, <span class="nm">34</span>, <span class="nm">144</span> ]
 <span class="nm">1</span>
 <span class="nm">2</span>
 <span class="nm">3</span></pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 20 Module ============ -->
-<section id="module">
-  <h2><span class="num">20</span> Module — ES Modules <span class="es">+ JSON Modules ES2025</span></h2>
-  <p class="section-intro">ES Modules sind der Standard für die Code-Organisation. <code>import</code> / <code>export</code>, statisch oder dynamisch. Seit ES2025: Import Attributes für JSON-Module direkt im Browser/Node ohne Bundler.</p>
+    <!-- ============ 20 Module ============ -->
+    <section id="module">
+      <h2><span class="num">20</span> Module — ES Modules <span class="es">+ JSON Modules ES2025</span></h2>
+      <p class="section-intro">ES Modules sind der Standard für die Code-Organisation. <code>import</code> /
+        <code>export</code>, statisch oder dynamisch. Seit ES2025: Import Attributes für JSON-Module direkt im
+        Browser/Node ohne Bundler.
+      </p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Varianten</span>
-      <h5>Named Export</h5>
-      <p><code>export const foo = …</code></p>
-      <h5>Default Export</h5>
-      <p><code>export default …</code> — eines pro Datei.</p>
-      <h5>Import</h5>
-      <p><code>import { foo } from './x.js'</code></p>
-      <h5>Dynamic Import</h5>
-      <p><code>const m = await import('./x.js')</code> — lazy.</p>
-      <h5>Import Attributes</h5>
-      <p><code>import data from './x.json' with { type: 'json' }</code> (ES2025)</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">module.js</div>
-<pre><span class="cm">// === math.js ===</span>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Varianten</span>
+          <h5>Named Export</h5>
+          <p><code>export const foo = …</code></p>
+          <h5>Default Export</h5>
+          <p><code>export default …</code> — eines pro Datei.</p>
+          <h5>Import</h5>
+          <p><code>import { foo } from './x.js'</code></p>
+          <h5>Dynamic Import</h5>
+          <p><code>const m = await import('./x.js')</code> — lazy.</p>
+          <h5>Import Attributes</h5>
+          <p><code>import data from './x.json' with { type: 'json' }</code> (ES2025)</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">module.js</div>
+          <pre><span class="cm">// === math.js ===</span>
 <span class="kw">export const</span> <span class="vr">PI</span> = <span class="nm">3.14159</span>;
 <span class="kw">export function</span> <span class="fn">addiere</span>(<span class="vr">a</span>, <span class="vr">b</span>) {
   <span class="kw">return</span> <span class="vr">a</span> + <span class="vr">b</span>;
@@ -1345,47 +1443,50 @@ sicher gefangen: SyntaxError</pre>
 <span class="kw">import</span> <span class="vr">data</span> <span class="kw">from</span> <span class="st">'./config.json'</span>
   <span class="kw">with</span> { <span class="vr">type</span>: <span class="st">'json'</span> };
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">data</span>.<span class="vr">version</span>);</pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Notiz</span>
-      <h5>Datei-Extension</h5>
-      <p>In ES Modules ist die Extension (<code>.js</code>) <strong>Pflicht</strong> im Pfad — keine "magische" Auflösung.</p>
-      <h5>Live Bindings</h5>
-      <p>Imports sind Read-Only Live-Views aufs Original. Ändert sich der Wert dort, siehst du's hier.</p>
-      <h5>Tree-Shaking</h5>
-      <p>Named Exports lassen sich beim Bundlen unbenutzten Code entfernen.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Notiz</span>
+          <h5>Datei-Extension</h5>
+          <p>In ES Modules ist die Extension (<code>.js</code>) <strong>Pflicht</strong> im Pfad — keine "magische"
+            Auflösung.</p>
+          <h5>Live Bindings</h5>
+          <p>Imports sind Read-Only Live-Views aufs Original. Ändert sich der Wert dort, siehst du's hier.</p>
+          <h5>Tree-Shaking</h5>
+          <p>Named Exports lassen sich beim Bundlen unbenutzten Code entfernen.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre><span class="nm">3.14159</span>
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre><span class="nm">3.14159</span>
 <span class="nm">5</span>
 <span class="nm">20</span>
 <span class="st">'1.0.0'</span></pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 21 Map, WeakMap, Symbol ============ -->
-<section id="map-symbol">
-  <h2><span class="num">21</span> Map, WeakMap &amp; Symbol</h2>
-  <p class="section-intro">Wenn Objekte als Lookup nicht reichen: <code>Map</code> (beliebige Keys, iterierbar), <code>WeakMap</code> (Object-Keys, GC-freundlich), <code>Symbol</code> (eindeutige, kollisionsfreie Bezeichner).</p>
+    <!-- ============ 21 Map, WeakMap, Symbol ============ -->
+    <section id="map-symbol">
+      <h2><span class="num">21</span> Map, WeakMap &amp; Symbol</h2>
+      <p class="section-intro">Wenn Objekte als Lookup nicht reichen: <code>Map</code> (beliebige Keys, iterierbar),
+        <code>WeakMap</code> (Object-Keys, GC-freundlich), <code>Symbol</code> (eindeutige, kollisionsfreie Bezeichner).
+      </p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Übersicht</span>
-      <h5>Map</h5>
-      <p>Wie Objekt, aber: Keys können alles sein, behält Insert-Reihenfolge, hat <code>.size</code>.</p>
-      <h5>Set</h5>
-      <p>Eindeutige Werte, schneller Existenz-Check.</p>
-      <h5>WeakMap / WeakSet</h5>
-      <p>Keys sind Objekte. Garbage Collector räumt automatisch auf.</p>
-      <h5>Symbol</h5>
-      <p>Eindeutiger primitiver Wert. Perfekt für Meta-Properties, die nicht kollidieren sollen.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">collections.js</div>
-<pre><span class="cm">// Map</span>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Übersicht</span>
+          <h5>Map</h5>
+          <p>Wie Objekt, aber: Keys können alles sein, behält Insert-Reihenfolge, hat <code>.size</code>.</p>
+          <h5>Set</h5>
+          <p>Eindeutige Werte, schneller Existenz-Check.</p>
+          <h5>WeakMap / WeakSet</h5>
+          <p>Keys sind Objekte. Garbage Collector räumt automatisch auf.</p>
+          <h5>Symbol</h5>
+          <p>Eindeutiger primitiver Wert. Perfekt für Meta-Properties, die nicht kollidieren sollen.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">collections.js</div>
+          <pre><span class="cm">// Map</span>
 <span class="kw">const</span> <span class="vr">cache</span> = <span class="kw">new</span> <span class="cl">Map</span>();
 <span class="vr">cache</span>.<span class="fn">set</span>(<span class="st">'user:1'</span>, { <span class="vr">name</span>: <span class="st">'Mara'</span> });
 <span class="vr">cache</span>.<span class="fn">set</span>(<span class="st">'user:2'</span>, { <span class="vr">name</span>: <span class="st">'Tim'</span> });
@@ -1414,21 +1515,21 @@ sicher gefangen: SyntaxError</pre>
 <span class="kw">const</span> <span class="vr">user</span> = { <span class="vr">name</span>: <span class="st">'Mara'</span>, [<span class="vr">id</span>]: <span class="nm">42</span> };
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">user</span>[<span class="vr">id</span>]);             <span class="cm">// 42</span>
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="cl">Object</span>.<span class="fn">keys</span>(<span class="vr">user</span>));     <span class="cm">// ['name']  ← Symbol versteckt</span></pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Notiz</span>
-      <h5>Wann Map vs Object?</h5>
-      <p>Map: viele Keys/Lookups, dynamisch. Object: statische Struktur, JSON.</p>
-      <h5>WeakMap-Use-Case</h5>
-      <p>Metadaten zu DOM-Nodes oder Objekten anhängen, ohne Memory-Leaks.</p>
-      <h5>Symbol.for</h5>
-      <p>Globales Symbol-Register: <code>Symbol.for('x')</code> liefert immer dieselbe Symbol-Instanz.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Notiz</span>
+          <h5>Wann Map vs Object?</h5>
+          <p>Map: viele Keys/Lookups, dynamisch. Object: statische Struktur, JSON.</p>
+          <h5>WeakMap-Use-Case</h5>
+          <p>Metadaten zu DOM-Nodes oder Objekten anhängen, ohne Memory-Leaks.</p>
+          <h5>Symbol.for</h5>
+          <p>Globales Symbol-Register: <code>Symbol.for('x')</code> liefert immer dieselbe Symbol-Instanz.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre>{ <span class="st">name</span>: <span class="st">'Mara'</span> }
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre>{ <span class="st">name</span>: <span class="st">'Mara'</span> }
 <span class="nm">2</span>
 user:<span class="nm">1</span> Mara
 user:<span class="nm">2</span> Tim
@@ -1436,31 +1537,33 @@ user:<span class="nm">2</span> Tim
 extra-info
 <span class="nm">42</span>
 [ <span class="st">'name'</span> ]</pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 22 Error Handling ============ -->
-<section id="errors">
-  <h2><span class="num">22</span> Error Handling <span class="es">+ Error.isError ES2026</span></h2>
-  <p class="section-intro"><code>throw</code>, <code>try/catch/finally</code>, <code>Error</code>-Klassen und Error-Chaining mit <code>cause</code>. Neu in ES2026: <code>Error.isError(x)</code> — der zuverlässige Check, ob etwas wirklich ein Error ist (auch über Realms hinweg).</p>
+    <!-- ============ 22 Error Handling ============ -->
+    <section id="errors">
+      <h2><span class="num">22</span> Error Handling <span class="es">+ Error.isError ES2026</span></h2>
+      <p class="section-intro"><code>throw</code>, <code>try/catch/finally</code>, <code>Error</code>-Klassen und
+        Error-Chaining mit <code>cause</code>. Neu in ES2026: <code>Error.isError(x)</code> — der zuverlässige Check, ob
+        etwas wirklich ein Error ist (auch über Realms hinweg).</p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Konzepte</span>
-      <h5>throw</h5>
-      <p>Wirft alles. Konvention: ein <code>Error</code>-Objekt.</p>
-      <h5>try/catch/finally</h5>
-      <p>finally läuft immer — egal ob Error oder nicht.</p>
-      <h5>Eigene Errors</h5>
-      <p>Klasse, die von <code>Error</code> erbt.</p>
-      <h5>cause</h5>
-      <p>Ursprünglichen Fehler dranhängen (ES2022).</p>
-      <h5>Error.isError() (ES2026)</h5>
-      <p>Zuverlässiger als <code>instanceof Error</code>.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">errors.js</div>
-<pre><span class="cm">// Eigener Error-Typ</span>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Konzepte</span>
+          <h5>throw</h5>
+          <p>Wirft alles. Konvention: ein <code>Error</code>-Objekt.</p>
+          <h5>try/catch/finally</h5>
+          <p>finally läuft immer — egal ob Error oder nicht.</p>
+          <h5>Eigene Errors</h5>
+          <p>Klasse, die von <code>Error</code> erbt.</p>
+          <h5>cause</h5>
+          <p>Ursprünglichen Fehler dranhängen (ES2022).</p>
+          <h5>Error.isError() (ES2026)</h5>
+          <p>Zuverlässiger als <code>instanceof Error</code>.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">errors.js</div>
+          <pre><span class="cm">// Eigener Error-Typ</span>
 <span class="kw">class</span> <span class="cl">ValidierungsError</span> <span class="kw">extends</span> <span class="cl">Error</span> {
   <span class="kw">constructor</span>(<span class="vr">msg</span>, <span class="vr">field</span>) {
     <span class="fn">super</span>(<span class="vr">msg</span>);
@@ -1493,60 +1596,63 @@ extra-info
 <span class="cm">// ES2026: Error.isError — zuverlässiger als instanceof</span>
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="cl">Error</span>.<span class="fn">isError</span>(<span class="kw">new</span> <span class="cl">TypeError</span>()));  <span class="cm">// true</span>
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="cl">Error</span>.<span class="fn">isError</span>({ <span class="vr">message</span>: <span class="st">'x'</span> }));  <span class="cm">// false</span></pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Tipp</span>
-      <h5>Warum cause?</h5>
-      <p>Behält die Fehler-Kette für Debugging, ohne die ursprüngliche Stacktrace zu verlieren.</p>
-      <h5>Error.isError vs instanceof</h5>
-      <p><code>instanceof Error</code> versagt über iframe/Worker-Grenzen. <code>Error.isError</code> nicht.</p>
-      <h5>Niemals Strings throwen</h5>
-      <p><code>throw 'oops'</code> verliert Stack &amp; Typ. Immer <code>new Error(...)</code>.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>Warum cause?</h5>
+          <p>Behält die Fehler-Kette für Debugging, ohne die ursprüngliche Stacktrace zu verlieren.</p>
+          <h5>Error.isError vs instanceof</h5>
+          <p><code>instanceof Error</code> versagt über iframe/Worker-Grenzen. <code>Error.isError</code> nicht.</p>
+          <h5>Niemals Strings throwen</h5>
+          <p><code>throw 'oops'</code> verliert Stack &amp; Typ. Immer <code>new Error(...)</code>.</p>
+        </div>
+      </div>
 
-  <div class="js-error">
-ValidierungsError: JSON kaputt
-  at parse (errors.js:13:11)
-  at errors.js:21:3
-  [cause]: SyntaxError: Unexpected token 'u', "{ ungültig }" is not valid JSON
-  </div>
+      <div class="js-error">
+        ValidierungsError: JSON kaputt
+        at parse (errors.js:13:11)
+        at errors.js:21:3
+        [cause]: SyntaxError: Unexpected token 'u', "{ ungültig }" is not valid JSON
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre>ValidierungsError
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre>ValidierungsError
 input
 Unexpected token <span class="st">'u'</span>, <span class="st">"{ ungültig }"</span> is not valid JSON
 aufräumen
 <span class="bn">true</span>
 <span class="bn">false</span></pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 23 Temporal ============ -->
-<section id="temporal">
-  <h2><span class="num">23</span> Temporal API <span class="es">ES2026 · NEU</span></h2>
-  <p class="section-intro">Das grosse Highlight von ES2026: ein moderner Date-Ersatz. <code>Temporal</code> ist <strong>immutable</strong>, kennt Zeitzonen und Kalender, hat saubere Arithmetik. Endlich keine Date-Lib mehr nötig.</p>
+    <!-- ============ 23 Temporal ============ -->
+    <section id="temporal">
+      <h2><span class="num">23</span> Temporal API <span class="es">ES2026 · NEU</span></h2>
+      <p class="section-intro">Das grosse Highlight von ES2026: ein moderner Date-Ersatz. <code>Temporal</code> ist
+        <strong>immutable</strong>, kennt Zeitzonen und Kalender, hat saubere Arithmetik. Endlich keine Date-Lib mehr
+        nötig.
+      </p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Typen</span>
-      <h5>Temporal.Now</h5>
-      <p>Aktueller Zeitpunkt — verschiedene Granularitäten.</p>
-      <h5>PlainDate</h5>
-      <p>Datum ohne Zeit/Zone (Geburtstag).</p>
-      <h5>PlainTime</h5>
-      <p>Uhrzeit ohne Datum.</p>
-      <h5>PlainDateTime</h5>
-      <p>Datum + Zeit, ohne Zone.</p>
-      <h5>ZonedDateTime</h5>
-      <p>Datum + Zeit <strong>mit</strong> IANA-Zone — der echte Zeitpunkt.</p>
-      <h5>Duration</h5>
-      <p>Zeitspanne, mit der man rechnen kann.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">temporal.js</div>
-<pre><span class="cm">// Aktueller Zeitpunkt in Zürich</span>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Typen</span>
+          <h5>Temporal.Now</h5>
+          <p>Aktueller Zeitpunkt — verschiedene Granularitäten.</p>
+          <h5>PlainDate</h5>
+          <p>Datum ohne Zeit/Zone (Geburtstag).</p>
+          <h5>PlainTime</h5>
+          <p>Uhrzeit ohne Datum.</p>
+          <h5>PlainDateTime</h5>
+          <p>Datum + Zeit, ohne Zone.</p>
+          <h5>ZonedDateTime</h5>
+          <p>Datum + Zeit <strong>mit</strong> IANA-Zone — der echte Zeitpunkt.</p>
+          <h5>Duration</h5>
+          <p>Zeitspanne, mit der man rechnen kann.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">temporal.js</div>
+          <pre><span class="cm">// Aktueller Zeitpunkt in Zürich</span>
 <span class="kw">const</span> <span class="vr">jetzt</span> = <span class="cl">Temporal</span>.<span class="cl">Now</span>.<span class="fn">zonedDateTimeISO</span>(<span class="st">'Europe/Zurich'</span>);
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">jetzt</span>.<span class="fn">toString</span>());
 
@@ -1576,52 +1682,55 @@ aufräumen
 <span class="cm">// Duration</span>
 <span class="kw">const</span> <span class="vr">d</span> = <span class="cl">Temporal</span>.<span class="cl">Duration</span>.<span class="fn">from</span>({ <span class="vr">hours</span>: <span class="nm">2</span>, <span class="vr">minutes</span>: <span class="nm">30</span> });
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">d</span>.<span class="fn">total</span>(<span class="st">'minutes'</span>));   <span class="cm">// 150</span></pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Notiz</span>
-      <h5>Immutable</h5>
-      <p>Jede Operation gibt ein neues Objekt zurück. Kein Original-Verändern, keine versteckten Bugs.</p>
-      <h5>Zeitzonen</h5>
-      <p>Echte IANA-Namen wie <code>Europe/Zurich</code> — keine Offsets. DST wird automatisch berücksichtigt.</p>
-      <h5>Kalender</h5>
-      <p>Hebrew, Islamic, Buddhist, … via <code>.withCalendar('hebrew')</code>.</p>
-      <h5>Migration</h5>
-      <p>Date geht nie weg — aber Temporal ist für alles Neue die richtige Wahl.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Notiz</span>
+          <h5>Immutable</h5>
+          <p>Jede Operation gibt ein neues Objekt zurück. Kein Original-Verändern, keine versteckten Bugs.</p>
+          <h5>Zeitzonen</h5>
+          <p>Echte IANA-Namen wie <code>Europe/Zurich</code> — keine Offsets. DST wird automatisch berücksichtigt.</p>
+          <h5>Kalender</h5>
+          <p>Hebrew, Islamic, Buddhist, … via <code>.withCalendar('hebrew')</code>.</p>
+          <h5>Migration</h5>
+          <p>Date geht nie weg — aber Temporal ist für alles Neue die richtige Wahl.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console (am 02. Juni 2026)</div>
-<pre><span class="nm">2026</span>-<span class="nm">06</span>-<span class="nm">02</span>T10:<span class="nm">42</span>:<span class="nm">17.123</span>+<span class="nm">02</span>:<span class="nm">00</span>[Europe/Zurich]
+      <div class="output">
+        <div class="output-label">Console (am 02. Juni 2026)</div>
+        <pre><span class="nm">2026</span>-<span class="nm">06</span>-<span class="nm">02</span>T10:<span class="nm">42</span>:<span class="nm">17.123</span>+<span class="nm">02</span>:<span class="nm">00</span>[Europe/Zurich]
 <span class="nm">1997</span>
 <span class="nm">1</span>
 <span class="nm">2026</span>-<span class="nm">07</span>-<span class="nm">02</span>
 <span class="nm">29</span> Jahre, <span class="nm">1</span> Monate
 <span class="nm">2026</span>-<span class="nm">06</span>-<span class="nm">15</span>T08:<span class="nm">00</span>:<span class="nm">00</span>-<span class="nm">04</span>:<span class="nm">00</span>[America/New_York]
 <span class="nm">150</span></pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 24 using ============ -->
-<section id="using">
-  <h2><span class="num">24</span> using — Explicit Resource Management <span class="es">ES2026 · NEU</span></h2>
-  <p class="section-intro">Das neue <code>using</code>-Keyword garantiert, dass Ressourcen am Block-Ende automatisch aufgeräumt werden. Wie <code>with</code> in Python oder <code>using</code> in C# — endlich auch in JavaScript.</p>
+    <!-- ============ 24 using ============ -->
+    <section id="using">
+      <h2><span class="num">24</span> using — Explicit Resource Management <span class="es">ES2026 · NEU</span></h2>
+      <p class="section-intro">Das neue <code>using</code>-Keyword garantiert, dass Ressourcen am Block-Ende automatisch
+        aufgeräumt werden. Wie <code>with</code> in Python oder <code>using</code> in C# — endlich auch in JavaScript.
+      </p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Konzept</span>
-      <h5>using</h5>
-      <p>Wie <code>const</code>, aber: am Block-Ende wird <code>[Symbol.dispose]()</code> auf dem Wert aufgerufen.</p>
-      <h5>await using</h5>
-      <p>Für asynchrone Cleanup — ruft <code>[Symbol.asyncDispose]()</code>.</p>
-      <h5>Reihenfolge</h5>
-      <p>LIFO — zuletzt deklariert, zuerst entsorgt.</p>
-      <h5>Use-Cases</h5>
-      <p>Datei-Handles, DB-Verbindungen, Locks, Subscriptions.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">using.js</div>
-<pre><span class="cm">// Eigene "disposable" Ressource bauen</span>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Konzept</span>
+          <h5>using</h5>
+          <p>Wie <code>const</code>, aber: am Block-Ende wird <code>[Symbol.dispose]()</code> auf dem Wert aufgerufen.
+          </p>
+          <h5>await using</h5>
+          <p>Für asynchrone Cleanup — ruft <code>[Symbol.asyncDispose]()</code>.</p>
+          <h5>Reihenfolge</h5>
+          <p>LIFO — zuletzt deklariert, zuerst entsorgt.</p>
+          <h5>Use-Cases</h5>
+          <p>Datei-Handles, DB-Verbindungen, Locks, Subscriptions.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">using.js</div>
+          <pre><span class="cm">// Eigene "disposable" Ressource bauen</span>
 <span class="kw">function</span> <span class="fn">datei</span>(<span class="vr">name</span>) {
   <span class="fn">console</span>.<span class="fn">log</span>(<span class="st">`öffne ${<span class="vr">name</span>}`</span>);
   <span class="kw">return</span> {
@@ -1654,21 +1763,23 @@ aufräumen
 <span class="cm">// Async: await using für Symbol.asyncDispose</span>
 <span class="cm">// await using db = await connect();</span>
 <span class="cm">// → ruft db[Symbol.asyncDispose]() am Block-Ende</span></pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Notiz</span>
-      <h5>Garantiert</h5>
-      <p>Cleanup läuft sogar bei <code>throw</code>, <code>return</code>, <code>break</code> — wie <code>finally</code>, nur ohne Boilerplate.</p>
-      <h5>Symbol.dispose</h5>
-      <p>Ein well-known Symbol — jede Klasse kann es implementieren.</p>
-      <h5>Polyfill</h5>
-      <p>TypeScript 5.2+ und moderne Engines (Node 22+, V8 12+) unterstützen das nativ.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Notiz</span>
+          <h5>Garantiert</h5>
+          <p>Cleanup läuft sogar bei <code>throw</code>, <code>return</code>, <code>break</code> — wie
+            <code>finally</code>, nur ohne Boilerplate.
+          </p>
+          <h5>Symbol.dispose</h5>
+          <p>Ein well-known Symbol — jede Klasse kann es implementieren.</p>
+          <h5>Polyfill</h5>
+          <p>TypeScript 5.2+ und moderne Engines (Node 22+, V8 12+) unterstützen das nativ.</p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre>öffne a.txt
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre>öffne a.txt
 öffne b.txt
  → hallo
  → welt
@@ -1677,29 +1788,31 @@ schliesse a.txt
 öffne crash.txt
 schliesse crash.txt
 gefangen: oops</pre>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- ============ 25 Regex, Proxy, Reflect ============ -->
-<section id="regex-proxy">
-  <h2><span class="num">25</span> Regex, Proxy &amp; Reflect <span class="es">+ RegExp.escape ES2026</span></h2>
-  <p class="section-intro">Drei mächtige Tools für selten gebraucht, aber unverzichtbar: <strong>Regex</strong> für Text-Pattern, <strong>Proxy</strong> zum Abfangen von Objekt-Operationen, <strong>Reflect</strong> als saubere API für Meta-Operations. Neu in ES2026: <code>RegExp.escape</code> baut sichere Regex aus User-Input.</p>
+    <!-- ============ 25 Regex, Proxy, Reflect ============ -->
+    <section id="regex-proxy">
+      <h2><span class="num">25</span> Regex, Proxy &amp; Reflect <span class="es">+ RegExp.escape ES2026</span></h2>
+      <p class="section-intro">Drei mächtige Tools für selten gebraucht, aber unverzichtbar: <strong>Regex</strong> für
+        Text-Pattern, <strong>Proxy</strong> zum Abfangen von Objekt-Operationen, <strong>Reflect</strong> als saubere
+        API für Meta-Operations. Neu in ES2026: <code>RegExp.escape</code> baut sichere Regex aus User-Input.</p>
 
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Übersicht</span>
-      <h5>Regex</h5>
-      <p>Pattern matching auf Strings.</p>
-      <h5>RegExp.escape (ES2026)</h5>
-      <p>Escaped Sonderzeichen — sicher für dynamische Patterns aus User-Input.</p>
-      <h5>Proxy</h5>
-      <p>Wrapper, der Zugriffe (<code>get</code>/<code>set</code>/<code>has</code>) abfängt.</p>
-      <h5>Reflect</h5>
-      <p>Funktionale API für dieselben Operations: <code>Reflect.get</code>, <code>Reflect.set</code>, etc.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">meta.js</div>
-<pre><span class="cm">// Regex</span>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Übersicht</span>
+          <h5>Regex</h5>
+          <p>Pattern matching auf Strings.</p>
+          <h5>RegExp.escape (ES2026)</h5>
+          <p>Escaped Sonderzeichen — sicher für dynamische Patterns aus User-Input.</p>
+          <h5>Proxy</h5>
+          <p>Wrapper, der Zugriffe (<code>get</code>/<code>set</code>/<code>has</code>) abfängt.</p>
+          <h5>Reflect</h5>
+          <p>Funktionale API für dieselben Operations: <code>Reflect.get</code>, <code>Reflect.set</code>, etc.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">meta.js</div>
+          <pre><span class="cm">// Regex</span>
 <span class="kw">const</span> <span class="vr">email</span> = <span class="reg">/^[\w.-]+@[\w.-]+\.\w+$/</span>;
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">email</span>.<span class="fn">test</span>(<span class="st">'mara@example.ch'</span>));  <span class="cm">// true</span>
 
@@ -1731,164 +1844,354 @@ gefangen: oops</pre>
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="vr">geschuetzt</span>.<span class="vr">name</span>);
 <span class="vr">geschuetzt</span>.<span class="vr">alter</span> = <span class="nm">29</span>;
 <span class="cm">// geschuetzt.alter = -1; // Error!</span></pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Notiz</span>
-      <h5>Regex-Flags</h5>
-      <p><code>g</code> global, <code>i</code> case-insensitive, <code>m</code> multiline, <code>s</code> dotall, <code>u</code> unicode, <code>y</code> sticky.</p>
-      <h5>Wann RegExp.escape?</h5>
-      <p>Immer wenn User-Input in ein Pattern muss — sonst Sicherheits- oder Logik-Bugs.</p>
-      <h5>Proxy-Use-Cases</h5>
-      <p>Validation, Logging, Observable State, virtuelle Properties.</p>
-      <h5>Reflect statt direkt</h5>
-      <p><code>Reflect.set(obj,k,v)</code> gibt <code>boolean</code> zurück — sauberer als <code>obj[k] = v</code>.</p>
-    </div>
-  </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Notiz</span>
+          <h5>Regex-Flags</h5>
+          <p><code>g</code> global, <code>i</code> case-insensitive, <code>m</code> multiline, <code>s</code> dotall,
+            <code>u</code> unicode, <code>y</code> sticky.
+          </p>
+          <h5>Wann RegExp.escape?</h5>
+          <p>Immer wenn User-Input in ein Pattern muss — sonst Sicherheits- oder Logik-Bugs.</p>
+          <h5>Proxy-Use-Cases</h5>
+          <p>Validation, Logging, Observable State, virtuelle Properties.</p>
+          <h5>Reflect statt direkt</h5>
+          <p><code>Reflect.set(obj,k,v)</code> gibt <code>boolean</code> zurück — sauberer als <code>obj[k] = v</code>.
+          </p>
+        </div>
+      </div>
 
-  <div class="output">
-    <div class="output-label">Console</div>
-<pre><span class="bn">true</span>
+      <div class="output">
+        <div class="output-label">Console</div>
+        <pre><span class="bn">true</span>
 <span class="nm">2026</span> <span class="nm">06</span> <span class="nm">02</span>
 <span class="bn">true</span>
 lese name
 Mara</pre>
-  </div>
+      </div>
 
-  <div class="callout">
-    <div class="callout-label">Geschafft</div>
-    <p>Du hast JavaScript von <code>const</code> bis Temporal und Proxy durchgearbeitet. Damit kennst du die Sprache, wie sie 2026 wirklich aussieht — modern, ausdrucksstark und mit echten Werkzeugen für Zeit, Ressourcen und Metaprogrammierung. Weitermachen mit konkreten Projekten ist jetzt der nächste Schritt.</p>
-  </div>
-</section>
+      <div class="callout">
+        <div class="callout-label">Geschafft</div>
+        <p>Du hast JavaScript von <code>const</code> bis Temporal und Proxy durchgearbeitet. Damit kennst du die
+          Sprache, wie sie 2026 wirklich aussieht — modern, ausdrucksstark und mit echten Werkzeugen für Zeit,
+          Ressourcen und Metaprogrammierung. Weitermachen mit konkreten Projekten ist jetzt der nächste Schritt.</p>
+      </div>
+    </section>
 
-<!-- ====================================================== -->
-<!-- =============== CLI REFERENZ ========================= -->
-<!-- ====================================================== -->
-<div class="part">
-  <div class="part-label">Referenz</div>
-  <h2 class="part-title">Node, npm &amp; <em>npx</em></h2>
-  <p class="part-desc">JavaScript hat keine eigene CLI — aber das Ökosystem dahinter ist <strong>Node.js</strong> mit <strong>npm</strong> und <strong>npx</strong>. Hier die wichtigsten Befehle für den Alltag.</p>
-</div>
-
-<section id="cli">
-  <h2><span class="num">26</span> Terminal-Befehle</h2>
-  <p class="section-intro">Mit <code>node</code> führst du JS-Dateien aus, mit <code>npm</code> installierst und verwaltest du Pakete, mit <code>npx</code> startest du Tools ohne Installation. Unten gruppiert nach Aufgabe — das, was du wirklich täglich brauchst, ganz oben.</p>
-
-  <div class="terminal">
-    <div class="terminal-bar"><div class="dots"><span></span><span></span><span></span></div><span>terminal — täglicher Workflow</span></div>
-    <div class="terminal-body">
-<span class="prompt">$</span> <span class="cmd">node app.js</span>             <span class="dim"># JS-Datei ausführen</span>
-<span class="prompt">$</span> <span class="cmd">npm init -y</span>             <span class="dim"># neues Projekt anlegen</span>
-<span class="prompt">$</span> <span class="cmd">npm install lodash</span>      <span class="dim"># Package installieren</span>
-<span class="prompt">$</span> <span class="cmd">npm run dev</span>             <span class="dim"># Script aus package.json starten</span>
-<span class="prompt">$</span> <span class="cmd">npx create-vite my-app</span>  <span class="dim"># Tool ohne Installation ausführen</span>
+    <!-- ====================================================== -->
+    <!-- =============== CLI REFERENZ ========================= -->
+    <!-- ====================================================== -->
+    <div class="part">
+      <div class="part-label">Referenz</div>
+      <h2 class="part-title">Node, npm &amp; <em>npx</em></h2>
+      <p class="part-desc">JavaScript hat keine eigene CLI — aber das Ökosystem dahinter ist <strong>Node.js</strong>
+        mit <strong>npm</strong> und <strong>npx</strong>. Hier die wichtigsten Befehle für den Alltag.</p>
     </div>
-  </div>
 
-  <h3 class="cli-group">Node.js — JavaScript ausführen</h3>
-  <table class="cli-table">
-    <thead><tr><th>Befehl</th><th>Was er macht</th></tr></thead>
-    <tbody>
-      <tr><td>node -v</td><td>Zeigt die installierte Node-Version. Aktuell empfohlen: Node 22 LTS oder neuer.</td></tr>
-      <tr><td>node app.js</td><td>Führt eine JavaScript-Datei aus.</td></tr>
-      <tr><td>node</td><td>Öffnet die REPL — interaktive JS-Shell zum Ausprobieren.</td></tr>
-      <tr><td>node --watch app.js</td><td>Auto-Restart bei Datei-Änderungen (Node 18.11+, kein nodemon nötig).</td></tr>
-      <tr><td>node --inspect app.js</td><td>Startet mit Debug-Port — <code>chrome://inspect</code> verbindet sich.</td></tr>
-      <tr><td>node --inspect-brk app.js</td><td>Wie oben, hält bei erster Zeile an.</td></tr>
-      <tr><td>node --experimental-strip-types app.ts</td><td>TypeScript direkt ausführen (Node 22.6+, Typen werden gestripped).</td></tr>
-      <tr><td>node --env-file=.env app.js</td><td>Lädt <code>.env</code>-Datei in <code>process.env</code> — ohne dotenv-Package.</td></tr>
-      <tr><td>node --test</td><td>Eingebauter Test-Runner (Node 20+). Findet <code>*.test.js</code>-Dateien.</td></tr>
-      <tr><td>node --test --watch</td><td>Test-Runner im Watch-Mode.</td></tr>
-      <tr><td>node -e "console.log(2+2)"</td><td>Einzeiler direkt ausführen.</td></tr>
-      <tr><td>node -p "Math.PI"</td><td>Wie <code>-e</code>, gibt das Ergebnis aus. Praktisch als Taschenrechner.</td></tr>
-    </tbody>
-  </table>
+    <section id="cli">
+      <h2><span class="num">26</span> Terminal-Befehle</h2>
+      <p class="section-intro">Mit <code>node</code> führst du JS-Dateien aus, mit <code>npm</code> installierst und
+        verwaltest du Pakete, mit <code>npx</code> startest du Tools ohne Installation. Unten gruppiert nach Aufgabe —
+        das, was du wirklich täglich brauchst, ganz oben.</p>
 
-  <h3 class="cli-group">Projekt aufsetzen</h3>
-  <table class="cli-table">
-    <thead><tr><th>Befehl</th><th>Was er macht</th></tr></thead>
-    <tbody>
-      <tr><td>npm init</td><td>Erstellt eine <code>package.json</code> interaktiv (Name, Version, Description, ...).</td></tr>
-      <tr><td>npm init -y</td><td>Wie oben, ohne Fragen — Defaults nehmen.</td></tr>
-      <tr><td>npm init &lt;creator&gt;</td><td>Führt einen <code>create-*</code>-Initializer aus. Z.&nbsp;B. <code>npm init vite@latest</code>.</td></tr>
-      <tr><td>npm init vite@latest</td><td>Neues Vite-Projekt (Vue, React, Svelte, Vanilla JS, ...).</td></tr>
-      <tr><td>npm init -y &amp;&amp; mkdir src</td><td>Klassischer Schnellstart: Package + src-Ordner.</td></tr>
-    </tbody>
-  </table>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <div class="dots"><span></span><span></span><span></span></div><span>terminal — täglicher Workflow</span>
+        </div>
+        <div class="terminal-body">
+          <span class="prompt">$</span> <span class="cmd">node app.js</span> <span class="dim"># JS-Datei
+            ausführen</span>
+          <span class="prompt">$</span> <span class="cmd">npm init -y</span> <span class="dim"># neues Projekt
+            anlegen</span>
+          <span class="prompt">$</span> <span class="cmd">npm install lodash</span> <span class="dim"># Package
+            installieren</span>
+          <span class="prompt">$</span> <span class="cmd">npm run dev</span> <span class="dim"># Script aus package.json
+            starten</span>
+          <span class="prompt">$</span> <span class="cmd">npx create-vite my-app</span> <span class="dim"># Tool ohne
+            Installation ausführen</span>
+        </div>
+      </div>
 
-  <h3 class="cli-group">Packages installieren</h3>
-  <table class="cli-table">
-    <thead><tr><th>Befehl</th><th>Was er macht</th></tr></thead>
-    <tbody>
-      <tr><td>npm install</td><td>Installiert alles aus <code>package.json</code> in <code>node_modules/</code>. Kurzform: <code>npm i</code>.</td></tr>
-      <tr><td>npm i &lt;pkg&gt;</td><td>Package als Dependency hinzufügen. Bsp: <code>npm i lodash</code>.</td></tr>
-      <tr><td>npm i -D &lt;pkg&gt;</td><td>Als Dev-Dependency (nur fürs Bauen/Testen nötig). Bsp: <code>npm i -D vitest</code>.</td></tr>
-      <tr><td>npm i -g &lt;pkg&gt;</td><td>Global installieren — als Command-Line-Tool verfügbar.</td></tr>
-      <tr><td>npm i &lt;pkg&gt;@latest</td><td>Letzte Version explizit ziehen.</td></tr>
-      <tr><td>npm i &lt;pkg&gt;@&lt;version&gt;</td><td>Genaue Version. Bsp: <code>npm i react@18.2.0</code>.</td></tr>
-      <tr><td>npm i &lt;user&gt;/&lt;repo&gt;</td><td>Direkt aus einem GitHub-Repo installieren.</td></tr>
-      <tr><td>npm uninstall &lt;pkg&gt;</td><td>Package entfernen. Kurzform: <code>npm rm &lt;pkg&gt;</code>.</td></tr>
-      <tr><td>npm ci</td><td>Clean-Install: löscht <code>node_modules</code> und installiert exakt nach <code>package-lock.json</code>. Schneller und reproduzierbar — ideal für CI.</td></tr>
-    </tbody>
-  </table>
+      <h3 class="cli-group">Node.js — JavaScript ausführen</h3>
+      <table class="cli-table">
+        <thead>
+          <tr>
+            <th>Befehl</th>
+            <th>Was er macht</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>node -v</td>
+            <td>Zeigt die installierte Node-Version. Aktuell empfohlen: Node 22 LTS oder neuer.</td>
+          </tr>
+          <tr>
+            <td>node app.js</td>
+            <td>Führt eine JavaScript-Datei aus.</td>
+          </tr>
+          <tr>
+            <td>node</td>
+            <td>Öffnet die REPL — interaktive JS-Shell zum Ausprobieren.</td>
+          </tr>
+          <tr>
+            <td>node --watch app.js</td>
+            <td>Auto-Restart bei Datei-Änderungen (Node 18.11+, kein nodemon nötig).</td>
+          </tr>
+          <tr>
+            <td>node --inspect app.js</td>
+            <td>Startet mit Debug-Port — <code>chrome://inspect</code> verbindet sich.</td>
+          </tr>
+          <tr>
+            <td>node --inspect-brk app.js</td>
+            <td>Wie oben, hält bei erster Zeile an.</td>
+          </tr>
+          <tr>
+            <td>node --experimental-strip-types app.ts</td>
+            <td>TypeScript direkt ausführen (Node 22.6+, Typen werden gestripped).</td>
+          </tr>
+          <tr>
+            <td>node --env-file=.env app.js</td>
+            <td>Lädt <code>.env</code>-Datei in <code>process.env</code> — ohne dotenv-Package.</td>
+          </tr>
+          <tr>
+            <td>node --test</td>
+            <td>Eingebauter Test-Runner (Node 20+). Findet <code>*.test.js</code>-Dateien.</td>
+          </tr>
+          <tr>
+            <td>node --test --watch</td>
+            <td>Test-Runner im Watch-Mode.</td>
+          </tr>
+          <tr>
+            <td>node -e "console.log(2+2)"</td>
+            <td>Einzeiler direkt ausführen.</td>
+          </tr>
+          <tr>
+            <td>node -p "Math.PI"</td>
+            <td>Wie <code>-e</code>, gibt das Ergebnis aus. Praktisch als Taschenrechner.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <h3 class="cli-group">Scripts ausführen</h3>
-  <table class="cli-table">
-    <thead><tr><th>Befehl</th><th>Was er macht</th></tr></thead>
-    <tbody>
-      <tr><td>npm run &lt;script&gt;</td><td>Führt ein Script aus <code>package.json</code> aus.</td></tr>
-      <tr><td>npm run</td><td>Listet alle verfügbaren Scripts.</td></tr>
-      <tr><td>npm start</td><td>Shortcut für <code>npm run start</code>.</td></tr>
-      <tr><td>npm test</td><td>Shortcut für <code>npm run test</code>.</td></tr>
-      <tr><td>npm run dev -- --port 3001</td><td>Argumente an das Script weitergeben (nach <code>--</code>).</td></tr>
-    </tbody>
-  </table>
+      <h3 class="cli-group">Projekt aufsetzen</h3>
+      <table class="cli-table">
+        <thead>
+          <tr>
+            <th>Befehl</th>
+            <th>Was er macht</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>npm init</td>
+            <td>Erstellt eine <code>package.json</code> interaktiv (Name, Version, Description, ...).</td>
+          </tr>
+          <tr>
+            <td>npm init -y</td>
+            <td>Wie oben, ohne Fragen — Defaults nehmen.</td>
+          </tr>
+          <tr>
+            <td>npm init &lt;creator&gt;</td>
+            <td>Führt einen <code>create-*</code>-Initializer aus. Z.&nbsp;B. <code>npm init vite@latest</code>.</td>
+          </tr>
+          <tr>
+            <td>npm init vite@latest</td>
+            <td>Neues Vite-Projekt (Vue, React, Svelte, Vanilla JS, ...).</td>
+          </tr>
+          <tr>
+            <td>npm init -y &amp;&amp; mkdir src</td>
+            <td>Klassischer Schnellstart: Package + src-Ordner.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <h3 class="cli-group">Updates &amp; Sicherheit</h3>
-  <table class="cli-table">
-    <thead><tr><th>Befehl</th><th>Was er macht</th></tr></thead>
-    <tbody>
-      <tr><td>npm outdated</td><td>Welche Pakete haben Updates? Zeigt aktuelle, gewünschte und neueste Version.</td></tr>
-      <tr><td>npm update</td><td>Updated auf neueste Version <em>innerhalb</em> der Range in <code>package.json</code> (Semver).</td></tr>
-      <tr><td>npm update &lt;pkg&gt;</td><td>Nur ein einzelnes Package aktualisieren.</td></tr>
-      <tr><td>npm audit</td><td>Scannt Dependencies auf bekannte Sicherheitslücken.</td></tr>
-      <tr><td>npm audit fix</td><td>Behebt automatisch, was sich beheben lässt.</td></tr>
-      <tr><td>npm audit fix --force</td><td>Auch Breaking-Changes erlauben. Vorsichtig benutzen.</td></tr>
-      <tr><td>npm ls</td><td>Zeigt den Dependency-Baum.</td></tr>
-      <tr><td>npm ls --depth=0</td><td>Nur die direkten Dependencies — viel übersichtlicher.</td></tr>
-    </tbody>
-  </table>
+      <h3 class="cli-group">Packages installieren</h3>
+      <table class="cli-table">
+        <thead>
+          <tr>
+            <th>Befehl</th>
+            <th>Was er macht</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>npm install</td>
+            <td>Installiert alles aus <code>package.json</code> in <code>node_modules/</code>. Kurzform:
+              <code>npm i</code>.
+            </td>
+          </tr>
+          <tr>
+            <td>npm i &lt;pkg&gt;</td>
+            <td>Package als Dependency hinzufügen. Bsp: <code>npm i lodash</code>.</td>
+          </tr>
+          <tr>
+            <td>npm i -D &lt;pkg&gt;</td>
+            <td>Als Dev-Dependency (nur fürs Bauen/Testen nötig). Bsp: <code>npm i -D vitest</code>.</td>
+          </tr>
+          <tr>
+            <td>npm i -g &lt;pkg&gt;</td>
+            <td>Global installieren — als Command-Line-Tool verfügbar.</td>
+          </tr>
+          <tr>
+            <td>npm i &lt;pkg&gt;@latest</td>
+            <td>Letzte Version explizit ziehen.</td>
+          </tr>
+          <tr>
+            <td>npm i &lt;pkg&gt;@&lt;version&gt;</td>
+            <td>Genaue Version. Bsp: <code>npm i react@18.2.0</code>.</td>
+          </tr>
+          <tr>
+            <td>npm i &lt;user&gt;/&lt;repo&gt;</td>
+            <td>Direkt aus einem GitHub-Repo installieren.</td>
+          </tr>
+          <tr>
+            <td>npm uninstall &lt;pkg&gt;</td>
+            <td>Package entfernen. Kurzform: <code>npm rm &lt;pkg&gt;</code>.</td>
+          </tr>
+          <tr>
+            <td>npm ci</td>
+            <td>Clean-Install: löscht <code>node_modules</code> und installiert exakt nach
+              <code>package-lock.json</code>. Schneller und reproduzierbar — ideal für CI.
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-  <h3 class="cli-group">npx — Tools ohne Installation</h3>
-  <table class="cli-table">
-    <thead><tr><th>Befehl</th><th>Was er macht</th></tr></thead>
-    <tbody>
-      <tr><td>npx &lt;pkg&gt;</td><td>Führt ein npm-Package aus, ohne es zu installieren. Lädt es, führt es aus, fertig.</td></tr>
-      <tr><td>npx create-vite@latest my-app</td><td>Neues Vite-Projekt — ohne <code>create-vite</code> global zu installieren.</td></tr>
-      <tr><td>npx create-react-app my-app</td><td>Neues React-Projekt (klassisch, eher Vite empfohlen).</td></tr>
-      <tr><td>npx eslint .</td><td>ESLint einmalig ausführen.</td></tr>
-      <tr><td>npx prettier --write .</td><td>Code mit Prettier formatieren.</td></tr>
-      <tr><td>npx serve dist</td><td>Statischen Server starten — schnell ein Build-Output anschauen.</td></tr>
-      <tr><td>npx kill-port 3000</td><td>Prozess auf einem Port killen.</td></tr>
-      <tr><td>npx tsc --init</td><td>TypeScript-Config initialisieren.</td></tr>
-    </tbody>
-  </table>
+      <h3 class="cli-group">Scripts ausführen</h3>
+      <table class="cli-table">
+        <thead>
+          <tr>
+            <th>Befehl</th>
+            <th>Was er macht</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>npm run &lt;script&gt;</td>
+            <td>Führt ein Script aus <code>package.json</code> aus.</td>
+          </tr>
+          <tr>
+            <td>npm run</td>
+            <td>Listet alle verfügbaren Scripts.</td>
+          </tr>
+          <tr>
+            <td>npm start</td>
+            <td>Shortcut für <code>npm run start</code>.</td>
+          </tr>
+          <tr>
+            <td>npm test</td>
+            <td>Shortcut für <code>npm run test</code>.</td>
+          </tr>
+          <tr>
+            <td>npm run dev -- --port 3001</td>
+            <td>Argumente an das Script weitergeben (nach <code>--</code>).</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <h3 class="cli-group">package.json — Scripts-Anatomie</h3>
-  <div class="example">
-    <div class="ex-side left">
-      <span class="ex-label">Links · Aufbau</span>
-      <h5>scripts</h5>
-      <p>Alles unter <code>scripts</code> lässt sich mit <code>npm run &lt;name&gt;</code> ausführen.</p>
-      <h5>dependencies</h5>
-      <p>Pakete, die zur Laufzeit benötigt werden.</p>
-      <h5>devDependencies</h5>
-      <p>Nur für Build/Test/Lint — landen nicht im Production-Bundle.</p>
-      <h5>type: "module"</h5>
-      <p>Aktiviert ES-Module-Syntax (<code>import</code>/<code>export</code>) in <code>.js</code>-Dateien.</p>
-    </div>
-    <div class="ex-code">
-      <div class="filename">package.json</div>
-<pre>{
+      <h3 class="cli-group">Updates &amp; Sicherheit</h3>
+      <table class="cli-table">
+        <thead>
+          <tr>
+            <th>Befehl</th>
+            <th>Was er macht</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>npm outdated</td>
+            <td>Welche Pakete haben Updates? Zeigt aktuelle, gewünschte und neueste Version.</td>
+          </tr>
+          <tr>
+            <td>npm update</td>
+            <td>Updated auf neueste Version <em>innerhalb</em> der Range in <code>package.json</code> (Semver).</td>
+          </tr>
+          <tr>
+            <td>npm update &lt;pkg&gt;</td>
+            <td>Nur ein einzelnes Package aktualisieren.</td>
+          </tr>
+          <tr>
+            <td>npm audit</td>
+            <td>Scannt Dependencies auf bekannte Sicherheitslücken.</td>
+          </tr>
+          <tr>
+            <td>npm audit fix</td>
+            <td>Behebt automatisch, was sich beheben lässt.</td>
+          </tr>
+          <tr>
+            <td>npm audit fix --force</td>
+            <td>Auch Breaking-Changes erlauben. Vorsichtig benutzen.</td>
+          </tr>
+          <tr>
+            <td>npm ls</td>
+            <td>Zeigt den Dependency-Baum.</td>
+          </tr>
+          <tr>
+            <td>npm ls --depth=0</td>
+            <td>Nur die direkten Dependencies — viel übersichtlicher.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="cli-group">npx — Tools ohne Installation</h3>
+      <table class="cli-table">
+        <thead>
+          <tr>
+            <th>Befehl</th>
+            <th>Was er macht</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>npx &lt;pkg&gt;</td>
+            <td>Führt ein npm-Package aus, ohne es zu installieren. Lädt es, führt es aus, fertig.</td>
+          </tr>
+          <tr>
+            <td>npx create-vite@latest my-app</td>
+            <td>Neues Vite-Projekt — ohne <code>create-vite</code> global zu installieren.</td>
+          </tr>
+          <tr>
+            <td>npx create-react-app my-app</td>
+            <td>Neues React-Projekt (klassisch, eher Vite empfohlen).</td>
+          </tr>
+          <tr>
+            <td>npx eslint .</td>
+            <td>ESLint einmalig ausführen.</td>
+          </tr>
+          <tr>
+            <td>npx prettier --write .</td>
+            <td>Code mit Prettier formatieren.</td>
+          </tr>
+          <tr>
+            <td>npx serve dist</td>
+            <td>Statischen Server starten — schnell ein Build-Output anschauen.</td>
+          </tr>
+          <tr>
+            <td>npx kill-port 3000</td>
+            <td>Prozess auf einem Port killen.</td>
+          </tr>
+          <tr>
+            <td>npx tsc --init</td>
+            <td>TypeScript-Config initialisieren.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="cli-group">package.json — Scripts-Anatomie</h3>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Aufbau</span>
+          <h5>scripts</h5>
+          <p>Alles unter <code>scripts</code> lässt sich mit <code>npm run &lt;name&gt;</code> ausführen.</p>
+          <h5>dependencies</h5>
+          <p>Pakete, die zur Laufzeit benötigt werden.</p>
+          <h5>devDependencies</h5>
+          <p>Nur für Build/Test/Lint — landen nicht im Production-Bundle.</p>
+          <h5>type: "module"</h5>
+          <p>Aktiviert ES-Module-Syntax (<code>import</code>/<code>export</code>) in <code>.js</code>-Dateien.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">package.json</div>
+          <pre>{
   <span class="st">"name"</span>: <span class="st">"mein-projekt"</span>,
   <span class="st">"version"</span>: <span class="st">"1.0.0"</span>,
   <span class="st">"type"</span>: <span class="st">"module"</span>,
@@ -1907,55 +2210,112 @@ Mara</pre>
     <span class="st">"prettier"</span>: <span class="st">"^3.0.0"</span>
   }
 }</pre>
-    </div>
-    <div class="ex-side right">
-      <span class="ex-label">Rechts · Tipp</span>
-      <h5>Semver-Prefixes</h5>
-      <p><code>^4.19.0</code> = kompatible Minor/Patch-Updates. <code>~4.19.0</code> = nur Patches. Ohne Prefix = exakte Version.</p>
-      <h5>Skripte verketten</h5>
-      <p><code>"build": "npm run lint &amp;&amp; npm run compile"</code> — Lint zuerst, dann Build.</p>
-      <h5>pre/post-Hooks</h5>
-      <p><code>"prebuild": "..."</code> läuft automatisch <em>vor</em> <code>build</code>.</p>
-    </div>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>Semver-Prefixes</h5>
+          <p><code>^4.19.0</code> = kompatible Minor/Patch-Updates. <code>~4.19.0</code> = nur Patches. Ohne Prefix =
+            exakte Version.</p>
+          <h5>Skripte verketten</h5>
+          <p><code>"build": "npm run lint &amp;&amp; npm run compile"</code> — Lint zuerst, dann Build.</p>
+          <h5>pre/post-Hooks</h5>
+          <p><code>"prebuild": "..."</code> läuft automatisch <em>vor</em> <code>build</code>.</p>
+        </div>
+      </div>
+
+      <h3 class="cli-group">Alternativen zu npm</h3>
+      <table class="cli-table">
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Wofür</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>pnpm</td>
+            <td>Drop-in-Ersatz für npm. Massiv schneller, deutlich weniger Disk-Verbrauch durch globales
+              Content-Addressable Storage.</td>
+          </tr>
+          <tr>
+            <td>yarn</td>
+            <td>Älterer npm-Konkurrent von Meta. Yarn 4 (Berry) mit PnP-Modus ist sehr effizient, aber Setup komplexer.
+            </td>
+          </tr>
+          <tr>
+            <td>bun</td>
+            <td>Komplette JS-Runtime (Alternative zu Node) mit eingebautem Package-Manager. <code>bun install</code> ist
+              extrem schnell.</td>
+          </tr>
+          <tr>
+            <td>deno</td>
+            <td>JS/TS-Runtime mit Security-Modell und URL-basierten Imports — kein <code>node_modules</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="cli-group">Flags &amp; Tricks</h3>
+      <table class="cli-table">
+        <thead>
+          <tr>
+            <th>Flag / Trick</th>
+            <th>Wirkung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>npm i --save-exact</td>
+            <td>Pinnt die Version ohne <code>^</code> oder <code>~</code> — exakter Pin.</td>
+          </tr>
+          <tr>
+            <td>npm i --omit=dev</td>
+            <td>Installiert nur Production-Dependencies (für Deployments).</td>
+          </tr>
+          <tr>
+            <td>npm config get prefix</td>
+            <td>Wo werden globale Packages hin installiert?</td>
+          </tr>
+          <tr>
+            <td>npm cache clean --force</td>
+            <td>Cache leeren — wenn merkwürdige Install-Fehler auftreten.</td>
+          </tr>
+          <tr>
+            <td>npm pack</td>
+            <td>Erstellt ein <code>.tgz</code>-Archiv des Packages — wie es publiziert würde.</td>
+          </tr>
+          <tr>
+            <td>npm publish</td>
+            <td>Publiziert das Package auf npmjs.com (Login mit <code>npm login</code> nötig).</td>
+          </tr>
+          <tr>
+            <td>npm dedupe</td>
+            <td>Räumt doppelte Pakete im Dependency-Tree auf.</td>
+          </tr>
+          <tr>
+            <td>npm view &lt;pkg&gt;</td>
+            <td>Infos über ein Package: Versionen, Maintainers, Repository.</td>
+          </tr>
+          <tr>
+            <td>npm doctor</td>
+            <td>Diagnose-Tool — prüft Node-Version, Cache, Registry-Verbindung.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <div class="callout-label">Tipp</div>
+        <p>Lege dir Aliase an: <code>alias ni="npm install"</code>, <code>alias nr="npm run"</code>,
+          <code>alias nrd="npm run dev"</code>. Und prüfe einmal <code>node --watch</code> + <code>--env-file</code> +
+          <code>--test</code> — drei Sachen, für die du jahrelang Extra-Packages brauchtest.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      JavaScript · Dokumentation · Juni 2026 · ES2026
+    </footer>
+
   </div>
-
-  <h3 class="cli-group">Alternativen zu npm</h3>
-  <table class="cli-table">
-    <thead><tr><th>Tool</th><th>Wofür</th></tr></thead>
-    <tbody>
-      <tr><td>pnpm</td><td>Drop-in-Ersatz für npm. Massiv schneller, deutlich weniger Disk-Verbrauch durch globales Content-Addressable Storage.</td></tr>
-      <tr><td>yarn</td><td>Älterer npm-Konkurrent von Meta. Yarn 4 (Berry) mit PnP-Modus ist sehr effizient, aber Setup komplexer.</td></tr>
-      <tr><td>bun</td><td>Komplette JS-Runtime (Alternative zu Node) mit eingebautem Package-Manager. <code>bun install</code> ist extrem schnell.</td></tr>
-      <tr><td>deno</td><td>JS/TS-Runtime mit Security-Modell und URL-basierten Imports — kein <code>node_modules</code>.</td></tr>
-    </tbody>
-  </table>
-
-  <h3 class="cli-group">Flags &amp; Tricks</h3>
-  <table class="cli-table">
-    <thead><tr><th>Flag / Trick</th><th>Wirkung</th></tr></thead>
-    <tbody>
-      <tr><td>npm i --save-exact</td><td>Pinnt die Version ohne <code>^</code> oder <code>~</code> — exakter Pin.</td></tr>
-      <tr><td>npm i --omit=dev</td><td>Installiert nur Production-Dependencies (für Deployments).</td></tr>
-      <tr><td>npm config get prefix</td><td>Wo werden globale Packages hin installiert?</td></tr>
-      <tr><td>npm cache clean --force</td><td>Cache leeren — wenn merkwürdige Install-Fehler auftreten.</td></tr>
-      <tr><td>npm pack</td><td>Erstellt ein <code>.tgz</code>-Archiv des Packages — wie es publiziert würde.</td></tr>
-      <tr><td>npm publish</td><td>Publiziert das Package auf npmjs.com (Login mit <code>npm login</code> nötig).</td></tr>
-      <tr><td>npm dedupe</td><td>Räumt doppelte Pakete im Dependency-Tree auf.</td></tr>
-      <tr><td>npm view &lt;pkg&gt;</td><td>Infos über ein Package: Versionen, Maintainers, Repository.</td></tr>
-      <tr><td>npm doctor</td><td>Diagnose-Tool — prüft Node-Version, Cache, Registry-Verbindung.</td></tr>
-    </tbody>
-  </table>
-
-  <div class="callout">
-    <div class="callout-label">Tipp</div>
-    <p>Lege dir Aliase an: <code>alias ni="npm install"</code>, <code>alias nr="npm run"</code>, <code>alias nrd="npm run dev"</code>. Und prüfe einmal <code>node --watch</code> + <code>--env-file</code> + <code>--test</code> — drei Sachen, für die du jahrelang Extra-Packages brauchtest.</p>
-  </div>
-</section>
-
-<footer>
-  JavaScript · Dokumentation · Juni 2026 · ES2026
-</footer>
-
-</div>
 </body>
+
 </html>

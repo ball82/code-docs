@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS — Vom Anfänger zum Fortgeschrittenen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./styles/style.css">
+  <script src="https://kit.fontawesome.com/12f6918634.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="page" >
+    <a class="back-to-top" href="#top" aria-label="Nach oben">
+      <svg xmlns="http://www.w3.org/2000/svg" height="58px" viewBox="0 0 640 640">
+        <path fill="rgb(232, 166, 73)" d="M320 112C434.9 112 528 205.1 528 320C528 434.9 434.9 528 320 528C205.1 528 112 434.9 112 320C112 205.1 205.1 112 320 112zM320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM331.3 188.7C325.1 182.5 314.9 182.5 308.7 188.7L204.7 292.7C200.1 297.3 198.8 304.2 201.2 310.1C203.6 316 209.5 320 216 320L288 320L288 424C288 437.3 298.7 448 312 448L328 448C341.3 448 352 437.3 352 424L352 320L424 320C430.5 320 436.3 316.1 438.8 310.1C441.3 304.1 439.9 297.2 435.3 292.7L331.3 188.7z"/>
+      </svg>
+    </a>
+        
+    <header class="hero">
+      <a href="../index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0,0,256,256">
+          <g fill="#e8a64a" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none"
+            font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+            <g transform="scale(10.66667,10.66667)">
+              <path d="M12,2.09961l-11,9.90039h3v9h6v-7h4v7h6v-9h3z"></path>
+            </g>
+          </g>
+        </svg>
+      </a>
+
+
+      <div class="eyebrow">Dokumentation · Stand 2026 · CSS3+</div>
+      <h1>CSS<br><em>von A bis Z</em></h1>
+      <p class="lede">Eine vollständige Reise durch CSS — von Selektoren und Box Model bis zu Container Queries,
+        Nesting, <code>@layer</code> und Scroll-driven Animations. Jedes Beispiel mit Erklärung links, Code in der
+        Mitte, Notizen rechts.</p>
+      <div class="meta">
+        <span><strong>Standard</strong>CSS Level 3–5</span>
+        <span><strong>Niveau</strong>Anfänger → Fortgeschritten</span>
+        <span><strong>Kapitel</strong>25 + Referenz</span>
+        <span><strong>Browser</strong>2026-Stand</span>
+      </div>
+    </header>
+
+    <nav class="toc" >
+      <div class="toc-title">Inhalt</div>
+      <div class="toc-grid">
+        <div class="toc-col">
+          <h4>Teil I — Anfänger</h4>
+          <ol>
+            <li><a href="#was-ist-css">Was ist CSS?</a></li>
+            <li><a href="#selektoren">Selektoren Grundlagen</a></li>
+            <li><a href="#farben">Farben &amp; Einheiten</a></li>
+            <li><a href="#typo">Text &amp; Typografie</a></li>
+            <li><a href="#box">Box Model</a></li>
+            <li><a href="#display">Display</a></li>
+            <li><a href="#bg">Backgrounds &amp; Gradients</a></li>
+            <li><a href="#borders">Borders &amp; Border-Radius</a></li>
+            <li><a href="#pseudo">Pseudo-Klassen &amp; -Elemente</a></li>
+          </ol>
+        </div>
+        <div class="toc-col">
+          <h4>Teil II — Mittelstufe</h4>
+          <ol>
+            <li><a href="#flex">Flexbox</a></li>
+            <li><a href="#grid">CSS Grid</a></li>
+            <li><a href="#position">Positioning</a></li>
+            <li><a href="#transitions">Transitions &amp; Animations</a></li>
+            <li><a href="#responsive">Responsive Design</a></li>
+            <li><a href="#variables">Custom Properties (Variables)</a></li>
+            <li><a href="#adv-selectors">Selektoren Fortgeschritten</a></li>
+            <li><a href="#stacking">Overflow, z-index &amp; Stacking</a></li>
+          </ol>
+        </div>
+        <div class="toc-col">
+          <h4>Teil III — Fortgeschritten</h4>
+          <ol>
+            <li><a href="#container-q">Container Queries</a></li>
+            <li><a href="#nesting">CSS Nesting</a></li>
+            <li><a href="#logical">Logical Properties</a></li>
+            <li><a href="#scroll">Scroll-Snap &amp; Scroll Animations</a></li>
+            <li><a href="#subgrid">Subgrid</a></li>
+            <li><a href="#layers">@layer &amp; Cascade Layers</a></li>
+            <li><a href="#view-transitions">View Transitions</a></li>
+            <li><a href="#color-fn">Color Functions (oklch, color-mix)</a></li>
+          </ol>
+          <h4 style="margin-top:24px;">Referenz</h4>
+          <ol>
+            <li><a href="#ref">Einheiten, Selektoren &amp; Shorthands</a></li>
+          </ol>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ==================== TEIL I ==================== -->
+    <div class="part">
+      <div class="part-label">Teil I</div>
+      <h2 class="part-title">Die <em>Grundlagen</em></h2>
+      <p class="part-desc">Wie CSS funktioniert, wie man Elemente auswählt, Farben setzt, Text stylt und das Box Model
+        versteht.</p>
+    </div>
+
+    <!-- 01 -->
+    <section id="was-ist-css">
+      <h2><span class="num">01</span> Was ist CSS?</h2>
+      <p class="section-intro"><strong>CSS</strong> (Cascading Style Sheets) definiert das Aussehen von HTML — Farben,
+        Layouts, Abstände, Animationen. HTML sagt <em>was</em>, CSS sagt <em>wie es aussieht</em>.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Einbindung</span>
+          <h5>Externes CSS</h5>
+          <p><code>&lt;link rel="stylesheet" href="style.css"&gt;</code> — der Standardweg.</p>
+          <h5>Internes CSS</h5>
+          <p><code>&lt;style&gt;</code>-Block im <code>&lt;head&gt;</code>.</p>
+          <h5>Inline-Style</h5>
+          <p><code>style="color: red;"</code> — nur Notfall.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">style.css</div>
+          <pre><span class="cm">/* Selektor { Eigenschaft: Wert; } */</span>
+
+<span class="sel">h1</span> {
+  <span class="prop">color</span>: <span class="val">#264de4</span>;
+  <span class="prop">font-size</span>: <span class="val">2.5</span><span class="unit">rem</span>;
+  <span class="prop">font-family</span>: <span class="val">sans-serif</span>;
+}
+
+<span class="sel">p</span> {
+  <span class="prop">color</span>: <span class="val">#333</span>;
+  <span class="prop">line-height</span>: <span class="val">1.6</span>;
+  <span class="prop">max-width</span>: <span class="val">60</span><span class="unit">ch</span>;
+}
+
+<span class="sel">.highlight</span> {
+  <span class="prop">background</span>: <span class="val">yellow</span>;
+  <span class="prop">padding</span>: <span class="val">2</span><span class="unit">px</span> <span class="val">6</span><span class="unit">px</span>;
+}</pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Cascade</span>
+          <h5>Kaskade</h5>
+          <p>Inline > ID > Klasse > Element. Bei gleicher Spezifität: die spätere Regel gewinnt.</p>
+          <h5>Vererbung</h5>
+          <p>Manche Properties (z.&nbsp;B. <code>color</code>, <code>font-*</code>) werden an Kinder vererbt.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section id="selektoren">
+      <h2><span class="num">02</span> Selektoren Grundlagen</h2>
+      <p class="section-intro">Selektoren bestimmen, <em>welche</em> Elemente gestylt werden. Die drei Grundarten:
+        Element, Klasse, ID.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Typen</span>
+          <h5>Element</h5>
+          <p><code>h1</code> — trifft alle <code>&lt;h1&gt;</code>-Tags.</p>
+          <h5>.klasse</h5>
+          <p>Trifft alles mit <code>class="klasse"</code>. Kann mehrfach vorkommen.</p>
+          <h5>#id</h5>
+          <p>Einzigartig pro Seite. Höhere Spezifität — sparsam nutzen.</p>
+          <h5>Kombination</h5>
+          <p><code>p.intro</code> = Paragraph mit Klasse <code>intro</code>.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">selektoren.css</div>
+          <pre><span class="cm">/* Element */</span>
+<span class="sel">p</span> { <span class="prop">margin-bottom</span>: <span class="val">1</span><span class="unit">rem</span>; }
+
+<span class="cm">/* Klasse */</span>
+<span class="sel">.card</span> {
+  <span class="prop">border</span>: <span class="val">1</span><span class="unit">px</span> <span class="val">solid</span> <span class="val">#ddd</span>;
+  <span class="prop">border-radius</span>: <span class="val">8</span><span class="unit">px</span>;
+  <span class="prop">padding</span>: <span class="val">1</span><span class="unit">rem</span>;
+}
+
+<span class="cm">/* ID */</span>
+<span class="sel">#hero</span> { <span class="prop">background</span>: <span class="val">#264de4</span>; }
+
+<span class="cm">/* Kombination */</span>
+<span class="sel">a.external</span> { <span class="prop">color</span>: <span class="val">blue</span>; }
+
+<span class="cm">/* Universalselektor */</span>
+<span class="sel">*</span> { <span class="prop">box-sizing</span>: <span class="val">border-box</span>; }
+
+<span class="cm">/* Gruppierung */</span>
+<span class="sel">h1, h2, h3</span> { <span class="prop">font-family</span>: <span class="val">serif</span>; }</pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Spezifität</span>
+          <h5>Merken</h5>
+          <p>ID (1-0-0) > Klasse (0-1-0) > Element (0-0-1). Inline = gewinnt immer (ausser <code>!important</code>).</p>
+          <h5>Tipp</h5>
+          <p>Nutze Klassen statt IDs für Styling — flexibler, niedrigere Spezifität.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section id="farben">
+      <h2><span class="num">03</span> Farben &amp; Einheiten</h2>
+      <p class="section-intro">CSS kennt viele Farb-Formate und relative Einheiten. Modern: <code>oklch()</code> für
+        wahrnehmungsgleiche Farben.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Formate</span>
+          <h5>Hex</h5>
+          <p><code>#ff6600</code> oder kurz <code>#f60</code>. Mit Alpha: <code>#ff660080</code>.</p>
+          <h5>rgb / rgba</h5>
+          <p><code>rgb(255 102 0 / 50%)</code> — moderne Syntax ohne Kommas.</p>
+          <h5>hsl</h5>
+          <p>Farbton (0–360°), Sättigung, Helligkeit. Intuitiver.</p>
+          <h5>oklch</h5>
+          <p>Perceptually uniform. Der neue Standard für 2026.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">farben.css</div>
+          <pre><span class="sel">.box</span> {
+  <span class="cm">/* Verschiedene Farb-Formate */</span>
+  <span class="prop">color</span>: <span class="val">#264de4</span>;
+  <span class="prop">color</span>: <span class="val">rgb(38 77 228)</span>;
+  <span class="prop">color</span>: <span class="val">hsl(225 80% 52%)</span>;
+  <span class="prop">color</span>: <span class="val">oklch(50% 0.2 265)</span>;
+
+  <span class="cm">/* Mit Transparenz */</span>
+  <span class="prop">background</span>: <span class="val">rgb(38 77 228 / 20%)</span>;
+
+  <span class="cm">/* Einheiten */</span>
+  <span class="prop">font-size</span>: <span class="val">1</span><span class="unit">rem</span>;      <span class="cm">/* relativ zu root */</span>
+  <span class="prop">padding</span>: <span class="val">1.5</span><span class="unit">em</span>;       <span class="cm">/* relativ zum Element */</span>
+  <span class="prop">width</span>: <span class="val">80</span><span class="unit">vw</span>;          <span class="cm">/* 80% der Viewport-Breite */</span>
+  <span class="prop">max-width</span>: <span class="val">60</span><span class="unit">ch</span>;      <span class="cm">/* 60 Zeichen breit */</span>
+  <span class="prop">gap</span>: <span class="val">clamp(1rem, 3vw, 3rem)</span>;
+}</pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>rem vs em</h5>
+          <p><code>rem</code> = relativ zu <code>html</code> (Standard 16px). <code>em</code> = relativ zum
+            Elternelement. Für Font-Size: <code>rem</code>. Für Padding: <code>em</code>.</p>
+          <h5>clamp()</h5>
+          <p><code>clamp(min, ideal, max)</code> — fluid zwischen min und max. Perfekt für responsive Typo.</p>
+          <h5>ch</h5>
+          <p>Breite des "0"-Zeichens. Ideal für Lesebreite.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section id="typo">
+      <h2><span class="num">04</span> Text &amp; Typografie</h2>
+      <p class="section-intro">Schriftart, Grösse, Zeilenabstand, Ausrichtung, Dekoration — alles, was Text lesbar und
+        schön macht.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Properties</span>
+          <h5>font-family</h5>
+          <p>Schrift-Stack mit Fallbacks. Web-Fonts via <code>@font-face</code> oder Google Fonts.</p>
+          <h5>font-size</h5>
+          <p>In <code>rem</code> oder <code>clamp()</code> für fluid.</p>
+          <h5>line-height</h5>
+          <p>Zeilenabstand. 1.5–1.7 für Fliesstext.</p>
+          <h5>text-wrap: balance</h5>
+          <p>Gleichmässige Zeilenverteilung für Headlines. Neu!</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">typo.css</div>
+          <pre><span class="sel">body</span> {
+  <span class="prop">font-family</span>: <span class="val">'Inter', system-ui, sans-serif</span>;
+  <span class="prop">font-size</span>: <span class="val">clamp(1rem, 1vw + 0.75rem, 1.25rem)</span>;
+  <span class="prop">line-height</span>: <span class="val">1.65</span>;
+  <span class="prop">color</span>: <span class="val">#1a1a1a</span>;
+}
+
+<span class="sel">h1</span> {
+  <span class="prop">font-size</span>: <span class="val">clamp(2rem, 5vw, 4rem)</span>;
+  <span class="prop">font-weight</span>: <span class="val">800</span>;
+  <span class="prop">letter-spacing</span>: <span class="val">-0.03</span><span class="unit">em</span>;
+  <span class="prop">text-wrap</span>: <span class="val">balance</span>;
+}
+
+<span class="sel">a</span> {
+  <span class="prop">color</span>: <span class="val">#264de4</span>;
+  <span class="prop">text-decoration</span>: <span class="val">underline</span>;
+  <span class="prop">text-underline-offset</span>: <span class="val">3</span><span class="unit">px</span>;
+}
+
+<span class="sel">.truncate</span> {
+  <span class="prop">white-space</span>: <span class="val">nowrap</span>;
+  <span class="prop">overflow</span>: <span class="val">hidden</span>;
+  <span class="prop">text-overflow</span>: <span class="val">ellipsis</span>;
+}</pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Tipp</span>
+          <h5>system-ui</h5>
+          <p>Nutzt die System-Schrift — schnell, kein Download nötig.</p>
+          <h5>text-wrap: pretty</h5>
+          <p>Vermeidet Waisenwörter am Ende. Browser-Support wächst.</p>
+          <h5>@font-face</h5>
+          <p>Eigene Schriften laden — WOFF2-Format ist optimal.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section id="box">
+      <h2><span class="num">05</span> Box Model</h2>
+      <p class="section-intro">Jedes Element ist eine Box: <strong>Content → Padding → Border → Margin</strong>. Mit
+        <code>box-sizing: border-box</code> wird's intuitiv.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Schichten</span>
+          <h5>content</h5>
+          <p>Der Inhalt — Text, Bild, etc.</p>
+          <h5>padding</h5>
+          <p>Innenabstand zwischen Content und Border.</p>
+          <h5>border</h5>
+          <p>Rahmen um das Element.</p>
+          <h5>margin</h5>
+          <p>Aussenabstand zum nächsten Element.</p>
+          <h5>border-box</h5>
+          <p><code>width</code> schliesst Padding + Border mit ein. Immer setzen!</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">box.css</div>
+          <pre><span class="cm">/* Reset: border-box für alle */</span>
+<span class="sel">*, *::before, *::after</span> {
+  <span class="prop">box-sizing</span>: <span class="val">border-box</span>;
+}
+
+<span class="sel">.card</span> {
+  <span class="prop">width</span>: <span class="val">300</span><span class="unit">px</span>;
+  <span class="prop">padding</span>: <span class="val">24</span><span class="unit">px</span>;
+  <span class="prop">border</span>: <span class="val">2</span><span class="unit">px</span> <span class="val">solid</span> <span class="val">#ddd</span>;
+  <span class="prop">margin</span>: <span class="val">16</span><span class="unit">px</span>;
+  <span class="cm">/* Gesamtbreite: 300px (border-box) */</span>
+}
+
+<span class="cm">/* Margin Shorthand */</span>
+<span class="sel">.box</span> {
+  <span class="prop">margin</span>: <span class="val">10</span><span class="unit">px</span>;           <span class="cm">/* alle 4 */</span>
+  <span class="prop">margin</span>: <span class="val">10</span><span class="unit">px</span> <span class="val">20</span><span class="unit">px</span>;      <span class="cm">/* oben/unten links/rechts */</span>
+  <span class="prop">margin</span>: <span class="val">10</span><span class="unit">px</span> <span class="val">20</span><span class="unit">px</span> <span class="val">30</span><span class="unit">px</span> <span class="val">40</span><span class="unit">px</span>; <span class="cm">/* o r u l */</span>
+}
+
+<span class="cm">/* Zentrieren: margin auto */</span>
+<span class="sel">.container</span> {
+  <span class="prop">max-width</span>: <span class="val">1200</span><span class="unit">px</span>;
+  <span class="prop">margin-inline</span>: <span class="val">auto</span>;
+}</pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Achtung</span>
+          <h5>Margin Collapse</h5>
+          <p>Vertikale Margins benachbarter Elemente überlappen sich. Nur der grössere zählt.</p>
+          <h5>margin-inline: auto</h5>
+          <p>Zentriert horizontal — die moderne Variante von <code>margin: 0 auto</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 -->
+    <section id="display">
+      <h2><span class="num">06</span> Display</h2>
+      <p class="section-intro"><code>display</code> bestimmt, wie ein Element sich verhält: <code>block</code>,
+        <code>inline</code>, <code>inline-block</code>, <code>flex</code>, <code>grid</code>, <code>none</code>.</p>
+      <div class="example">
+        <div class="ex-side left">
+          <span class="ex-label">Links · Werte</span>
+          <h5>block</h5>
+          <p>Eigene Zeile, volle Breite.</p>
+          <h5>inline</h5>
+          <p>Im Textfluss. Width/Height werden ignoriert.</p>
+          <h5>inline-block</h5>
+          <p>Im Fluss, aber Width/Height funktionieren.</p>
+          <h5>none</h5>
+          <p>Element verschwindet komplett — kein Platz.</p>
+          <h5>flex / grid</h5>
+          <p>Layout-Modi — eigene Kapitel folgen.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">display.css</div>
+          <pre><span class="sel">.tag</span> {
+  <span class="prop">display</span>: <span class="val">inline-block</span>;
+  <span class="prop">padding</span>: <span class="val">4</span><span class="unit">px</span> <span class="val">12</span><span class="unit">px</span>;
+  <span class="prop">background</span>: <span class="val">#264de4</span>;
+  <span class="prop">color</span>: <span class="val">white</span>;
+  <span class="prop">border-radius</span>: <span class="val">99</span><span class="unit">px</span>;
+}
+
+<span class="sel">.hidden</span> { <span class="prop">display</span>: <span class="val">none</span>; }
+
+<span class="cm">/* Visually hidden (Accessibility) */</span>
+<span class="sel">.sr-only</span> {
+  <span class="prop">position</span>: <span class="val">absolute</span>;
+  <span class="prop">width</span>: <span class="val">1</span><span class="unit">px</span>; <span class="prop">height</span>: <span class="val">1</span><span class="unit">px</span>;
+  <span class="prop">overflow</span>: <span class="val">hidden</span>;
+  <span class="prop">clip-path</span>: <span class="val">inset(50%)</span>;
+}</pre>
+        </div>
+        <div class="ex-side right">
+          <span class="ex-label">Rechts · Notiz</span>
+          <h5>none vs hidden</h5>
+          <p><code>display: none</code> = weg. <code>visibility: hidden</code> = unsichtbar, nimmt aber Platz ein.</p>
+          <h5>sr-only</h5>
+          <p>Visuell versteckt, aber Screenreader lesen es vor.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 -->
+    <section id="bg">
+      <h2><span class="num">07</span> Backgrounds &amp; Gradients</h2>
+      <p class="section-intro">Hintergrundfarben, Bilder, Gradienten — und wie man sie kombiniert.</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Properties</span>
+          <h5>background</h5>
+          <p>Shorthand für color, image, position, size, repeat.</p>
+          <h5>linear-gradient</h5>
+          <p>Farbverlauf in eine Richtung.</p>
+          <h5>radial-gradient</h5>
+          <p>Kreisförmiger Verlauf.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">bg.css</div>
+          <pre><span class="sel">.hero</span> {
+  <span class="prop">background</span>: <span class="val">linear-gradient(135deg, #264de4, #5a8dee)</span>;
+  <span class="prop">color</span>: <span class="val">white</span>;
+}
+
+<span class="sel">.overlay</span> {
+  <span class="prop">background</span>:
+    <span class="val">linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.3))</span>,
+    <span class="val">url('bg.jpg') center / cover no-repeat</span>;
+}
+
+<span class="sel">.mesh</span> {
+  <span class="prop">background</span>:
+    <span class="val">radial-gradient(at 20% 30%, #264de4 0%, transparent 50%)</span>,
+    <span class="val">radial-gradient(at 80% 70%, #e8a64a 0%, transparent 50%)</span>;
+}</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Tipp</span>
+          <h5>cover vs contain</h5>
+          <p><code>cover</code> = füllt, schneidet ab. <code>contain</code> = zeigt alles, evtl. Lücken.</p>
+          <h5>Mehrere Backgrounds</h5>
+          <p>Mit Komma getrennt — der erste liegt oben.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 -->
+    <section id="borders">
+      <h2><span class="num">08</span> Borders &amp; Border-Radius</h2>
+      <p class="section-intro">Rahmen, abgerundete Ecken und Schatten — die visuellen Details, die eine Card zur Card
+        machen.</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Properties</span>
+          <h5>border</h5>
+          <p>Shorthand: <code>width style color</code>.</p>
+          <h5>border-radius</h5>
+          <p>Runde Ecken. <code>50%</code> = Kreis (bei quadrat. Element).</p>
+          <h5>box-shadow</h5>
+          <p>Schatten: x y blur spread color.</p>
+          <h5>outline</h5>
+          <p>Wie border, aber ausserhalb des Box Models. Nutze es für Fokus!</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">borders.css</div>
+          <pre><span class="sel">.card</span> {
+  <span class="prop">border</span>: <span class="val">1</span><span class="unit">px</span> <span class="val">solid</span> <span class="val">#e0e0e0</span>;
+  <span class="prop">border-radius</span>: <span class="val">12</span><span class="unit">px</span>;
+  <span class="prop">box-shadow</span>: <span class="val">0 4px 12px rgb(0 0 0 / 10%)</span>;
+}
+
+<span class="sel">.avatar</span> {
+  <span class="prop">width</span>: <span class="val">80</span><span class="unit">px</span>; <span class="prop">height</span>: <span class="val">80</span><span class="unit">px</span>;
+  <span class="prop">border-radius</span>: <span class="val">50%</span>;
+  <span class="prop">border</span>: <span class="val">3</span><span class="unit">px</span> <span class="val">solid</span> <span class="val">#264de4</span>;
+}
+
+<span class="sel">.btn</span>:<span class="sel">focus-visible</span> {
+  <span class="prop">outline</span>: <span class="val">3</span><span class="unit">px</span> <span class="val">solid</span> <span class="val">#264de4</span>;
+  <span class="prop">outline-offset</span>: <span class="val">2</span><span class="unit">px</span>;
+}</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Tipp</span>
+          <h5>focus-visible</h5>
+          <p>Zeigt Outline nur bei Keyboard-Navigation — nicht bei Mausklick.</p>
+          <h5>border vs outline</h5>
+          <p>Border verschiebt Layout. Outline nicht.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 -->
+    <section id="pseudo">
+      <h2><span class="num">09</span> Pseudo-Klassen &amp; -Elemente</h2>
+      <p class="section-intro">Pseudo-<strong>Klassen</strong> (<code>:hover</code>, <code>:first-child</code>) treffen
+        Elemente in bestimmten Zuständen. Pseudo-<strong>Elemente</strong> (<code>::before</code>, <code>::after</code>)
+        erzeugen virtuelle Kinder.</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Überblick</span>
+          <h5>:hover / :focus / :active</h5>
+          <p>Interaktions-Zustände.</p>
+          <h5>:first-child / :last-child / :nth-child()</h5>
+          <p>Position in der Elternliste.</p>
+          <h5>::before / ::after</h5>
+          <p>Erzeugen ein Element vor/nach dem Inhalt. Brauchen <code>content</code>.</p>
+          <h5>::placeholder</h5>
+          <p>Styled den Placeholder-Text eines Inputs.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">pseudo.css</div>
+          <pre><span class="sel">a</span>:<span class="sel">hover</span>  { <span class="prop">color</span>: <span class="val">#e8a64a</span>; }
+<span class="sel">a</span>:<span class="sel">focus-visible</span> { <span class="prop">outline</span>: <span class="val">2px solid</span>; }
+
+<span class="sel">li</span>:<span class="sel">nth-child(odd)</span> {
+  <span class="prop">background</span>: <span class="val">#f5f5f5</span>;
+}
+
+<span class="sel">li</span>:<span class="sel">first-child</span> { <span class="prop">font-weight</span>: <span class="val">bold</span>; }
+
+<span class="sel">.badge</span>::<span class="sel">before</span> {
+  <span class="prop">content</span>: <span class="val">'★ '</span>;
+  <span class="prop">color</span>: <span class="val">gold</span>;
+}
+
+<span class="sel">.divider</span>::<span class="sel">after</span> {
+  <span class="prop">content</span>: <span class="val">''</span>;
+  <span class="prop">display</span>: <span class="val">block</span>;
+  <span class="prop">height</span>: <span class="val">1</span><span class="unit">px</span>;
+  <span class="prop">background</span>: <span class="val">#ddd</span>;
+  <span class="prop">margin-top</span>: <span class="val">1</span><span class="unit">rem</span>;
+}
+
+<span class="sel">input</span>::<span class="sel">placeholder</span> {
+  <span class="prop">color</span>: <span class="val">#999</span>;
+  <span class="prop">font-style</span>: <span class="val">italic</span>;
+}</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Notiz</span>
+          <h5>content</h5>
+          <p>Pseudo-Elemente brauchen immer <code>content</code> — auch wenn es <code>''</code> ist.</p>
+          <h5>::selection</h5>
+          <p>Styled den markierten (selektierten) Text.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TEIL II ==================== -->
+    <div class="part">
+      <div class="part-label">Teil II</div>
+      <h2 class="part-title">Layout &amp; <em>Dynamik</em></h2>
+      <p class="part-desc">Flexbox, Grid, Positioning, Animationen, Responsive Design, CSS Variables und
+        fortgeschrittene Selektoren.</p>
+    </div>
+
+    <!-- 10 -->
+    <section id="flex">
+      <h2><span class="num">10</span> Flexbox</h2>
+      <p class="section-intro">Flexbox ist ein 1-dimensionales Layout-System — entweder Zeile oder Spalte. Perfekt für
+        Navigation, Card-Reihen, Zentrieren.</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Konzept</span>
+          <h5>Container</h5>
+          <p><code>display: flex</code> macht das Element zum Flex-Container.</p>
+          <h5>Hauptachse</h5>
+          <p><code>flex-direction</code>: <code>row</code> (Standard) oder <code>column</code>.</p>
+          <h5>justify-content</h5>
+          <p>Verteilt Kinder auf der Hauptachse.</p>
+          <h5>align-items</h5>
+          <p>Positioniert Kinder auf der Querachse.</p>
+          <h5>gap</h5>
+          <p>Abstand zwischen Flex-Kindern.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">flex.css</div>
+          <pre><span class="cm">/* Navigation */</span>
+<span class="sel">.nav</span> {
+  <span class="prop">display</span>: <span class="val">flex</span>;
+  <span class="prop">justify-content</span>: <span class="val">space-between</span>;
+  <span class="prop">align-items</span>: <span class="val">center</span>;
+  <span class="prop">gap</span>: <span class="val">1</span><span class="unit">rem</span>;
+}
+
+<span class="cm">/* Zentrieren (vertikal + horizontal) */</span>
+<span class="sel">.center</span> {
+  <span class="prop">display</span>: <span class="val">flex</span>;
+  <span class="prop">justify-content</span>: <span class="val">center</span>;
+  <span class="prop">align-items</span>: <span class="val">center</span>;
+  <span class="prop">min-height</span>: <span class="val">100</span><span class="unit">vh</span>;
+}
+
+<span class="cm">/* Card-Reihe mit Wrapping */</span>
+<span class="sel">.cards</span> {
+  <span class="prop">display</span>: <span class="val">flex</span>;
+  <span class="prop">flex-wrap</span>: <span class="val">wrap</span>;
+  <span class="prop">gap</span>: <span class="val">24</span><span class="unit">px</span>;
+}
+<span class="sel">.cards > *</span> {
+  <span class="prop">flex</span>: <span class="val">1 1 300px</span>;  <span class="cm">/* grow shrink basis */</span>
+}
+
+<span class="cm">/* Footer immer unten */</span>
+<span class="sel">.page</span> {
+  <span class="prop">display</span>: <span class="val">flex</span>;
+  <span class="prop">flex-direction</span>: <span class="val">column</span>;
+  <span class="prop">min-height</span>: <span class="val">100</span><span class="unit">vh</span>;
+}
+<span class="sel">.page > main</span> { <span class="prop">flex</span>: <span class="val">1</span>; }</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Tipp</span>
+          <h5>flex: 1</h5>
+          <p>Shorthand für <code>flex-grow: 1; flex-shrink: 1; flex-basis: 0</code>. Element füllt verfügbaren Platz.
+          </p>
+          <h5>order</h5>
+          <p>Ändert die visuelle Reihenfolge ohne HTML-Änderung.</p>
+          <h5>align-self</h5>
+          <p>Überschreibt <code>align-items</code> für ein einzelnes Kind.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 -->
+    <section id="grid">
+      <h2><span class="num">11</span> CSS Grid</h2>
+      <p class="section-intro">Grid ist ein 2-dimensionales Layout-System — Zeilen <em>und</em> Spalten gleichzeitig.
+        Perfekt für Seitenlayouts, Dashboards, Galerien.</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Konzept</span>
+          <h5>grid-template-columns</h5>
+          <p>Definiert Spalten. <code>repeat(3, 1fr)</code> = 3 gleiche Spalten.</p>
+          <h5>fr</h5>
+          <p>Fraction — teilt den Restplatz proportional auf.</p>
+          <h5>grid-template-areas</h5>
+          <p>Benannte Bereiche — visuell intuitiv.</p>
+          <h5>auto-fit / auto-fill</h5>
+          <p>Responsive ohne Media Queries!</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">grid.css</div>
+          <pre><span class="cm">/* Basis-Grid */</span>
+<span class="sel">.grid</span> {
+  <span class="prop">display</span>: <span class="val">grid</span>;
+  <span class="prop">grid-template-columns</span>: <span class="val">repeat(3, 1fr)</span>;
+  <span class="prop">gap</span>: <span class="val">24</span><span class="unit">px</span>;
+}
+
+<span class="cm">/* Responsive Grid (keine Media Query!) */</span>
+<span class="sel">.auto-grid</span> {
+  <span class="prop">display</span>: <span class="val">grid</span>;
+  <span class="prop">grid-template-columns</span>:
+    <span class="val">repeat(auto-fit, minmax(280px, 1fr))</span>;
+  <span class="prop">gap</span>: <span class="val">24</span><span class="unit">px</span>;
+}
+
+<span class="cm">/* Benannte Areas */</span>
+<span class="sel">.layout</span> {
+  <span class="prop">display</span>: <span class="val">grid</span>;
+  <span class="prop">grid-template-areas</span>:
+    <span class="val">"header  header"</span>
+    <span class="val">"sidebar main  "</span>
+    <span class="val">"footer  footer"</span>;
+  <span class="prop">grid-template-columns</span>: <span class="val">250px 1fr</span>;
+  <span class="prop">grid-template-rows</span>: <span class="val">auto 1fr auto</span>;
+}
+<span class="sel">.layout > header</span>  { <span class="prop">grid-area</span>: <span class="val">header</span>; }
+<span class="sel">.layout > aside</span>   { <span class="prop">grid-area</span>: <span class="val">sidebar</span>; }
+<span class="sel">.layout > main</span>    { <span class="prop">grid-area</span>: <span class="val">main</span>; }
+<span class="sel">.layout > footer</span>  { <span class="prop">grid-area</span>: <span class="val">footer</span>; }</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Tipp</span>
+          <h5>auto-fit vs auto-fill</h5>
+          <p><code>auto-fit</code> streckt Elemente. <code>auto-fill</code> lässt leere Spalten.</p>
+          <h5>place-items: center</h5>
+          <p>Shorthand für <code>justify-items</code> + <code>align-items</code>. Zentriert in der Zelle.</p>
+          <h5>span</h5>
+          <p><code>grid-column: span 2</code> — Element erstreckt sich über 2 Spalten.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section id="position">
+      <h2><span class="num">12</span> Positioning</h2>
+      <p class="section-intro"><code>position</code> nimmt Elemente aus dem normalen Fluss heraus —
+        <code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code>.</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Werte</span>
+          <h5>relative</h5>
+          <p>Verschiebt relativ zur Normalposition. Erstellt einen Positionierungs-Kontext.</p>
+          <h5>absolute</h5>
+          <p>Relativ zum nächsten <code>position: relative</code>-Vorfahren.</p>
+          <h5>fixed</h5>
+          <p>Relativ zum Viewport — scrollt nicht mit.</p>
+          <h5>sticky</h5>
+          <p>Klebt fest, sobald die Scroll-Position erreicht ist.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">position.css</div>
+          <pre><span class="cm">/* Badge oben rechts */</span>
+<span class="sel">.card</span> { <span class="prop">position</span>: <span class="val">relative</span>; }
+<span class="sel">.card .badge</span> {
+  <span class="prop">position</span>: <span class="val">absolute</span>;
+  <span class="prop">top</span>: <span class="val">-8</span><span class="unit">px</span>;
+  <span class="prop">right</span>: <span class="val">-8</span><span class="unit">px</span>;
+  <span class="prop">background</span>: <span class="val">red</span>;
+  <span class="prop">color</span>: <span class="val">white</span>;
+  <span class="prop">border-radius</span>: <span class="val">50%</span>;
+  <span class="prop">width</span>: <span class="val">24</span><span class="unit">px</span>; <span class="prop">height</span>: <span class="val">24</span><span class="unit">px</span>;
+}
+
+<span class="cm">/* Sticky Header */</span>
+<span class="sel">.header</span> {
+  <span class="prop">position</span>: <span class="val">sticky</span>;
+  <span class="prop">top</span>: <span class="val">0</span>;
+  <span class="prop">z-index</span>: <span class="val">100</span>;
+  <span class="prop">backdrop-filter</span>: <span class="val">blur(12px)</span>;
+}
+
+<span class="cm">/* Vollbild-Overlay */</span>
+<span class="sel">.overlay</span> {
+  <span class="prop">position</span>: <span class="val">fixed</span>;
+  <span class="prop">inset</span>: <span class="val">0</span>;  <span class="cm">/* top/right/bottom/left: 0 */</span>
+  <span class="prop">background</span>: <span class="val">rgb(0 0 0 / 50%)</span>;
+}</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Merken</span>
+          <h5>inset</h5>
+          <p>Shorthand für <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code>.</p>
+          <h5>sticky braucht top</h5>
+          <p>Ohne <code>top: 0</code> klebt nichts.</p>
+          <h5>backdrop-filter</h5>
+          <p>Glasmorphismus-Effekt — unscharfer Hintergrund hinter dem Element.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 -->
+    <section id="transitions">
+      <h2><span class="num">13</span> Transitions &amp; Animations</h2>
+      <p class="section-intro"><code>transition</code> animiert Property-Änderungen sanft. <code>@keyframes</code>
+        erzeugt komplexe, mehrstufige Animationen.</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Konzept</span>
+          <h5>transition</h5>
+          <p>Shorthand: <code>property duration timing delay</code>.</p>
+          <h5>@keyframes</h5>
+          <p>Definiert Animations-Schritte (<code>from/to</code> oder Prozent).</p>
+          <h5>animation</h5>
+          <p>Verknüpft ein Element mit @keyframes.</p>
+          <h5>will-change</h5>
+          <p>Hinweis für den Browser — GPU-Beschleunigung.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">animation.css</div>
+          <pre><span class="cm">/* Transition */</span>
+<span class="sel">.btn</span> {
+  <span class="prop">background</span>: <span class="val">#264de4</span>;
+  <span class="prop">color</span>: <span class="val">white</span>;
+  <span class="prop">transition</span>: <span class="val">background 200ms ease, transform 200ms ease</span>;
+}
+<span class="sel">.btn</span>:<span class="sel">hover</span> {
+  <span class="prop">background</span>: <span class="val">#1a3ab5</span>;
+  <span class="prop">transform</span>: <span class="val">translateY(-2px)</span>;
+}
+
+<span class="cm">/* Keyframe-Animation */</span>
+<span class="at">@keyframes</span> <span class="fn">fadeIn</span> {
+  <span class="sel">from</span> { <span class="prop">opacity</span>: <span class="val">0</span>; <span class="prop">transform</span>: <span class="val">translateY(20px)</span>; }
+  <span class="sel">to</span>   { <span class="prop">opacity</span>: <span class="val">1</span>; <span class="prop">transform</span>: <span class="val">translateY(0)</span>; }
+}
+
+<span class="sel">.card</span> {
+  <span class="prop">animation</span>: <span class="val">fadeIn 400ms ease-out both</span>;
+}
+
+<span class="cm">/* Spinner */</span>
+<span class="at">@keyframes</span> <span class="fn">spin</span> {
+  <span class="sel">to</span> { <span class="prop">transform</span>: <span class="val">rotate(360deg)</span>; }
+}
+<span class="sel">.spinner</span> {
+  <span class="prop">animation</span>: <span class="val">spin 1s linear infinite</span>;
+}</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Performance</span>
+          <h5>GPU-freundlich</h5>
+          <p>Nur <code>transform</code> und <code>opacity</code> animieren — alles andere triggert Layout/Paint.</p>
+          <h5>prefers-reduced-motion</h5>
+          <p>Animationen abschalten für User, die das wollen — Media Query nutzen.</p>
+          <h5>both</h5>
+          <p><code>animation-fill-mode: both</code> hält Start- und End-Zustand.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14 -->
+    <section id="responsive">
+      <h2><span class="num">14</span> Responsive Design</h2>
+      <p class="section-intro">Media Queries passen das Layout an die Bildschirmgrösse an. Mobile-First: erst das Handy
+        stylen, dann grössere Screens.</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Strategie</span>
+          <h5>Mobile-First</h5>
+          <p>Basis-CSS = Handy. <code>@media (min-width: ...)</code> für grössere Screens.</p>
+          <h5>Breakpoints</h5>
+          <p>Gängig: 640px, 768px, 1024px, 1280px.</p>
+          <h5>Container Queries</h5>
+          <p>Moderner Ansatz — Layout reagiert auf die Container-Breite statt auf den Viewport (siehe Kap. 18).</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">responsive.css</div>
+          <pre><span class="cm">/* Mobile-First: Basis = 1 Spalte */</span>
+<span class="sel">.grid</span> {
+  <span class="prop">display</span>: <span class="val">grid</span>;
+  <span class="prop">gap</span>: <span class="val">1</span><span class="unit">rem</span>;
+}
+
+<span class="cm">/* Ab 768px: 2 Spalten */</span>
+<span class="at">@media</span> (<span class="prop">min-width</span>: <span class="val">768</span><span class="unit">px</span>) {
+  <span class="sel">.grid</span> {
+    <span class="prop">grid-template-columns</span>: <span class="val">repeat(2, 1fr)</span>;
+  }
+}
+
+<span class="cm">/* Ab 1024px: 3 Spalten */</span>
+<span class="at">@media</span> (<span class="prop">min-width</span>: <span class="val">1024</span><span class="unit">px</span>) {
+  <span class="sel">.grid</span> {
+    <span class="prop">grid-template-columns</span>: <span class="val">repeat(3, 1fr)</span>;
+  }
+}
+
+<span class="cm">/* Dark Mode */</span>
+<span class="at">@media</span> (<span class="prop">prefers-color-scheme</span>: <span class="val">dark</span>) {
+  <span class="sel">:root</span> {
+    <span class="prop">--bg</span>: <span class="val">#1a1a1a</span>;
+    <span class="prop">--text</span>: <span class="val">#f0f0f0</span>;
+  }
+}
+
+<span class="cm">/* Reduzierte Animationen */</span>
+<span class="at">@media</span> (<span class="prop">prefers-reduced-motion</span>: <span class="val">reduce</span>) {
+  <span class="sel">*</span> { <span class="prop">animation-duration</span>: <span class="val">0.01ms !important</span>; }
+}</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Tipp</span>
+          <h5>min-width (mobile-first)</h5>
+          <p><code>min-width</code> = "ab dieser Breite". Desktop-first nutzt <code>max-width</code>.</p>
+          <h5>prefers-*</h5>
+          <p><code>prefers-color-scheme</code>, <code>prefers-reduced-motion</code>, <code>prefers-contrast</code> —
+            User-Präferenzen respektieren.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15 -->
+    <section id="variables">
+      <h2><span class="num">15</span> Custom Properties (CSS Variables)</h2>
+      <p class="section-intro">Variablen in CSS — definiere Werte einmal, nutze sie überall. Laufzeit-dynamisch (anders
+        als Sass-Variablen).</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Konzept</span>
+          <h5>Definition</h5>
+          <p><code>--name: wert</code> auf beliebigem Element (meist <code>:root</code>).</p>
+          <h5>Nutzung</h5>
+          <p><code>var(--name)</code> oder <code>var(--name, fallback)</code>.</p>
+          <h5>Scoping</h5>
+          <p>Variables sind vererbbar — du kannst sie auf Kinder-Elemente überschreiben.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">variables.css</div>
+          <pre><span class="sel">:root</span> {
+  <span class="prop">--primary</span>: <span class="val">#264de4</span>;
+  <span class="prop">--radius</span>: <span class="val">8px</span>;
+  <span class="prop">--shadow</span>: <span class="val">0 4px 12px rgb(0 0 0 / 10%)</span>;
+  <span class="prop">--spacing</span>: <span class="val">1.5rem</span>;
+}
+
+<span class="sel">.btn</span> {
+  <span class="prop">background</span>: <span class="val">var(--primary)</span>;
+  <span class="prop">border-radius</span>: <span class="val">var(--radius)</span>;
+  <span class="prop">padding</span>: <span class="val">var(--spacing)</span>;
+}
+
+<span class="cm">/* Theme-Wechsel per Klasse */</span>
+<span class="sel">.dark</span> {
+  <span class="prop">--primary</span>: <span class="val">#5a8dee</span>;
+  <span class="prop">--bg</span>: <span class="val">#1a1a1a</span>;
+}
+
+<span class="cm">/* Per JavaScript ändern */</span>
+<span class="cm">// document.documentElement.style</span>
+<span class="cm">//   .setProperty('--primary', '#e44d26');</span></pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Tipp</span>
+          <h5>Fallback</h5>
+          <p><code>var(--color, blue)</code> — falls die Variable nicht gesetzt ist.</p>
+          <h5>JS-Zugriff</h5>
+          <p>Lese und schreibe CSS-Variablen per <code>setProperty()</code> / <code>getPropertyValue()</code>.</p>
+          <h5>Calc</h5>
+          <p><code>calc(var(--spacing) * 2)</code> — rechne mit Variables.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16 -->
+    <section id="adv-selectors">
+      <h2><span class="num">16</span> Selektoren Fortgeschritten</h2>
+      <p class="section-intro"><code>:has()</code>, <code>:is()</code>, <code>:where()</code>, <code>:not()</code>,
+        Kombinatoren und Attribut-Selektoren — die volle Macht der CSS-Selektoren.</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Selektoren</span>
+          <h5>:has()</h5>
+          <p>Eltern-Selektor! <code>.card:has(img)</code> = Cards mit Bild.</p>
+          <h5>:is() / :where()</h5>
+          <p>Gruppierung. <code>:where</code> hat Spezifität 0.</p>
+          <h5>:not()</h5>
+          <p>Negation: <code>p:not(.intro)</code> = alle p ausser <code>.intro</code>.</p>
+          <h5>Kombinatoren</h5>
+          <p><code>></code> (Kind), <code>+</code> (nächster Sibling), <code>~</code> (alle Siblings).</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">selektoren-adv.css</div>
+          <pre><span class="cm">/* :has() — Eltern-Selektor */</span>
+<span class="sel">.card:has(img)</span> {
+  <span class="prop">grid-column</span>: <span class="val">span 2</span>;
+}
+
+<span class="sel">form:has(:invalid)</span> {
+  <span class="prop">border-color</span>: <span class="val">red</span>;
+}
+
+<span class="cm">/* :is() — kompakte Gruppierung */</span>
+<span class="sel">:is(h1, h2, h3)</span> {
+  <span class="prop">font-family</span>: <span class="val">serif</span>;
+  <span class="prop">line-height</span>: <span class="val">1.2</span>;
+}
+
+<span class="cm">/* :where() — Spezifität 0 */</span>
+<span class="sel">:where(.article, .post) p</span> {
+  <span class="prop">line-height</span>: <span class="val">1.7</span>;
+}
+
+<span class="cm">/* Attribut-Selektor */</span>
+<span class="sel">a[href^="https"]</span> { <span class="cm">/* beginnt mit */</span> }
+<span class="sel">a[href$=".pdf"]</span>  { <span class="cm">/* endet mit */</span> }
+<span class="sel">img[src*="hero"]</span> { <span class="cm">/* enthält */</span> }
+
+<span class="cm">/* Sibling-Kombinator */</span>
+<span class="sel">h2 + p</span> { <span class="prop">font-size</span>: <span class="val">1.1</span><span class="unit">rem</span>; }</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Tipp</span>
+          <h5>:has() = Game Changer</h5>
+          <p>Endlich Eltern stylen basierend auf Kindern — seit 2023 in allen Browsern.</p>
+          <h5>:is vs :where</h5>
+          <p><code>:is</code> übernimmt die höchste Spezifität seiner Argumente. <code>:where</code> = 0.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17 -->
+    <section id="stacking">
+      <h2><span class="num">17</span> Overflow, z-index &amp; Stacking</h2>
+      <p class="section-intro">Was passiert, wenn Inhalt überfliesst? Und wie bestimmt <code>z-index</code>, welches
+        Element oben liegt?</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Konzepte</span>
+          <h5>overflow</h5>
+          <p><code>visible</code> (Standard), <code>hidden</code>, <code>scroll</code>, <code>auto</code>,
+            <code>clip</code>.</p>
+          <h5>z-index</h5>
+          <p>Funktioniert nur mit <code>position</code> (nicht <code>static</code>). Höher = oben.</p>
+          <h5>Stacking Context</h5>
+          <p>Wird durch <code>position</code> + <code>z-index</code>, <code>opacity < 1</code>, <code>transform</code>,
+            etc. erzeugt.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">stacking.css</div>
+          <pre><span class="cm">/* Overflow */</span>
+<span class="sel">.scroll-box</span> {
+  <span class="prop">max-height</span>: <span class="val">300</span><span class="unit">px</span>;
+  <span class="prop">overflow-y</span>: <span class="val">auto</span>;
+}
+
+<span class="sel">.clip</span> {
+  <span class="prop">overflow</span>: <span class="val">clip</span>;  <span class="cm">/* wie hidden, ohne Scroll-Möglichkeit */</span>
+}
+
+<span class="cm">/* z-index Strategie */</span>
+<span class="sel">:root</span> {
+  <span class="prop">--z-dropdown</span>: <span class="val">100</span>;
+  <span class="prop">--z-sticky</span>: <span class="val">200</span>;
+  <span class="prop">--z-modal</span>: <span class="val">300</span>;
+  <span class="prop">--z-toast</span>: <span class="val">400</span>;
+}
+
+<span class="sel">.modal</span> {
+  <span class="prop">position</span>: <span class="val">fixed</span>;
+  <span class="prop">inset</span>: <span class="val">0</span>;
+  <span class="prop">z-index</span>: <span class="val">var(--z-modal)</span>;
+}
+
+<span class="cm">/* isolation: neuen Stacking Context erzwingen */</span>
+<span class="sel">.card</span> { <span class="prop">isolation</span>: <span class="val">isolate</span>; }</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Merken</span>
+          <h5>z-index Chaos</h5>
+          <p>Definiere z-index-Stufen als Variables. Nie <code>z-index: 9999</code>.</p>
+          <h5>isolation: isolate</h5>
+          <p>Erzwingt neuen Stacking Context, ohne Position/Opacity zu ändern.</p>
+          <h5>overflow: clip</h5>
+          <p>Wie <code>hidden</code>, aber verhindert auch programmatisches Scrollen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TEIL III ==================== -->
+    <div class="part">
+      <div class="part-label">Teil III</div>
+      <h2 class="part-title">Moderne <em>Features</em></h2>
+      <p class="part-desc">Container Queries, CSS Nesting, Logical Properties, Scroll Animations, Subgrid, Cascade
+        Layers, View Transitions und die neuen Farbfunktionen.</p>
+    </div>
+
+    <!-- 18 -->
+    <section id="container-q">
+      <h2><span class="num">18</span> Container Queries</h2>
+      <p class="section-intro">Statt auf den Viewport reagiert dein Layout auf die Breite des
+        <strong>Containers</strong>. Perfekt für wiederverwendbare Komponenten.</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Konzept</span>
+          <h5>container-type</h5>
+          <p><code>inline-size</code> = reagiert auf Breite. <code>size</code> = Breite + Höhe.</p>
+          <h5>container-name</h5>
+          <p>Optional — ermöglicht gezielte Abfragen.</p>
+          <h5>@container</h5>
+          <p>Wie <code>@media</code>, aber für den Container.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">container.css</div>
+          <pre><span class="sel">.card-wrapper</span> {
+  <span class="prop">container-type</span>: <span class="val">inline-size</span>;
+  <span class="prop">container-name</span>: <span class="val">card</span>;
+}
+
+<span class="sel">.card</span> {
+  <span class="prop">display</span>: <span class="val">flex</span>;
+  <span class="prop">flex-direction</span>: <span class="val">column</span>;
+}
+
+<span class="at">@container</span> card (<span class="prop">min-width</span>: <span class="val">400</span><span class="unit">px</span>) {
+  <span class="sel">.card</span> {
+    <span class="prop">flex-direction</span>: <span class="val">row</span>;
+    <span class="prop">gap</span>: <span class="val">1</span><span class="unit">rem</span>;
+  }
+  <span class="sel">.card img</span> {
+    <span class="prop">width</span>: <span class="val">200</span><span class="unit">px</span>;
+  }
+}
+
+<span class="cm">/* Container-Query Units */</span>
+<span class="sel">.card h2</span> {
+  <span class="prop">font-size</span>: <span class="val">clamp(1rem, 3cqi, 2rem)</span>;
+  <span class="cm">/* cqi = 1% der Container inline-size */</span>
+}</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Tipp</span>
+          <h5>cqi / cqb</h5>
+          <p><code>cqi</code> = container query inline (Breite). <code>cqb</code> = block (Höhe). Wie
+            <code>vw</code>/<code>vh</code> aber für Container.</p>
+          <h5>Warum?</h5>
+          <p>Media Queries = globale Breite. Container Queries = lokale Breite. Komponenten werden dadurch wirklich
+            wiederverwendbar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 19 -->
+    <section id="nesting">
+      <h2><span class="num">19</span> CSS Nesting</h2>
+      <p class="section-intro">Endlich nativ: Regeln innerhalb von Regeln verschachteln — wie in Sass, aber ohne
+        Präprozessor.</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Syntax</span>
+          <h5>Verschachteln</h5>
+          <p>Kind-Selektoren direkt im Eltern-Block.</p>
+          <h5>&amp;</h5>
+          <p>Referenziert den Eltern-Selektor — für Pseudo-Klassen, Modifikatoren.</p>
+          <h5>@media in Nesting</h5>
+          <p>Media Queries direkt im Selektor-Block — kein Kontextwechsel.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">nesting.css</div>
+          <pre><span class="sel">.card</span> {
+  <span class="prop">padding</span>: <span class="val">1.5</span><span class="unit">rem</span>;
+  <span class="prop">border</span>: <span class="val">1px solid #ddd</span>;
+
+  <span class="sel">h2</span> {
+    <span class="prop">font-size</span>: <span class="val">1.5</span><span class="unit">rem</span>;
+    <span class="prop">margin-bottom</span>: <span class="val">0.5</span><span class="unit">rem</span>;
+  }
+
+  <span class="sel">p</span> {
+    <span class="prop">color</span>: <span class="val">#666</span>;
+  }
+
+  <span class="cm">/* & für Pseudo-Klassen */</span>
+  <span class="sel">&:hover</span> {
+    <span class="prop">box-shadow</span>: <span class="val">0 4px 16px rgb(0 0 0 / 15%)</span>;
+  }
+
+  <span class="cm">/* & für Modifikatoren */</span>
+  <span class="sel">&.featured</span> {
+    <span class="prop">border-color</span>: <span class="val">#264de4</span>;
+  }
+
+  <span class="cm">/* Media Query direkt hier */</span>
+  <span class="at">@media</span> (<span class="prop">min-width</span>: <span class="val">768</span><span class="unit">px</span>) {
+    <span class="prop">padding</span>: <span class="val">2</span><span class="unit">rem</span>;
+  }
+}</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Tipp</span>
+          <h5>Nicht zu tief!</h5>
+          <p>Maximal 3 Ebenen verschachteln — sonst wird der Output zu spezifisch.</p>
+          <h5>Browser-Support</h5>
+          <p>Seit 2023 in allen modernen Browsern. Kein Sass mehr nötig für Nesting.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 20 -->
+    <section id="logical">
+      <h2><span class="num">20</span> Logical Properties</h2>
+      <p class="section-intro">Statt <code>left</code>/<code>right</code> nutzt du
+        <code>inline-start</code>/<code>inline-end</code> — funktioniert automatisch für RTL-Sprachen (Arabisch,
+        Hebräisch).</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Mapping</span>
+          <h5>Block</h5>
+          <p>Vertikale Achse: <code>margin-block</code>, <code>padding-block</code>, <code>border-block</code>.</p>
+          <h5>Inline</h5>
+          <p>Horizontale Achse: <code>margin-inline</code>, <code>padding-inline</code>, <code>border-inline</code>.</p>
+          <h5>Shorthands</h5>
+          <p><code>margin-block: 1rem 2rem</code> = <code>margin-top: 1rem; margin-bottom: 2rem</code>.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">logical.css</div>
+          <pre><span class="sel">.container</span> {
+  <span class="cm">/* Alt: margin: 0 auto; */</span>
+  <span class="prop">margin-inline</span>: <span class="val">auto</span>;
+  <span class="prop">max-inline-size</span>: <span class="val">1200</span><span class="unit">px</span>;  <span class="cm">/* = max-width */</span>
+  <span class="prop">padding-inline</span>: <span class="val">1</span><span class="unit">rem</span>;
+}
+
+<span class="sel">.sidebar</span> {
+  <span class="cm">/* Alt: border-right: 1px solid #ddd; */</span>
+  <span class="prop">border-inline-end</span>: <span class="val">1px solid #ddd</span>;
+  <span class="prop">padding-inline-end</span>: <span class="val">2</span><span class="unit">rem</span>;
+}
+
+<span class="sel">.text</span> {
+  <span class="cm">/* Alt: text-align: left; */</span>
+  <span class="prop">text-align</span>: <span class="val">start</span>;
+}
+
+<span class="sel">.box</span> {
+  <span class="prop">inset-block-start</span>: <span class="val">0</span>;   <span class="cm">/* = top: 0 */</span>
+  <span class="prop">inline-size</span>: <span class="val">100%</span>;      <span class="cm">/* = width: 100% */</span>
+  <span class="prop">block-size</span>: <span class="val">50</span><span class="unit">vh</span>;       <span class="cm">/* = height: 50vh */</span>
+}</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Warum?</span>
+          <h5>Internationalisierung</h5>
+          <p>In RTL (z.&nbsp;B. Arabisch) wird <code>inline-start</code> automatisch zu <code>right</code>.</p>
+          <h5>Moderne Praxis</h5>
+          <p>Nutze <code>margin-inline</code>, <code>padding-block</code> etc. als Default — auch wenn du nur LTR baust.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 21 -->
+    <section id="scroll">
+      <h2><span class="num">21</span> Scroll-Snap &amp; Scroll Animations</h2>
+      <p class="section-intro">Karusselle ohne JavaScript mit <code>scroll-snap</code>, und CSS-Animationen, die an die
+        Scroll-Position gekoppelt sind.</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Features</span>
+          <h5>scroll-snap-type</h5>
+          <p><code>x mandatory</code> oder <code>y proximity</code>. Auf dem Container.</p>
+          <h5>scroll-snap-align</h5>
+          <p><code>start</code>, <code>center</code>, <code>end</code>. Auf den Kindern.</p>
+          <h5>animation-timeline</h5>
+          <p><code>scroll()</code> oder <code>view()</code> — Animation an Scroll-Position binden.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">scroll.css</div>
+          <pre><span class="cm">/* Scroll-Snap Karussell */</span>
+<span class="sel">.carousel</span> {
+  <span class="prop">display</span>: <span class="val">flex</span>;
+  <span class="prop">overflow-x</span>: <span class="val">auto</span>;
+  <span class="prop">scroll-snap-type</span>: <span class="val">x mandatory</span>;
+  <span class="prop">gap</span>: <span class="val">1</span><span class="unit">rem</span>;
+  <span class="prop">scrollbar-width</span>: <span class="val">none</span>;
+}
+<span class="sel">.carousel > *</span> {
+  <span class="prop">scroll-snap-align</span>: <span class="val">center</span>;
+  <span class="prop">flex</span>: <span class="val">0 0 80%</span>;
+}
+
+<span class="cm">/* Scroll-driven Animation */</span>
+<span class="at">@keyframes</span> <span class="fn">reveal</span> {
+  <span class="sel">from</span> { <span class="prop">opacity</span>: <span class="val">0</span>; <span class="prop">transform</span>: <span class="val">translateY(40px)</span>; }
+  <span class="sel">to</span>   { <span class="prop">opacity</span>: <span class="val">1</span>; <span class="prop">transform</span>: <span class="val">translateY(0)</span>; }
+}
+
+<span class="sel">.card</span> {
+  <span class="prop">animation</span>: <span class="val">reveal linear both</span>;
+  <span class="prop">animation-timeline</span>: <span class="val">view()</span>;
+  <span class="prop">animation-range</span>: <span class="val">entry 0% entry 100%</span>;
+}</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Tipp</span>
+          <h5>view()</h5>
+          <p>Animiert, wenn das Element in den Viewport scrollt. Kein Intersection Observer nötig.</p>
+          <h5>scroll()</h5>
+          <p>Bindet an die Scroll-Position des Containers — z.&nbsp;B. Fortschrittsbalken.</p>
+          <h5>animation-range</h5>
+          <p>Definiert, in welchem Teil des Scroll-Bereichs die Animation läuft.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 22 -->
+    <section id="subgrid">
+      <h2><span class="num">22</span> Subgrid</h2>
+      <p class="section-intro">Ein Grid-Kind übernimmt die Tracks des Eltern-Grids — endlich konsistente Ausrichtung
+        über verschachtelte Ebenen.</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Problem</span>
+          <h5>Ohne Subgrid</h5>
+          <p>Verschachtelte Grids haben eigene Spalten — Inhalte sind nicht ausgerichtet.</p>
+          <h5>Mit Subgrid</h5>
+          <p>Kind nutzt <code>grid-template-columns: subgrid</code> — übernimmt die Spalten des Eltern-Grids.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">subgrid.css</div>
+          <pre><span class="sel">.grid</span> {
+  <span class="prop">display</span>: <span class="val">grid</span>;
+  <span class="prop">grid-template-columns</span>: <span class="val">repeat(4, 1fr)</span>;
+  <span class="prop">gap</span>: <span class="val">1</span><span class="unit">rem</span>;
+}
+
+<span class="sel">.card</span> {
+  <span class="prop">grid-column</span>: <span class="val">span 2</span>;
+  <span class="prop">display</span>: <span class="val">grid</span>;
+  <span class="cm">/* Kind nutzt Eltern-Tracks! */</span>
+  <span class="prop">grid-template-columns</span>: <span class="val">subgrid</span>;
+  <span class="prop">grid-template-rows</span>: <span class="val">subgrid</span>;
+  <span class="prop">grid-row</span>: <span class="val">span 3</span>;
+}</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Use Case</span>
+          <h5>Card-Layouts</h5>
+          <p>Überschriften, Bilder und Buttons auf der gleichen Baseline-Höhe — über alle Cards.</p>
+          <h5>Support</h5>
+          <p>Seit 2023 in allen Browsern.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 23 -->
+    <section id="layers">
+      <h2><span class="num">23</span> @layer &amp; Cascade Layers</h2>
+      <p class="section-intro">Cascade Layers geben dir Kontrolle über die Reihenfolge der Kaskade — unabhängig von
+        Spezifität und Quellcode-Reihenfolge.</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Konzept</span>
+          <h5>@layer</h5>
+          <p>Definiert einen Layer. Spätere Layer gewinnen über frühere.</p>
+          <h5>Reihenfolge</h5>
+          <p>Declare die Reihenfolge oben, fülle die Layer später.</p>
+          <h5>Unlayered CSS</h5>
+          <p>CSS ohne <code>@layer</code> gewinnt über alle Layer.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">layers.css</div>
+          <pre><span class="cm">/* Reihenfolge festlegen */</span>
+<span class="at">@layer</span> reset, base, components, utilities;
+
+<span class="at">@layer</span> reset {
+  <span class="sel">*, *::before, *::after</span> {
+    <span class="prop">margin</span>: <span class="val">0</span>;
+    <span class="prop">box-sizing</span>: <span class="val">border-box</span>;
+  }
+}
+
+<span class="at">@layer</span> base {
+  <span class="sel">body</span> { <span class="prop">font-family</span>: <span class="val">system-ui</span>; }
+  <span class="sel">a</span> { <span class="prop">color</span>: <span class="val">#264de4</span>; }
+}
+
+<span class="at">@layer</span> components {
+  <span class="sel">.btn</span> {
+    <span class="prop">padding</span>: <span class="val">0.75</span><span class="unit">rem</span> <span class="val">1.5</span><span class="unit">rem</span>;
+    <span class="prop">background</span>: <span class="val">#264de4</span>;
+    <span class="prop">color</span>: <span class="val">white</span>;
+  }
+}
+
+<span class="at">@layer</span> utilities {
+  <span class="sel">.text-center</span> { <span class="prop">text-align</span>: <span class="val">center</span>; }
+  <span class="sel">.mt-4</span> { <span class="prop">margin-top</span>: <span class="val">1</span><span class="unit">rem</span>; }
+}</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Warum?</span>
+          <h5>3rd-Party CSS</h5>
+          <p><code>@import url('lib.css') layer(lib)</code> — importiertes CSS in einen Layer packen = leicht zu
+            überschreiben.</p>
+          <h5>Kein !important</h5>
+          <p>Layers machen <code>!important</code> überflüssig — saubere Kaskaden-Kontrolle.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 24 -->
+    <section id="view-transitions">
+      <h2><span class="num">24</span> View Transitions</h2>
+      <p class="section-intro">Sanfte Übergänge zwischen Seitenwechseln — nativ im Browser, ohne JavaScript-Frameworks.
+      </p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · API</span>
+          <h5>@view-transition</h5>
+          <p><code>navigation: auto</code> aktiviert Transitions für MPA-Navigation.</p>
+          <h5>view-transition-name</h5>
+          <p>Verbindet ein Element über zwei Seiten hinweg — wird animiert.</p>
+          <h5>Pseudo-Elemente</h5>
+          <p><code>::view-transition-old</code> und <code>::view-transition-new</code> für Custom-Animationen.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">view-transition.css</div>
+          <pre><span class="cm">/* MPA View Transitions aktivieren */</span>
+<span class="at">@view-transition</span> {
+  <span class="prop">navigation</span>: <span class="val">auto</span>;
+}
+
+<span class="cm">/* Element über Seiten hinweg animieren */</span>
+<span class="sel">.hero-img</span> {
+  <span class="prop">view-transition-name</span>: <span class="val">hero</span>;
+}
+
+<span class="cm">/* Custom Animation */</span>
+<span class="sel">::view-transition-old(hero)</span> {
+  <span class="prop">animation</span>: <span class="val">fadeOut 200ms ease</span>;
+}
+<span class="sel">::view-transition-new(hero)</span> {
+  <span class="prop">animation</span>: <span class="val">fadeIn 300ms ease</span>;
+}
+
+<span class="cm">/* SPA: per JavaScript */</span>
+<span class="cm">// document.startViewTransition(() => {</span>
+<span class="cm">//   updateDOM();</span>
+<span class="cm">// });</span></pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Tipp</span>
+          <h5>MPA vs SPA</h5>
+          <p>MPA: <code>@view-transition</code> im CSS reicht. SPA: <code>document.startViewTransition()</code> per JS.
+          </p>
+          <h5>Einzigartige Namen</h5>
+          <p>Jedes <code>view-transition-name</code> muss einzigartig pro Seite sein.</p>
+          <h5>Reduced Motion</h5>
+          <p>Respektiere <code>prefers-reduced-motion</code> — deaktiviere Transitions für empfindliche User.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 25 -->
+    <section id="color-fn">
+      <h2><span class="num">25</span> Color Functions (oklch, color-mix)</h2>
+      <p class="section-intro">Moderne Farbfunktionen: <code>oklch()</code> für wahrnehmungsgleiche Farben,
+        <code>color-mix()</code> zum Mischen, <code>light-dark()</code> für Theme-Support.</p>
+      <div class="example">
+        <div class="ex-side left"><span class="ex-label">Links · Funktionen</span>
+          <h5>oklch()</h5>
+          <p>Lightness (0–100%), Chroma (Sättigung), Hue (Farbwinkel). Perceptually uniform.</p>
+          <h5>color-mix()</h5>
+          <p>Mischt zwei Farben in einem Farbraum.</p>
+          <h5>light-dark()</h5>
+          <p>Gibt je nach <code>color-scheme</code> einen anderen Wert zurück.</p>
+          <h5>Relative Color</h5>
+          <p>Farbe basierend auf einer anderen ableiten.</p>
+        </div>
+        <div class="ex-code">
+          <div class="filename">colors.css</div>
+          <pre><span class="sel">:root</span> {
+  <span class="prop">color-scheme</span>: <span class="val">light dark</span>;
+
+  <span class="cm">/* oklch: L C H */</span>
+  <span class="prop">--primary</span>: <span class="val">oklch(55% 0.25 265)</span>;
+  <span class="prop">--primary-light</span>: <span class="val">oklch(75% 0.15 265)</span>;
+
+  <span class="cm">/* color-mix: Farben mischen */</span>
+  <span class="prop">--hover</span>:
+    <span class="val">color-mix(in oklch, var(--primary), black 20%)</span>;
+
+  <span class="cm">/* light-dark: Theme-abhängig */</span>
+  <span class="prop">--bg</span>: <span class="val">light-dark(#ffffff, #1a1a1a)</span>;
+  <span class="prop">--text</span>: <span class="val">light-dark(#1a1a1a, #f0f0f0)</span>;
+}
+
+<span class="cm">/* Relative Color Syntax */</span>
+<span class="sel">.btn</span>:<span class="sel">hover</span> {
+  <span class="prop">background</span>: <span class="val">oklch(from var(--primary) calc(l - 0.1) c h)</span>;
+}
+
+<span class="cm">/* Palette generieren mit oklch */</span>
+<span class="sel">:root</span> {
+  <span class="prop">--blue-100</span>: <span class="val">oklch(95% 0.05 265)</span>;
+  <span class="prop">--blue-300</span>: <span class="val">oklch(75% 0.15 265)</span>;
+  <span class="prop">--blue-500</span>: <span class="val">oklch(55% 0.25 265)</span>;
+  <span class="prop">--blue-700</span>: <span class="val">oklch(35% 0.20 265)</span>;
+  <span class="prop">--blue-900</span>: <span class="val">oklch(20% 0.10 265)</span>;
+}</pre>
+        </div>
+        <div class="ex-side right"><span class="ex-label">Rechts · Warum oklch?</span>
+          <h5>Gleichmässig</h5>
+          <p>In <code>hsl</code> sehen Farben mit gleichem L-Wert unterschiedlich hell aus. <code>oklch</code> fixiert
+            das.</p>
+          <h5>P3 Gamut</h5>
+          <p><code>oklch</code> kann Farben ausserhalb des sRGB-Gamuts darstellen — lebhaftere Farben auf modernen
+            Displays.</p>
+          <h5>light-dark()</h5>
+          <p>Braucht <code>color-scheme</code> auf dem Element. Einfachste Methode für Dark Mode.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <div class="callout-label">Geschafft</div>
+        <p>Du kennst jetzt CSS von Selektoren bis View Transitions. Im nächsten Abschnitt folgt die
+          <strong>Referenz-Übersicht</strong> mit allen Einheiten, Selektoren und Shorthands.</p>
+      </div>
+    </section>
+
+    <!-- ==================== REFERENZ ==================== -->
+    <div class="part">
+      <div class="part-label">Referenz</div>
+      <h2 class="part-title">Einheiten, Selektoren &amp; <em>Shorthands</em></h2>
+      <p class="part-desc">Schnelle Nachschlage-Tabellen für den täglichen Gebrauch.</p>
+    </div>
+
+    <section id="ref">
+      <h2><span class="num">26</span> CSS-Referenz</h2>
+
+      <h3 class="cli-group">Einheiten</h3>
+      <table class="cli-table">
+        <thead>
+          <tr>
+            <th>Einheit</th>
+            <th>Beschreibung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>px</td>
+            <td>Pixel — absolute Einheit.</td>
+          </tr>
+          <tr>
+            <td>rem</td>
+            <td>Relativ zu <code>html</code> font-size (Standard 16px). Nutze für font-size, spacing.</td>
+          </tr>
+          <tr>
+            <td>em</td>
+            <td>Relativ zum Elternelement. Gut für padding/margin relativ zur Schrift.</td>
+          </tr>
+          <tr>
+            <td>%</td>
+            <td>Relativ zum Elternelement (Breite, Höhe, etc.).</td>
+          </tr>
+          <tr>
+            <td>vw / vh</td>
+            <td>1% der Viewport-Breite / -Höhe.</td>
+          </tr>
+          <tr>
+            <td>dvh / svh / lvh</td>
+            <td>Dynamic / Small / Large Viewport Height — berücksichtigt mobile Browser-UI.</td>
+          </tr>
+          <tr>
+            <td>ch</td>
+            <td>Breite des Zeichens "0". Ideal für max-width bei Lesebreite.</td>
+          </tr>
+          <tr>
+            <td>fr</td>
+            <td>Fraction — Grid-spezifisch. Teilt verfügbaren Platz auf.</td>
+          </tr>
+          <tr>
+            <td>cqi / cqb</td>
+            <td>1% der Container-Inline/Block-Size (Container Queries).</td>
+          </tr>
+          <tr>
+            <td>deg / turn</td>
+            <td>Grad (0–360) / Umdrehung (0–1). Für Farben und Transforms.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="cli-group">Selektoren-Übersicht</h3>
+      <table class="cli-table">
+        <thead>
+          <tr>
+            <th>Selektor</th>
+            <th>Beschreibung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>element</td>
+            <td>Alle Elemente dieses Typs (<code>p</code>, <code>h1</code>, <code>div</code>).</td>
+          </tr>
+          <tr>
+            <td>.klasse</td>
+            <td>Alle Elemente mit dieser Klasse.</td>
+          </tr>
+          <tr>
+            <td>#id</td>
+            <td>Ein Element mit dieser ID.</td>
+          </tr>
+          <tr>
+            <td>A B</td>
+            <td>Nachfahren: B irgendwo in A.</td>
+          </tr>
+          <tr>
+            <td>A > B</td>
+            <td>Direkte Kinder: B ist direktes Kind von A.</td>
+          </tr>
+          <tr>
+            <td>A + B</td>
+            <td>Nächster Sibling: B direkt nach A.</td>
+          </tr>
+          <tr>
+            <td>A ~ B</td>
+            <td>Alle Siblings: alle B nach A auf gleicher Ebene.</td>
+          </tr>
+          <tr>
+            <td>[attr]</td>
+            <td>Elemente mit Attribut <code>attr</code>.</td>
+          </tr>
+          <tr>
+            <td>[attr="val"]</td>
+            <td>Exakter Wert.</td>
+          </tr>
+          <tr>
+            <td>[attr^="v"]</td>
+            <td>Beginnt mit "v".</td>
+          </tr>
+          <tr>
+            <td>[attr$="v"]</td>
+            <td>Endet mit "v".</td>
+          </tr>
+          <tr>
+            <td>[attr*="v"]</td>
+            <td>Enthält "v".</td>
+          </tr>
+          <tr>
+            <td>:hover / :focus / :active</td>
+            <td>Interaktions-Zustände.</td>
+          </tr>
+          <tr>
+            <td>:first-child / :last-child</td>
+            <td>Erstes / letztes Kind.</td>
+          </tr>
+          <tr>
+            <td>:nth-child(n)</td>
+            <td>N-tes Kind. <code>odd</code>, <code>even</code>, <code>3n+1</code>, etc.</td>
+          </tr>
+          <tr>
+            <td>:not(sel)</td>
+            <td>Negation.</td>
+          </tr>
+          <tr>
+            <td>:is(sel, sel)</td>
+            <td>Gruppierung (übernimmt höchste Spezifität).</td>
+          </tr>
+          <tr>
+            <td>:where(sel, sel)</td>
+            <td>Gruppierung (Spezifität 0).</td>
+          </tr>
+          <tr>
+            <td>:has(sel)</td>
+            <td>Eltern-Selektor — trifft, wenn Kind existiert.</td>
+          </tr>
+          <tr>
+            <td>::before / ::after</td>
+            <td>Pseudo-Elemente vor/nach dem Inhalt.</td>
+          </tr>
+          <tr>
+            <td>::placeholder</td>
+            <td>Placeholder-Text eines Inputs.</td>
+          </tr>
+          <tr>
+            <td>::selection</td>
+            <td>Markierter Text.</td>
+          </tr>
+          <tr>
+            <td>::backdrop</td>
+            <td>Hintergrund hinter Dialog/Fullscreen.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="cli-group">Shorthand-Properties</h3>
+      <table class="cli-table">
+        <thead>
+          <tr>
+            <th>Shorthand</th>
+            <th>Einzelne Properties</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>margin</td>
+            <td><code>margin-top</code>, <code>-right</code>, <code>-bottom</code>, <code>-left</code>. Reihenfolge:
+              oben rechts unten links (Uhrzeiger).</td>
+          </tr>
+          <tr>
+            <td>padding</td>
+            <td>Gleich wie margin.</td>
+          </tr>
+          <tr>
+            <td>border</td>
+            <td><code>border-width</code> <code>border-style</code> <code>border-color</code>.</td>
+          </tr>
+          <tr>
+            <td>background</td>
+            <td><code>bg-color</code> <code>bg-image</code> <code>bg-position</code> / <code>bg-size</code>
+              <code>bg-repeat</code>.</td>
+          </tr>
+          <tr>
+            <td>font</td>
+            <td><code>font-style</code> <code>font-weight</code> <code>font-size</code>/<code>line-height</code>
+              <code>font-family</code>.</td>
+          </tr>
+          <tr>
+            <td>flex</td>
+            <td><code>flex-grow</code> <code>flex-shrink</code> <code>flex-basis</code>.</td>
+          </tr>
+          <tr>
+            <td>grid-template</td>
+            <td><code>grid-template-rows</code> / <code>grid-template-columns</code>.</td>
+          </tr>
+          <tr>
+            <td>place-items</td>
+            <td><code>align-items</code> <code>justify-items</code>.</td>
+          </tr>
+          <tr>
+            <td>place-content</td>
+            <td><code>align-content</code> <code>justify-content</code>.</td>
+          </tr>
+          <tr>
+            <td>gap</td>
+            <td><code>row-gap</code> <code>column-gap</code>.</td>
+          </tr>
+          <tr>
+            <td>inset</td>
+            <td><code>top</code> <code>right</code> <code>bottom</code> <code>left</code>.</td>
+          </tr>
+          <tr>
+            <td>transition</td>
+            <td><code>transition-property</code> <code>-duration</code> <code>-timing-function</code>
+              <code>-delay</code>.</td>
+          </tr>
+          <tr>
+            <td>animation</td>
+            <td><code>animation-name</code> <code>-duration</code> <code>-timing-function</code> <code>-delay</code>
+              <code>-iteration-count</code> <code>-direction</code> <code>-fill-mode</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <div class="callout-label">Tipp</div>
+        <p>Shorthands setzen nicht genannte Werte auf ihre Defaults zurück. <code>background: red</code> setzt auch
+          <code>background-image: none</code>. Bei Unsicherheit lieber die Langform nutzen.</p>
+      </div>
+    </section>
+
+    <footer>
+      CSS · Dokumentation · Juni 2026 · Level 3–5
+    </footer>
+
+  </div>
+</body>
+
+</html>
