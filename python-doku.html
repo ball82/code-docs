@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python — Vom Anfänger zum Fortgeschrittenen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+<div class="page">
+
+<header class="hero">
+  <a href="../index.html">
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0,0,256,256">
+      <g fill="#e8a64a" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M12,2.09961l-11,9.90039h3v9h6v-7h4v7h6v-9h3z"></path></g></g>
+    </svg>
+  </a>
+  
+
+  <div class="eyebrow">Dokumentation · Stand 2026 · Python 3.13+</div>
+  <h1>Python<br><em>von A bis Z</em></h1>
+  <p class="lede">Von der ersten Zeile bis zu Async, Dekoratoren und Pattern Matching — jedes Konzept mit Erklärung links, Code in der Mitte, Notizen rechts.</p>
+  <div class="meta">
+    <span><strong>Version</strong>Python 3.13+</span>
+    <span><strong>Niveau</strong>Anfänger → Fortgeschritten</span>
+    <span><strong>Kapitel</strong>25 + Referenz</span>
+    <span><strong>Voraussetzung</strong>Keine</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-title">Inhalt</div>
+  <div class="toc-grid">
+    <div class="toc-col">
+      <h4>Teil I — Anfänger</h4>
+      <ol>
+        <li><a href="#was-ist-python">Was ist Python?</a></li>
+        <li><a href="#setup">Installation &amp; Setup</a></li>
+        <li><a href="#variablen">Variablen &amp; Datentypen</a></li>
+        <li><a href="#strings">Strings</a></li>
+        <li><a href="#zahlen">Zahlen &amp; Operatoren</a></li>
+        <li><a href="#listen">Listen &amp; Tuples</a></li>
+        <li><a href="#dicts">Dictionaries &amp; Sets</a></li>
+        <li><a href="#if">Kontrollfluss</a></li>
+        <li><a href="#schleifen">Schleifen</a></li>
+      </ol>
+    </div>
+    <div class="toc-col">
+      <h4>Teil II — Mittelstufe</h4>
+      <ol>
+        <li><a href="#funktionen">Funktionen</a></li>
+        <li><a href="#module">Module &amp; Imports</a></li>
+        <li><a href="#comprehensions">Comprehensions</a></li>
+        <li><a href="#exceptions">Fehlerbehandlung</a></li>
+        <li><a href="#dateien">Dateien lesen &amp; schreiben</a></li>
+        <li><a href="#klassen">Klassen &amp; OOP</a></li>
+        <li><a href="#vererbung">Vererbung &amp; Polymorphie</a></li>
+        <li><a href="#iteratoren">Iteratoren &amp; Generatoren</a></li>
+      </ol>
+    </div>
+    <div class="toc-col">
+      <h4>Teil III — Fortgeschritten</h4>
+      <ol>
+        <li><a href="#dekoratoren">Dekoratoren</a></li>
+        <li><a href="#context">Context Manager</a></li>
+        <li><a href="#typehints">Type Hints</a></li>
+        <li><a href="#dataclasses">Dataclasses</a></li>
+        <li><a href="#async">Async &amp; Await</a></li>
+        <li><a href="#pattern">Pattern Matching</a></li>
+        <li><a href="#adv-oop">Fortgeschrittene OOP</a></li>
+        <li><a href="#best-practices">Best Practices &amp; Tooling</a></li>
+      </ol>
+      <h4 style="margin-top:24px">Referenz</h4>
+      <ol>
+        <li><a href="#ref">pip, venv &amp; CLI</a></li>
+      </ol>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════ TEIL I ═══════════════════════════════════════════════ -->
+<div class="part">
+  <div class="part-label">Teil I</div>
+  <div class="part-title">Die <em>Grundlagen</em></div>
+  <p class="part-desc">Variablen, Datentypen, Kontrollfluss und die ersten Programme — alles was du brauchst, um loszulegen.</p>
+</div>
+
+<!-- 01 -->
+<section id="was-ist-python">
+  <h2><span class="num">01</span> Was ist Python?</h2>
+  <p class="section-intro">Python ist eine interpretierte, dynamisch typisierte Programmiersprache mit klarer Syntax. Sie wird für Web, Data Science, AI, Scripting und Automation eingesetzt.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>Hello World</h5>
+      <p>Python braucht keine Klammern oder Semikolons. <code>print()</code> gibt Text in der Konsole aus.</p>
+      <h5>Einrückung</h5>
+      <p>Statt geschweifter Klammern nutzt Python <strong>Einrückung</strong> (4 Spaces) für Blöcke.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">hello.py</div>
+<pre><span class="cm"># Mein erstes Python-Programm</span>
+<span class="fn">print</span>(<span class="st">"Hallo, Welt!"</span>)
+
+<span class="cm"># Variablen brauchen kein Schlüsselwort</span>
+<span class="vr">name</span> = <span class="st">"Python"</span>
+<span class="vr">version</span> = <span class="nm">3.13</span>
+<span class="fn">print</span>(<span class="st">f"Willkommen bei <span class="vr">{name}</span> <span class="vr">{version}</span>"</span>)
+
+<span class="cm"># Bedingung mit Einrückung</span>
+<span class="kw">if</span> <span class="vr">version</span> >= <span class="nm">3.12</span>:
+    <span class="fn">print</span>(<span class="st">"Moderne Version!"</span>)
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Interpretiert</h5>
+      <p>Kein Kompilieren nötig — Code wird direkt ausgeführt.</p>
+      <h5>Dynamisch typisiert</h5>
+      <p>Variablentyp wird automatisch erkannt, nicht deklariert.</p>
+      <h5>PEP 8</h5>
+      <p>Der offizielle Style-Guide empfiehlt 4 Spaces pro Einrückung.</p>
+    </div>
+  </div>
+  <div class="output">
+    <div class="output-label">Terminal-Ausgabe</div>
+    <pre>Hallo, Welt!
+Willkommen bei Python 3.13
+Moderne Version!</pre>
+  </div>
+</section>
+
+<!-- 02 -->
+<section id="setup">
+  <h2><span class="num">02</span> Installation &amp; Setup</h2>
+  <p class="section-intro">Python installieren, virtuelle Umgebungen einrichten und die ersten Befehle im Terminal ausführen.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>Installation</h5>
+      <p>Unter macOS/Linux ist Python oft vorinstalliert. Unter Windows: <code>python.org</code> Installer.</p>
+      <h5>venv</h5>
+      <p>Virtuelle Umgebungen isolieren Packages pro Projekt.</p>
+    </div>
+    <div class="ex-code">
+<pre><span class="cm"># Version prüfen</span>
+$ python3 --version
+Python 3.13.2
+
+<span class="cm"># Virtuelle Umgebung erstellen</span>
+$ python3 -m venv .venv
+
+<span class="cm"># Aktivieren (macOS/Linux)</span>
+$ source .venv/bin/activate
+
+<span class="cm"># Aktivieren (Windows)</span>
+$ .venv\Scripts\activate
+
+<span class="cm"># Package installieren</span>
+(.venv) $ pip install requests
+
+<span class="cm"># REPL starten (interaktiv)</span>
+(.venv) $ python3
+>>> <span class="nm">2</span> + <span class="nm">2</span>
+<span class="nm">4</span>
+>>> <span class="fn">exit</span>()
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>python vs python3</h5>
+      <p>Unter macOS/Linux: immer <code>python3</code> verwenden. Windows: <code>python</code> reicht.</p>
+      <h5>REPL</h5>
+      <p>Read-Eval-Print-Loop: ideal zum schnellen Testen.</p>
+      <h5>.venv</h5>
+      <p>In <code>.gitignore</code> aufnehmen — nie committen.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Tipp</div>
+    <p>VS Code erkennt <code>.venv</code> automatisch und aktiviert den Interpreter. Die Extension <strong>Python</strong> von Microsoft installieren für Syntax-Highlighting, Linting und Debugging.</p>
+  </div>
+</section>
+
+<!-- 03 -->
+<section id="variablen">
+  <h2><span class="num">03</span> Variablen &amp; Datentypen</h2>
+  <p class="section-intro">Python hat keine Typdeklaration — der Typ wird automatisch vom Wert abgeleitet.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>Grundtypen</h5>
+      <p><code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>, <code>None</code> — die fünf Basistypen.</p>
+      <h5>type()</h5>
+      <p>Gibt den Typ eines Werts zurück.</p>
+      <h5>Mehrfachzuweisung</h5>
+      <p>Python erlaubt elegante Zuweisung in einer Zeile.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">typen.py</div>
+<pre><span class="cm"># Grundtypen</span>
+<span class="vr">alter</span> = <span class="nm">25</span>              <span class="cm"># int</span>
+<span class="vr">preis</span> = <span class="nm">19.99</span>           <span class="cm"># float</span>
+<span class="vr">name</span> = <span class="st">"Alice"</span>          <span class="cm"># str</span>
+<span class="vr">aktiv</span> = <span class="bn">True</span>            <span class="cm"># bool</span>
+<span class="vr">leer</span> = <span class="bn">None</span>             <span class="cm"># NoneType</span>
+
+<span class="fn">print</span>(<span class="fn">type</span>(<span class="vr">alter</span>))     <span class="cm"># &lt;class 'int'&gt;</span>
+<span class="fn">print</span>(<span class="fn">type</span>(<span class="vr">preis</span>))     <span class="cm"># &lt;class 'float'&gt;</span>
+
+<span class="cm"># Mehrfachzuweisung</span>
+<span class="vr">x</span>, <span class="vr">y</span>, <span class="vr">z</span> = <span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>
+
+<span class="cm"># Typ-Konvertierung</span>
+<span class="vr">text_zahl</span> = <span class="st">"42"</span>
+<span class="vr">zahl</span> = <span class="fn">int</span>(<span class="vr">text_zahl</span>)   <span class="cm"># 42</span>
+<span class="vr">wieder_text</span> = <span class="fn">str</span>(<span class="vr">zahl</span>) <span class="cm"># "42"</span>
+
+<span class="cm"># isinstance prüft den Typ</span>
+<span class="fn">print</span>(<span class="fn">isinstance</span>(<span class="vr">alter</span>, <span class="tp">int</span>))  <span class="cm"># True</span>
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Dynamisch</h5>
+      <p>Eine Variable kann ihren Typ jederzeit wechseln — <code>x = 1</code> dann <code>x = "hi"</code> ist erlaubt.</p>
+      <h5>Naming</h5>
+      <p>Konvention: <code>snake_case</code> für Variablen und Funktionen, <code>PascalCase</code> für Klassen.</p>
+      <h5>Konstanten</h5>
+      <p>Konvention: <code>MAX_SIZE = 100</code> (UPPER_SNAKE_CASE). Python erzwingt es nicht.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section id="strings">
+  <h2><span class="num">04</span> Strings</h2>
+  <p class="section-intro">Strings sind unveränderlich (immutable) und bieten mächtige Methoden für Textverarbeitung.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>f-Strings</h5>
+      <p>Seit Python 3.6 — die beste Art, Variablen in Strings einzusetzen.</p>
+      <h5>Slicing</h5>
+      <p><code>[start:stop:step]</code> — extrahiert Teilstrings.</p>
+      <h5>Methoden</h5>
+      <p>Strings haben über 40 eingebaute Methoden.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">strings.py</div>
+<pre><span class="vr">name</span> = <span class="st">"Python"</span>
+
+<span class="cm"># f-Strings (formatierte Strings)</span>
+<span class="fn">print</span>(<span class="st">f"Hallo <span class="vr">{name}</span>!"</span>)
+<span class="fn">print</span>(<span class="st">f"2 + 2 = <span class="vr">{2 + 2}</span>"</span>)
+<span class="fn">print</span>(<span class="st">f"<span class="vr">{name:&gt;10}</span>"</span>)  <span class="cm"># rechtsbündig</span>
+
+<span class="cm"># Slicing</span>
+<span class="fn">print</span>(<span class="vr">name</span>[<span class="nm">0</span>])      <span class="cm"># P</span>
+<span class="fn">print</span>(<span class="vr">name</span>[<span class="nm">1</span>:<span class="nm">4</span>])   <span class="cm"># yth</span>
+<span class="fn">print</span>(<span class="vr">name</span>[::-<span class="nm">1</span>])  <span class="cm"># nohtyP (umgekehrt)</span>
+
+<span class="cm"># Wichtige Methoden</span>
+<span class="vr">text</span> = <span class="st">"  Hallo Welt  "</span>
+<span class="fn">print</span>(<span class="vr">text</span>.strip())       <span class="cm"># "Hallo Welt"</span>
+<span class="fn">print</span>(<span class="vr">text</span>.strip().upper()) <span class="cm"># "HALLO WELT"</span>
+<span class="fn">print</span>(<span class="vr">text</span>.strip().split()) <span class="cm"># ["Hallo", "Welt"]</span>
+<span class="fn">print</span>(<span class="st">"-"</span>.join([<span class="st">"a"</span>, <span class="st">"b"</span>])) <span class="cm"># "a-b"</span>
+<span class="fn">print</span>(<span class="st">"Py"</span> <span class="kw">in</span> <span class="vr">name</span>)       <span class="cm"># True</span>
+
+<span class="cm"># Multiline</span>
+<span class="vr">msg</span> = <span class="st">"""Zeile 1
+Zeile 2
+Zeile 3"""</span>
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Immutable</h5>
+      <p><code>name[0] = "J"</code> → TypeError! Strings können nicht verändert werden.</p>
+      <h5>Raw Strings</h5>
+      <p><code>r"C:\new"</code> — Backslashes werden nicht als Escape interpretiert.</p>
+      <h5>in-Operator</h5>
+      <p>Prüft ob ein Substring enthalten ist — sehr pythonisch.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section id="zahlen">
+  <h2><span class="num">05</span> Zahlen &amp; Operatoren</h2>
+  <p class="section-intro">Python unterstützt beliebig grosse Ganzzahlen, Fliesskommazahlen und einen reichen Satz an Operatoren.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>Arithmetik</h5>
+      <p>Standard-Operatoren plus <code>//</code> für Ganzzahldivision und <code>**</code> für Potenz.</p>
+      <h5>Vergleich</h5>
+      <p>Ketten wie <code>1 &lt; x &lt; 10</code> sind in Python gültig.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">zahlen.py</div>
+<pre><span class="cm"># Arithmetik</span>
+<span class="fn">print</span>(<span class="nm">10</span> + <span class="nm">3</span>)     <span class="cm"># 13</span>
+<span class="fn">print</span>(<span class="nm">10</span> - <span class="nm">3</span>)     <span class="cm"># 7</span>
+<span class="fn">print</span>(<span class="nm">10</span> * <span class="nm">3</span>)     <span class="cm"># 30</span>
+<span class="fn">print</span>(<span class="nm">10</span> / <span class="nm">3</span>)     <span class="cm"># 3.3333...</span>
+<span class="fn">print</span>(<span class="nm">10</span> // <span class="nm">3</span>)    <span class="cm"># 3  (Ganzzahl)</span>
+<span class="fn">print</span>(<span class="nm">10</span> % <span class="nm">3</span>)     <span class="cm"># 1  (Modulo)</span>
+<span class="fn">print</span>(<span class="nm">2</span> ** <span class="nm">10</span>)    <span class="cm"># 1024 (Potenz)</span>
+
+<span class="cm"># Beliebig grosse Zahlen</span>
+<span class="vr">gross</span> = <span class="nm">10</span> ** <span class="nm">100</span>  <span class="cm"># Googol — kein Overflow!</span>
+
+<span class="cm"># Vergleichsketten</span>
+<span class="vr">x</span> = <span class="nm">5</span>
+<span class="fn">print</span>(<span class="nm">1</span> &lt; <span class="vr">x</span> &lt; <span class="nm">10</span>)    <span class="cm"># True</span>
+<span class="fn">print</span>(<span class="nm">1</span> &lt; <span class="vr">x</span> &lt; <span class="nm">3</span>)     <span class="cm"># False</span>
+
+<span class="cm"># Logische Operatoren</span>
+<span class="fn">print</span>(<span class="bn">True</span> <span class="kw">and</span> <span class="bn">False</span>)  <span class="cm"># False</span>
+<span class="fn">print</span>(<span class="bn">True</span> <span class="kw">or</span> <span class="bn">False</span>)   <span class="cm"># True</span>
+<span class="fn">print</span>(<span class="kw">not</span> <span class="bn">True</span>)        <span class="cm"># False</span>
+
+<span class="cm"># Walrus-Operator (:=) — seit 3.8</span>
+<span class="kw">if</span> (<span class="vr">n</span> := <span class="fn">len</span>(<span class="st">"Hallo"</span>)) > <span class="nm">3</span>:
+    <span class="fn">print</span>(<span class="st">f"Länge: <span class="vr">{n}</span>"</span>)
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>/ vs //</h5>
+      <p><code>/</code> gibt immer float, <code>//</code> rundet ab (floor division).</p>
+      <h5>Kein Overflow</h5>
+      <p>Python-Integers haben unbegrenzte Grösse — anders als in C/Java.</p>
+      <h5>Walrus :=</h5>
+      <p>Weist zu und gibt den Wert zurück — nützlich in Bedingungen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 -->
+<section id="listen">
+  <h2><span class="num">06</span> Listen &amp; Tuples</h2>
+  <p class="section-intro">Listen sind veränderbar, Tuples nicht. Beide speichern geordnete Sammlungen.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>Listen</h5>
+      <p>Veränderbar, mit eckigen Klammern. Die vielseitigste Datenstruktur.</p>
+      <h5>Tuples</h5>
+      <p>Unveränderbar, mit runden Klammern. Für fixe Daten.</p>
+      <h5>Unpacking</h5>
+      <p>Mehrere Werte gleichzeitig aus einer Sequenz extrahieren.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">listen.py</div>
+<pre><span class="cm"># Listen</span>
+<span class="vr">zahlen</span> = [<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">4</span>, <span class="nm">5</span>]
+<span class="vr">zahlen</span>.append(<span class="nm">6</span>)          <span class="cm"># [1,2,3,4,5,6]</span>
+<span class="vr">zahlen</span>.insert(<span class="nm">0</span>, <span class="nm">0</span>)       <span class="cm"># [0,1,2,3,4,5,6]</span>
+<span class="vr">zahlen</span>.remove(<span class="nm">3</span>)           <span class="cm"># entfernt erste 3</span>
+<span class="vr">letztes</span> = <span class="vr">zahlen</span>.pop()     <span class="cm"># entfernt &amp; gibt letztes</span>
+
+<span class="cm"># Slicing (wie bei Strings)</span>
+<span class="fn">print</span>(<span class="vr">zahlen</span>[<span class="nm">1</span>:<span class="nm">4</span>])   <span class="cm"># [1, 2, 4]</span>
+<span class="fn">print</span>(<span class="vr">zahlen</span>[::-<span class="nm">1</span>])  <span class="cm"># umgekehrt</span>
+
+<span class="cm"># Sortieren</span>
+<span class="vr">zahlen</span>.sort()              <span class="cm"># in-place</span>
+<span class="vr">kopie</span> = <span class="fn">sorted</span>(<span class="vr">zahlen</span>)    <span class="cm"># neue Liste</span>
+
+<span class="cm"># Tuples — unveränderbar</span>
+<span class="vr">punkt</span> = (<span class="nm">10</span>, <span class="nm">20</span>)
+<span class="vr">x</span>, <span class="vr">y</span> = <span class="vr">punkt</span>  <span class="cm"># Unpacking</span>
+
+<span class="cm"># Stern-Unpacking</span>
+<span class="vr">first</span>, *<span class="vr">rest</span> = [<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">4</span>]
+<span class="fn">print</span>(<span class="vr">first</span>)  <span class="cm"># 1</span>
+<span class="fn">print</span>(<span class="vr">rest</span>)   <span class="cm"># [2, 3, 4]</span>
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Mutable vs Immutable</h5>
+      <p>Listen: veränderbar → als Dict-Key nicht erlaubt. Tuples: erlaubt.</p>
+      <h5>Performance</h5>
+      <p>Tuples sind schneller und brauchen weniger Speicher als Listen.</p>
+      <h5>Leere Strukturen</h5>
+      <p><code>[]</code> leere Liste, <code>()</code> leeres Tuple, <code>(42,)</code> Tuple mit einem Element (Komma!).</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section id="dicts">
+  <h2><span class="num">07</span> Dictionaries &amp; Sets</h2>
+  <p class="section-intro">Dicts speichern Key-Value-Paare, Sets speichern einzigartige Werte — beide extrem schnell beim Suchen.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>Dict</h5>
+      <p>Key-Value-Paare in <code>{}</code>. Keys müssen hashbar sein (Strings, Zahlen, Tuples).</p>
+      <h5>Sets</h5>
+      <p>Ungeordnete Sammlung einzigartiger Elemente. Mengenoperationen möglich.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">dicts.py</div>
+<pre><span class="cm"># Dictionary</span>
+<span class="vr">person</span> = {
+    <span class="st">"name"</span>: <span class="st">"Alice"</span>,
+    <span class="st">"alter"</span>: <span class="nm">30</span>,
+    <span class="st">"stadt"</span>: <span class="st">"Zürich"</span>
+}
+
+<span class="fn">print</span>(<span class="vr">person</span>[<span class="st">"name"</span>])        <span class="cm"># Alice</span>
+<span class="fn">print</span>(<span class="vr">person</span>.get(<span class="st">"job"</span>, <span class="st">"?"</span>)) <span class="cm"># ? (Default)</span>
+
+<span class="vr">person</span>[<span class="st">"job"</span>] = <span class="st">"Dev"</span>       <span class="cm"># hinzufügen</span>
+<span class="kw">del</span> <span class="vr">person</span>[<span class="st">"stadt"</span>]         <span class="cm"># löschen</span>
+
+<span class="cm"># Iterieren</span>
+<span class="kw">for</span> <span class="vr">key</span>, <span class="vr">val</span> <span class="kw">in</span> <span class="vr">person</span>.items():
+    <span class="fn">print</span>(<span class="st">f"<span class="vr">{key}</span>: <span class="vr">{val}</span>"</span>)
+
+<span class="cm"># Dict Merge (3.9+)</span>
+<span class="vr">a</span> = {<span class="st">"x"</span>: <span class="nm">1</span>}
+<span class="vr">b</span> = {<span class="st">"y"</span>: <span class="nm">2</span>}
+<span class="vr">merged</span> = <span class="vr">a</span> | <span class="vr">b</span>  <span class="cm"># {"x": 1, "y": 2}</span>
+
+<span class="cm"># Sets</span>
+<span class="vr">farben</span> = {<span class="st">"rot"</span>, <span class="st">"grün"</span>, <span class="st">"blau"</span>}
+<span class="vr">farben</span>.add(<span class="st">"gelb"</span>)
+<span class="fn">print</span>(<span class="st">"rot"</span> <span class="kw">in</span> <span class="vr">farben</span>)  <span class="cm"># True</span>
+
+<span class="cm"># Mengenoperationen</span>
+<span class="vr">a</span> = {<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>}
+<span class="vr">b</span> = {<span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">4</span>}
+<span class="fn">print</span>(<span class="vr">a</span> & <span class="vr">b</span>)   <span class="cm"># {2, 3} Schnittmenge</span>
+<span class="fn">print</span>(<span class="vr">a</span> | <span class="vr">b</span>)   <span class="cm"># {1,2,3,4} Vereinigung</span>
+<span class="fn">print</span>(<span class="vr">a</span> - <span class="vr">b</span>)   <span class="cm"># {1} Differenz</span>
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>get() vs []</h5>
+      <p><code>[]</code> wirft KeyError, <code>get()</code> gibt Default zurück.</p>
+      <h5>O(1) Lookup</h5>
+      <p>Dicts und Sets nutzen Hashing — <code>in</code> ist extrem schnell.</p>
+      <h5>Dict-Reihenfolge</h5>
+      <p>Seit Python 3.7: Dicts behalten Einfüge-Reihenfolge.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 -->
+<section id="if">
+  <h2><span class="num">08</span> Kontrollfluss</h2>
+  <p class="section-intro"><code>if</code>, <code>elif</code>, <code>else</code> — bedingte Ausführung mit sauberer Einrückung.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>if / elif / else</h5>
+      <p>Bedingungen werden der Reihe nach geprüft. Nur der erste wahre Block wird ausgeführt.</p>
+      <h5>Ternärer Operator</h5>
+      <p>Einzeilige Bedingung für einfache Fälle.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">kontrollfluss.py</div>
+<pre><span class="vr">alter</span> = <span class="nm">18</span>
+
+<span class="kw">if</span> <span class="vr">alter</span> &lt; <span class="nm">13</span>:
+    <span class="fn">print</span>(<span class="st">"Kind"</span>)
+<span class="kw">elif</span> <span class="vr">alter</span> &lt; <span class="nm">18</span>:
+    <span class="fn">print</span>(<span class="st">"Jugendlich"</span>)
+<span class="kw">elif</span> <span class="vr">alter</span> &lt; <span class="nm">65</span>:
+    <span class="fn">print</span>(<span class="st">"Erwachsen"</span>)
+<span class="kw">else</span>:
+    <span class="fn">print</span>(<span class="st">"Senior"</span>)
+
+<span class="cm"># Ternärer Operator</span>
+<span class="vr">status</span> = <span class="st">"volljährig"</span> <span class="kw">if</span> <span class="vr">alter</span> >= <span class="nm">18</span> <span class="kw">else</span> <span class="st">"minderjährig"</span>
+
+<span class="cm"># Truthy / Falsy</span>
+<span class="vr">name</span> = <span class="st">""</span>
+<span class="kw">if</span> <span class="kw">not</span> <span class="vr">name</span>:
+    <span class="fn">print</span>(<span class="st">"Name ist leer"</span>)
+
+<span class="cm"># Falsy: 0, 0.0, "", [], {}, set(), None, False</span>
+<span class="cm"># Truthy: alles andere</span>
+
+<span class="cm"># is vs ==</span>
+<span class="vr">a</span> = [<span class="nm">1</span>, <span class="nm">2</span>]
+<span class="vr">b</span> = [<span class="nm">1</span>, <span class="nm">2</span>]
+<span class="fn">print</span>(<span class="vr">a</span> == <span class="vr">b</span>)   <span class="cm"># True  (gleicher Wert)</span>
+<span class="fn">print</span>(<span class="vr">a</span> <span class="kw">is</span> <span class="vr">b</span>)   <span class="cm"># False (andere Objekte)</span>
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Kein switch</h5>
+      <p>Statt switch nutzt Python <code>match/case</code> (ab 3.10) — siehe Kapitel 24.</p>
+      <h5>is vs ==</h5>
+      <p><code>==</code> vergleicht Werte, <code>is</code> vergleicht Identität (selbes Objekt im Speicher).</p>
+      <h5>None prüfen</h5>
+      <p>Immer <code>x is None</code> statt <code>x == None</code>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 -->
+<section id="schleifen">
+  <h2><span class="num">09</span> Schleifen</h2>
+  <p class="section-intro"><code>for</code> iteriert über Sequenzen, <code>while</code> läuft bis eine Bedingung falsch wird.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>for</h5>
+      <p>Iteriert direkt über Elemente — nicht über Indizes wie in C.</p>
+      <h5>while</h5>
+      <p>Für unbekannte Anzahl Durchläufe.</p>
+      <h5>enumerate</h5>
+      <p>Gibt Index und Wert gleichzeitig.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">schleifen.py</div>
+<pre><span class="cm"># for-Schleife</span>
+<span class="vr">tiere</span> = [<span class="st">"Katze"</span>, <span class="st">"Hund"</span>, <span class="st">"Fisch"</span>]
+<span class="kw">for</span> <span class="vr">tier</span> <span class="kw">in</span> <span class="vr">tiere</span>:
+    <span class="fn">print</span>(<span class="vr">tier</span>)
+
+<span class="cm"># range()</span>
+<span class="kw">for</span> <span class="vr">i</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="nm">5</span>):       <span class="cm"># 0,1,2,3,4</span>
+    <span class="fn">print</span>(<span class="vr">i</span>)
+<span class="kw">for</span> <span class="vr">i</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="nm">2</span>, <span class="nm">10</span>, <span class="nm">2</span>): <span class="cm"># 2,4,6,8</span>
+    <span class="fn">print</span>(<span class="vr">i</span>)
+
+<span class="cm"># enumerate — Index + Wert</span>
+<span class="kw">for</span> <span class="vr">i</span>, <span class="vr">tier</span> <span class="kw">in</span> <span class="fn">enumerate</span>(<span class="vr">tiere</span>):
+    <span class="fn">print</span>(<span class="st">f"<span class="vr">{i}</span>: <span class="vr">{tier}</span>"</span>)
+
+<span class="cm"># zip — parallel iterieren</span>
+<span class="vr">namen</span> = [<span class="st">"Alice"</span>, <span class="st">"Bob"</span>]
+<span class="vr">alter</span> = [<span class="nm">30</span>, <span class="nm">25</span>]
+<span class="kw">for</span> <span class="vr">n</span>, <span class="vr">a</span> <span class="kw">in</span> <span class="fn">zip</span>(<span class="vr">namen</span>, <span class="vr">alter</span>):
+    <span class="fn">print</span>(<span class="st">f"<span class="vr">{n}</span> ist <span class="vr">{a}</span>"</span>)
+
+<span class="cm"># while + break/continue</span>
+<span class="vr">count</span> = <span class="nm">0</span>
+<span class="kw">while</span> <span class="bn">True</span>:
+    <span class="vr">count</span> += <span class="nm">1</span>
+    <span class="kw">if</span> <span class="vr">count</span> == <span class="nm">3</span>: <span class="kw">continue</span>
+    <span class="kw">if</span> <span class="vr">count</span> > <span class="nm">5</span>: <span class="kw">break</span>
+    <span class="fn">print</span>(<span class="vr">count</span>)  <span class="cm"># 1, 2, 4, 5</span>
+
+<span class="cm"># for-else (selten aber nützlich)</span>
+<span class="kw">for</span> <span class="vr">n</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="nm">2</span>, <span class="nm">10</span>):
+    <span class="kw">if</span> <span class="vr">n</span> % <span class="nm">7</span> == <span class="nm">0</span>:
+        <span class="fn">print</span>(<span class="st">f"<span class="vr">{n}</span> gefunden"</span>)
+        <span class="kw">break</span>
+<span class="kw">else</span>:
+    <span class="fn">print</span>(<span class="st">"Nichts gefunden"</span>)
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Kein i++</h5>
+      <p>Python hat kein <code>++</code>. Verwende <code>i += 1</code>.</p>
+      <h5>for-else</h5>
+      <p>Der <code>else</code>-Block wird nur ausgeführt, wenn <strong>kein</strong> <code>break</code> kam.</p>
+      <h5>zip strict</h5>
+      <p><code>zip(..., strict=True)</code> (3.10+) wirft Fehler bei unterschiedlicher Länge.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════ TEIL II ═══════════════════════════════════════════════ -->
+<div class="part">
+  <div class="part-label">Teil II</div>
+  <div class="part-title">Die <em>Mittelstufe</em></div>
+  <p class="part-desc">Funktionen, OOP, Fehlerbehandlung und die Werkzeuge für grössere Programme.</p>
+</div>
+
+<!-- 10 -->
+<section id="funktionen">
+  <h2><span class="num">10</span> Funktionen</h2>
+  <p class="section-intro">Funktionen strukturieren Code, vermeiden Wiederholung und machen Programme testbar.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>def</h5>
+      <p>Definiert eine Funktion. Parameter optional, Rückgabewert mit <code>return</code>.</p>
+      <h5>*args / **kwargs</h5>
+      <p>Flexible Anzahl von Argumenten akzeptieren.</p>
+      <h5>Lambda</h5>
+      <p>Anonyme Einzeilenfunktion.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">funktionen.py</div>
+<pre><span class="cm"># Grundfunktion</span>
+<span class="kw">def</span> <span class="fn">gruss</span>(<span class="vr">name</span>: <span class="tp">str</span>) -> <span class="tp">str</span>:
+    <span class="kw">return</span> <span class="st">f"Hallo, <span class="vr">{name}</span>!"</span>
+
+<span class="fn">print</span>(<span class="fn">gruss</span>(<span class="st">"Alice"</span>))
+
+<span class="cm"># Default-Parameter</span>
+<span class="kw">def</span> <span class="fn">potenz</span>(<span class="vr">basis</span>, <span class="vr">exp</span>=<span class="nm">2</span>):
+    <span class="kw">return</span> <span class="vr">basis</span> ** <span class="vr">exp</span>
+
+<span class="fn">print</span>(<span class="fn">potenz</span>(<span class="nm">3</span>))       <span class="cm"># 9</span>
+<span class="fn">print</span>(<span class="fn">potenz</span>(<span class="nm">3</span>, <span class="nm">3</span>))    <span class="cm"># 27</span>
+
+<span class="cm"># *args — beliebig viele Argumente</span>
+<span class="kw">def</span> <span class="fn">summe</span>(*<span class="vr">zahlen</span>):
+    <span class="kw">return</span> <span class="fn">sum</span>(<span class="vr">zahlen</span>)
+
+<span class="fn">print</span>(<span class="fn">summe</span>(<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>))  <span class="cm"># 6</span>
+
+<span class="cm"># **kwargs — benannte Argumente</span>
+<span class="kw">def</span> <span class="fn">profil</span>(**<span class="vr">daten</span>):
+    <span class="kw">for</span> <span class="vr">k</span>, <span class="vr">v</span> <span class="kw">in</span> <span class="vr">daten</span>.items():
+        <span class="fn">print</span>(<span class="st">f"<span class="vr">{k}</span>: <span class="vr">{v}</span>"</span>)
+
+<span class="fn">profil</span>(<span class="vr">name</span>=<span class="st">"Alice"</span>, <span class="vr">alter</span>=<span class="nm">30</span>)
+
+<span class="cm"># Lambda</span>
+<span class="vr">doppel</span> = <span class="kw">lambda</span> <span class="vr">x</span>: <span class="vr">x</span> * <span class="nm">2</span>
+<span class="fn">print</span>(<span class="vr">doppel</span>(<span class="nm">5</span>))  <span class="cm"># 10</span>
+
+<span class="cm"># Keyword-only (nach *)</span>
+<span class="kw">def</span> <span class="fn">api_call</span>(<span class="vr">url</span>, *, <span class="vr">timeout</span>=<span class="nm">30</span>):
+    <span class="fn">print</span>(<span class="st">f"GET <span class="vr">{url}</span> (timeout=<span class="vr">{timeout}</span>)"</span>)
+
+<span class="fn">api_call</span>(<span class="st">"https://api.ch"</span>, <span class="vr">timeout</span>=<span class="nm">10</span>)
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Type Hints</h5>
+      <p><code>-> str</code> ist optional aber empfohlen. Wird nicht erzwungen.</p>
+      <h5>Mutable Default!</h5>
+      <p><code>def f(x=[])</code> ist ein Fehler — die Liste wird geteilt! Nutze <code>x=None</code>.</p>
+      <h5>First-Class</h5>
+      <p>Funktionen sind Objekte — als Argument übergeben, in Listen speichern.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section id="module">
+  <h2><span class="num">11</span> Module &amp; Imports</h2>
+  <p class="section-intro">Jede <code>.py</code>-Datei ist ein Modul. Die Standardbibliothek hat über 300 Module.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>import</h5>
+      <p>Ganzes Modul oder einzelne Teile importieren.</p>
+      <h5>Eigene Module</h5>
+      <p>Jede .py-Datei kann importiert werden, wenn sie im selben Verzeichnis liegt.</p>
+      <h5>__name__</h5>
+      <p>Guard für Code der nur beim direkten Ausführen laufen soll.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">module.py</div>
+<pre><span class="cm"># Ganzes Modul</span>
+<span class="kw">import</span> <span class="vr">math</span>
+<span class="fn">print</span>(<span class="vr">math</span>.pi)          <span class="cm"># 3.14159...</span>
+<span class="fn">print</span>(<span class="vr">math</span>.sqrt(<span class="nm">16</span>))    <span class="cm"># 4.0</span>
+
+<span class="cm"># Einzelne Funktionen</span>
+<span class="kw">from</span> <span class="vr">datetime</span> <span class="kw">import</span> <span class="cl">datetime</span>, <span class="cl">timedelta</span>
+<span class="vr">jetzt</span> = <span class="cl">datetime</span>.now()
+<span class="vr">morgen</span> = <span class="vr">jetzt</span> + <span class="cl">timedelta</span>(<span class="vr">days</span>=<span class="nm">1</span>)
+
+<span class="cm"># Alias</span>
+<span class="kw">import</span> <span class="vr">json</span> <span class="kw">as</span> <span class="vr">j</span>
+<span class="vr">data</span> = <span class="vr">j</span>.dumps({<span class="st">"a"</span>: <span class="nm">1</span>})
+
+<span class="cm"># Nützliche Stdlib-Module</span>
+<span class="kw">from</span> <span class="vr">pathlib</span> <span class="kw">import</span> <span class="cl">Path</span>
+<span class="kw">from</span> <span class="vr">collections</span> <span class="kw">import</span> <span class="cl">Counter</span>, <span class="cl">defaultdict</span>
+<span class="kw">from</span> <span class="vr">itertools</span> <span class="kw">import</span> <span class="fn">chain</span>, <span class="fn">groupby</span>
+<span class="kw">from</span> <span class="vr">functools</span> <span class="kw">import</span> <span class="fn">lru_cache</span>
+
+<span class="cm"># Eigenes Modul</span>
+<span class="cm"># helpers.py → from helpers import my_func</span>
+
+<span class="cm"># Main-Guard</span>
+<span class="kw">if</span> <span class="vr">__name__</span> == <span class="st">"__main__"</span>:
+    <span class="fn">print</span>(<span class="st">"Direkt ausgeführt"</span>)
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>import *</h5>
+      <p>Vermeide <code>from x import *</code> — macht unklar, woher Namen kommen.</p>
+      <h5>__init__.py</h5>
+      <p>Macht ein Verzeichnis zum Package. Kann leer sein.</p>
+      <h5>Reihenfolge</h5>
+      <p>PEP 8: 1) Stdlib, 2) Third-Party, 3) Eigene — mit Leerzeile dazwischen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12 -->
+<section id="comprehensions">
+  <h2><span class="num">12</span> Comprehensions</h2>
+  <p class="section-intro">Kompakte Syntax um Listen, Dicts und Sets in einer Zeile zu erzeugen.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>List Comprehension</h5>
+      <p><code>[ausdruck for x in iterable if bedingung]</code></p>
+      <h5>Dict/Set Comprehension</h5>
+      <p>Gleiche Syntax mit <code>{}</code>.</p>
+      <h5>Generator Expression</h5>
+      <p>Mit <code>()</code> — erzeugt Werte lazy, spart Speicher.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">comprehensions.py</div>
+<pre><span class="cm"># List Comprehension</span>
+<span class="vr">quadrate</span> = [<span class="vr">x</span>**<span class="nm">2</span> <span class="kw">for</span> <span class="vr">x</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="nm">10</span>)]
+<span class="cm"># [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>
+
+<span class="cm"># Mit Filter</span>
+<span class="vr">gerade</span> = [<span class="vr">x</span> <span class="kw">for</span> <span class="vr">x</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="nm">20</span>) <span class="kw">if</span> <span class="vr">x</span> % <span class="nm">2</span> == <span class="nm">0</span>]
+<span class="cm"># [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</span>
+
+<span class="cm"># Verschachtelt</span>
+<span class="vr">matrix</span> = [[<span class="nm">1</span>,<span class="nm">2</span>], [<span class="nm">3</span>,<span class="nm">4</span>], [<span class="nm">5</span>,<span class="nm">6</span>]]
+<span class="vr">flach</span> = [<span class="vr">n</span> <span class="kw">for</span> <span class="vr">zeile</span> <span class="kw">in</span> <span class="vr">matrix</span> <span class="kw">for</span> <span class="vr">n</span> <span class="kw">in</span> <span class="vr">zeile</span>]
+<span class="cm"># [1, 2, 3, 4, 5, 6]</span>
+
+<span class="cm"># Dict Comprehension</span>
+<span class="vr">wörter</span> = [<span class="st">"hi"</span>, <span class="st">"hallo"</span>, <span class="st">"hey"</span>]
+<span class="vr">längen</span> = {<span class="vr">w</span>: <span class="fn">len</span>(<span class="vr">w</span>) <span class="kw">for</span> <span class="vr">w</span> <span class="kw">in</span> <span class="vr">wörter</span>}
+<span class="cm"># {"hi": 2, "hallo": 5, "hey": 3}</span>
+
+<span class="cm"># Set Comprehension</span>
+<span class="vr">unique_len</span> = {<span class="fn">len</span>(<span class="vr">w</span>) <span class="kw">for</span> <span class="vr">w</span> <span class="kw">in</span> <span class="vr">wörter</span>}
+<span class="cm"># {2, 3, 5}</span>
+
+<span class="cm"># Generator (lazy)</span>
+<span class="vr">gen</span> = (<span class="vr">x</span>**<span class="nm">2</span> <span class="kw">for</span> <span class="vr">x</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="nm">1_000_000</span>))
+<span class="fn">print</span>(<span class="fn">next</span>(<span class="vr">gen</span>))  <span class="cm"># 0</span>
+<span class="fn">print</span>(<span class="fn">sum</span>(<span class="vr">gen</span>))   <span class="cm"># Summe ohne alles im RAM</span>
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Lesbarkeit</h5>
+      <p>Maximal 1-2 <code>for</code>/<code>if</code> — sonst besser eine normale Schleife.</p>
+      <h5>Generator vs List</h5>
+      <p>Generator: einmal durchlaufen, wenig Speicher. Liste: mehrfach nutzbar.</p>
+      <h5>1_000_000</h5>
+      <p>Underscores in Zahlen sind rein visuell — verbessern die Lesbarkeit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13 -->
+<section id="exceptions">
+  <h2><span class="num">13</span> Fehlerbehandlung</h2>
+  <p class="section-intro"><code>try/except</code> fängt Laufzeitfehler ab und ermöglicht saubere Fehlerbehandlung.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>try / except</h5>
+      <p>Versuche Code, fange spezifische Fehler ab.</p>
+      <h5>finally</h5>
+      <p>Wird immer ausgeführt — für Aufräumarbeiten.</p>
+      <h5>Eigene Exceptions</h5>
+      <p>Von <code>Exception</code> ableiten für domänenspezifische Fehler.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">exceptions.py</div>
+<pre><span class="cm"># Grundstruktur</span>
+<span class="kw">try</span>:
+    <span class="vr">ergebnis</span> = <span class="nm">10</span> / <span class="nm">0</span>
+<span class="kw">except</span> <span class="cl">ZeroDivisionError</span>:
+    <span class="fn">print</span>(<span class="st">"Division durch 0!"</span>)
+<span class="kw">except</span> (<span class="cl">TypeError</span>, <span class="cl">ValueError</span>) <span class="kw">as</span> <span class="vr">e</span>:
+    <span class="fn">print</span>(<span class="st">f"Fehler: <span class="vr">{e}</span>"</span>)
+<span class="kw">else</span>:
+    <span class="fn">print</span>(<span class="st">"Kein Fehler!"</span>)  <span class="cm"># nur wenn kein Error</span>
+<span class="kw">finally</span>:
+    <span class="fn">print</span>(<span class="st">"Fertig."</span>)       <span class="cm"># immer</span>
+
+<span class="cm"># Eigene Exception</span>
+<span class="kw">class</span> <span class="cl">AlterError</span>(<span class="cl">Exception</span>):
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="vr">self</span>, <span class="vr">alter</span>, <span class="vr">msg</span>=<span class="st">"Ungültiges Alter"</span>):
+        <span class="vr">self</span>.<span class="vr">alter</span> = <span class="vr">alter</span>
+        <span class="fn">super</span>().__init__(<span class="vr">msg</span>)
+
+<span class="kw">def</span> <span class="fn">check_alter</span>(<span class="vr">alter</span>):
+    <span class="kw">if</span> <span class="vr">alter</span> &lt; <span class="nm">0</span>:
+        <span class="kw">raise</span> <span class="cl">AlterError</span>(<span class="vr">alter</span>)
+    <span class="kw">return</span> <span class="st">f"Alter: <span class="vr">{alter}</span>"</span>
+
+<span class="kw">try</span>:
+    <span class="fn">check_alter</span>(-<span class="nm">5</span>)
+<span class="kw">except</span> <span class="cl">AlterError</span> <span class="kw">as</span> <span class="vr">e</span>:
+    <span class="fn">print</span>(<span class="st">f"<span class="vr">{e}</span>: <span class="vr">{e.alter}</span>"</span>)
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Spezifisch fangen</h5>
+      <p>Nie <code>except:</code> ohne Typ — fängt alles inkl. KeyboardInterrupt.</p>
+      <h5>EAFP</h5>
+      <p>"Easier to Ask Forgiveness than Permission" — Pythons Philosophie: try/except statt if-Prüfungen.</p>
+      <h5>Exception-Hierarchie</h5>
+      <p><code>BaseException</code> → <code>Exception</code> → <code>ValueError</code>, <code>TypeError</code>, etc.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 14 -->
+<section id="dateien">
+  <h2><span class="num">14</span> Dateien lesen &amp; schreiben</h2>
+  <p class="section-intro">Dateien öffnen mit <code>with</code>-Statement — schliesst automatisch, auch bei Fehlern.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>with open()</h5>
+      <p>Context Manager — schliesst die Datei automatisch.</p>
+      <h5>Modi</h5>
+      <p><code>"r"</code> lesen, <code>"w"</code> schreiben (überschreibt), <code>"a"</code> anhängen, <code>"x"</code> neu erstellen.</p>
+      <h5>pathlib</h5>
+      <p>Moderne, objektorientierte API für Dateipfade.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">dateien.py</div>
+<pre><span class="cm"># Schreiben</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"daten.txt"</span>, <span class="st">"w"</span>) <span class="kw">as</span> <span class="vr">f</span>:
+    <span class="vr">f</span>.write(<span class="st">"Zeile 1\n"</span>)
+    <span class="vr">f</span>.write(<span class="st">"Zeile 2\n"</span>)
+
+<span class="cm"># Lesen — komplett</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"daten.txt"</span>) <span class="kw">as</span> <span class="vr">f</span>:
+    <span class="vr">inhalt</span> = <span class="vr">f</span>.read()
+
+<span class="cm"># Lesen — zeilenweise</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"daten.txt"</span>) <span class="kw">as</span> <span class="vr">f</span>:
+    <span class="kw">for</span> <span class="vr">zeile</span> <span class="kw">in</span> <span class="vr">f</span>:
+        <span class="fn">print</span>(<span class="vr">zeile</span>.strip())
+
+<span class="cm"># JSON</span>
+<span class="kw">import</span> <span class="vr">json</span>
+
+<span class="vr">daten</span> = {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"alter"</span>: <span class="nm">30</span>}
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"user.json"</span>, <span class="st">"w"</span>) <span class="kw">as</span> <span class="vr">f</span>:
+    <span class="vr">json</span>.dump(<span class="vr">daten</span>, <span class="vr">f</span>, <span class="vr">indent</span>=<span class="nm">2</span>)
+
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"user.json"</span>) <span class="kw">as</span> <span class="vr">f</span>:
+    <span class="vr">geladen</span> = <span class="vr">json</span>.load(<span class="vr">f</span>)
+
+<span class="cm"># pathlib — modern</span>
+<span class="kw">from</span> <span class="vr">pathlib</span> <span class="kw">import</span> <span class="cl">Path</span>
+
+<span class="vr">p</span> = <span class="cl">Path</span>(<span class="st">"daten.txt"</span>)
+<span class="vr">text</span> = <span class="vr">p</span>.read_text()
+<span class="vr">p</span>.write_text(<span class="st">"Neuer Inhalt"</span>)
+<span class="fn">print</span>(<span class="vr">p</span>.exists())     <span class="cm"># True</span>
+<span class="fn">print</span>(<span class="vr">p</span>.suffix)      <span class="cm"># .txt</span>
+<span class="fn">print</span>(<span class="vr">p</span>.stem)        <span class="cm"># daten</span>
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Encoding</h5>
+      <p><code>open("f.txt", encoding="utf-8")</code> — immer angeben für Portabilität.</p>
+      <h5>CSV</h5>
+      <p><code>import csv</code> — für CSV-Dateien statt manuelles Parsen.</p>
+      <h5>Binary</h5>
+      <p><code>"rb"</code> / <code>"wb"</code> für Bilder, PDFs etc.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 15 -->
+<section id="klassen">
+  <h2><span class="num">15</span> Klassen &amp; OOP</h2>
+  <p class="section-intro">Klassen bündeln Daten und Verhalten. Python's OOP ist pragmatisch, nicht dogmatisch.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>__init__</h5>
+      <p>Konstruktor — wird beim Erstellen aufgerufen.</p>
+      <h5>self</h5>
+      <p>Referenz auf die aktuelle Instanz — immer erster Parameter.</p>
+      <h5>Dunder-Methoden</h5>
+      <p>Spezielle Methoden wie <code>__str__</code>, <code>__repr__</code> für String-Darstellung.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">klassen.py</div>
+<pre><span class="kw">class</span> <span class="cl">Konto</span>:
+    <span class="st">"""Ein Bankkonto."""</span>
+
+    <span class="vr">bank</span> = <span class="st">"Swiss Bank"</span>  <span class="cm"># Klassen-Attribut</span>
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="vr">self</span>, <span class="vr">inhaber</span>: <span class="tp">str</span>, <span class="vr">saldo</span>: <span class="tp">float</span> = <span class="nm">0</span>):
+        <span class="vr">self</span>.<span class="vr">inhaber</span> = <span class="vr">inhaber</span>      <span class="cm"># öffentlich</span>
+        <span class="vr">self</span>.<span class="vr">_saldo</span> = <span class="vr">saldo</span>        <span class="cm"># "privat" (Konvention)</span>
+
+    <span class="kw">def</span> <span class="fn">einzahlen</span>(<span class="vr">self</span>, <span class="vr">betrag</span>: <span class="tp">float</span>):
+        <span class="vr">self</span>.<span class="vr">_saldo</span> += <span class="vr">betrag</span>
+
+    <span class="kw">def</span> <span class="fn">abheben</span>(<span class="vr">self</span>, <span class="vr">betrag</span>: <span class="tp">float</span>):
+        <span class="kw">if</span> <span class="vr">betrag</span> > <span class="vr">self</span>.<span class="vr">_saldo</span>:
+            <span class="kw">raise</span> <span class="cl">ValueError</span>(<span class="st">"Nicht genug Geld"</span>)
+        <span class="vr">self</span>.<span class="vr">_saldo</span> -= <span class="vr">betrag</span>
+
+    @<span class="dc">property</span>
+    <span class="kw">def</span> <span class="fn">saldo</span>(<span class="vr">self</span>) -> <span class="tp">float</span>:
+        <span class="kw">return</span> <span class="vr">self</span>.<span class="vr">_saldo</span>
+
+    <span class="kw">def</span> <span class="fn">__str__</span>(<span class="vr">self</span>):
+        <span class="kw">return</span> <span class="st">f"<span class="vr">{self.inhaber}</span>: CHF <span class="vr">{self._saldo:.2f}</span>"</span>
+
+    <span class="kw">def</span> <span class="fn">__repr__</span>(<span class="vr">self</span>):
+        <span class="kw">return</span> <span class="st">f"Konto('<span class="vr">{self.inhaber}</span>', <span class="vr">{self._saldo}</span>)"</span>
+
+<span class="vr">k</span> = <span class="cl">Konto</span>(<span class="st">"Alice"</span>, <span class="nm">1000</span>)
+<span class="vr">k</span>.einzahlen(<span class="nm">500</span>)
+<span class="fn">print</span>(<span class="vr">k</span>)          <span class="cm"># Alice: CHF 1500.00</span>
+<span class="fn">print</span>(<span class="vr">k</span>.saldo)    <span class="cm"># 1500 (property)</span>
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>_ Konvention</h5>
+      <p><code>_name</code> = "bitte nicht von aussen nutzen". <code>__name</code> = Name-Mangling.</p>
+      <h5>@property</h5>
+      <p>Macht eine Methode zum "Attribut" — Getter ohne Klammern.</p>
+      <h5>__str__ vs __repr__</h5>
+      <p><code>__str__</code> für User, <code>__repr__</code> für Entwickler/Debugging.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 16 -->
+<section id="vererbung">
+  <h2><span class="num">16</span> Vererbung &amp; Polymorphie</h2>
+  <p class="section-intro">Klassen können von anderen erben. Python unterstützt auch Mehrfachvererbung.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>Vererbung</h5>
+      <p>Kindklasse erbt alle Methoden und Attribute der Elternklasse.</p>
+      <h5>super()</h5>
+      <p>Ruft Methoden der Elternklasse auf.</p>
+      <h5>ABC</h5>
+      <p>Abstrakte Basisklassen erzwingen Implementierung.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">vererbung.py</div>
+<pre><span class="kw">from</span> <span class="vr">abc</span> <span class="kw">import</span> <span class="cl">ABC</span>, <span class="fn">abstractmethod</span>
+
+<span class="kw">class</span> <span class="cl">Form</span>(<span class="cl">ABC</span>):
+    <span class="st">"""Abstrakte Basisklasse."""</span>
+
+    @<span class="dc">abstractmethod</span>
+    <span class="kw">def</span> <span class="fn">fläche</span>(<span class="vr">self</span>) -> <span class="tp">float</span>:
+        ...
+
+    <span class="kw">def</span> <span class="fn">beschreibung</span>(<span class="vr">self</span>):
+        <span class="kw">return</span> <span class="st">f"<span class="vr">{self.__class__.__name__}</span>: <span class="vr">{self.fläche():.1f}</span>"</span>
+
+<span class="kw">class</span> <span class="cl">Kreis</span>(<span class="cl">Form</span>):
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="vr">self</span>, <span class="vr">radius</span>: <span class="tp">float</span>):
+        <span class="vr">self</span>.<span class="vr">radius</span> = <span class="vr">radius</span>
+
+    <span class="kw">def</span> <span class="fn">fläche</span>(<span class="vr">self</span>) -> <span class="tp">float</span>:
+        <span class="kw">return</span> <span class="nm">3.14159</span> * <span class="vr">self</span>.<span class="vr">radius</span> ** <span class="nm">2</span>
+
+<span class="kw">class</span> <span class="cl">Rechteck</span>(<span class="cl">Form</span>):
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="vr">self</span>, <span class="vr">b</span>: <span class="tp">float</span>, <span class="vr">h</span>: <span class="tp">float</span>):
+        <span class="vr">self</span>.<span class="vr">b</span> = <span class="vr">b</span>
+        <span class="vr">self</span>.<span class="vr">h</span> = <span class="vr">h</span>
+
+    <span class="kw">def</span> <span class="fn">fläche</span>(<span class="vr">self</span>) -> <span class="tp">float</span>:
+        <span class="kw">return</span> <span class="vr">self</span>.<span class="vr">b</span> * <span class="vr">self</span>.<span class="vr">h</span>
+
+<span class="cm"># Polymorphie</span>
+<span class="vr">formen</span>: <span class="tp">list</span>[<span class="cl">Form</span>] = [<span class="cl">Kreis</span>(<span class="nm">5</span>), <span class="cl">Rechteck</span>(<span class="nm">3</span>, <span class="nm">4</span>)]
+<span class="kw">for</span> <span class="vr">f</span> <span class="kw">in</span> <span class="vr">formen</span>:
+    <span class="fn">print</span>(<span class="vr">f</span>.beschreibung())
+
+<span class="cm"># Kreis: 78.5</span>
+<span class="cm"># Rechteck: 12.0</span>
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Duck Typing</h5>
+      <p>"If it quacks like a duck..." — Python prüft Verhalten, nicht Typ.</p>
+      <h5>MRO</h5>
+      <p>Method Resolution Order bei Mehrfachvererbung: <code>Klasse.mro()</code>.</p>
+      <h5>Composition</h5>
+      <p>"Favor composition over inheritance" — oft besser als tiefe Vererbungsketten.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 17 -->
+<section id="iteratoren">
+  <h2><span class="num">17</span> Iteratoren &amp; Generatoren</h2>
+  <p class="section-intro">Generatoren erzeugen Werte on-demand mit <code>yield</code> — ideal für grosse Datenmengen.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>yield</h5>
+      <p>Pausiert die Funktion und gibt einen Wert zurück. Beim nächsten <code>next()</code> geht's weiter.</p>
+      <h5>Iterator-Protokoll</h5>
+      <p><code>__iter__</code> + <code>__next__</code> machen ein Objekt iterierbar.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">generatoren.py</div>
+<pre><span class="cm"># Generator-Funktion</span>
+<span class="kw">def</span> <span class="fn">countdown</span>(<span class="vr">n</span>: <span class="tp">int</span>):
+    <span class="kw">while</span> <span class="vr">n</span> > <span class="nm">0</span>:
+        <span class="kw">yield</span> <span class="vr">n</span>
+        <span class="vr">n</span> -= <span class="nm">1</span>
+
+<span class="kw">for</span> <span class="vr">i</span> <span class="kw">in</span> <span class="fn">countdown</span>(<span class="nm">3</span>):
+    <span class="fn">print</span>(<span class="vr">i</span>)  <span class="cm"># 3, 2, 1</span>
+
+<span class="cm"># Unendlicher Generator</span>
+<span class="kw">def</span> <span class="fn">fibonacci</span>():
+    <span class="vr">a</span>, <span class="vr">b</span> = <span class="nm">0</span>, <span class="nm">1</span>
+    <span class="kw">while</span> <span class="bn">True</span>:
+        <span class="kw">yield</span> <span class="vr">a</span>
+        <span class="vr">a</span>, <span class="vr">b</span> = <span class="vr">b</span>, <span class="vr">a</span> + <span class="vr">b</span>
+
+<span class="kw">from</span> <span class="vr">itertools</span> <span class="kw">import</span> <span class="fn">islice</span>
+<span class="fn">print</span>(<span class="fn">list</span>(<span class="fn">islice</span>(<span class="fn">fibonacci</span>(), <span class="nm">10</span>)))
+<span class="cm"># [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</span>
+
+<span class="cm"># yield from — delegiert an Sub-Generator</span>
+<span class="kw">def</span> <span class="fn">chain</span>(*<span class="vr">iterables</span>):
+    <span class="kw">for</span> <span class="vr">it</span> <span class="kw">in</span> <span class="vr">iterables</span>:
+        <span class="kw">yield from</span> <span class="vr">it</span>
+
+<span class="fn">print</span>(<span class="fn">list</span>(<span class="fn">chain</span>([<span class="nm">1</span>,<span class="nm">2</span>], [<span class="nm">3</span>,<span class="nm">4</span>])))
+<span class="cm"># [1, 2, 3, 4]</span>
+
+<span class="cm"># Eigener Iterator</span>
+<span class="kw">class</span> <span class="cl">Range2</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="vr">self</span>, <span class="vr">start</span>, <span class="vr">end</span>):
+        <span class="vr">self</span>.<span class="vr">current</span> = <span class="vr">start</span>
+        <span class="vr">self</span>.<span class="vr">end</span> = <span class="vr">end</span>
+
+    <span class="kw">def</span> <span class="fn">__iter__</span>(<span class="vr">self</span>): <span class="kw">return</span> <span class="vr">self</span>
+    <span class="kw">def</span> <span class="fn">__next__</span>(<span class="vr">self</span>):
+        <span class="kw">if</span> <span class="vr">self</span>.<span class="vr">current</span> >= <span class="vr">self</span>.<span class="vr">end</span>:
+            <span class="kw">raise</span> <span class="cl">StopIteration</span>
+        <span class="vr">val</span> = <span class="vr">self</span>.<span class="vr">current</span>
+        <span class="vr">self</span>.<span class="vr">current</span> += <span class="nm">1</span>
+        <span class="kw">return</span> <span class="vr">val</span>
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Lazy Evaluation</h5>
+      <p>Generatoren berechnen Werte erst bei Bedarf — perfekt für Streams, Log-Dateien.</p>
+      <h5>Einmal-Nutzung</h5>
+      <p>Ein Generator ist nach dem Durchlaufen erschöpft — kein zweites Mal möglich.</p>
+      <h5>send()</h5>
+      <p><code>gen.send(wert)</code> schickt einen Wert zurück in den Generator.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════ TEIL III ═══════════════════════════════════════════════ -->
+<div class="part">
+  <div class="part-label">Teil III</div>
+  <div class="part-title">Für <em>Fortgeschrittene</em></div>
+  <p class="part-desc">Dekoratoren, Async, Pattern Matching, Type Hints und die Werkzeuge professioneller Python-Entwickler.</p>
+</div>
+
+<!-- 18 -->
+<section id="dekoratoren">
+  <h2><span class="num">18</span> Dekoratoren</h2>
+  <p class="section-intro">Dekoratoren wrappen Funktionen, um Verhalten hinzuzufügen — ohne den Originalcode zu ändern.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>@decorator</h5>
+      <p>Syntactic Sugar für <code>fn = decorator(fn)</code>.</p>
+      <h5>functools.wraps</h5>
+      <p>Bewahrt den Funktionsnamen und Docstring.</p>
+      <h5>Mit Argumenten</h5>
+      <p>Braucht eine zusätzliche Verschachtelungsebene.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">dekoratoren.py</div>
+<pre><span class="kw">import</span> <span class="vr">time</span>
+<span class="kw">from</span> <span class="vr">functools</span> <span class="kw">import</span> <span class="fn">wraps</span>
+
+<span class="cm"># Einfacher Dekorator</span>
+<span class="kw">def</span> <span class="fn">timer</span>(<span class="vr">func</span>):
+    @<span class="dc">wraps</span>(<span class="vr">func</span>)
+    <span class="kw">def</span> <span class="fn">wrapper</span>(*<span class="vr">args</span>, **<span class="vr">kwargs</span>):
+        <span class="vr">start</span> = <span class="vr">time</span>.perf_counter()
+        <span class="vr">result</span> = <span class="vr">func</span>(*<span class="vr">args</span>, **<span class="vr">kwargs</span>)
+        <span class="vr">ms</span> = (<span class="vr">time</span>.perf_counter() - <span class="vr">start</span>) * <span class="nm">1000</span>
+        <span class="fn">print</span>(<span class="st">f"<span class="vr">{func.__name__}</span>: <span class="vr">{ms:.1f}</span>ms"</span>)
+        <span class="kw">return</span> <span class="vr">result</span>
+    <span class="kw">return</span> <span class="fn">wrapper</span>
+
+@<span class="dc">timer</span>
+<span class="kw">def</span> <span class="fn">slow</span>():
+    <span class="vr">time</span>.sleep(<span class="nm">0.1</span>)
+    <span class="kw">return</span> <span class="st">"fertig"</span>
+
+<span class="fn">slow</span>()  <span class="cm"># slow: 100.3ms</span>
+
+<span class="cm"># Dekorator mit Argumenten</span>
+<span class="kw">def</span> <span class="fn">repeat</span>(<span class="vr">n</span>: <span class="tp">int</span>):
+    <span class="kw">def</span> <span class="fn">decorator</span>(<span class="vr">func</span>):
+        @<span class="dc">wraps</span>(<span class="vr">func</span>)
+        <span class="kw">def</span> <span class="fn">wrapper</span>(*<span class="vr">args</span>, **<span class="vr">kwargs</span>):
+            <span class="kw">for</span> <span class="vr">_</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="vr">n</span>):
+                <span class="vr">result</span> = <span class="vr">func</span>(*<span class="vr">args</span>, **<span class="vr">kwargs</span>)
+            <span class="kw">return</span> <span class="vr">result</span>
+        <span class="kw">return</span> <span class="fn">wrapper</span>
+    <span class="kw">return</span> <span class="fn">decorator</span>
+
+@<span class="dc">repeat</span>(<span class="nm">3</span>)
+<span class="kw">def</span> <span class="fn">gruss</span>():
+    <span class="fn">print</span>(<span class="st">"Hallo!"</span>)
+
+<span class="fn">gruss</span>()  <span class="cm"># 3x "Hallo!"</span>
+
+<span class="cm"># Klassen-Dekoratoren</span>
+<span class="kw">from</span> <span class="vr">functools</span> <span class="kw">import</span> <span class="fn">lru_cache</span>
+
+@<span class="dc">lru_cache</span>(<span class="vr">maxsize</span>=<span class="nm">128</span>)
+<span class="kw">def</span> <span class="fn">fib</span>(<span class="vr">n</span>):
+    <span class="kw">if</span> <span class="vr">n</span> &lt; <span class="nm">2</span>: <span class="kw">return</span> <span class="vr">n</span>
+    <span class="kw">return</span> <span class="fn">fib</span>(<span class="vr">n</span>-<span class="nm">1</span>) + <span class="fn">fib</span>(<span class="vr">n</span>-<span class="nm">2</span>)
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Stacking</h5>
+      <p>Mehrere Dekoratoren stapeln: <code>@a @b def f</code> → <code>f = a(b(f))</code>.</p>
+      <h5>lru_cache</h5>
+      <p>Memoization — cached Rückgabewerte basierend auf Argumenten.</p>
+      <h5>Built-in</h5>
+      <p><code>@property</code>, <code>@staticmethod</code>, <code>@classmethod</code>, <code>@abstractmethod</code>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 19 -->
+<section id="context">
+  <h2><span class="num">19</span> Context Manager</h2>
+  <p class="section-intro"><code>with</code>-Blöcke garantieren Setup und Cleanup — auch bei Exceptions.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>__enter__ / __exit__</h5>
+      <p>Das Protokoll hinter <code>with</code>.</p>
+      <h5>@contextmanager</h5>
+      <p>Generator-basierte Alternative — weniger Boilerplate.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">context.py</div>
+<pre><span class="cm"># Klassen-basiert</span>
+<span class="kw">class</span> <span class="cl">Timer</span>:
+    <span class="kw">def</span> <span class="fn">__enter__</span>(<span class="vr">self</span>):
+        <span class="kw">import</span> <span class="vr">time</span>
+        <span class="vr">self</span>.<span class="vr">start</span> = <span class="vr">time</span>.perf_counter()
+        <span class="kw">return</span> <span class="vr">self</span>
+
+    <span class="kw">def</span> <span class="fn">__exit__</span>(<span class="vr">self</span>, <span class="vr">exc_type</span>, <span class="vr">exc_val</span>, <span class="vr">tb</span>):
+        <span class="kw">import</span> <span class="vr">time</span>
+        <span class="vr">self</span>.<span class="vr">elapsed</span> = <span class="vr">time</span>.perf_counter() - <span class="vr">self</span>.<span class="vr">start</span>
+        <span class="fn">print</span>(<span class="st">f"<span class="vr">{self.elapsed:.3f}</span>s"</span>)
+        <span class="kw">return</span> <span class="bn">False</span>  <span class="cm"># Exception nicht unterdrücken</span>
+
+<span class="kw">with</span> <span class="cl">Timer</span>():
+    <span class="fn">sum</span>(<span class="fn">range</span>(<span class="nm">1_000_000</span>))
+
+<span class="cm"># Generator-basiert (einfacher)</span>
+<span class="kw">from</span> <span class="vr">contextlib</span> <span class="kw">import</span> <span class="fn">contextmanager</span>
+
+@<span class="dc">contextmanager</span>
+<span class="kw">def</span> <span class="fn">temp_dir</span>():
+    <span class="kw">import</span> <span class="vr">tempfile</span>, <span class="vr">shutil</span>
+    <span class="vr">path</span> = <span class="vr">tempfile</span>.mkdtemp()
+    <span class="kw">try</span>:
+        <span class="kw">yield</span> <span class="vr">path</span>         <span class="cm"># ← as-Wert</span>
+    <span class="kw">finally</span>:
+        <span class="vr">shutil</span>.rmtree(<span class="vr">path</span>) <span class="cm"># Aufräumen</span>
+
+<span class="kw">with</span> <span class="fn">temp_dir</span>() <span class="kw">as</span> <span class="vr">d</span>:
+    <span class="fn">print</span>(<span class="st">f"Arbeite in <span class="vr">{d}</span>"</span>)
+<span class="cm"># Verzeichnis ist jetzt gelöscht</span>
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Typische Nutzung</h5>
+      <p>Dateien, DB-Verbindungen, Locks, Temp-Dateien, Transaktionen.</p>
+      <h5>suppress()</h5>
+      <p><code>with suppress(FileNotFoundError):</code> — ignoriert bestimmte Fehler.</p>
+      <h5>Mehrere</h5>
+      <p><code>with open("a") as a, open("b") as b:</code></p>
+    </div>
+  </div>
+</section>
+
+<!-- 20 -->
+<section id="typehints">
+  <h2><span class="num">20</span> Type Hints</h2>
+  <p class="section-intro">Optionale Typannotationen für bessere IDE-Unterstützung und statische Analyse mit <code>mypy</code>.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>Grundsyntax</h5>
+      <p>Parameter und Rückgabewerte annotieren.</p>
+      <h5>Generics</h5>
+      <p><code>list[str]</code>, <code>dict[str, int]</code> — seit Python 3.9 ohne <code>typing</code>.</p>
+      <h5>Union / Optional</h5>
+      <p><code>str | None</code> statt <code>Optional[str]</code> (3.10+).</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">typehints.py</div>
+<pre><span class="cm"># Grundtypen</span>
+<span class="kw">def</span> <span class="fn">gruss</span>(<span class="vr">name</span>: <span class="tp">str</span>, <span class="vr">laut</span>: <span class="tp">bool</span> = <span class="bn">False</span>) -> <span class="tp">str</span>:
+    <span class="vr">text</span> = <span class="st">f"Hallo <span class="vr">{name}</span>"</span>
+    <span class="kw">return</span> <span class="vr">text</span>.upper() <span class="kw">if</span> <span class="vr">laut</span> <span class="kw">else</span> <span class="vr">text</span>
+
+<span class="cm"># Collections (3.9+ built-in Generics)</span>
+<span class="kw">def</span> <span class="fn">first</span>(<span class="vr">items</span>: <span class="tp">list</span>[<span class="tp">int</span>]) -> <span class="tp">int</span> | <span class="bn">None</span>:
+    <span class="kw">return</span> <span class="vr">items</span>[<span class="nm">0</span>] <span class="kw">if</span> <span class="vr">items</span> <span class="kw">else</span> <span class="bn">None</span>
+
+<span class="cm"># TypeAlias (3.12+)</span>
+<span class="kw">type</span> <span class="tp">UserDict</span> = <span class="tp">dict</span>[<span class="tp">str</span>, <span class="tp">str</span> | <span class="tp">int</span>]
+
+<span class="vr">user</span>: <span class="tp">UserDict</span> = {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"alter"</span>: <span class="nm">30</span>}
+
+<span class="cm"># Callable</span>
+<span class="kw">from</span> <span class="vr">collections.abc</span> <span class="kw">import</span> <span class="cl">Callable</span>
+
+<span class="kw">def</span> <span class="fn">apply</span>(<span class="vr">fn</span>: <span class="cl">Callable</span>[[<span class="tp">int</span>], <span class="tp">int</span>], <span class="vr">wert</span>: <span class="tp">int</span>) -> <span class="tp">int</span>:
+    <span class="kw">return</span> <span class="vr">fn</span>(<span class="vr">wert</span>)
+
+<span class="cm"># TypeVar (3.12+ neue Syntax)</span>
+<span class="kw">def</span> <span class="fn">first_item</span>[<span class="tp">T</span>](<span class="vr">items</span>: <span class="tp">list</span>[<span class="tp">T</span>]) -> <span class="tp">T</span>:
+    <span class="kw">return</span> <span class="vr">items</span>[<span class="nm">0</span>]
+
+<span class="cm"># TypedDict</span>
+<span class="kw">from</span> <span class="vr">typing</span> <span class="kw">import</span> <span class="cl">TypedDict</span>
+
+<span class="kw">class</span> <span class="cl">User</span>(<span class="cl">TypedDict</span>):
+    <span class="vr">name</span>: <span class="tp">str</span>
+    <span class="vr">alter</span>: <span class="tp">int</span>
+    <span class="vr">email</span>: <span class="tp">str</span> | <span class="bn">None</span>
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Nicht erzwungen</h5>
+      <p>Python ignoriert Type Hints zur Laufzeit. Nutze <code>mypy</code> für Checks.</p>
+      <h5>3.12 Syntax</h5>
+      <p><code>def f[T](x: T) -> T:</code> statt separatem <code>TypeVar</code>.</p>
+      <h5>Stufenweise</h5>
+      <p>Du kannst Type Hints schrittweise hinzufügen — sie sind optional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 21 -->
+<section id="dataclasses">
+  <h2><span class="num">21</span> Dataclasses</h2>
+  <p class="section-intro">Automatisch generierte <code>__init__</code>, <code>__repr__</code>, <code>__eq__</code> und mehr — weniger Boilerplate.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>@dataclass</h5>
+      <p>Generiert automatisch Konstruktor, Repr und Vergleich.</p>
+      <h5>field()</h5>
+      <p>Für Default-Factories und Metadaten.</p>
+      <h5>frozen</h5>
+      <p>Macht die Instanz unveränderbar (immutable).</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">dataclasses_demo.py</div>
+<pre><span class="kw">from</span> <span class="vr">dataclasses</span> <span class="kw">import</span> <span class="fn">dataclass</span>, <span class="fn">field</span>
+
+@<span class="dc">dataclass</span>
+<span class="kw">class</span> <span class="cl">User</span>:
+    <span class="vr">name</span>: <span class="tp">str</span>
+    <span class="vr">alter</span>: <span class="tp">int</span>
+    <span class="vr">email</span>: <span class="tp">str</span> = <span class="st">""</span>
+    <span class="vr">tags</span>: <span class="tp">list</span>[<span class="tp">str</span>] = <span class="fn">field</span>(<span class="vr">default_factory</span>=<span class="tp">list</span>)
+
+<span class="vr">u1</span> = <span class="cl">User</span>(<span class="st">"Alice"</span>, <span class="nm">30</span>)
+<span class="vr">u2</span> = <span class="cl">User</span>(<span class="st">"Alice"</span>, <span class="nm">30</span>)
+<span class="fn">print</span>(<span class="vr">u1</span>)           <span class="cm"># User(name='Alice', alter=30, ...)</span>
+<span class="fn">print</span>(<span class="vr">u1</span> == <span class="vr">u2</span>)     <span class="cm"># True (Wertvergleich)</span>
+
+<span class="cm"># Frozen — unveränderbar</span>
+@<span class="dc">dataclass</span>(<span class="vr">frozen</span>=<span class="bn">True</span>)
+<span class="kw">class</span> <span class="cl">Punkt</span>:
+    <span class="vr">x</span>: <span class="tp">float</span>
+    <span class="vr">y</span>: <span class="tp">float</span>
+
+<span class="vr">p</span> = <span class="cl">Punkt</span>(<span class="nm">1.0</span>, <span class="nm">2.0</span>)
+<span class="cm"># p.x = 5  → FrozenInstanceError!</span>
+
+<span class="cm"># Sortierbar mit order=True</span>
+@<span class="dc">dataclass</span>(<span class="vr">order</span>=<span class="bn">True</span>)
+<span class="kw">class</span> <span class="cl">Version</span>:
+    <span class="vr">major</span>: <span class="tp">int</span>
+    <span class="vr">minor</span>: <span class="tp">int</span>
+    <span class="vr">patch</span>: <span class="tp">int</span> = <span class="nm">0</span>
+
+<span class="vr">versions</span> = [<span class="cl">Version</span>(<span class="nm">3</span>,<span class="nm">12</span>), <span class="cl">Version</span>(<span class="nm">3</span>,<span class="nm">9</span>), <span class="cl">Version</span>(<span class="nm">3</span>,<span class="nm">13</span>)]
+<span class="fn">print</span>(<span class="fn">sorted</span>(<span class="vr">versions</span>))
+<span class="cm"># [Version(3,9,0), Version(3,12,0), Version(3,13,0)]</span>
+
+<span class="cm"># __post_init__ für Validierung</span>
+@<span class="dc">dataclass</span>
+<span class="kw">class</span> <span class="cl">Temp</span>:
+    <span class="vr">celsius</span>: <span class="tp">float</span>
+    <span class="vr">fahrenheit</span>: <span class="tp">float</span> = <span class="fn">field</span>(<span class="vr">init</span>=<span class="bn">False</span>)
+
+    <span class="kw">def</span> <span class="fn">__post_init__</span>(<span class="vr">self</span>):
+        <span class="vr">self</span>.<span class="vr">fahrenheit</span> = <span class="vr">self</span>.<span class="vr">celsius</span> * <span class="nm">1.8</span> + <span class="nm">32</span>
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>vs NamedTuple</h5>
+      <p>NamedTuple ist immer immutable und Tuple-basiert. Dataclass ist flexibler.</p>
+      <h5>slots=True</h5>
+      <p>Ab 3.10: <code>@dataclass(slots=True)</code> — weniger Speicher, schneller.</p>
+      <h5>kw_only</h5>
+      <p>Ab 3.10: <code>kw_only=True</code> — alle Parameter nur als Keyword-Argumente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 22 -->
+<section id="async">
+  <h2><span class="num">22</span> Async &amp; Await</h2>
+  <p class="section-intro">Asynchrone Programmierung für I/O-intensive Aufgaben — HTTP-Requests, Dateioperationen, WebSockets.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>async def</h5>
+      <p>Definiert eine Coroutine — muss mit <code>await</code> aufgerufen werden.</p>
+      <h5>asyncio</h5>
+      <p>Die Standardbibliothek für async. <code>asyncio.run()</code> startet die Event-Loop.</p>
+      <h5>gather</h5>
+      <p>Mehrere Coroutines parallel ausführen.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">async_demo.py</div>
+<pre><span class="kw">import</span> <span class="vr">asyncio</span>
+
+<span class="cm"># Einfache Coroutine</span>
+<span class="kw">async def</span> <span class="fn">gruss</span>(<span class="vr">name</span>: <span class="tp">str</span>, <span class="vr">delay</span>: <span class="tp">float</span>):
+    <span class="kw">await</span> <span class="vr">asyncio</span>.sleep(<span class="vr">delay</span>)
+    <span class="fn">print</span>(<span class="st">f"Hallo <span class="vr">{name}</span>!"</span>)
+
+<span class="cm"># Parallel ausführen</span>
+<span class="kw">async def</span> <span class="fn">main</span>():
+    <span class="cm"># Sequentiell: 3 Sekunden</span>
+    <span class="kw">await</span> <span class="fn">gruss</span>(<span class="st">"Alice"</span>, <span class="nm">1</span>)
+    <span class="kw">await</span> <span class="fn">gruss</span>(<span class="st">"Bob"</span>, <span class="nm">2</span>)
+
+    <span class="cm"># Parallel: 2 Sekunden (Maximum)</span>
+    <span class="kw">await</span> <span class="vr">asyncio</span>.gather(
+        <span class="fn">gruss</span>(<span class="st">"Alice"</span>, <span class="nm">1</span>),
+        <span class="fn">gruss</span>(<span class="st">"Bob"</span>, <span class="nm">2</span>),
+    )
+
+<span class="vr">asyncio</span>.run(<span class="fn">main</span>())
+
+<span class="cm"># Async Context Manager</span>
+<span class="kw">class</span> <span class="cl">AsyncDB</span>:
+    <span class="kw">async def</span> <span class="fn">__aenter__</span>(<span class="vr">self</span>):
+        <span class="fn">print</span>(<span class="st">"Verbinde..."</span>)
+        <span class="kw">return</span> <span class="vr">self</span>
+
+    <span class="kw">async def</span> <span class="fn">__aexit__</span>(<span class="vr">self</span>, *<span class="vr">args</span>):
+        <span class="fn">print</span>(<span class="st">"Trenne..."</span>)
+
+<span class="cm"># Async Iterator</span>
+<span class="kw">async def</span> <span class="fn">zahlen</span>(<span class="vr">n</span>):
+    <span class="kw">for</span> <span class="vr">i</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="vr">n</span>):
+        <span class="kw">await</span> <span class="vr">asyncio</span>.sleep(<span class="nm">0.1</span>)
+        <span class="kw">yield</span> <span class="vr">i</span>
+
+<span class="kw">async def</span> <span class="fn">run</span>():
+    <span class="kw">async for</span> <span class="vr">n</span> <span class="kw">in</span> <span class="fn">zahlen</span>(<span class="nm">5</span>):
+        <span class="fn">print</span>(<span class="vr">n</span>)
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Nicht für CPU</h5>
+      <p>Async ist für I/O. Für CPU-intensive Arbeit: <code>multiprocessing</code> oder <code>concurrent.futures</code>.</p>
+      <h5>httpx / aiohttp</h5>
+      <p>Für async HTTP-Requests: <code>async with httpx.AsyncClient()</code>.</p>
+      <h5>TaskGroup</h5>
+      <p>Ab 3.11: <code>async with asyncio.TaskGroup() as tg:</code> — strukturierte Concurrency.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 23 -->
+<section id="pattern">
+  <h2><span class="num">23</span> Pattern Matching</h2>
+  <p class="section-intro"><code>match/case</code> seit Python 3.10 — strukturelles Pattern Matching, weit mächtiger als switch/case.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>match/case</h5>
+      <p>Prüft Wert, Struktur, Typ und bindet Variablen gleichzeitig.</p>
+      <h5>Guards</h5>
+      <p><code>if</code>-Bedingung nach dem Pattern.</p>
+      <h5>Wildcards</h5>
+      <p><code>_</code> matcht alles (Default-Fall).</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">pattern.py</div>
+<pre><span class="cm"># Einfaches Matching</span>
+<span class="kw">def</span> <span class="fn">status_text</span>(<span class="vr">code</span>: <span class="tp">int</span>) -> <span class="tp">str</span>:
+    <span class="kw">match</span> <span class="vr">code</span>:
+        <span class="kw">case</span> <span class="nm">200</span>: <span class="kw">return</span> <span class="st">"OK"</span>
+        <span class="kw">case</span> <span class="nm">404</span>: <span class="kw">return</span> <span class="st">"Not Found"</span>
+        <span class="kw">case</span> <span class="nm">500</span>: <span class="kw">return</span> <span class="st">"Server Error"</span>
+        <span class="kw">case</span> <span class="vr">_</span>:   <span class="kw">return</span> <span class="st">"Unbekannt"</span>
+
+<span class="cm"># Struktur-Matching</span>
+<span class="kw">def</span> <span class="fn">handle</span>(<span class="vr">event</span>):
+    <span class="kw">match</span> <span class="vr">event</span>:
+        <span class="kw">case</span> {<span class="st">"type"</span>: <span class="st">"click"</span>, <span class="st">"x"</span>: <span class="vr">x</span>, <span class="st">"y"</span>: <span class="vr">y</span>}:
+            <span class="fn">print</span>(<span class="st">f"Klick bei <span class="vr">{x}</span>,<span class="vr">{y}</span>"</span>)
+        <span class="kw">case</span> {<span class="st">"type"</span>: <span class="st">"key"</span>, <span class="st">"key"</span>: <span class="vr">k</span>}:
+            <span class="fn">print</span>(<span class="st">f"Taste: <span class="vr">{k}</span>"</span>)
+        <span class="kw">case</span> <span class="vr">_</span>:
+            <span class="fn">print</span>(<span class="st">"Unbekannt"</span>)
+
+<span class="fn">handle</span>({<span class="st">"type"</span>: <span class="st">"click"</span>, <span class="st">"x"</span>: <span class="nm">10</span>, <span class="st">"y"</span>: <span class="nm">20</span>})
+
+<span class="cm"># Typ-Matching + Guard</span>
+<span class="kw">def</span> <span class="fn">process</span>(<span class="vr">wert</span>):
+    <span class="kw">match</span> <span class="vr">wert</span>:
+        <span class="kw">case</span> <span class="tp">int</span>(<span class="vr">n</span>) <span class="kw">if</span> <span class="vr">n</span> > <span class="nm">0</span>:
+            <span class="fn">print</span>(<span class="st">f"Positive Zahl: <span class="vr">{n}</span>"</span>)
+        <span class="kw">case</span> <span class="tp">str</span>(<span class="vr">s</span>) <span class="kw">if</span> <span class="fn">len</span>(<span class="vr">s</span>) > <span class="nm">5</span>:
+            <span class="fn">print</span>(<span class="st">f"Langer String: <span class="vr">{s}</span>"</span>)
+        <span class="kw">case</span> [<span class="vr">first</span>, *<span class="vr">rest</span>]:
+            <span class="fn">print</span>(<span class="st">f"Liste: <span class="vr">{first}</span> + <span class="vr">{len(rest)}</span> mehr"</span>)
+        <span class="kw">case</span> <span class="vr">_</span>:
+            <span class="fn">print</span>(<span class="st">"Anderes"</span>)
+
+<span class="cm"># OR-Pattern</span>
+<span class="kw">match</span> <span class="vr">status</span>:
+    <span class="kw">case</span> <span class="nm">200</span> | <span class="nm">201</span> | <span class="nm">204</span>:
+        <span class="fn">print</span>(<span class="st">"Erfolg"</span>)
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Kein Fall-through</h5>
+      <p>Anders als C/Java: nur der erste Match wird ausgeführt.</p>
+      <h5>Binding</h5>
+      <p>Variablen wie <code>x</code>, <code>y</code> im Pattern werden automatisch gebunden.</p>
+      <h5>Klassen</h5>
+      <p><code>case Point(x=0, y=y)</code> matcht Klasseninstanzen mit Attribut-Patterns.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 24 -->
+<section id="adv-oop">
+  <h2><span class="num">24</span> Fortgeschrittene OOP</h2>
+  <p class="section-intro">Protocols, <code>__slots__</code>, Deskriptoren und Metaclasses — für Library-Autoren und Framework-Entwickler.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>Protocol</h5>
+      <p>Structural Typing — Interface ohne Vererbung (Duck Typing formalisiert).</p>
+      <h5>__slots__</h5>
+      <p>Fixe Attribut-Liste — spart Speicher, schnellerer Zugriff.</p>
+      <h5>Deskriptoren</h5>
+      <p>Kontrolliere Attribut-Zugriff auf Klassenebene.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">adv_oop.py</div>
+<pre><span class="kw">from</span> <span class="vr">typing</span> <span class="kw">import</span> <span class="cl">Protocol</span>, <span class="fn">runtime_checkable</span>
+
+<span class="cm"># Protocol — strukturelles Typing</span>
+@<span class="dc">runtime_checkable</span>
+<span class="kw">class</span> <span class="cl">Drawable</span>(<span class="cl">Protocol</span>):
+    <span class="kw">def</span> <span class="fn">draw</span>(<span class="vr">self</span>) -> <span class="tp">str</span>: ...
+
+<span class="kw">class</span> <span class="cl">Circle</span>:  <span class="cm"># KEINE Vererbung nötig!</span>
+    <span class="kw">def</span> <span class="fn">draw</span>(<span class="vr">self</span>) -> <span class="tp">str</span>:
+        <span class="kw">return</span> <span class="st">"○"</span>
+
+<span class="kw">def</span> <span class="fn">render</span>(<span class="vr">item</span>: <span class="cl">Drawable</span>):
+    <span class="fn">print</span>(<span class="vr">item</span>.draw())
+
+<span class="fn">render</span>(<span class="cl">Circle</span>())  <span class="cm"># ✓ hat draw()</span>
+
+<span class="cm"># __slots__ — Speicher sparen</span>
+<span class="kw">class</span> <span class="cl">Punkt</span>:
+    <span class="vr">__slots__</span> = (<span class="st">"x"</span>, <span class="st">"y"</span>)
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="vr">self</span>, <span class="vr">x</span>, <span class="vr">y</span>):
+        <span class="vr">self</span>.<span class="vr">x</span> = <span class="vr">x</span>
+        <span class="vr">self</span>.<span class="vr">y</span> = <span class="vr">y</span>
+    <span class="cm"># p.z = 1 → AttributeError!</span>
+
+<span class="cm"># Deskriptor</span>
+<span class="kw">class</span> <span class="cl">Positive</span>:
+    <span class="kw">def</span> <span class="fn">__set_name__</span>(<span class="vr">self</span>, <span class="vr">owner</span>, <span class="vr">name</span>):
+        <span class="vr">self</span>.<span class="vr">name</span> = <span class="st">f"_<span class="vr">{name}</span>"</span>
+
+    <span class="kw">def</span> <span class="fn">__get__</span>(<span class="vr">self</span>, <span class="vr">obj</span>, <span class="vr">type</span>=<span class="bn">None</span>):
+        <span class="kw">return</span> <span class="fn">getattr</span>(<span class="vr">obj</span>, <span class="vr">self</span>.<span class="vr">name</span>, <span class="nm">0</span>)
+
+    <span class="kw">def</span> <span class="fn">__set__</span>(<span class="vr">self</span>, <span class="vr">obj</span>, <span class="vr">value</span>):
+        <span class="kw">if</span> <span class="vr">value</span> &lt; <span class="nm">0</span>:
+            <span class="kw">raise</span> <span class="cl">ValueError</span>(<span class="st">"Muss positiv sein"</span>)
+        <span class="fn">setattr</span>(<span class="vr">obj</span>, <span class="vr">self</span>.<span class="vr">name</span>, <span class="vr">value</span>)
+
+<span class="kw">class</span> <span class="cl">Produkt</span>:
+    <span class="vr">preis</span> = <span class="cl">Positive</span>()
+    <span class="vr">menge</span> = <span class="cl">Positive</span>()
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Protocol vs ABC</h5>
+      <p>Protocol: keine Vererbung nötig. ABC: erzwingt Vererbung.</p>
+      <h5>__slots__ Nachteil</h5>
+      <p>Kein <code>__dict__</code>, kein dynamisches Hinzufügen von Attributen.</p>
+      <h5>Metaclasses</h5>
+      <p><code>class Meta(type):</code> — kontrolliert Klassenerstellung. Selten nötig.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 25 -->
+<section id="best-practices">
+  <h2><span class="num">25</span> Best Practices &amp; Tooling</h2>
+  <p class="section-intro">Die Werkzeuge und Konventionen für professionelle Python-Projekte.</p>
+
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>Projektstruktur</h5>
+      <p>Standard-Layout mit <code>src/</code>, <code>tests/</code>, <code>pyproject.toml</code>.</p>
+      <h5>Linting & Formatting</h5>
+      <p>Ruff (schnell!) oder Black + isort. Type-Checking mit mypy.</p>
+      <h5>Testing</h5>
+      <p>pytest als Standard-Testrunner.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">Projektstruktur</div>
+<pre><span class="cm">mein-projekt/</span>
+├── pyproject.toml        <span class="cm"># Konfiguration</span>
+├── README.md
+├── src/
+│   └── meinprojekt/
+│       ├── __init__.py
+│       ├── main.py
+│       └── utils.py
+├── tests/
+│   ├── __init__.py
+│   ├── test_main.py
+│   └── conftest.py       <span class="cm"># pytest Fixtures</span>
+├── .venv/
+├── .gitignore
+└── .github/
+    └── workflows/ci.yml</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>pyproject.toml</h5>
+      <p>Ersetzt <code>setup.py</code> + <code>requirements.txt</code> — der moderne Standard.</p>
+      <h5>Ruff</h5>
+      <p>Extrem schneller Linter + Formatter. Ersetzt flake8, black, isort in einem Tool.</p>
+      <h5>uv</h5>
+      <p>Ultraschneller Package-Manager von Astral. Ersetzt pip + venv.</p>
+    </div>
+  </div>
+
+  <h3>pytest Beispiel</h3>
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>Assertions</h5>
+      <p>Einfache <code>assert</code>-Statements — pytest gibt detaillierte Diffs.</p>
+      <h5>Fixtures</h5>
+      <p>Setup/Teardown für Tests — wiederverwendbar, komposierbar.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">test_main.py</div>
+<pre><span class="kw">import</span> <span class="vr">pytest</span>
+
+<span class="cm"># Einfacher Test</span>
+<span class="kw">def</span> <span class="fn">test_addition</span>():
+    <span class="kw">assert</span> <span class="nm">1</span> + <span class="nm">1</span> == <span class="nm">2</span>
+
+<span class="cm"># Parametrisiert</span>
+@<span class="dc">pytest.mark.parametrize</span>(<span class="st">"a, b, expected"</span>, [
+    (<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>),
+    (<span class="nm">0</span>, <span class="nm">0</span>, <span class="nm">0</span>),
+    (-<span class="nm">1</span>, <span class="nm">1</span>, <span class="nm">0</span>),
+])
+<span class="kw">def</span> <span class="fn">test_add</span>(<span class="vr">a</span>, <span class="vr">b</span>, <span class="vr">expected</span>):
+    <span class="kw">assert</span> <span class="vr">a</span> + <span class="vr">b</span> == <span class="vr">expected</span>
+
+<span class="cm"># Exception testen</span>
+<span class="kw">def</span> <span class="fn">test_division</span>():
+    <span class="kw">with</span> <span class="vr">pytest</span>.raises(<span class="cl">ZeroDivisionError</span>):
+        <span class="nm">1</span> / <span class="nm">0</span>
+
+<span class="cm"># Fixture</span>
+@<span class="dc">pytest.fixture</span>
+<span class="kw">def</span> <span class="fn">user_data</span>():
+    <span class="kw">return</span> {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"alter"</span>: <span class="nm">30</span>}
+
+<span class="kw">def</span> <span class="fn">test_user</span>(<span class="vr">user_data</span>):
+    <span class="kw">assert</span> <span class="vr">user_data</span>[<span class="st">"name"</span>] == <span class="st">"Alice"</span>
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Ausführen</h5>
+      <p><code>pytest -v</code> verbose, <code>pytest -x</code> stop on first fail, <code>pytest -k "test_add"</code> filtern.</p>
+      <h5>Coverage</h5>
+      <p><code>pytest --cov=src</code> zeigt Test-Abdeckung.</p>
+      <h5>conftest.py</h5>
+      <p>Fixtures die automatisch allen Tests zur Verfügung stehen.</p>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="terminal-bar"><div class="terminal-dots"><span></span><span></span><span></span></div>Terminal</div>
+    <div class="terminal-body">
+<pre>$ ruff check .                    <span class="cm"># Linting</span>
+$ ruff format .                   <span class="cm"># Formatting</span>
+$ mypy src/                       <span class="cm"># Type-Checking</span>
+$ pytest -v --cov=src             <span class="cm"># Tests + Coverage</span>
+$ uv pip install requests         <span class="cm"># Schnelles Install</span>
+$ uv venv                         <span class="cm"># Schnelles venv</span></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ REFERENZ ═══════════════════════════════════════════════ -->
+<div class="part">
+  <div class="part-label">Referenz</div>
+  <div class="part-title">pip, venv &amp; <em>CLI</em></div>
+  <p class="part-desc">Alle wichtigen Befehle für den Python-Alltag auf einen Blick.</p>
+</div>
+
+<section id="ref">
+  <h2><span class="num">26</span> Kommandozeilen-Referenz</h2>
+
+  <h3 class="cli-group">Python-Interpreter</h3>
+  <table class="cli-table">
+    <thead><tr><th>Befehl</th><th>Beschreibung</th></tr></thead>
+    <tbody>
+      <tr><td>python3 script.py</td><td>Script ausführen.</td></tr>
+      <tr><td>python3 -c "print('hi')"</td><td>Einzeiler direkt ausführen.</td></tr>
+      <tr><td>python3 -m module</td><td>Modul als Script starten (z.B. <code>python3 -m http.server</code>).</td></tr>
+      <tr><td>python3 -i script.py</td><td>Script ausführen, dann REPL öffnen (interaktiv debuggen).</td></tr>
+      <tr><td>python3 --version</td><td>Installierte Version anzeigen.</td></tr>
+      <tr><td>python3 -m venv .venv</td><td>Virtuelle Umgebung erstellen.</td></tr>
+      <tr><td>source .venv/bin/activate</td><td>venv aktivieren (macOS/Linux).</td></tr>
+      <tr><td>.venv\Scripts\activate</td><td>venv aktivieren (Windows).</td></tr>
+      <tr><td>deactivate</td><td>venv deaktivieren.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="cli-group">pip — Package Manager</h3>
+  <table class="cli-table">
+    <thead><tr><th>Befehl</th><th>Beschreibung</th></tr></thead>
+    <tbody>
+      <tr><td>pip install paket</td><td>Package installieren.</td></tr>
+      <tr><td>pip install paket==1.2.3</td><td>Spezifische Version installieren.</td></tr>
+      <tr><td>pip install -r requirements.txt</td><td>Alle Packages aus Datei installieren.</td></tr>
+      <tr><td>pip install -e .</td><td>Lokales Projekt im Editiermodus installieren.</td></tr>
+      <tr><td>pip install --upgrade paket</td><td>Package aktualisieren.</td></tr>
+      <tr><td>pip uninstall paket</td><td>Package deinstallieren.</td></tr>
+      <tr><td>pip list</td><td>Alle installierten Packages anzeigen.</td></tr>
+      <tr><td>pip show paket</td><td>Details zu einem Package.</td></tr>
+      <tr><td>pip freeze > requirements.txt</td><td>Aktuelle Packages mit Versionen exportieren.</td></tr>
+      <tr><td>pip check</td><td>Abhängigkeiten auf Konflikte prüfen.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="cli-group">uv — Moderner Package-Manager</h3>
+  <table class="cli-table">
+    <thead><tr><th>Befehl</th><th>Beschreibung</th></tr></thead>
+    <tbody>
+      <tr><td>uv init mein-projekt</td><td>Neues Projekt mit <code>pyproject.toml</code> anlegen.</td></tr>
+      <tr><td>uv venv</td><td>Virtuelle Umgebung erstellen (10x schneller als <code>python -m venv</code>).</td></tr>
+      <tr><td>uv pip install paket</td><td>Package installieren (100x schneller als pip).</td></tr>
+      <tr><td>uv pip compile requirements.in</td><td>Lockfile aus <code>requirements.in</code> erzeugen.</td></tr>
+      <tr><td>uv pip sync requirements.txt</td><td>Exakte Versionen installieren.</td></tr>
+      <tr><td>uv run script.py</td><td>Script direkt ausführen (erstellt venv automatisch).</td></tr>
+      <tr><td>uv add requests</td><td>Dependency zu <code>pyproject.toml</code> hinzufügen.</td></tr>
+      <tr><td>uv remove requests</td><td>Dependency entfernen.</td></tr>
+      <tr><td>uv lock</td><td>Lockfile aktualisieren.</td></tr>
+      <tr><td>uv python install 3.13</td><td>Python-Version installieren.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="cli-group">Ruff — Linter &amp; Formatter</h3>
+  <table class="cli-table">
+    <thead><tr><th>Befehl</th><th>Beschreibung</th></tr></thead>
+    <tbody>
+      <tr><td>ruff check .</td><td>Linting: alle Dateien prüfen.</td></tr>
+      <tr><td>ruff check --fix .</td><td>Automatisch behebbare Fehler fixen.</td></tr>
+      <tr><td>ruff format .</td><td>Code formatieren (wie Black, aber schneller).</td></tr>
+      <tr><td>ruff format --check .</td><td>Prüfen ohne zu ändern (für CI).</td></tr>
+      <tr><td>ruff rule E501</td><td>Erklärung zu einer Regel anzeigen.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="cli-group">pytest — Testing</h3>
+  <table class="cli-table">
+    <thead><tr><th>Befehl</th><th>Beschreibung</th></tr></thead>
+    <tbody>
+      <tr><td>pytest</td><td>Alle Tests ausführen.</td></tr>
+      <tr><td>pytest -v</td><td>Verbose — zeigt jeden Test einzeln.</td></tr>
+      <tr><td>pytest -x</td><td>Stoppt beim ersten Fehler.</td></tr>
+      <tr><td>pytest -k "test_name"</td><td>Nur Tests mit passendem Namen.</td></tr>
+      <tr><td>pytest --cov=src</td><td>Test-Abdeckung messen.</td></tr>
+      <tr><td>pytest -s</td><td>Print-Ausgaben anzeigen (kein Capture).</td></tr>
+      <tr><td>pytest --lf</td><td>Nur zuletzt fehlgeschlagene Tests.</td></tr>
+      <tr><td>pytest -n auto</td><td>Parallel ausführen (braucht <code>pytest-xdist</code>).</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="cli-group">mypy — Type-Checking</h3>
+  <table class="cli-table">
+    <thead><tr><th>Befehl</th><th>Beschreibung</th></tr></thead>
+    <tbody>
+      <tr><td>mypy src/</td><td>Type-Checking aller Dateien in <code>src/</code>.</td></tr>
+      <tr><td>mypy --strict src/</td><td>Strenger Modus — alle Funktionen brauchen Type Hints.</td></tr>
+      <tr><td>mypy --ignore-missing-imports</td><td>Fehlende Stubs ignorieren.</td></tr>
+      <tr><td>mypy --show-error-codes</td><td>Fehlercode bei jedem Fehler anzeigen.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="cli-group">Nützliche Stdlib-Module</h3>
+  <table class="cli-table">
+    <thead><tr><th>Befehl</th><th>Beschreibung</th></tr></thead>
+    <tbody>
+      <tr><td>python3 -m http.server 8080</td><td>Lokaler HTTP-Server im aktuellen Verzeichnis.</td></tr>
+      <tr><td>python3 -m json.tool &lt; data.json</td><td>JSON hübsch formatieren.</td></tr>
+      <tr><td>python3 -m pdb script.py</td><td>Debugger starten.</td></tr>
+      <tr><td>python3 -m timeit "sum(range(1000))"</td><td>Performance messen.</td></tr>
+      <tr><td>python3 -m zipfile -c out.zip *.py</td><td>Zip-Archiv erstellen.</td></tr>
+      <tr><td>python3 -m py_compile script.py</td><td>Syntax prüfen ohne auszuführen.</td></tr>
+      <tr><td>python3 -m ensurepip --upgrade</td><td>pip installieren/aktualisieren.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="cli-group">pyproject.toml — Konfiguration</h3>
+  <div class="example">
+    <div class="ex-side left">
+      <span class="ex-label">Erklärung</span>
+      <h5>Alles in einer Datei</h5>
+      <p>Projektinfo, Dependencies, Tool-Konfiguration — alles zentral.</p>
+    </div>
+    <div class="ex-code">
+      <div class="filename">pyproject.toml</div>
+<pre><span class="cm">[project]</span>
+<span class="vr">name</span> = <span class="st">"mein-projekt"</span>
+<span class="vr">version</span> = <span class="st">"0.1.0"</span>
+<span class="vr">requires-python</span> = <span class="st">">=3.12"</span>
+<span class="vr">dependencies</span> = [
+    <span class="st">"httpx>=0.27"</span>,
+    <span class="st">"pydantic>=2.0"</span>,
+]
+
+<span class="cm">[project.optional-dependencies]</span>
+<span class="vr">dev</span> = [<span class="st">"pytest"</span>, <span class="st">"ruff"</span>, <span class="st">"mypy"</span>]
+
+<span class="cm">[tool.ruff]</span>
+<span class="vr">line-length</span> = <span class="nm">88</span>
+<span class="vr">target-version</span> = <span class="st">"py312"</span>
+
+<span class="cm">[tool.pytest.ini_options]</span>
+<span class="vr">testpaths</span> = [<span class="st">"tests"</span>]
+
+<span class="cm">[tool.mypy]</span>
+<span class="vr">strict</span> = <span class="bn">true</span>
+</pre>
+    </div>
+    <div class="ex-side right">
+      <span class="ex-label">Notizen</span>
+      <h5>Install</h5>
+      <p><code>pip install -e ".[dev]"</code> installiert Projekt + Dev-Dependencies.</p>
+      <h5>uv</h5>
+      <p><code>uv init</code> erstellt diese Datei automatisch.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Tipp</div>
+    <p>Starte neue Projekte mit <code>uv init</code> — es erstellt die richtige Struktur und <code>pyproject.toml</code> automatisch. Für bestehende Projekte: <code>uv pip compile requirements.in -o requirements.txt</code> für reproduzierbare Builds.</p>
+  </div>
+</section>
+
+<footer>
+  Python · Dokumentation · Juni 2026 · Python 3.13+
+</footer>
+
+</div>
+</body>
+</html>
